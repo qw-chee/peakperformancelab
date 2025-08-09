@@ -139,7 +139,7 @@ div[data-testid="stButton"] > button {
     padding: 18px 20px !important;
     border-radius: 30px !important;
     transition: all 0.3s ease !important;
-    width: 100% !important;
+    width: auto !important;
 }
 
 div[data-testid="stButton"] > button:hover {

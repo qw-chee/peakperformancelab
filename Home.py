@@ -140,6 +140,7 @@ div[data-testid="stButton"] > button {
     border-radius: 30px !important;
     transition: all 0.3s ease !important;
     width: auto !important;
+    position: center !important;
 }
 
 div[data-testid="stButton"] > button:hover {

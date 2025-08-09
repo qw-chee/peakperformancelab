@@ -1,5 +1,11 @@
 import streamlit as st
 
+st.set_page_config(
+    page_title="Peak Performance Lab", 
+    layout="centered",
+    page_icon="🏆"
+)
+
 # ---------------------------- SESSION STATE INIT ----------------------------
 def init_session_state():
     if 'home_background_loaded' not in st.session_state:
@@ -7,36 +13,32 @@ def init_session_state():
 
 init_session_state()
 
-# JavaScript to handle click anywhere and redirect
-click_handler = """
-<script>
-document.addEventListener('click', function(e) {
-    // Prevent default behavior for actual Streamlit elements
-    if (e.target.closest('[data-testid]') || e.target.closest('button') || e.target.closest('a')) {
-        return;
-    }
-    
-    // Redirect to Modules page
-    window.location.href = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '') + '/Modules';
-});
-
-// Also handle keyboard events for accessibility
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' || e.key === ' ') {
-        window.location.href = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '') + '/Modules';
-    }
-});
-</script>
-"""
-
 # CSS for loading overlay and full-screen background
 page_styles = """
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy&display=swap');
+
 /* Hide Streamlit default elements */
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header {visibility: hidden;}
 
+/* Hide sidebar permanently */
+section[data-testid="stSidebar"] {
+    display: none !important;
+}
+
+/* Hide sidebar toggle button */
+button[kind="header"][data-testid="baseButton-header"] {
+    display: none !important;
+}
+
+/* Expand main content to full width */
+.main .block-container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    max-width: none !important;
+}
 /* Remove padding from main container */
 .main .block-container {
     padding: 0 !important;
@@ -45,13 +47,13 @@ header {visibility: hidden;}
 
 /* Full screen background */
 .stApp {
-    background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Instructions.gif');
+    background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Home.gif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
-    cursor: pointer;
+    position: relative;
 }
 
 /* Loading overlay */
@@ -74,9 +76,10 @@ header {visibility: hidden;}
 }
 
 .loading-title {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Sour Gummy', sans-serif;
     font-size: 3.5em;
     font-weight: 700;
+    letter-spacing: 0.1em;
     color: white;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -128,17 +131,36 @@ header {visibility: hidden;}
     100% { opacity: 0; pointer-events: none; }
 }
 
-/* Invisible overlay to capture clicks */
-.click-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1000;
-    cursor: pointer;
-    background: transparent;
+/* Button styling */
+div[data-testid="stButton"] {
+    display: flex !important;
+    justify-content: center !important;
 }
+
+div[data-testid="stButton"] > button {
+    background: #f05151 !important;
+    border: 6px solid #353535 !important;
+    color: white !important;
+    font-weight: 700 !important;
+    font-size: 1.3em !important;
+    font-family: 'Fredoka', cursive !important;
+    padding: 18px 30px !important;
+    border-radius: 30px !important;
+    box-shadow: 0 8px 25px rgba(29, 160, 136, 0.4) !important;
+    transition: all 0.3s ease !important;
+    text-transform: none !important;
+    letter-spacing: 0.5px !important;
+    width: auto !important;
+    min-width: fit-content !important;
+    white-space: nowrap !important;
+}
+
+div[data-testid="stButton"] > button:hover {
+    background: linear-gradient(135deg, #41c0a9 0%, #64ccba 50%, #87d4c7 100%) !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 12px 35px rgba(29, 160, 136, 0.5) !important;
+}
+
 </style>
 """
 
@@ -154,19 +176,21 @@ if not st.session_state.home_background_loaded:
             <div class="loading-bar-container">
                 <div class="loading-bar"></div>
             </div>
-            <div class="loading-subtitle">Loading instructions...</div>
+            <div class="loading-subtitle">Preparing your performance journey...</div>
         </div>
     </div>
     """, unsafe_allow_html=True)
     st.session_state.home_background_loaded = True
 
-# Add click handler
-st.markdown(click_handler, unsafe_allow_html=True)
+# ---------------------------- MAIN CONTENT ----------------------------
+# Add some spacing to position the button
+st.markdown("<div style='height: 60vh;'></div>", unsafe_allow_html=True)
 
-# Invisible clickable overlay
-st.markdown("""
-<div class="click-overlay" title=" "></div>
-""", unsafe_allow_html=True)
+# Navigation button
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    if st.button("L E T' S  G O!", use_container_width=True):
+        st.switch_page("pages/Instructions.py")
 
 # Add empty content to prevent Streamlit from showing default content
 st.markdown("")

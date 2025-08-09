@@ -47,7 +47,7 @@ button[kind="header"][data-testid="baseButton-header"] {
 
 /* Full screen background */
 .stApp {
-    background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Home.gif');
+    background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Instructions.gif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

@@ -53,8 +53,7 @@ def get_styles():
     @import url('https://fonts.googleapis.com/css2?family=Quantico&display=swap');
     
     .stApp {
-        background: url('https://www.dropbox.com/scl/fi/bzod2ga5rzw9u38mi1tsn/icbf.gif?rlkey=0omqpdxbux1dtf9buc0z4v6cy&st=h5vih31p&raw=1') center/cover fixed;
-        min-height: 100vh;
+        background: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/icbf.gif');
     }
     
     .loading-overlay {
@@ -411,3 +410,4 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+

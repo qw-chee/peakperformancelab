@@ -131,7 +131,7 @@ button[kind="header"][data-testid="baseButton-header"] {
 /* Button styling */
 div[data-testid="stButton"] > button {
     background: #f05151 !important;
-    border: 3px  black !important;
+    border: 3px  solid black !important;
     color: white !important;
     font-weight: 700 !important;
     font-size: 1.3em !important;

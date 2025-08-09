@@ -16,7 +16,7 @@ init_session_state()
 # CSS for loading overlay and full-screen background
 page_styles = """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
 
 /* Hide Streamlit default elements */
 #MainMenu {visibility: hidden;}
@@ -76,8 +76,8 @@ button[kind="header"][data-testid="baseButton-header"] {
 }
 
 .loading-title {
-    font-family: 'Sour Gummy', sans-serif;
-    font-size: 3.5em;
+    font-family: 'Poetsen One', sans-serif;
+    font-size: 3em;
     font-weight: 700;
     letter-spacing: 0.1em;
     color: white;

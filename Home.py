@@ -21,6 +21,22 @@ page_styles = """
 footer {visibility: hidden;}
 header {visibility: hidden;}
 
+/* Hide sidebar permanently */
+section[data-testid="stSidebar"] {
+    display: none !important;
+}
+
+/* Hide sidebar toggle button */
+button[kind="header"][data-testid="baseButton-header"] {
+    display: none !important;
+}
+
+/* Expand main content to full width */
+.main .block-container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    max-width: none !important;
+}
 /* Remove padding from main container */
 .main .block-container {
     padding: 0 !important;

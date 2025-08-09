@@ -129,6 +129,11 @@ button[kind="header"][data-testid="baseButton-header"] {
 }
 
 /* Button styling */
+div[data-testid="stButton"] {
+    display: flex !important;
+    justify-content: center !important;
+}
+
 div[data-testid="stButton"] > button {
     background: #f05151 !important;
     border: 6px solid black !important;
@@ -136,17 +141,23 @@ div[data-testid="stButton"] > button {
     font-weight: 700 !important;
     font-size: 1.3em !important;
     font-family: 'Fredoka', cursive !important;
-    padding: 18px 20px !important;
+    padding: 18px 30px !important;
     border-radius: 30px !important;
+    box-shadow: 0 8px 25px rgba(29, 160, 136, 0.4) !important;
     transition: all 0.3s ease !important;
+    text-transform: none !important;
+    letter-spacing: 0.5px !important;
     width: auto !important;
-    position: center !important;
+    min-width: fit-content !important;
+    white-space: nowrap !important;
 }
 
 div[data-testid="stButton"] > button:hover {
-    background: #f05151 !important;
+    background: linear-gradient(135deg, #41c0a9 0%, #64ccba 50%, #87d4c7 100%) !important;
     transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 12px 35px rgba(29, 160, 136, 0.5) !important;
 }
+
 </style>
 """
 

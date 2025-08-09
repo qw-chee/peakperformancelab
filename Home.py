@@ -32,15 +32,32 @@ document.addEventListener('click', function(e) {
         return;
     }
     
-    console.log('Valid click detected, redirecting...');
+    console.log('Valid click detected, trying multiple navigation methods...');
     console.log('Current URL:', window.location.href);
     console.log('Target URL:', window.location.origin + '/Instructions');
     
     // Add alert to confirm JavaScript is working
     alert('Redirecting to Instructions page...');
     
-    // Redirect to Instructions page
-    window.location.href = window.location.origin + '/Instructions';
+    // Try multiple navigation methods
+    try {
+        // Method 1: Direct assignment
+        window.location.href = '/Instructions';
+    } catch (e1) {
+        console.log('Method 1 failed:', e1);
+        try {
+            // Method 2: window.open
+            window.open('/Instructions', '_self');
+        } catch (e2) {
+            console.log('Method 2 failed:', e2);
+            try {
+                // Method 3: location.assign
+                window.location.assign('/Instructions');
+            } catch (e3) {
+                console.log('All navigation methods failed:', e3);
+            }
+        }
+    }
 }, true); // Use capture phase
 
 // Also handle keyboard events for accessibility
@@ -221,15 +238,24 @@ st.markdown("""
 <div class="click-overlay" title="Click me!"></div>
 """, unsafe_allow_html=True)
 
-# Fallback navigation button for testing
+# Fallback navigation button using JavaScript
 st.markdown("""
 <div style="position: fixed; bottom: 20px; right: 20px; z-index: 10001;">
+    <button onclick="window.open('/Instructions', '_self')" 
+            style="background: linear-gradient(135deg, #1da088 0%, #41c0a9 100%); 
+                   border: none; 
+                   color: white; 
+                   padding: 15px 20px; 
+                   border-radius: 25px; 
+                   font-size: 16px; 
+                   cursor: pointer; 
+                   box-shadow: 0 4px 15px rgba(29, 160, 136, 0.3);
+                   font-family: 'Fredoka', cursive;
+                   font-weight: 600;">
+        🚀 Go to Instructions (JS)
+    </button>
+</div>
 """, unsafe_allow_html=True)
-
-if st.button("🚀 Go to Instructions (Fallback)", key="fallback_nav"):
-    st.switch_page("pages/Instructions.py")
-
-st.markdown("</div>", unsafe_allow_html=True)
 
 # Add empty content to prevent Streamlit from showing default content
 st.markdown("")

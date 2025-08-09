@@ -156,7 +156,7 @@ div[data-testid="stButton"] > button {
 }
 
 div[data-testid="stButton"] > button:hover {
-    background: linear-gradient(135deg, #41c0a9 0%, #64ccba 50%, #87d4c7 100%) !important;
+    background: #f05151 !important;
     transform: translateY(-3px) scale(1.05) !important;
     box-shadow: 0 12px 35px rgba(29, 160, 136, 0.5) !important;
 }
@@ -190,7 +190,7 @@ st.markdown("<div style='height: 60vh;'></div>", unsafe_allow_html=True)
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
     if st.button("L E T' S   G O!", use_container_width=True):
-        st.switch_page("pages/Instructions.py")
+        st.switch_page("pages/Modules.py")
 
 # Add empty content to prevent Streamlit from showing default content
 st.markdown("")

@@ -131,13 +131,13 @@ button[kind="header"][data-testid="baseButton-header"] {
 /* Button styling */
 div[data-testid="stButton"] > button {
     background: #f05151 !important;
-    border: 3px  solid black !important;
+    border: 6px  solid black !important;
     color: white !important;
     font-weight: 700 !important;
     font-size: 1.3em !important;
     font-family: 'Fredoka', cursive !important;
-    padding: 18px 40px !important;
-    border-radius: 30px !important;
+    padding: 18px 20px !important;
+    border-radius: 20px !important;
     transition: all 0.3s ease !important;
     text-transform: none !important;
     letter-spacing: 0.5px !important;

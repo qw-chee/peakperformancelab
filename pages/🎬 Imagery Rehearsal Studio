@@ -440,7 +440,7 @@ def get_movie_styles():
     @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
     
     .stApp {
-        background-image: url('https://www.dropbox.com/scl/fi/1ltb3xhk32nr1rp08qm30/imagery-1.jpg?rlkey=5encz1ynf5p9o96ndyd5j9e8o&st=ehpd3unf&raw=1');
+        background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/imagery.jpg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;

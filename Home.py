@@ -38,19 +38,6 @@ header {visibility: hidden;}
     position: relative;
 }
 
-/* Overlay for better text readability */
-.stApp::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 0;
-    pointer-events: none;
-}
-
 /* Loading overlay */
 #loading-overlay {
     position: fixed;
@@ -125,51 +112,6 @@ header {visibility: hidden;}
     100% { opacity: 0; pointer-events: none; }
 }
 
-/* Welcome container */
-.welcome-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.95);
-    border: 3px solid #1da088;
-    border-radius: 25px;
-    padding: 40px;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 15px 40px rgba(29, 160, 136, 0.3);
-    z-index: 1000;
-    max-width: 500px;
-    animation: float-in 1s ease-out;
-}
-
-@keyframes float-in {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -60%);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-    }
-}
-
-.welcome-title {
-    font-family: 'Fredoka', cursive;
-    font-size: 2.8em;
-    color: #1da088;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(29, 160, 136, 0.2);
-}
-
-.welcome-subtitle {
-    font-family: 'Comfortaa', cursive;
-    font-size: 1.3em;
-    color: #41c0a9;
-    margin-bottom: 30px;
-    line-height: 1.4;
-}
-
 /* Button styling */
 div[data-testid="stButton"] > button {
     background: linear-gradient(135deg, #1da088 0%, #41c0a9 50%, #64ccba 100%) !important;
@@ -191,15 +133,6 @@ div[data-testid="stButton"] > button:hover {
     background: linear-gradient(135deg, #41c0a9 0%, #64ccba 50%, #87d4c7 100%) !important;
     transform: translateY(-3px) scale(1.05) !important;
     box-shadow: 0 12px 35px rgba(29, 160, 136, 0.5) !important;
-}
-
-/* Instructions text */
-.instructions {
-    font-family: 'Comfortaa', cursive;
-    color: #2c5f5a;
-    font-size: 1.1em;
-    margin-top: 20px;
-    line-height: 1.5;
 }
 </style>
 """
@@ -223,14 +156,6 @@ if not st.session_state.home_background_loaded:
     st.session_state.home_background_loaded = True
 
 # ---------------------------- MAIN CONTENT ----------------------------
-# Welcome container
-st.markdown("""
-<div class="welcome-container">
-    <div class="welcome-title">🏆 Peak Performance Lab</div>
-    <div class="welcome-subtitle">Unlock your mental potential through science-backed training</div>
-</div>
-""", unsafe_allow_html=True)
-
 # Add some spacing to position the button
 st.markdown("<div style='height: 60vh;'></div>", unsafe_allow_html=True)
 
@@ -239,13 +164,6 @@ col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
     if st.button("🚀 Enter the Lab", use_container_width=True):
         st.switch_page("pages/Instructions.py")
-
-# Instructions
-st.markdown("""
-<div class="instructions">
-    Click the button above to begin your journey toward peak performance
-</div>
-""", unsafe_allow_html=True)
 
 # Add empty content to prevent Streamlit from showing default content
 st.markdown("")

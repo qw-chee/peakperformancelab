@@ -1,5 +1,11 @@
 import streamlit as st
 
+st.set_page_config(
+    page_title="Peak Performance Lab", 
+    layout="centered",
+    page_icon="🏆"
+)
+
 # ---------------------------- SESSION STATE INIT ----------------------------
 def init_session_state():
     if 'home_background_loaded' not in st.session_state:
@@ -7,25 +13,49 @@ def init_session_state():
 
 init_session_state()
 
-# JavaScript to handle click anywhere and redirect
+# Enhanced JavaScript with debugging
 click_handler = """
 <script>
+console.log('JavaScript loaded successfully!');
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM fully loaded');
+});
+
 document.addEventListener('click', function(e) {
-    // Prevent default behavior for actual Streamlit elements
+    console.log('Click detected on:', e.target);
+    console.log('Click coordinates:', e.clientX, e.clientY);
+    
+    // Check if it's a Streamlit element
     if (e.target.closest('[data-testid]') || e.target.closest('button') || e.target.closest('a')) {
+        console.log('Streamlit element clicked, ignoring');
         return;
     }
     
+    console.log('Valid click detected, redirecting...');
+    console.log('Current URL:', window.location.href);
+    console.log('Target URL:', window.location.origin + '/Instructions');
+    
+    // Add alert to confirm JavaScript is working
+    alert('Redirecting to Instructions page...');
+    
     // Redirect to Instructions page
     window.location.href = window.location.origin + '/Instructions';
-});
+}, true); // Use capture phase
 
 // Also handle keyboard events for accessibility
 document.addEventListener('keydown', function(e) {
+    console.log('Key pressed:', e.key);
     if (e.key === 'Enter' || e.key === ' ') {
+        console.log('Enter/Space pressed, redirecting...');
         window.location.href = window.location.origin + '/Instructions';
     }
 });
+
+// Test if overlay is blocking
+document.addEventListener('click', function(e) {
+    console.log('Second listener - Element clicked:', e.target.className);
+}, false);
 </script>
 """
 
@@ -128,7 +158,7 @@ header {visibility: hidden;}
     100% { opacity: 0; pointer-events: none; }
 }
 
-/* Invisible overlay to capture clicks */
+/* Invisible overlay to capture clicks - make it visible for debugging */
 .click-overlay {
     position: fixed;
     top: 0;
@@ -137,7 +167,21 @@ header {visibility: hidden;}
     height: 100vh;
     z-index: 1000;
     cursor: pointer;
-    background: transparent;
+    background: rgba(255, 0, 0, 0.1); /* Temporarily visible for debugging */
+}
+
+/* Debug info */
+.debug-info {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 10000;
+    font-family: monospace;
+    font-size: 12px;
 }
 </style>
 """
@@ -160,13 +204,32 @@ if not st.session_state.home_background_loaded:
     """, unsafe_allow_html=True)
     st.session_state.home_background_loaded = True
 
+# Add debug info
+st.markdown("""
+<div class="debug-info">
+    Debug Mode: Click anywhere<br>
+    Press F12 for console logs<br>
+    Red tint = clickable area
+</div>
+""", unsafe_allow_html=True)
+
 # Add click handler
 st.markdown(click_handler, unsafe_allow_html=True)
 
-# Invisible clickable overlay
+# Invisible clickable overlay (temporarily visible)
 st.markdown("""
-<div class="click-overlay" title=" "></div>
+<div class="click-overlay" title="Click me!"></div>
 """, unsafe_allow_html=True)
+
+# Fallback navigation button for testing
+st.markdown("""
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 10001;">
+""", unsafe_allow_html=True)
+
+if st.button("🚀 Go to Instructions (Fallback)", key="fallback_nav"):
+    st.switch_page("pages/Instructions.py")
+
+st.markdown("</div>", unsafe_allow_html=True)
 
 # Add empty content to prevent Streamlit from showing default content
 st.markdown("")

@@ -17,6 +17,7 @@ init_session_state()
 page_styles = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap');
 
 /* Hide Streamlit default elements */
 #MainMenu {visibility: hidden;}
@@ -56,7 +57,7 @@ button[kind="header"][data-testid="baseButton-header"] {
     position: relative;
 }
 
-/* Loading overlay */
+/* Loading overlay - FIXED VERSION */
 #loading-overlay {
     position: fixed;
     top: 0;
@@ -68,6 +69,12 @@ button[kind="header"][data-testid="baseButton-header"] {
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    opacity: 1;
+    animation: loading-sequence 3s ease-in-out forwards;
+}
+
+/* Add a delay before the loading screen shows to ensure proper rendering */
+#loading-overlay.show {
     animation: loading-sequence 3s ease-in-out forwards;
 }
 
@@ -112,6 +119,7 @@ button[kind="header"][data-testid="baseButton-header"] {
     font-size: 1.3em;
     font-weight: 500;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    font-family: 'Comfortaa', cursive;
 }
 
 @keyframes title-glow {
@@ -164,13 +172,37 @@ div[data-testid="stButton"] > button:hover {
 </style>
 """
 
-# Apply styles
+# Apply styles first
 st.markdown(page_styles, unsafe_allow_html=True)
 
-# ---------------------------- LOADING OVERLAY ----------------------------
+# ---------------------------- LOADING OVERLAY WITH JAVASCRIPT TRIGGER ----------------------------
+# Only show loading overlay if background hasn't been loaded
 if not st.session_state.home_background_loaded:
+    # Add JavaScript to ensure the loading overlay shows properly
+    loading_script = """
+    <script>
+    // Ensure the loading overlay is visible immediately
+    document.addEventListener('DOMContentLoaded', function() {
+        const overlay = document.getElementById('loading-overlay');
+        if (overlay) {
+            overlay.classList.add('show');
+        }
+    });
+    
+    // Fallback to ensure loading screen shows
+    setTimeout(function() {
+        const overlay = document.getElementById('loading-overlay');
+        if (overlay) {
+            overlay.classList.add('show');
+        }
+    }, 100);
+    </script>
+    """
+    
+    st.markdown(loading_script, unsafe_allow_html=True)
+    
     st.markdown("""
-    <div id="loading-overlay">
+    <div id="loading-overlay" class="show">
         <div class="loading-content">
             <div class="loading-title">🏆 Peak Performance Lab</div>
             <div class="loading-bar-container">
@@ -180,7 +212,12 @@ if not st.session_state.home_background_loaded:
         </div>
     </div>
     """, unsafe_allow_html=True)
+    
+    # Set the flag to prevent showing the loading screen again
     st.session_state.home_background_loaded = True
+    
+    # Force a rerun to ensure the loading screen displays
+    st.rerun()
 
 # ---------------------------- MAIN CONTENT ----------------------------
 # Add some spacing to position the button

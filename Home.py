@@ -17,13 +17,13 @@ document.addEventListener('click', function(e) {
     }
     
     // Redirect to Instructions page
-    window.location.href = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '') + '/Instructions';
+    window.location.href = window.location.origin + '/Instructions';
 });
 
 // Also handle keyboard events for accessibility
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' || e.key === ' ') {
-        window.location.href = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '') + '/Instructions';
+        window.location.href = window.location.origin + '/Instructions';
     }
 });
 </script>

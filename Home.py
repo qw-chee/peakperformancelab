@@ -137,11 +137,11 @@ div[data-testid="stButton"] > button {
     font-size: 1.3em !important;
     font-family: 'Fredoka', cursive !important;
     padding: 18px 20px !important;
-    border-radius: 20px !important;
+    border-radius: 30px !important;
     transition: all 0.3s ease !important;
     text-transform: none !important;
     letter-spacing: 0.5px !important;
-    width: 100% !important;
+    width: 80% !important;
 }
 
 div[data-testid="stButton"] > button:hover {

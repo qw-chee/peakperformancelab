@@ -13,69 +13,6 @@ def init_session_state():
 
 init_session_state()
 
-# Enhanced JavaScript with debugging
-click_handler = """
-<script>
-console.log('JavaScript loaded successfully!');
-
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM fully loaded');
-});
-
-document.addEventListener('click', function(e) {
-    console.log('Click detected on:', e.target);
-    console.log('Click coordinates:', e.clientX, e.clientY);
-    
-    // Check if it's a Streamlit element
-    if (e.target.closest('[data-testid]') || e.target.closest('button') || e.target.closest('a')) {
-        console.log('Streamlit element clicked, ignoring');
-        return;
-    }
-    
-    console.log('Valid click detected, trying multiple navigation methods...');
-    console.log('Current URL:', window.location.href);
-    console.log('Target URL:', window.location.origin + '/Instructions');
-    
-    // Add alert to confirm JavaScript is working
-    alert('Redirecting to Instructions page...');
-    
-    // Try multiple navigation methods
-    try {
-        // Method 1: Direct assignment
-        window.location.href = '/Instructions';
-    } catch (e1) {
-        console.log('Method 1 failed:', e1);
-        try {
-            // Method 2: window.open
-            window.open('/Instructions', '_self');
-        } catch (e2) {
-            console.log('Method 2 failed:', e2);
-            try {
-                // Method 3: location.assign
-                window.location.assign('/Instructions');
-            } catch (e3) {
-                console.log('All navigation methods failed:', e3);
-            }
-        }
-    }
-}, true); // Use capture phase
-
-// Also handle keyboard events for accessibility
-document.addEventListener('keydown', function(e) {
-    console.log('Key pressed:', e.key);
-    if (e.key === 'Enter' || e.key === ' ') {
-        console.log('Enter/Space pressed, redirecting...');
-        window.location.href = window.location.origin + '/Instructions';
-    }
-});
-
-// Test if overlay is blocking
-document.addEventListener('click', function(e) {
-    console.log('Second listener - Element clicked:', e.target.className);
-}, false);
-</script>
-"""
-
 # CSS for loading overlay and full-screen background
 page_styles = """
 <style>
@@ -98,7 +35,20 @@ header {visibility: hidden;}
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
-    cursor: pointer;
+    position: relative;
+}
+
+/* Overlay for better text readability */
+.stApp::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 0;
+    pointer-events: none;
 }
 
 /* Loading overlay */
@@ -175,30 +125,81 @@ header {visibility: hidden;}
     100% { opacity: 0; pointer-events: none; }
 }
 
-/* Invisible overlay to capture clicks - make it visible for debugging */
-.click-overlay {
+/* Welcome container */
+.welcome-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    border: 3px solid #1da088;
+    border-radius: 25px;
+    padding: 40px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 40px rgba(29, 160, 136, 0.3);
     z-index: 1000;
-    cursor: pointer;
-    background: rgba(255, 0, 0, 0.1); /* Temporarily visible for debugging */
+    max-width: 500px;
+    animation: float-in 1s ease-out;
 }
 
-/* Debug info */
-.debug-info {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 10000;
-    font-family: monospace;
-    font-size: 12px;
+@keyframes float-in {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.welcome-title {
+    font-family: 'Fredoka', cursive;
+    font-size: 2.8em;
+    color: #1da088;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(29, 160, 136, 0.2);
+}
+
+.welcome-subtitle {
+    font-family: 'Comfortaa', cursive;
+    font-size: 1.3em;
+    color: #41c0a9;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+/* Button styling */
+div[data-testid="stButton"] > button {
+    background: linear-gradient(135deg, #1da088 0%, #41c0a9 50%, #64ccba 100%) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 700 !important;
+    font-size: 1.3em !important;
+    font-family: 'Fredoka', cursive !important;
+    padding: 18px 40px !important;
+    border-radius: 30px !important;
+    box-shadow: 0 8px 25px rgba(29, 160, 136, 0.4) !important;
+    transition: all 0.3s ease !important;
+    text-transform: none !important;
+    letter-spacing: 0.5px !important;
+    width: 100% !important;
+}
+
+div[data-testid="stButton"] > button:hover {
+    background: linear-gradient(135deg, #41c0a9 0%, #64ccba 50%, #87d4c7 100%) !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 12px 35px rgba(29, 160, 136, 0.5) !important;
+}
+
+/* Instructions text */
+.instructions {
+    font-family: 'Comfortaa', cursive;
+    color: #2c5f5a;
+    font-size: 1.1em;
+    margin-top: 20px;
+    line-height: 1.5;
 }
 </style>
 """
@@ -221,39 +222,28 @@ if not st.session_state.home_background_loaded:
     """, unsafe_allow_html=True)
     st.session_state.home_background_loaded = True
 
-# Add debug info
+# ---------------------------- MAIN CONTENT ----------------------------
+# Welcome container
 st.markdown("""
-<div class="debug-info">
-    Debug Mode: Click anywhere<br>
-    Press F12 for console logs<br>
-    Red tint = clickable area
+<div class="welcome-container">
+    <div class="welcome-title">🏆 Peak Performance Lab</div>
+    <div class="welcome-subtitle">Unlock your mental potential through science-backed training</div>
 </div>
 """, unsafe_allow_html=True)
 
-# Add click handler
-st.markdown(click_handler, unsafe_allow_html=True)
+# Add some spacing to position the button
+st.markdown("<div style='height: 60vh;'></div>", unsafe_allow_html=True)
 
-# Invisible clickable overlay (temporarily visible)
-st.markdown("""
-<div class="click-overlay" title="Click me!"></div>
-""", unsafe_allow_html=True)
+# Navigation button
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    if st.button("🚀 Enter the Lab", use_container_width=True):
+        st.switch_page("pages/Instructions.py")
 
-# Fallback navigation button using JavaScript
+# Instructions
 st.markdown("""
-<div style="position: fixed; bottom: 20px; right: 20px; z-index: 10001;">
-    <button onclick="window.open('/Instructions', '_self')" 
-            style="background: linear-gradient(135deg, #1da088 0%, #41c0a9 100%); 
-                   border: none; 
-                   color: white; 
-                   padding: 15px 20px; 
-                   border-radius: 25px; 
-                   font-size: 16px; 
-                   cursor: pointer; 
-                   box-shadow: 0 4px 15px rgba(29, 160, 136, 0.3);
-                   font-family: 'Fredoka', cursive;
-                   font-weight: 600;">
-        🚀 Go to Instructions (JS)
-    </button>
+<div class="instructions">
+    Click the button above to begin your journey toward peak performance
 </div>
 """, unsafe_allow_html=True)
 

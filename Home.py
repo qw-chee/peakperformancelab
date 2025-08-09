@@ -45,7 +45,7 @@ header {visibility: hidden;}
 
 /* Full screen background */
 .stApp {
-    background-image: url('https://www.dropbox.com/scl/fi/3rnda2b8qftkd53lbax1q/Home.gif?rlkey=ibwnjtubnn50fpcnczfo2c5in&st=81kbtwka&raw=1');
+    background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Home.gif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

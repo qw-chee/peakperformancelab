@@ -130,15 +130,14 @@ button[kind="header"][data-testid="baseButton-header"] {
 
 /* Button styling */
 div[data-testid="stButton"] > button {
-    background: linear-gradient(135deg, #1da088 0%, #41c0a9 50%, #64ccba 100%) !important;
-    border: none !important;
+    background: #f05151 !important;
+    border: 3px  black !important;
     color: white !important;
     font-weight: 700 !important;
     font-size: 1.3em !important;
     font-family: 'Fredoka', cursive !important;
     padding: 18px 40px !important;
     border-radius: 30px !important;
-    box-shadow: 0 8px 25px rgba(29, 160, 136, 0.4) !important;
     transition: all 0.3s ease !important;
     text-transform: none !important;
     letter-spacing: 0.5px !important;
@@ -146,9 +145,8 @@ div[data-testid="stButton"] > button {
 }
 
 div[data-testid="stButton"] > button:hover {
-    background: linear-gradient(135deg, #41c0a9 0%, #64ccba 50%, #87d4c7 100%) !important;
+    background: #f05151 !important;
     transform: translateY(-3px) scale(1.05) !important;
-    box-shadow: 0 12px 35px rgba(29, 160, 136, 0.5) !important;
 }
 </style>
 """

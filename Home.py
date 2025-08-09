@@ -79,6 +79,7 @@ button[kind="header"][data-testid="baseButton-header"] {
     font-family: 'Sour Gummy', sans-serif;
     font-size: 3.5em;
     font-weight: 700;
+    font-spacing: 1.2em;
     color: white;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);

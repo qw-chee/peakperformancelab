@@ -127,12 +127,7 @@ def get_styles():
     @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap');
 
     .stApp {
-        background-image: url('https://www.dropbox.com/scl/fi/gt6nkz39hyynsd8f9xsqf/growth.gif?rlkey=5xuzc57818di102ofy3x89dew&st=y9pepuas&raw=1');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        min-height: 100vh;
+        background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/growth.gif');
     }
     
     .stApp::before {
@@ -738,3 +733,4 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
             st.rerun()
 
 st.markdown("<div style='height: 4vh;'></div>", unsafe_allow_html=True)
+

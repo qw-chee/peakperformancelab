@@ -131,7 +131,7 @@ button[kind="header"][data-testid="baseButton-header"] {
 /* Button styling */
 div[data-testid="stButton"] > button {
     background: #f05151 !important;
-    border: 6px  solid black !important;
+    border: 6px solid black !important;
     color: white !important;
     font-weight: 700 !important;
     font-size: 1.3em !important;
@@ -139,9 +139,7 @@ div[data-testid="stButton"] > button {
     padding: 18px 20px !important;
     border-radius: 30px !important;
     transition: all 0.3s ease !important;
-    text-transform: none !important;
-    letter-spacing: 0.5px !important;
-    width: 80% !important;
+    width: 100% !important;
 }
 
 div[data-testid="stButton"] > button:hover {

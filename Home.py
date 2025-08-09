@@ -138,7 +138,7 @@ div[data-testid="stButton"] {
 
 div[data-testid="stButton"] > button {
     background: #f05151 !important;
-    border: 6px solid black !important;
+    border: 6px #353535 !important;
     color: white !important;
     font-weight: 700 !important;
     font-size: 1.3em !important;

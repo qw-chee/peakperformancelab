@@ -77,7 +77,7 @@ button[kind="header"][data-testid="baseButton-header"] {
 
 .loading-title {
     font-family: 'Poetsen One', sans-serif;
-    font-size: 3.5em;
+    font-size: 3em;
     font-weight: 700;
     color: white;
     margin-bottom: 20px;

@@ -152,6 +152,7 @@ div[data-testid="stButton"] button {
     text-transform: none !important;
     letter-spacing: 0.5px !important;
     width: 100% !important;
+    min-width: fit-content !important;
 }
 
 .stApp .main .block-container div[data-testid="stButton"] > button:hover,
@@ -182,6 +183,11 @@ button:hover {
     background: #f05151 !important;
     transform: translateY(-3px) scale(1.05) !important;
     box-shadow: 0 12px 35px rgba(29, 160, 136, 0.5) !important;
+}
+
+/* Force font loading */
+* {
+    font-family: 'Fredoka', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 </style>

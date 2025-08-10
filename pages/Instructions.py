@@ -176,6 +176,24 @@ div[data-testid="stButton"] button:hover {
 
 # Apply styles
 st.markdown(page_styles, unsafe_allow_html=True)
+# Force styles with JavaScript (additional fix)
+st.markdown("""
+<script>
+setTimeout(function() {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.style.fontFamily = 'Poetsen One, cursive';
+        button.style.fontSize = '3em';
+        button.style.fontWeight = '700';
+        button.style.color = 'white';
+        button.style.background = '#f05151';
+        button.style.border = '6px solid #353535';
+        button.style.borderRadius = '30px';
+        button.style.padding = '18px 30px';
+        button.style.minWidth = 'fit-content';
+    });
+}, 100);
+</script>
 """, unsafe_allow_html=True)
 
 # ---------------------------- LOADING OVERLAY ----------------------------

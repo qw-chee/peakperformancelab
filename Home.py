@@ -142,7 +142,7 @@ div[data-testid="stButton"] > button {
     color: white !important;
     font-weight: 700 !important;
     font-size: 1.3em !important;
-    font-family: 'Fredoka', cursive !important;
+    font-family: 'Poetsen One' !important;
     padding: 18px 30px !important;
     border-radius: 30px !important;
     box-shadow: 0 8px 25px rgba(29, 160, 136, 0.4) !important;

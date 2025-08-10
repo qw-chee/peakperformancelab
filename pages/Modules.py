@@ -48,7 +48,7 @@ MODULES = [
         "description": "Master the art of mental rehearsal and visualization. Train your mind through guided imagery techniques.",
         "page": "/Imagery",
         "color": "#4B0082",
-        "energy_color": "#FFD700",
+        "energy_color": "#FF4500",
         "button_text": "🎬 ENTER THE STAGE"
     }
 ]
@@ -618,7 +618,7 @@ st.markdown("""
 <div class="main-container">
     <div style="font-family: 'Capriola', cursive; font-size: 1.1em; color: rgba(255, 255, 255, 0.9); text-align: center; line-height: 1.5; animation: instructionsGlow 4s ease-in-out infinite alternate;">
         <strong style="color: #fff; text-shadow: 0 0 10px rgba(255, 255, 100, 0.5);">Ready to unlock your potential?</strong><br>
-        Click on any module above to begin your journey toward peak performance. 
+        Click on any module to begin your journey toward peak performance. 
         Each module is designed to build specific mental skills and strategies.
     </div>
 </div>

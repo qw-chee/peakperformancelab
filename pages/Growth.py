@@ -1,6 +1,12 @@
 import streamlit as st
 import openai
 
+st.set_page_config(
+    page_title="Mindset Growth Garden", 
+    layout="centered",
+    page_icon="🌱"
+)
+
 # Set OpenAI API key
 openai.api_key = st.secrets.get("openai_api_key")
 
@@ -733,4 +739,5 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
             st.rerun()
 
 st.markdown("<div style='height: 4vh;'></div>", unsafe_allow_html=True)
+
 

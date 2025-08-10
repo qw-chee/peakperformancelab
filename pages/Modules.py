@@ -398,9 +398,6 @@ if not st.session_state.modules_background_loaded:
     """, unsafe_allow_html=True)
     st.session_state.modules_background_loaded = True
 
-# Add spacing
-st.markdown("<div style='height: 3vh;'></div>", unsafe_allow_html=True)
-
 # ---------------------------- MAIN CONTENT ----------------------------
 # Title Section
 st.markdown("""

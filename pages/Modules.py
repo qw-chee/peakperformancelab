@@ -231,7 +231,7 @@ def get_kinetic_energy_styles():
         backdrop-filter: blur(12px);
         border: 2px solid rgba(255, 255, 255, 0.2);
         border-radius: 25px;
-        padding: 30px;
+        padding: 20px;
         text-align: center;
         position: relative;
         overflow: hidden;
@@ -239,7 +239,7 @@ def get_kinetic_energy_styles():
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        margin-bottom: 25px;
+        margin-bottom: 15px;
         cursor: pointer;
         transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         box-shadow: 

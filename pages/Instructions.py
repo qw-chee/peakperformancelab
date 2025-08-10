@@ -17,7 +17,7 @@ init_session_state()
 page_styles = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Capriola&display=swap');
 
 /* Hide Streamlit default elements */
 #MainMenu {visibility: hidden;}
@@ -77,7 +77,7 @@ button[kind="header"][data-testid="baseButton-header"] {
 }
 
 .loading-title {
-    font-family: 'Poetsen One', sans-serif;
+    font-family: 'Capriola', sans-serif;
     font-size: 3em;
     font-weight: 700;
     color: white;
@@ -168,7 +168,7 @@ div[data-testid="stButton"] button:hover {
 
 /* Force font loading */
 * {
-    font-family: 'Poetsen One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Capriola', 'Poetsen One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 </style>
@@ -176,25 +176,6 @@ div[data-testid="stButton"] button:hover {
 
 # Apply styles
 st.markdown(page_styles, unsafe_allow_html=True)
-
-# Force styles with JavaScript (additional fix)
-st.markdown("""
-<script>
-setTimeout(function() {
-    const buttons = document.querySelectorAll('button');
-    buttons.forEach(button => {
-        button.style.fontFamily = 'Poetsen One, cursive';
-        button.style.fontSize = '2em';
-        button.style.fontWeight = '700';
-        button.style.color = 'white';
-        button.style.background = '#f05151';
-        button.style.border = '6px solid #353535';
-        button.style.borderRadius = '30px';
-        button.style.padding = '18px 30px';
-        button.style.minWidth = 'fit-content';
-    });
-}, 100);
-</script>
 """, unsafe_allow_html=True)
 
 # ---------------------------- LOADING OVERLAY ----------------------------

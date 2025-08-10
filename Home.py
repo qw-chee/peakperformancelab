@@ -17,7 +17,6 @@ init_session_state()
 page_styles = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
 
 /* Hide Streamlit default elements */
 #MainMenu {visibility: hidden;}
@@ -152,9 +151,7 @@ div[data-testid="stButton"] button {
     transition: all 0.3s ease !important;
     text-transform: none !important;
     letter-spacing: 0.5px !important;
-    width: auto !important;
-    min-width: fit-content !important;
-    white-space: nowrap !important;
+    width: 100% !important;
 }
 
 .stApp .main .block-container div[data-testid="stButton"] > button:hover,
@@ -185,11 +182,6 @@ button:hover {
     background: #f05151 !important;
     transform: translateY(-3px) scale(1.05) !important;
     box-shadow: 0 12px 35px rgba(29, 160, 136, 0.5) !important;
-}
-
-/* Force font loading */
-* {
-    font-family: 'Fredoka', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 </style>

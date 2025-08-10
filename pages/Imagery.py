@@ -444,7 +444,35 @@ def get_movie_styles():
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+    /* Hide Streamlit default elements */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
     
+    /* Hide sidebar permanently */
+    section[data-testid="stSidebar"] {
+        display: none !important;
+    }
+    
+    /* Hide sidebar toggle button */
+    button[kind="header"][data-testid="baseButton-header"] {
+        display: none !important;
+    }
+    
+    /* Expand main content to full width */
+    .main .block-container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        max-width: none !important;
+    }
+    /* Remove padding from main container */
+    .main .block-container {
+        padding: 0 !important;
+        max-width: none !important;
+    }
+    
+    /* Full screen background */
     .stApp {
         background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/imagery.jpg');
         background-size: cover;
@@ -452,20 +480,9 @@ def get_movie_styles():
         background-repeat: no-repeat;
         background-attachment: fixed;
         min-height: 100vh;
+        position: relative;
     }
-    
-    .stApp::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(139, 69, 19, 0.3) 25%, rgba(255, 215, 0, 0.2) 50%, rgba(255, 0, 0, 0.3) 75%, rgba(0, 0, 0, 0.8) 100%);
-        z-index: -1;
-        pointer-events: none;
-    }
-    
+      
     .movie-container {
         background: rgba(0, 0, 0, 0.85);
         border: 3px solid #FFD700;

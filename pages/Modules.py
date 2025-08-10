@@ -1,5 +1,11 @@
 import streamlit as st
 
+st.set_page_config(
+    page_title="Peak Performance Lab", 
+    layout="centered",
+    page_icon="🏆"
+)
+
 # ---------------------------- SESSION STATE INIT ----------------------------
 def init_session_state():
     if 'modules_background_loaded' not in st.session_state:
@@ -13,7 +19,7 @@ MODULES = [
         "title": "Mindset Growth Garden",
         "icon": "🌱",
         "description": "Discover your beliefs about ability and learning. Transform fixed thinking into growth potential through an interactive mindset assessment.",
-        "url": "/🌱 Mindset Growth Garden",
+        "page": "pages/Growth.py",
         "color": "#59250e",
         "bg_color": "rgba(89, 37, 14, 0.1)",
         "border_color": "#32CD32"
@@ -22,7 +28,7 @@ MODULES = [
         "title": "Inner Critic Boss Fight",
         "icon": "⚔️",
         "description": "Face your challenges head-on with positive self-talk and resilience. Build mental toughness through gamified scenarios.",
-        "url": "/⚔️ Inner Critic Boss Fight",
+        "page": "pages/Fight.py",
         "color": "#8B0000",
         "bg_color": "rgba(139, 0, 0, 0.1)",
         "border_color": "#FF4500"
@@ -31,7 +37,7 @@ MODULES = [
         "title": "Mission: SMART Possible",
         "icon": "🚀",
         "description": "Identify SMART goals that drive results. Learn the framework for setting and achieving meaningful objectives.",
-        "url": "/🚀 Mission: SMART Possible",
+        "page": "pages/Smart.py",
         "color": "#FF8C00",
         "bg_color": "rgba(255, 140, 0, 0.1)",
         "border_color": "#FFD700"
@@ -40,7 +46,7 @@ MODULES = [
         "title": "Imagery Rehearsal Stage",
         "icon": "🎬",
         "description": "Master the art of mental rehearsal and visualization. Train your mind to perform at peak levels through guided imagery techniques.",
-        "url": "/🎬 Imagery Rehearsal Studio",
+        "page": "pages/Imagery.py",
         "color": "#4B0082",
         "bg_color": "rgba(75, 0, 130, 0.1)",
         "border_color": "#9370DB"
@@ -51,12 +57,37 @@ MODULES = [
 def get_styles():
     return """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Capriola&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
 
     /* Hide Streamlit default elements */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
+
+    /* Hide sidebar permanently */
+    section[data-testid="stSidebar"] {
+        display: none !important;
+    }
+
+    /* Hide sidebar toggle button */
+    button[kind="header"][data-testid="baseButton-header"] {
+        display: none !important;
+    }
+
+    /* Expand main content to full width */
+    .main .block-container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        max-width: none !important;
+    }
+
+    /* Remove padding from main container */
+    .main .block-container {
+        padding: 0 !important;
+        max-width: none !important;
+    }
 
     .stApp {
         background-image: url('https://www.dropbox.com/scl/fi/7j3zoxr6e5b6fpy7lxf6m/modules.gif?rlkey=3w4b2hav3g3btlm7t8bh9z0js&st=k7xnptbs&raw=1');
@@ -106,7 +137,7 @@ def get_styles():
 
     /* Title styles */
     .main-title {
-        font-family: 'Fredoka', cursive;
+        font-family: 'Poetsen One', cursive;
         font-weight: 700;
         font-size: 3.2em;
         color: #1da088;
@@ -117,7 +148,7 @@ def get_styles():
     }
     
     .subtitle {
-        font-family: 'Comfortaa', cursive;
+        font-family: 'Capriola', cursive;
         font-size: 1.3em;
         color: #41c0a9;
         text-align: center;
@@ -126,52 +157,71 @@ def get_styles():
         text-shadow: 1px 1px 2px rgba(65, 192, 169, 0.2);
     }
 
-    /* Module grid */
-    .modules-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+    /* Module grid - 2x2 layout */
+    .modules-container {
+        display: flex;
+        flex-direction: column;
         gap: 25px;
         margin: 30px 0;
     }
 
-    /* Module cards */
-    .module-card {
-        background: rgba(255, 255, 255, 0.9);
-        border: 3px solid var(--border-color);
-        border-radius: 20px;
-        padding: 25px;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.4s ease;
-        position: relative;
-        overflow: hidden;
-        backdrop-filter: blur(5px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-        min-height: 200px;
+    .modules-row {
         display: flex;
-        flex-direction: column;
+        gap: 25px;
         justify-content: center;
     }
 
-    .module-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
+    /* Module cards */
+    .module-card-container {
+        flex: 1;
+        max-width: 400px;
+        min-width: 300px;
+    }
+
+    /* Button styling to match home page */
+    .stApp div[data-testid="stButton"] {
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    .stApp div[data-testid="stButton"] > button,
+    div[data-testid="stButton"] button {
+        background: rgba(255, 255, 255, 0.95) !important;
+        border: 3px solid var(--border-color, #1da088) !important;
+        color: var(--title-color, #1da088) !important;
+        font-weight: 700 !important;
+        font-size: 1.1em !important;
+        font-family: 'Fredoka', cursive !important;
+        padding: 20px !important;
+        border-radius: 20px !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1) !important;
+        transition: all 0.4s ease !important;
+        text-transform: none !important;
+        letter-spacing: 0.5px !important;
+        width: 100% !important;
+        min-height: 200px !important;
+        white-space: normal !important;
+        text-align: center !important;
+        backdrop-filter: blur(5px) !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+
+    .stApp div[data-testid="stButton"] > button:hover,
+    div[data-testid="stButton"] button:hover {
+        transform: translateY(-8px) scale(1.03) !important;
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2) !important;
+        border-width: 4px !important;
+    }
+
+    /* Custom button content styling */
+    .module-button-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-        transition: left 0.6s ease;
-    }
-
-    .module-card:hover {
-        transform: translateY(-8px) scale(1.03);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
-        border-width: 4px;
-    }
-
-    .module-card:hover::before {
-        left: 100%;
+        padding: 10px;
     }
 
     .module-icon {
@@ -190,19 +240,19 @@ def get_styles():
     .module-title {
         font-family: 'Fredoka', cursive;
         font-weight: 700;
-        font-size: 1.8em;
-        color: var(--title-color);
+        font-size: 1.6em;
         margin-bottom: 12px;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        line-height: 1.2;
     }
 
     .module-description {
-        font-family: 'Comfortaa', cursive;
-        font-size: 0.95em;
-        color: #2c5f5a;
-        line-height: 1.4;
+        font-family: 'Capriola', cursive;
+        font-size: 0.85em;
+        line-height: 1.3;
         font-weight: 400;
         text-align: center;
+        opacity: 0.9;
     }
 
     /* Loading overlay */
@@ -225,8 +275,8 @@ def get_styles():
     }
 
     .loading-title {
-        font-family: 'Fredoka', cursive;
-        font-size: 3.5em;
+        font-family: 'Capriola', sans-serif;
+        font-size: 3em;
         font-weight: 700;
         color: white;
         margin-bottom: 20px;
@@ -257,10 +307,10 @@ def get_styles():
     .loading-subtitle {
         color: rgba(255, 255, 255, 0.9);
         margin-top: 15px;
+        font-family: 'Segoe UI' !important;
         font-size: 1.3em;
         font-weight: 500;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-        font-family: 'Comfortaa', cursive;
     }
 
     @keyframes title-glow {
@@ -280,20 +330,28 @@ def get_styles():
         100% { opacity: 0; pointer-events: none; }
     }
 
+    /* Instructions section styling */
+    .instructions-text {
+        font-family: 'Capriola', cursive; 
+        font-size: 1.1em; 
+        color: #2c5f5a; 
+        text-align: center; 
+        line-height: 1.5;
+    }
+
     /* Responsive design */
     @media (max-width: 768px) {
-        .modules-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
+        .modules-row {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .module-card-container {
+            max-width: 350px;
         }
         
         .main-title {
             font-size: 2.5em;
-        }
-        
-        .module-card {
-            min-height: 180px;
-            padding: 20px;
         }
         
         .module-icon {
@@ -301,28 +359,18 @@ def get_styles():
         }
         
         .module-title {
-            font-size: 1.6em;
+            font-size: 1.4em;
+        }
+        
+        .stApp div[data-testid="stButton"] > button {
+            min-height: 180px !important;
+            padding: 18px !important;
         }
     }
 
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-        width: 12px;
-    }
-    
-    ::-webkit-scrollbar-track {
-        background: rgba(29, 160, 136, 0.1);
-        border-radius: 6px;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(45deg, #1da088, #41c0a9);
-        border-radius: 6px;
-        border: 2px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(45deg, #41c0a9, #64ccba);
+    /* Force font loading */
+    * {
+        font-family: 'Poetsen One', 'Capriola', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     </style>
     """
@@ -357,38 +405,120 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Modules Grid
-modules_html = '<div class="main-container"><div class="modules-grid">'
+# Modules Section
+st.markdown('<div class="main-container"><div class="modules-container">', unsafe_allow_html=True)
 
-for module in MODULES:
-    # JavaScript for navigation
-    click_script = f"""
-    <script>
-    function navigate_{module['title'].replace(' ', '_').lower()}() {{
-        window.location.href = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '') + '{module["url"]}';
+# First Row - Growth and Fight modules
+st.markdown('<div class="modules-row">', unsafe_allow_html=True)
+
+col1, col2 = st.columns(2, gap="large")
+
+with col1:
+    module = MODULES[0]  # Growth module
+    st.markdown(f"""
+    <style>
+    div[data-testid="column"]:nth-child(1) div[data-testid="stButton"] > button {{
+        border-color: {module['border_color']} !important;
+        color: {module['color']} !important;
+        background: {module['bg_color']} !important;
     }}
-    </script>
-    """
+    </style>
+    """, unsafe_allow_html=True)
     
-    modules_html += f"""
-    {click_script}
-    <div class="module-card" 
-         onclick="navigate_{module['title'].replace(' ', '_').lower()}()" 
-         style="--border-color: {module['border_color']}; --title-color: {module['color']}; background: {module['bg_color']};">
+    button_content = f"""
+    <div class="module-button-content">
         <span class="module-icon">{module['icon']}</span>
         <div class="module-title">{module['title']}</div>
         <div class="module-description">{module['description']}</div>
     </div>
     """
+    
+    if st.button(button_content, key="growth_module", use_container_width=True):
+        st.switch_page(module['page'])
 
-modules_html += '</div></div>'
+with col2:
+    module = MODULES[1]  # Fight module
+    st.markdown(f"""
+    <style>
+    div[data-testid="column"]:nth-child(2) div[data-testid="stButton"] > button {{
+        border-color: {module['border_color']} !important;
+        color: {module['color']} !important;
+        background: {module['bg_color']} !important;
+    }}
+    </style>
+    """, unsafe_allow_html=True)
+    
+    button_content = f"""
+    <div class="module-button-content">
+        <span class="module-icon">{module['icon']}</span>
+        <div class="module-title">{module['title']}</div>
+        <div class="module-description">{module['description']}</div>
+    </div>
+    """
+    
+    if st.button(button_content, key="fight_module", use_container_width=True):
+        st.switch_page(module['page'])
 
-st.markdown(modules_html, unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
+# Second Row - Smart and Imagery modules
+st.markdown('<div class="modules-row">', unsafe_allow_html=True)
+
+col3, col4 = st.columns(2, gap="large")
+
+with col3:
+    module = MODULES[2]  # Smart module
+    st.markdown(f"""
+    <style>
+    div[data-testid="column"]:nth-child(1) div[data-testid="stButton"]:last-child > button {{
+        border-color: {module['border_color']} !important;
+        color: {module['color']} !important;
+        background: {module['bg_color']} !important;
+    }}
+    </style>
+    """, unsafe_allow_html=True)
+    
+    button_content = f"""
+    <div class="module-button-content">
+        <span class="module-icon">{module['icon']}</span>
+        <div class="module-title">{module['title']}</div>
+        <div class="module-description">{module['description']}</div>
+    </div>
+    """
+    
+    if st.button(button_content, key="smart_module", use_container_width=True):
+        st.switch_page(module['page'])
+
+with col4:
+    module = MODULES[3]  # Imagery module
+    st.markdown(f"""
+    <style>
+    div[data-testid="column"]:nth-child(2) div[data-testid="stButton"]:last-child > button {{
+        border-color: {module['border_color']} !important;
+        color: {module['color']} !important;
+        background: {module['bg_color']} !important;
+    }}
+    </style>
+    """, unsafe_allow_html=True)
+    
+    button_content = f"""
+    <div class="module-button-content">
+        <span class="module-icon">{module['icon']}</span>
+        <div class="module-title">{module['title']}</div>
+        <div class="module-description">{module['description']}</div>
+    </div>
+    """
+    
+    if st.button(button_content, key="imagery_module", use_container_width=True):
+        st.switch_page(module['page'])
+
+st.markdown('</div>', unsafe_allow_html=True)
+st.markdown('</div></div>', unsafe_allow_html=True)
 
 # Instructions section
 st.markdown("""
 <div class="main-container">
-    <div style="font-family: 'Comfortaa', cursive; font-size: 1.1em; color: #2c5f5a; text-align: center; line-height: 1.5;">
+    <div class="instructions-text">
         <strong>Ready to unlock your potential?</strong><br>
         Click on any module above to begin your journey toward peak performance. 
         Each module is designed to build specific mental skills and strategies.

@@ -165,31 +165,9 @@ div[data-testid="stButton"] button:hover {
     box-shadow: 0 12px 35px rgba(29, 160, 136, 0.5) !important;
 }
 
-/* Alternative approach - target all button elements */
-button {
-    background: #f05151 !important;
-    border: 6px solid #353535 !important;
-    color: white !important;
-    font-weight: 700 !important;
-    font-size: 1.3em !important;
-    font-family: 'Fredoka', cursive !important;
-    padding: 18px 30px !important;
-    border-radius: 30px !important;
-    box-shadow: 0 8px 25px rgba(29, 160, 136, 0.4) !important;
-    transition: all 0.3s ease !important;
-    text-transform: none !important;
-    letter-spacing: 0.5px !important;
-}
-
-button:hover {
-    background: #f05151 !important;
-    transform: translateY(-3px) scale(1.05) !important;
-    box-shadow: 0 12px 35px rgba(29, 160, 136, 0.5) !important;
-}
-
 /* Force font loading */
 * {
-    font-family: 'Fredoka', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poetsen One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 </style>
@@ -204,7 +182,7 @@ st.markdown("""
 setTimeout(function() {
     const buttons = document.querySelectorAll('button');
     buttons.forEach(button => {
-        button.style.fontFamily = 'Fredoka, cursive';
+        button.style.fontFamily = 'Poetsen One, cursive';
         button.style.fontSize = '1.3em';
         button.style.fontWeight = '700';
         button.style.color = 'white';

@@ -219,7 +219,7 @@ st.markdown("<div style='height: 55vh;'></div>", unsafe_allow_html=True)
 # Navigation button
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
-    if st.button("L E T' S  G O!", use_container_width=True):
+    if st.button("L E T' S\u00A0\u00A0G O!", use_container_width=True):
         st.switch_page("pages/Instructions.py")
 
 # Add empty content to prevent Streamlit from showing default content

@@ -17,7 +17,7 @@ init_session_state()
 page_styles = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
 
 /* Hide Streamlit default elements */
 #MainMenu {visibility: hidden;}
@@ -57,7 +57,7 @@ button[kind="header"][data-testid="baseButton-header"] {
     position: relative;
 }
 
-/* Loading overlay - FIXED VERSION */
+/* Loading overlay */
 #loading-overlay {
     position: fixed;
     top: 0;
@@ -69,12 +69,6 @@ button[kind="header"][data-testid="baseButton-header"] {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    opacity: 1;
-    animation: loading-sequence 3s ease-in-out forwards;
-}
-
-/* Add a delay before the loading screen shows to ensure proper rendering */
-#loading-overlay.show {
     animation: loading-sequence 3s ease-in-out forwards;
 }
 
@@ -86,7 +80,6 @@ button[kind="header"][data-testid="baseButton-header"] {
     font-family: 'Poetsen One', sans-serif;
     font-size: 3em;
     font-weight: 700;
-    letter-spacing: 0.1em;
     color: white;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -116,10 +109,10 @@ button[kind="header"][data-testid="baseButton-header"] {
 .loading-subtitle {
     color: rgba(255, 255, 255, 0.9);
     margin-top: 15px;
+    font-family: 'Segoe UI' !important;
     font-size: 1.3em;
     font-weight: 500;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-    font-family: 'Comfortaa', cursive;
 }
 
 @keyframes title-glow {
@@ -139,18 +132,20 @@ button[kind="header"][data-testid="baseButton-header"] {
     100% { opacity: 0; pointer-events: none; }
 }
 
-/* Button styling */
-div[data-testid="stButton"] {
+/* More specific button styling with higher specificity */
+.stApp .main .block-container div[data-testid="stButton"] {
     display: flex !important;
     justify-content: center !important;
 }
 
-div[data-testid="stButton"] > button {
+.stApp .main .block-container div[data-testid="stButton"] > button,
+.stApp div[data-testid="stButton"] > button[kind="primary"],
+div[data-testid="stButton"] button {
     background: #f05151 !important;
     border: 6px solid #353535 !important;
     color: white !important;
     font-weight: 700 !important;
-    font-size: 1.3em !important;
+    font-size: 2em !important;
     font-family: 'Fredoka', cursive !important;
     padding: 18px 30px !important;
     border-radius: 30px !important;
@@ -158,66 +153,64 @@ div[data-testid="stButton"] > button {
     transition: all 0.3s ease !important;
     text-transform: none !important;
     letter-spacing: 0.5px !important;
-    width: auto !important;
+    width: 100% !important;
     min-width: fit-content !important;
     white-space: nowrap !important;
 }
 
-div[data-testid="stButton"] > button:hover {
+.stApp .main .block-container div[data-testid="stButton"] > button:hover,
+.stApp div[data-testid="stButton"] > button[kind="primary"]:hover,
+div[data-testid="stButton"] button:hover {
     background: #f05151 !important;
     transform: translateY(-3px) scale(1.05) !important;
     box-shadow: 0 12px 35px rgba(29, 160, 136, 0.5) !important;
 }
 
+/* Force font loading */
+* {
+    font-family: 'Poetsen One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 </style>
 """
 
-# Apply styles first
+# Apply styles
 st.markdown(page_styles, unsafe_allow_html=True)
 
-# ---------------------------- LOADING OVERLAY WITH JAVASCRIPT TRIGGER ----------------------------
-# Only show loading overlay if background hasn't been loaded
-if not st.session_state.home_background_loaded:
-    # Add JavaScript to ensure the loading overlay shows properly
-    loading_script = """
-    <script>
-    // Ensure the loading overlay is visible immediately
-    document.addEventListener('DOMContentLoaded', function() {
-        const overlay = document.getElementById('loading-overlay');
-        if (overlay) {
-            overlay.classList.add('show');
-        }
+# Force styles with JavaScript (additional fix)
+st.markdown("""
+<script>
+setTimeout(function() {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.style.fontFamily = 'Poetsen One, cursive';
+        button.style.fontSize = '2em';
+        button.style.fontWeight = '700';
+        button.style.color = 'white';
+        button.style.background = '#f05151';
+        button.style.border = '6px solid #353535';
+        button.style.borderRadius = '30px';
+        button.style.padding = '18px 30px';
+        button.style.minWidth = 'fit-content';
     });
-    
-    // Fallback to ensure loading screen shows
-    setTimeout(function() {
-        const overlay = document.getElementById('loading-overlay');
-        if (overlay) {
-            overlay.classList.add('show');
-        }
-    }, 100);
-    </script>
-    """
-    
-    st.markdown(loading_script, unsafe_allow_html=True)
-    
+}, 100);
+</script>
+""", unsafe_allow_html=True)
+
+# ---------------------------- LOADING OVERLAY ----------------------------
+if not st.session_state.home_background_loaded:
     st.markdown("""
-    <div id="loading-overlay" class="show">
+    <div id="loading-overlay">
         <div class="loading-content">
             <div class="loading-title">🏆 Peak Performance Lab</div>
             <div class="loading-bar-container">
                 <div class="loading-bar"></div>
             </div>
-            <div class="loading-subtitle">Preparing your performance journey...</div>
+            <div class="loading-subtitle">Loading instructions...</div>
         </div>
     </div>
     """, unsafe_allow_html=True)
-    
-    # Set the flag to prevent showing the loading screen again
     st.session_state.home_background_loaded = True
-    
-    # Force a rerun to ensure the loading screen displays
-    st.rerun()
 
 # ---------------------------- MAIN CONTENT ----------------------------
 # Add some spacing to position the button
@@ -226,8 +219,8 @@ st.markdown("<div style='height: 60vh;'></div>", unsafe_allow_html=True)
 # Navigation button
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
-    if st.button("L E T' S   G O!", use_container_width=True):
-        st.switch_page("pages/Modules.py")
+    if st.button("L E T' S      G O!", use_container_width=True):
+        st.switch_page("pages/Instructions.py")
 
 # Add empty content to prevent Streamlit from showing default content
 st.markdown("")

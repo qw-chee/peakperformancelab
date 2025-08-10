@@ -2,7 +2,7 @@ import streamlit as st
 import openai
 
 openai.api_key = st.secrets.get("openai_api_key")
-
+🎬
 # ---------------------------- SCENARIOS ----------------------------
 SCENARIOS = {
     "Soccer Penalty Kick": {

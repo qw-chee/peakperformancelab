@@ -109,6 +109,7 @@ button[kind="header"][data-testid="baseButton-header"] {
 .loading-subtitle {
     color: rgba(255, 255, 255, 0.9);
     margin-top: 15px;
+    font-family: 'Segoe UI' !important;
     font-size: 1.3em;
     font-weight: 500;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.2);

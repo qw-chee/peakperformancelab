@@ -1,6 +1,12 @@
 import streamlit as st
 import random
 
+st.set_page_config(
+    page_title="Mission: SMART Possible", 
+    layout="centered",
+    page_icon="🎯"
+)
+
 # ---------------------------- GOALS DATABASE ----------------------------
 GOALS_DATABASE = [
     # Missing 1 element

@@ -57,11 +57,45 @@ def get_styles():
     return """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Quantico&display=swap');
+
+    /* Hide Streamlit default elements */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
     
-    .stApp {
-        background: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/icbf.gif');
+    /* Hide sidebar permanently */
+    section[data-testid="stSidebar"] {
+        display: none !important;
     }
     
+    /* Hide sidebar toggle button */
+    button[kind="header"][data-testid="baseButton-header"] {
+        display: none !important;
+    }
+    
+    /* Expand main content to full width */
+    .main .block-container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        max-width: none !important;
+    }
+    /* Remove padding from main container */
+    .main .block-container {
+        padding: 0 !important;
+        max-width: none !important;
+    }
+    
+    /* Full screen background */
+    .stApp {
+        background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/icbf.gif');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
+        position: relative;
+    }
+        
     .loading-overlay {
         position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
         background: linear-gradient(135deg, #175dcf 0%, #7ebefe 50%, #029316 100%);
@@ -416,5 +450,6 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 

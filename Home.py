@@ -17,6 +17,7 @@ init_session_state()
 page_styles = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
 
 /* Hide Streamlit default elements */
 #MainMenu {visibility: hidden;}
@@ -130,19 +131,21 @@ button[kind="header"][data-testid="baseButton-header"] {
     100% { opacity: 0; pointer-events: none; }
 }
 
-/* Button styling */
-div[data-testid="stButton"] {
+/* More specific button styling with higher specificity */
+.stApp .main .block-container div[data-testid="stButton"] {
     display: flex !important;
     justify-content: center !important;
 }
 
-div[data-testid="stButton"] > button {
+.stApp .main .block-container div[data-testid="stButton"] > button,
+.stApp div[data-testid="stButton"] > button[kind="primary"],
+div[data-testid="stButton"] button {
     background: #f05151 !important;
     border: 6px solid #353535 !important;
     color: white !important;
     font-weight: 700 !important;
     font-size: 1.3em !important;
-    font-family: 'Poetsen One' !important;
+    font-family: 'Fredoka', cursive !important;
     padding: 18px 30px !important;
     border-radius: 30px !important;
     box-shadow: 0 8px 25px rgba(29, 160, 136, 0.4) !important;
@@ -154,10 +157,39 @@ div[data-testid="stButton"] > button {
     white-space: nowrap !important;
 }
 
-div[data-testid="stButton"] > button:hover {
+.stApp .main .block-container div[data-testid="stButton"] > button:hover,
+.stApp div[data-testid="stButton"] > button[kind="primary"]:hover,
+div[data-testid="stButton"] button:hover {
     background: #f05151 !important;
     transform: translateY(-3px) scale(1.05) !important;
     box-shadow: 0 12px 35px rgba(29, 160, 136, 0.5) !important;
+}
+
+/* Alternative approach - target all button elements */
+button {
+    background: #f05151 !important;
+    border: 6px solid #353535 !important;
+    color: white !important;
+    font-weight: 700 !important;
+    font-size: 1.3em !important;
+    font-family: 'Fredoka', cursive !important;
+    padding: 18px 30px !important;
+    border-radius: 30px !important;
+    box-shadow: 0 8px 25px rgba(29, 160, 136, 0.4) !important;
+    transition: all 0.3s ease !important;
+    text-transform: none !important;
+    letter-spacing: 0.5px !important;
+}
+
+button:hover {
+    background: #f05151 !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 12px 35px rgba(29, 160, 136, 0.5) !important;
+}
+
+/* Force font loading */
+* {
+    font-family: 'Fredoka', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 </style>
@@ -165,6 +197,25 @@ div[data-testid="stButton"] > button:hover {
 
 # Apply styles
 st.markdown(page_styles, unsafe_allow_html=True)
+
+# Force styles with JavaScript (additional fix)
+st.markdown("""
+<script>
+setTimeout(function() {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.style.fontFamily = 'Fredoka, cursive';
+        button.style.fontSize = '1.3em';
+        button.style.fontWeight = '700';
+        button.style.color = 'white';
+        button.style.background = '#f05151';
+        button.style.border = '6px solid #353535';
+        button.style.borderRadius = '30px';
+        button.style.padding = '18px 30px';
+    });
+}, 100);
+</script>
+""", unsafe_allow_html=True)
 
 # ---------------------------- LOADING OVERLAY ----------------------------
 if not st.session_state.home_background_loaded:

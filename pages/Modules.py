@@ -613,12 +613,22 @@ if not st.session_state.modules_background_loaded:
     st.session_state.modules_background_loaded = True
 
 # ---------------------------- KINETIC MAIN CONTENT ----------------------------
-# Electric Title Section
+# Instructions section with kinetic energy
 st.markdown("""
 <div class="main-container">
-    <h1 class="energy-title">🏆 Peak Performance Lab</h1>
-    <div class="energy-subtitle">Choose your path to peak performance</div>
+    <div style="font-family: 'Capriola', cursive; font-size: 1.1em; color: rgba(255, 255, 255, 0.9); text-align: center; line-height: 1.5; animation: instructionsGlow 4s ease-in-out infinite alternate;">
+        <strong style="color: #fff; text-shadow: 0 0 10px rgba(255, 255, 100, 0.5);">Ready to unlock your potential?</strong><br>
+        Click on any module above to begin your journey toward peak performance. 
+        Each module is designed to build specific mental skills and strategies.
+    </div>
 </div>
+
+<style>
+@keyframes instructionsGlow {
+    from { text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3); }
+    to { text-shadow: 0 2px 15px rgba(255, 255, 100, 0.4); }
+}
+</style>
 """, unsafe_allow_html=True)
 
 # Create 2x2 grid with physics-based interactions
@@ -727,24 +737,3 @@ with col4:
     
     if st.button(module['button_text'], key="imagery_module", use_container_width=True):
         st.switch_page(module['page'])
-
-# Instructions section with kinetic energy
-st.markdown("""
-<div class="main-container">
-    <div style="font-family: 'Capriola', cursive; font-size: 1.1em; color: rgba(255, 255, 255, 0.9); text-align: center; line-height: 1.5; animation: instructionsGlow 4s ease-in-out infinite alternate;">
-        <strong style="color: #fff; text-shadow: 0 0 10px rgba(255, 255, 100, 0.5);">Ready to unlock your potential?</strong><br>
-        Click on any module above to begin your journey toward peak performance. 
-        Each module is designed to build specific mental skills and strategies.
-    </div>
-</div>
-
-<style>
-@keyframes instructionsGlow {
-    from { text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3); }
-    to { text-shadow: 0 2px 15px rgba(255, 255, 100, 0.4); }
-}
-</style>
-""", unsafe_allow_html=True)
-
-# Add bottom spacing
-st.markdown("<div style='height: 3vh;'></div>", unsafe_allow_html=True)

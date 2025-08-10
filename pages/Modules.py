@@ -619,7 +619,7 @@ st.markdown("""
     <div style="font-family: 'Capriola', cursive; font-size: 1.1em; color: rgba(255, 255, 255, 0.9); text-align: center; line-height: 1.5; animation: instructionsGlow 4s ease-in-out infinite alternate;">
         <strong style="color: #fff; text-shadow: 0 0 10px rgba(255, 255, 100, 0.5); font-size: 1.5em;">Ready to unlock your potential?</strong><br>
         Click on any module to begin your journey toward peak performance. 
-        Each module is designed to build specific mental skills and strategies.
+        Each module builds specific mental skills and strategies.
     </div>
 </div>
 

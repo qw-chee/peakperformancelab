@@ -145,7 +145,7 @@ div[data-testid="stButton"] button {
     border: 6px solid #353535 !important;
     color: white !important;
     font-weight: 700 !important;
-    font-size: 2em !important;
+    font-size: 3em !important;
     font-family: 'Fredoka', cursive !important;
     padding: 18px 30px !important;
     border-radius: 30px !important;
@@ -168,7 +168,7 @@ div[data-testid="stButton"] button:hover {
 
 /* Force font loading */
 * {
-    font-family: 'Capriola', 'Poetsen One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poetsen One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 </style>
@@ -176,6 +176,7 @@ div[data-testid="stButton"] button:hover {
 
 # Apply styles
 st.markdown(page_styles, unsafe_allow_html=True)
+
 # Force styles with JavaScript (additional fix)
 st.markdown("""
 <script>

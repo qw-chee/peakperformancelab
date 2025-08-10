@@ -108,6 +108,38 @@ def get_kinetic_energy_styles():
         }
     }
 
+    /* FLOATING ENERGY PARTICLES */
+    .stApp::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            radial-gradient(3px 3px at 40px 60px, rgba(255, 255, 100, 0.8), transparent),
+            radial-gradient(2px 2px at 80px 40px, rgba(100, 255, 255, 0.6), transparent),
+            radial-gradient(4px 4px at 120px 100px, rgba(255, 100, 255, 0.4), transparent),
+            radial-gradient(2px 2px at 200px 50px, rgba(255, 255, 255, 0.5), transparent),
+            radial-gradient(3px 3px at 300px 120px, rgba(100, 255, 150, 0.7), transparent);
+        background-repeat: repeat;
+        background-size: 350px 200px;
+        animation: particleFloat 25s linear infinite, particlePulse 3s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.6;
+    }
+
+    @keyframes particleFloat {
+        from { transform: translate(0px, 100vh) rotate(0deg); }
+        to { transform: translate(100px, -100px) rotate(360deg); }
+    }
+
+    @keyframes particlePulse {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 0.8; }
+    }
+    
     /* ENERGY FIELD CONTAINERS */
     .main-container {
         background: rgba(255, 255, 255, 0.12);

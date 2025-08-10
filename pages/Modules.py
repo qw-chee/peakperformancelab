@@ -18,10 +18,10 @@ MODULES = [
     {
         "title": "Mindset Growth Garden",
         "icon": "🌱",
-        "description": "Discover your beliefs about ability and learning. Transform fixed thinking into growth potential through an interactive mindset assessment.",
+        "description": "Discover your beliefs about ability and learning. Analyse growth potential through an interactive mindset assessment.",
         "page": "/Growth",
         "color": "#59250e",
-        "energy_color": "#32CD32",
+        "energy_color": "",
         "button_text": "🌱 ENTER THE GARDEN"
     },
     {
@@ -30,7 +30,7 @@ MODULES = [
         "description": "Face your challenges head-on with positive self-talk and resilience. Build mental toughness through gamified scenarios.",
         "page": "/Fight",
         "color": "#8B0000",
-        "energy_color": "#FF4500",
+        "energy_color": "#FFD700",
         "button_text": "⚔️ START THE BATTLE"
     },
     {
@@ -39,16 +39,16 @@ MODULES = [
         "description": "Identify SMART goals that drive results. Learn the framework for setting and achieving meaningful objectives.",
         "page": "/Smart",
         "color": "#FF8C00",
-        "energy_color": "#FFD700",
+        "energy_color": "#9370DB",
         "button_text": "🚀 LAUNCH MISSION"
     },
     {
         "title": "Imagery Rehearsal Stage",
         "icon": "🎬",
-        "description": "Master the art of mental rehearsal and visualization. Train your mind to perform at peak levels through guided imagery techniques.",
+        "description": "Master the art of mental rehearsal and visualization. Train your mind through guided imagery techniques.",
         "page": "/Imagery",
         "color": "#4B0082",
-        "energy_color": "#9370DB",
+        "energy_color": "#32CD32",
         "button_text": "🎬 ENTER THE STAGE"
     }
 ]
@@ -304,8 +304,8 @@ def get_kinetic_energy_styles():
 
     /* BOUNCING ICONS WITH PHYSICS */
     .module-icon {
-        font-size: 5em;
-        margin-bottom: 20px;
+        font-size: 4em;
+        margin-bottom: 10px;
         display: block;
         position: relative;
         animation: iconBounce 4s ease-in-out infinite;
@@ -338,7 +338,7 @@ def get_kinetic_energy_styles():
     .module-title {
         font-family: 'Fredoka', cursive;
         font-weight: 700;
-        font-size: 2em;
+        font-size: 1.5em;
         color: rgba(255, 255, 255, 0.95);
         margin-bottom: 15px;
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);

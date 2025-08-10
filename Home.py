@@ -144,7 +144,7 @@ div[data-testid="stButton"] button {
     border: 6px solid #353535 !important;
     color: white !important;
     font-weight: 700 !important;
-    font-size: 1.3em !important;
+    font-size: 2em !important;
     font-family: 'Fredoka', cursive !important;
     padding: 18px 30px !important;
     border-radius: 30px !important;
@@ -183,7 +183,7 @@ setTimeout(function() {
     const buttons = document.querySelectorAll('button');
     buttons.forEach(button => {
         button.style.fontFamily = 'Poetsen One, cursive';
-        button.style.fontSize = '1.3em';
+        button.style.fontSize = '2em';
         button.style.fontWeight = '700';
         button.style.color = 'white';
         button.style.background = '#f05151';

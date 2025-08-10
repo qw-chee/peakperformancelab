@@ -16,8 +16,8 @@ init_session_state()
 # CSS for loading overlay and full-screen background
 page_styles = """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Capriola&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
 
 /* Hide Streamlit default elements */
 #MainMenu {visibility: hidden;}
@@ -77,7 +77,7 @@ button[kind="header"][data-testid="baseButton-header"] {
 }
 
 .loading-title {
-    font-family: 'Bubblegum Sans', sans-serif;
+    font-family: 'Capriola', sans-serif;
     font-size: 3em;
     font-weight: 700;
     color: white;
@@ -146,7 +146,7 @@ div[data-testid="stButton"] button {
     color: white !important;
     font-weight: 700 !important;
     font-size: 2em !important;
-    font-family: 'Fredoka', cursive !important;
+    font-family: 'Poetsen One', cursive !important;
     padding: 18px 30px !important;
     border-radius: 30px !important;
     box-shadow: 0 8px 25px rgba(29, 160, 136, 0.4) !important;
@@ -168,7 +168,7 @@ div[data-testid="stButton"] button:hover {
 
 /* Force font loading */
 * {
-    font-family: 'Bubblegum Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Capriola', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 </style>
@@ -183,7 +183,7 @@ st.markdown("""
 setTimeout(function() {
     const buttons = document.querySelectorAll('button');
     buttons.forEach(button => {
-        button.style.fontFamily = 'Bubblegum Sans, cursive';
+        button.style.fontFamily = 'Poetsen One, cursive';
         button.style.fontSize = '2em';
         button.style.fontWeight = '700';
         button.style.color = 'white';

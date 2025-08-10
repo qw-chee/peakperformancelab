@@ -138,50 +138,45 @@ def get_futuristic_styles():
     return """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+    /* Hide Streamlit default elements */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
     
+    /* Hide sidebar permanently */
+    section[data-testid="stSidebar"] {
+        display: none !important;
+    }
+    
+    /* Hide sidebar toggle button */
+    button[kind="header"][data-testid="baseButton-header"] {
+        display: none !important;
+    }
+    
+    /* Expand main content to full width */
+    .main .block-container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        max-width: none !important;
+    }
+    /* Remove padding from main container */
+    .main .block-container {
+        padding: 0 !important;
+        max-width: none !important;
+    }
+    
+    /* Full screen background */
     .stApp {
         background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/smart.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
+        position: relative;
     }
-    
-    .stApp::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: 
-            radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 40% 80%, rgba(0, 255, 127, 0.05) 0%, transparent 50%);
-        z-index: -1;
-        pointer-events: none;
-    }
-    
-    .stApp::after {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: 
-            radial-gradient(2px 2px at 20px 30px, rgba(0, 255, 255, 0.3), transparent),
-            radial-gradient(2px 2px at 40px 70px, rgba(255, 0, 255, 0.3), transparent),
-            radial-gradient(1px 1px at 90px 40px, rgba(0, 255, 127, 0.3), transparent),
-            radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 0, 0.3), transparent);
-        background-repeat: repeat;
-        background-size: 150px 100px;
-        animation: float 20s linear infinite;
-        z-index: -1;
-        pointer-events: none;
-    }
-    
-    @keyframes float {
-        0% { transform: translateY(0px) rotate(0deg); }
-        100% { transform: translateY(-100px) rotate(360deg); }
-    }
-    
+     
     .neon-container {
         background: rgba(15, 15, 35, 0.95);
         border: 2px solid transparent;

@@ -132,22 +132,44 @@ def get_styles():
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap');
 
+        /* Hide Streamlit default elements */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    
+    /* Hide sidebar permanently */
+    section[data-testid="stSidebar"] {
+        display: none !important;
+    }
+    
+    /* Hide sidebar toggle button */
+    button[kind="header"][data-testid="baseButton-header"] {
+        display: none !important;
+    }
+    
+    /* Expand main content to full width */
+    .main .block-container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        max-width: none !important;
+    }
+    /* Remove padding from main container */
+    .main .block-container {
+        padding: 0 !important;
+        max-width: none !important;
+    }
+    
+    /* Full screen background */
     .stApp {
         background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/growth.gif');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
+        position: relative;
     }
-    
-    .stApp::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, rgba(34, 139, 34, 0.1) 0%, rgba(50, 205, 50, 0.1) 25%, rgba(154, 205, 50, 0.1) 50%, rgba(124, 252, 0, 0.05) 75%, rgba(173, 255, 47, 0.05) 100%);
-        z-index: -1;
-        pointer-events: none;
-    }
-    
+      
     .nature-container {
         background: rgba(255, 255, 255, 0.95);
         border: 3px solid #59250e;
@@ -739,5 +761,6 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
             st.rerun()
 
 st.markdown("<div style='height: 4vh;'></div>", unsafe_allow_html=True)
+
 
 

@@ -16,8 +16,8 @@ init_session_state()
 # CSS for loading overlay and full-screen background
 page_styles = """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Capriola&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Capriola&display=swap');
 
 /* Hide Streamlit default elements */
 #MainMenu {visibility: hidden;}
@@ -48,7 +48,7 @@ button[kind="header"][data-testid="baseButton-header"] {
 
 /* Full screen background */
 .stApp {
-    background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Home.gif');
+    background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Instructions.gif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -146,7 +146,7 @@ div[data-testid="stButton"] button {
     color: white !important;
     font-weight: 700 !important;
     font-size: 2em !important;
-    font-family: 'Poetsen One', cursive !important;
+    font-family: 'Fredoka', cursive !important;
     padding: 18px 30px !important;
     border-radius: 30px !important;
     box-shadow: 0 8px 25px rgba(29, 160, 136, 0.4) !important;
@@ -168,7 +168,7 @@ div[data-testid="stButton"] button:hover {
 
 /* Force font loading */
 * {
-    font-family: 'Capriola', 'Segoe UI', 'Poetsen One', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poetsen One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 </style>
@@ -206,7 +206,7 @@ if not st.session_state.home_background_loaded:
             <div class="loading-bar-container">
                 <div class="loading-bar"></div>
             </div>
-            <div class="loading-subtitle">Preparing your performance journey...</div>
+            <div class="loading-subtitle">Loading instructions...</div>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -214,12 +214,12 @@ if not st.session_state.home_background_loaded:
 
 # ---------------------------- MAIN CONTENT ----------------------------
 # Add some spacing to position the button
-st.markdown("<div style='height: 60vh;'></div>", unsafe_allow_html=True)
+st.markdown("<div style='height: 58vh;'></div>", unsafe_allow_html=True)
 
 # Navigation button
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
-    if st.button("S T A R T!", use_container_width=True):
+    if st.button("L E T' S\u00A0\u00A0G O!", use_container_width=True):
         st.switch_page("pages/Instructions.py")
 
 # Add empty content to prevent Streamlit from showing default content

@@ -168,7 +168,7 @@ div[data-testid="stButton"] button:hover {
 
 /* Force font loading */
 * {
-    font-family: 'Capriola', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Capriola', 'Segoe UI', 'Poetsen One', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 </style>

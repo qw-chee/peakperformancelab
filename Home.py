@@ -16,7 +16,7 @@ init_session_state()
 # CSS for loading overlay and full-screen background
 page_styles = """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
 
 /* Hide Streamlit default elements */
@@ -77,7 +77,7 @@ button[kind="header"][data-testid="baseButton-header"] {
 }
 
 .loading-title {
-    font-family: 'Poetsen One', sans-serif;
+    font-family: 'Bubblegum Sans', sans-serif;
     font-size: 3em;
     font-weight: 700;
     color: white;
@@ -168,7 +168,7 @@ div[data-testid="stButton"] button:hover {
 
 /* Force font loading */
 * {
-    font-family: 'Poetsen One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Bubblegum Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 </style>
@@ -183,7 +183,7 @@ st.markdown("""
 setTimeout(function() {
     const buttons = document.querySelectorAll('button');
     buttons.forEach(button => {
-        button.style.fontFamily = 'Poetsen One, cursive';
+        button.style.fontFamily = 'Bubblegum Sans, cursive';
         button.style.fontSize = '2em';
         button.style.fontWeight = '700';
         button.style.color = 'white';

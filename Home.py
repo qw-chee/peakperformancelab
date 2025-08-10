@@ -21,7 +21,6 @@ page_styles = """
 
 /* Hide Streamlit default elements */
 #MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
 header {visibility: hidden;}
 
 /* Hide sidebar permanently */

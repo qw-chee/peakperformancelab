@@ -10,6 +10,8 @@ st.set_page_config(
 def init_session_state():
     if 'modules_background_loaded' not in st.session_state:
         st.session_state.modules_background_loaded = False
+    if 'selected_module' not in st.session_state:
+        st.session_state.selected_module = None
 
 init_session_state()
 
@@ -22,7 +24,8 @@ MODULES = [
         "page": "/Growth",
         "color": "#59250E",
         "energy_color": "#32CD32",
-        "button_text": "🌱 ENTER THE GARDEN"
+        "button_text": "🌱 ENTER THE GARDEN",
+        "key": "growth"
     },
     {
         "title": "Inner Critic Boss Fight",
@@ -31,7 +34,8 @@ MODULES = [
         "page": "/Fight",
         "color": "#8B0000",
         "energy_color": "#FFD700",
-        "button_text": "⚔️ START THE BATTLE"
+        "button_text": "⚔️ START THE BATTLE",
+        "key": "fight"
     },
     {
         "title": "Mission: SMART Possible",
@@ -40,7 +44,8 @@ MODULES = [
         "page": "/Smart",
         "color": "#FF8C00",
         "energy_color": "#9370DB",
-        "button_text": "🚀 LAUNCH MISSION"
+        "button_text": "🚀 LAUNCH MISSION",
+        "key": "smart"
     },
     {
         "title": "Imagery Rehearsal Stage",
@@ -49,7 +54,8 @@ MODULES = [
         "page": "/Imagery",
         "color": "#4B0082",
         "energy_color": "#FF4500",
-        "button_text": "🎬 ENTER THE STAGE"
+        "button_text": "🎬 ENTER THE STAGE",
+        "key": "imagery"
     }
 ]
 
@@ -225,26 +231,28 @@ def get_kinetic_energy_styles():
         50% { opacity: 1; transform: scale(1.03); }
     }
 
-    /* MAGNETIC MODULE CARDS */
+    /* CLICKABLE MAGNETIC MODULE CARDS */
     .module-card {
         background: rgba(255, 255, 255, 0.15);
         backdrop-filter: blur(12px);
         border: 2px solid rgba(255, 255, 255, 0.2);
         border-radius: 25px;
-        padding: 20px;
+        padding: 30px;
         text-align: center;
         position: relative;
         overflow: hidden;
-        min-height: 280px;
+        min-height: 300px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
         transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         box-shadow: 
             0 8px 30px rgba(0, 0, 0, 0.3),
             inset 0 0 0 1px rgba(255, 255, 255, 0.1);
         animation: cardFloat 8s ease-in-out infinite;
+        user-select: none;
     }
 
     @keyframes cardFloat {
@@ -254,16 +262,21 @@ def get_kinetic_energy_styles():
         75% { transform: translateY(-15px) rotate(0.8deg); }
     }
 
-    /* MAGNETIC ATTRACTION HOVER EFFECT */
+    /* ENHANCED MAGNETIC ATTRACTION HOVER EFFECT */
     .module-card:hover {
-        transform: translateY(-20px) rotateX(8deg) rotateY(8deg) scale(1.08);
+        transform: translateY(-25px) rotateX(10deg) rotateY(10deg) scale(1.12);
         box-shadow: 
-            0 25px 60px rgba(0, 0, 0, 0.4),
-            0 0 100px var(--energy-color),
+            0 30px 70px rgba(0, 0, 0, 0.5),
+            0 0 120px var(--energy-color),
             inset 0 0 0 3px var(--energy-color);
         border-color: var(--energy-color);
         background: rgba(255, 255, 255, 0.25);
         animation: cardCharge 0.6s ease-out;
+    }
+
+    .module-card:active {
+        transform: translateY(-20px) rotateX(8deg) rotateY(8deg) scale(1.08);
+        transition: all 0.1s ease-out;
     }
 
     @keyframes cardCharge {
@@ -303,8 +316,8 @@ def get_kinetic_energy_styles():
 
     /* BOUNCING ICONS WITH PHYSICS */
     .module-icon {
-        font-size: 4em;
-        margin-bottom: 10px;
+        font-size: 4.5em;
+        margin-bottom: 20px;
         display: block;
         position: relative;
         animation: iconBounce 4s ease-in-out infinite;
@@ -314,8 +327,8 @@ def get_kinetic_energy_styles():
 
     .module-card:hover .module-icon {
         animation: iconElectric 0.6s ease-out, iconBounce 4s ease-in-out infinite;
-        transform: scale(1.3);
-        filter: drop-shadow(0 10px 30px var(--energy-color));
+        transform: scale(1.4);
+        filter: drop-shadow(0 15px 40px var(--energy-color));
     }
 
     @keyframes iconBounce {
@@ -328,18 +341,18 @@ def get_kinetic_energy_styles():
     @keyframes iconElectric {
         0% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3)); }
         25% { transform: scale(1.1) rotate(5deg); filter: drop-shadow(0 10px 20px var(--energy-color)); }
-        50% { transform: scale(1.4) rotate(-5deg); filter: drop-shadow(0 15px 35px var(--energy-color)); }
-        75% { transform: scale(1.2) rotate(8deg); filter: drop-shadow(0 12px 25px var(--energy-color)); }
-        100% { transform: scale(1.3) rotate(0deg); filter: drop-shadow(0 10px 30px var(--energy-color)); }
+        50% { transform: scale(1.5) rotate(-5deg); filter: drop-shadow(0 20px 45px var(--energy-color)); }
+        75% { transform: scale(1.3) rotate(8deg); filter: drop-shadow(0 15px 30px var(--energy-color)); }
+        100% { transform: scale(1.4) rotate(0deg); filter: drop-shadow(0 15px 40px var(--energy-color)); }
     }
 
     /* KINETIC MODULE TITLES */
     .module-title {
         font-family: 'Fredoka', cursive;
         font-weight: 700;
-        font-size: 1.5em;
+        font-size: 1.8em;
         color: rgba(255, 255, 255, 0.95);
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         position: relative;
         transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -354,27 +367,27 @@ def get_kinetic_energy_styles():
     .module-card:hover .module-title {
         color: #fff;
         text-shadow: 
-            0 0 10px var(--energy-color),
+            0 0 15px var(--energy-color),
             0 2px 10px rgba(0, 0, 0, 0.5);
-        transform: scale(1.05) translateY(-5px);
+        transform: scale(1.08) translateY(-8px);
         animation: titleCharge 0.5s ease-out;
     }
 
     @keyframes titleCharge {
         0% { transform: scale(1) translateY(0px); }
-        50% { transform: scale(1.1) translateY(-8px); }
-        100% { transform: scale(1.05) translateY(-5px); }
+        50% { transform: scale(1.15) translateY(-12px); }
+        100% { transform: scale(1.08) translateY(-8px); }
     }
 
     /* DYNAMIC DESCRIPTIONS */
     .module-description {
         font-family: 'Capriola', cursive;
-        font-size: 1em;
+        font-size: 1.1em;
         color: rgba(255, 255, 255, 0.8);
-        line-height: 1.5;
+        line-height: 1.6;
         font-weight: 400;
         text-align: center;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
         flex-grow: 1;
         display: flex;
         align-items: center;
@@ -390,62 +403,45 @@ def get_kinetic_energy_styles():
 
     .module-card:hover .module-description {
         color: rgba(255, 255, 255, 0.95);
-        transform: translateY(-3px);
+        transform: translateY(-5px) scale(1.02);
     }
 
-    /* SPRING-LOADED BUTTONS */
-    .stApp div[data-testid="stButton"] {
-        display: flex !important;
-        justify-content: center !important;
-        margin-top: auto !important;
+    /* CALL TO ACTION FOOTER */
+    .module-cta {
+        font-family: 'Fredoka', cursive;
+        font-weight: 800;
+        font-size: 1.1em;
+        color: var(--energy-color);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: auto;
+        padding: 15px 20px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        text-shadow: 0 0 10px var(--energy-color);
+        animation: ctaPulse 3s ease-in-out infinite;
     }
 
-    .stApp div[data-testid="stButton"] > button {
-        background: linear-gradient(45deg, var(--energy-color), rgba(255, 255, 255, 0.1)) !important;
-        border: 3px solid var(--energy-color) !important;
-        color: #000 !important;
-        font-weight: 800 !important;
-        font-size: 1.2em !important;
-        font-family: 'Fredoka', cursive !important;
-        padding: 15px 30px !important;
-        border-radius: 50px !important;
-        text-transform: uppercase !important;
-        letter-spacing: 1px !important;
-        width: 100% !important;
-        position: relative !important;
-        overflow: hidden !important;
-        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
-        box-shadow: 
-            0 5px 20px rgba(0, 0, 0, 0.3),
-            0 0 30px var(--energy-color) !important;
-        animation: buttonCharge 4s ease-in-out infinite !important;
-    }
-
-    @keyframes buttonCharge {
+    @keyframes ctaPulse {
         0%, 100% { 
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3), 0 0 30px var(--energy-color);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             transform: scale(1);
         }
         50% { 
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 40px var(--energy-color);
+            box-shadow: 0 0 30px var(--energy-color);
             transform: scale(1.02);
         }
     }
 
-    .stApp div[data-testid="stButton"] > button:hover {
-        transform: translateY(-8px) scale(1.08) !important;
-        box-shadow: 
-            0 15px 40px rgba(0, 0, 0, 0.4),
-            0 0 80px var(--energy-color) !important;
-        color: #fff !important;
-        border-width: 4px !important;
-        animation: buttonExplode 0.6s ease-out !important;
-    }
-
-    @keyframes buttonExplode {
-        0% { transform: translateY(0px) scale(1); }
-        50% { transform: translateY(-12px) scale(1.12); }
-        100% { transform: translateY(-8px) scale(1.08); }
+    .module-card:hover .module-cta {
+        color: #fff;
+        background: var(--energy-color);
+        border-color: var(--energy-color);
+        transform: translateY(-5px) scale(1.08);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     }
 
     /* HIGH-ENERGY LOADING OVERLAY */
@@ -570,11 +566,11 @@ def get_kinetic_energy_styles():
         }
         
         .module-title {
-            font-size: 1.7em;
+            font-size: 1.6em;
         }
         
         .module-card {
-            min-height: 250px;
+            min-height: 280px;
             padding: 25px;
         }
         
@@ -597,6 +593,37 @@ def get_kinetic_energy_styles():
 # Apply the KINETIC ENERGY styles
 st.markdown(get_kinetic_energy_styles(), unsafe_allow_html=True)
 
+# Add JavaScript for handling card clicks
+st.markdown("""
+<script>
+function navigateToModule(page) {
+    // Use Streamlit's internal navigation
+    window.parent.postMessage({
+        type: 'streamlit:componentReady',
+        apiVersion: 1,
+    }, '*');
+    
+    // Set a flag that Python can detect
+    window.selectedModule = page;
+    
+    // Trigger a rerun by dispatching a custom event
+    const event = new CustomEvent('moduleSelected', { detail: page });
+    window.dispatchEvent(event);
+}
+
+// Listen for clicks on module cards
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.module-card');
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            const modulePage = this.getAttribute('data-page');
+            navigateToModule(modulePage);
+        });
+    });
+});
+</script>
+""", unsafe_allow_html=True)
+
 # ---------------------------- ENERGY LOADING OVERLAY ----------------------------
 if not st.session_state.modules_background_loaded:
     st.markdown("""
@@ -618,7 +645,7 @@ st.markdown("""
 <div class="main-container">
     <div style="font-family: 'Capriola', cursive; font-size: 1.1em; color: rgba(255, 255, 255, 0.9); text-align: center; line-height: 1.5; animation: instructionsGlow 4s ease-in-out infinite alternate;">
         <strong style="color: #fff; text-shadow: 0 0 10px rgba(255, 255, 100, 0.5); font-size: 1.5em;">Ready to unlock your potential?</strong><br>
-        Click on any module to begin your journey toward peak performance. 
+        Click on any module card to begin your journey toward peak performance. 
         Each module builds specific mental skills and strategies.
     </div>
 </div>
@@ -631,58 +658,48 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Create 2x2 grid with physics-based interactions
+# Create 2x2 grid with clickable cards
 col1, col2 = st.columns(2, gap="large")
+
+# Check if a module was selected via JavaScript
+if "selectedModule" not in st.session_state:
+    st.session_state.selectedModule = None
 
 # Row 1 - Growth and Fight modules
 with col1:
     module = MODULES[0]  # Growth module
     st.markdown(f"""
     <div class="module-card" 
-         style="--energy-color: {module['energy_color']};">
-        <div>
-            <span class="module-icon">{module['icon']}</span>
-            <div class="module-title">{module['title']}</div>
-            <div class="module-description">{module['description']}</div>
-        </div>
+         style="--energy-color: {module['energy_color']};"
+         data-page="{module['page']}"
+         onclick="window.location.href = '{module['page']}'">
+        <span class="module-icon">{module['icon']}</span>
+        <div class="module-title">{module['title']}</div>
+        <div class="module-description">{module['description']}</div>
+        <div class="module-cta">{module['button_text']}</div>
     </div>
     """, unsafe_allow_html=True)
     
-    # Custom button styling for this module
-    st.markdown(f"""
-    <style>
-    div[data-testid="column"]:nth-child(1) div[data-testid="stButton"] > button {{
-        --energy-color: {module['energy_color']} !important;
-    }}
-    </style>
-    """, unsafe_allow_html=True)
-    
-    if st.button(module['button_text'], key="growth_module", use_container_width=True):
+    # Hidden button for Streamlit navigation fallback
+    if st.button("", key=f"hidden_{module['key']}", label_visibility="hidden"):
         st.switch_page(module['page'])
 
 with col2:
     module = MODULES[1]  # Fight module
     st.markdown(f"""
     <div class="module-card" 
-         style="--energy-color: {module['energy_color']};">
-        <div>
-            <span class="module-icon">{module['icon']}</span>
-            <div class="module-title">{module['title']}</div>
-            <div class="module-description">{module['description']}</div>
-        </div>
+         style="--energy-color: {module['energy_color']};"
+         data-page="{module['page']}"
+         onclick="window.location.href = '{module['page']}'">
+        <span class="module-icon">{module['icon']}</span>
+        <div class="module-title">{module['title']}</div>
+        <div class="module-description">{module['description']}</div>
+        <div class="module-cta">{module['button_text']}</div>
     </div>
     """, unsafe_allow_html=True)
     
-    # Custom button styling for this module
-    st.markdown(f"""
-    <style>
-    div[data-testid="column"]:nth-child(2) div[data-testid="stButton"] > button {{
-        --energy-color: {module['energy_color']} !important;
-    }}
-    </style>
-    """, unsafe_allow_html=True)
-    
-    if st.button(module['button_text'], key="fight_module", use_container_width=True):
+    # Hidden button for Streamlit navigation fallback
+    if st.button("", key=f"hidden_{module['key']}", label_visibility="hidden"):
         st.switch_page(module['page'])
 
 # Row 2 - Smart and Imagery modules
@@ -692,48 +709,48 @@ with col3:
     module = MODULES[2]  # Smart module
     st.markdown(f"""
     <div class="module-card" 
-         style="--energy-color: {module['energy_color']};">
-        <div>
-            <span class="module-icon">{module['icon']}</span>
-            <div class="module-title">{module['title']}</div>
-            <div class="module-description">{module['description']}</div>
-        </div>
+         style="--energy-color: {module['energy_color']};"
+         data-page="{module['page']}"
+         onclick="window.location.href = '{module['page']}'">
+        <span class="module-icon">{module['icon']}</span>
+        <div class="module-title">{module['title']}</div>
+        <div class="module-description">{module['description']}</div>
+        <div class="module-cta">{module['button_text']}</div>
     </div>
     """, unsafe_allow_html=True)
     
-    # Custom button styling for this module
-    st.markdown(f"""
-    <style>
-    div[data-testid="column"]:nth-child(1) div[data-testid="stButton"]:last-of-type > button {{
-        --energy-color: {module['energy_color']} !important;
-    }}
-    </style>
-    """, unsafe_allow_html=True)
-    
-    if st.button(module['button_text'], key="smart_module", use_container_width=True):
+    # Hidden button for Streamlit navigation fallback
+    if st.button("", key=f"hidden_{module['key']}", label_visibility="hidden"):
         st.switch_page(module['page'])
 
 with col4:
     module = MODULES[3]  # Imagery module
     st.markdown(f"""
     <div class="module-card" 
-         style="--energy-color: {module['energy_color']};">
-        <div>
-            <span class="module-icon">{module['icon']}</span>
-            <div class="module-title">{module['title']}</div>
-            <div class="module-description">{module['description']}</div>
-        </div>
+         style="--energy-color: {module['energy_color']};"
+         data-page="{module['page']}"
+         onclick="window.location.href = '{module['page']}'">
+        <span class="module-icon">{module['icon']}</span>
+        <div class="module-title">{module['title']}</div>
+        <div class="module-description">{module['description']}</div>
+        <div class="module-cta">{module['button_text']}</div>
     </div>
     """, unsafe_allow_html=True)
     
-    # Custom button styling for this module
-    st.markdown(f"""
-    <style>
-    div[data-testid="column"]:nth-child(2) div[data-testid="stButton"]:last-of-type > button {{
-        --energy-color: {module['energy_color']} !important;
-    }}
-    </style>
-    """, unsafe_allow_html=True)
-    
-    if st.button(module['button_text'], key="imagery_module", use_container_width=True):
+    # Hidden button for Streamlit navigation fallback
+    if st.button("", key=f"hidden_{module['key']}", label_visibility="hidden"):
         st.switch_page(module['page'])
+
+# Add CSS to hide the fallback buttons
+st.markdown("""
+<style>
+/* Hide the fallback buttons completely */
+div[data-testid="stButton"] button[aria-label=""] {
+    display: none !important;
+}
+
+div[data-testid="stButton"]:has(button[aria-label=""]) {
+    display: none !important;
+}
+</style>
+""", unsafe_allow_html=True)

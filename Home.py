@@ -190,6 +190,7 @@ setTimeout(function() {
         button.style.border = '6px solid #353535';
         button.style.borderRadius = '30px';
         button.style.padding = '18px 30px';
+        button.style.minWidth = 'fit-content';
     });
 }, 100);
 </script>

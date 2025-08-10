@@ -19,7 +19,7 @@ MODULES = [
         "title": "Mindset Growth Garden",
         "icon": "🌱",
         "description": "Discover your beliefs about ability and learning. Transform fixed thinking into growth potential through an interactive mindset assessment.",
-        "page": "pages/Growth.py",
+        "page": "Growth.py",
         "color": "#59250e",
         "bg_color": "rgba(89, 37, 14, 0.1)",
         "border_color": "#32CD32"
@@ -28,7 +28,7 @@ MODULES = [
         "title": "Inner Critic Boss Fight",
         "icon": "⚔️",
         "description": "Face your challenges head-on with positive self-talk and resilience. Build mental toughness through gamified scenarios.",
-        "page": "pages/Fight.py",
+        "page": "Fight.py",
         "color": "#8B0000",
         "bg_color": "rgba(139, 0, 0, 0.1)",
         "border_color": "#FF4500"
@@ -37,7 +37,7 @@ MODULES = [
         "title": "Mission: SMART Possible",
         "icon": "🚀",
         "description": "Identify SMART goals that drive results. Learn the framework for setting and achieving meaningful objectives.",
-        "page": "pages/Smart.py",
+        "page": "Smart.py",
         "color": "#FF8C00",
         "bg_color": "rgba(255, 140, 0, 0.1)",
         "border_color": "#FFD700"
@@ -46,7 +46,7 @@ MODULES = [
         "title": "Imagery Rehearsal Stage",
         "icon": "🎬",
         "description": "Master the art of mental rehearsal and visualization. Train your mind to perform at peak levels through guided imagery techniques.",
-        "page": "pages/Imagery.py",
+        "page": "Imagery.py",
         "color": "#4B0082",
         "bg_color": "rgba(75, 0, 130, 0.1)",
         "border_color": "#9370DB"

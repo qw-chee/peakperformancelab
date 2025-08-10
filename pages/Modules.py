@@ -19,37 +19,41 @@ MODULES = [
         "title": "Mindset Growth Garden",
         "icon": "🌱",
         "description": "Discover your beliefs about ability and learning. Transform fixed thinking into growth potential through an interactive mindset assessment.",
-        "page": "Growth.py",
+        "page": "pages/Growth.py",
         "color": "#59250e",
         "bg_color": "rgba(89, 37, 14, 0.1)",
-        "border_color": "#32CD32"
+        "border_color": "#32CD32",
+        "button_text": "🌱 Enter the Garden"
     },
     {
         "title": "Inner Critic Boss Fight",
         "icon": "⚔️",
         "description": "Face your challenges head-on with positive self-talk and resilience. Build mental toughness through gamified scenarios.",
-        "page": "Fight.py",
+        "page": "pages/Fight.py",
         "color": "#8B0000",
         "bg_color": "rgba(139, 0, 0, 0.1)",
-        "border_color": "#FF4500"
+        "border_color": "#FF4500",
+        "button_text": "⚔️ Start the Battle"
     },
     {
         "title": "Mission: SMART Possible",
         "icon": "🚀",
         "description": "Identify SMART goals that drive results. Learn the framework for setting and achieving meaningful objectives.",
-        "page": "Smart.py",
+        "page": "pages/Smart.py",
         "color": "#FF8C00",
         "bg_color": "rgba(255, 140, 0, 0.1)",
-        "border_color": "#FFD700"
+        "border_color": "#FFD700",
+        "button_text": "🚀 Launch Mission"
     },
     {
         "title": "Imagery Rehearsal Stage",
         "icon": "🎬",
         "description": "Master the art of mental rehearsal and visualization. Train your mind to perform at peak levels through guided imagery techniques.",
-        "page": "Imagery.py",
+        "page": "pages/Imagery.py",
         "color": "#4B0082",
         "bg_color": "rgba(75, 0, 130, 0.1)",
-        "border_color": "#9370DB"
+        "border_color": "#9370DB",
+        "button_text": "🎬 Enter the Stage"
     }
 ]
 
@@ -157,75 +161,48 @@ def get_styles():
         text-shadow: 1px 1px 2px rgba(65, 192, 169, 0.2);
     }
 
-    /* Module grid - 2x2 layout */
-    .modules-container {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-        margin: 30px 0;
-    }
-
-    .modules-row {
-        display: flex;
-        gap: 25px;
-        justify-content: center;
-    }
-
     /* Module cards */
-    .module-card-container {
-        flex: 1;
-        max-width: 400px;
-        min-width: 300px;
-    }
-
-    /* Button styling to match home page */
-    .stApp div[data-testid="stButton"] {
-        display: flex !important;
-        justify-content: center !important;
-    }
-
-    .stApp div[data-testid="stButton"] > button,
-    div[data-testid="stButton"] button {
-        background: rgba(255, 255, 255, 0.95) !important;
-        border: 3px solid var(--border-color, #1da088) !important;
-        color: var(--title-color, #1da088) !important;
-        font-weight: 700 !important;
-        font-size: 1.1em !important;
-        font-family: 'Fredoka', cursive !important;
-        padding: 20px !important;
-        border-radius: 20px !important;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1) !important;
-        transition: all 0.4s ease !important;
-        text-transform: none !important;
-        letter-spacing: 0.5px !important;
-        width: 100% !important;
-        min-height: 200px !important;
-        white-space: normal !important;
-        text-align: center !important;
-        backdrop-filter: blur(5px) !important;
-        position: relative !important;
-        overflow: hidden !important;
-    }
-
-    .stApp div[data-testid="stButton"] > button:hover,
-    div[data-testid="stButton"] button:hover {
-        transform: translateY(-8px) scale(1.03) !important;
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2) !important;
-        border-width: 4px !important;
-    }
-
-    /* Custom button content styling */
-    .module-button-content {
+    .module-card {
+        background: rgba(255, 255, 255, 0.95);
+        border: 3px solid var(--border-color);
+        border-radius: 20px;
+        padding: 25px;
+        text-align: center;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        min-height: 250px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .module-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
         height: 100%;
-        padding: 10px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        transition: left 0.6s ease;
+    }
+
+    .module-card:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        border-width: 4px;
+    }
+
+    .module-card:hover::before {
+        left: 100%;
     }
 
     .module-icon {
-        font-size: 3.5em;
+        font-size: 4em;
         margin-bottom: 15px;
         display: block;
         animation: float 3s ease-in-out infinite;
@@ -240,7 +217,8 @@ def get_styles():
     .module-title {
         font-family: 'Fredoka', cursive;
         font-weight: 700;
-        font-size: 1.6em;
+        font-size: 1.8em;
+        color: var(--title-color);
         margin-bottom: 12px;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         line-height: 1.2;
@@ -248,11 +226,47 @@ def get_styles():
 
     .module-description {
         font-family: 'Capriola', cursive;
-        font-size: 0.85em;
-        line-height: 1.3;
+        font-size: 0.95em;
+        color: #2c5f5a;
+        line-height: 1.4;
         font-weight: 400;
         text-align: center;
-        opacity: 0.9;
+        margin-bottom: 20px;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Button styling */
+    .stApp div[data-testid="stButton"] {
+        display: flex !important;
+        justify-content: center !important;
+        margin-top: auto !important;
+    }
+
+    .stApp div[data-testid="stButton"] > button,
+    div[data-testid="stButton"] button {
+        background: var(--button-bg, #f05151) !important;
+        border: 3px solid #353535 !important;
+        color: white !important;
+        font-weight: 700 !important;
+        font-size: 1.2em !important;
+        font-family: 'Fredoka', cursive !important;
+        padding: 12px 24px !important;
+        border-radius: 25px !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+        transition: all 0.3s ease !important;
+        text-transform: none !important;
+        letter-spacing: 0.5px !important;
+        width: 100% !important;
+        white-space: nowrap !important;
+    }
+
+    .stApp div[data-testid="stButton"] > button:hover,
+    div[data-testid="stButton"] button:hover {
+        transform: translateY(-2px) scale(1.05) !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
     }
 
     /* Loading overlay */
@@ -341,15 +355,6 @@ def get_styles():
 
     /* Responsive design */
     @media (max-width: 768px) {
-        .modules-row {
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .module-card-container {
-            max-width: 350px;
-        }
-        
         .main-title {
             font-size: 2.5em;
         }
@@ -359,12 +364,12 @@ def get_styles():
         }
         
         .module-title {
-            font-size: 1.4em;
+            font-size: 1.6em;
         }
         
-        .stApp div[data-testid="stButton"] > button {
-            min-height: 180px !important;
-            padding: 18px !important;
+        .module-card {
+            min-height: 220px;
+            padding: 20px;
         }
     }
 
@@ -406,114 +411,116 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Modules Section
-st.markdown('<div class="main-container"><div class="modules-container">', unsafe_allow_html=True)
+st.markdown('<div class="main-container">', unsafe_allow_html=True)
 
-# First Row - Growth and Fight modules
-st.markdown('<div class="modules-row">', unsafe_allow_html=True)
-
+# Create 2x2 grid
 col1, col2 = st.columns(2, gap="large")
 
+# Row 1
 with col1:
     module = MODULES[0]  # Growth module
     st.markdown(f"""
+    <div class="module-card" style="--border-color: {module['border_color']}; --title-color: {module['color']}; background: {module['bg_color']};">
+        <div>
+            <span class="module-icon">{module['icon']}</span>
+            <div class="module-title">{module['title']}</div>
+            <div class="module-description">{module['description']}</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Custom button styling for this module
+    st.markdown(f"""
     <style>
     div[data-testid="column"]:nth-child(1) div[data-testid="stButton"] > button {{
-        border-color: {module['border_color']} !important;
-        color: {module['color']} !important;
-        background: {module['bg_color']} !important;
+        --button-bg: {module['color']} !important;
+        background: {module['color']} !important;
     }}
     </style>
     """, unsafe_allow_html=True)
     
-    button_content = f"""
-    <div class="module-button-content">
-        <span class="module-icon">{module['icon']}</span>
-        <div class="module-title">{module['title']}</div>
-        <div class="module-description">{module['description']}</div>
-    </div>
-    """
-    
-    if st.button(button_content, key="growth_module", use_container_width=True):
+    if st.button(module['button_text'], key="growth_module", use_container_width=True):
         st.switch_page(module['page'])
 
 with col2:
     module = MODULES[1]  # Fight module
     st.markdown(f"""
+    <div class="module-card" style="--border-color: {module['border_color']}; --title-color: {module['color']}; background: {module['bg_color']};">
+        <div>
+            <span class="module-icon">{module['icon']}</span>
+            <div class="module-title">{module['title']}</div>
+            <div class="module-description">{module['description']}</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Custom button styling for this module
+    st.markdown(f"""
     <style>
     div[data-testid="column"]:nth-child(2) div[data-testid="stButton"] > button {{
-        border-color: {module['border_color']} !important;
-        color: {module['color']} !important;
-        background: {module['bg_color']} !important;
+        --button-bg: {module['color']} !important;
+        background: {module['color']} !important;
     }}
     </style>
     """, unsafe_allow_html=True)
     
-    button_content = f"""
-    <div class="module-button-content">
-        <span class="module-icon">{module['icon']}</span>
-        <div class="module-title">{module['title']}</div>
-        <div class="module-description">{module['description']}</div>
-    </div>
-    """
-    
-    if st.button(button_content, key="fight_module", use_container_width=True):
+    if st.button(module['button_text'], key="fight_module", use_container_width=True):
         st.switch_page(module['page'])
 
-st.markdown('</div>', unsafe_allow_html=True)
-
-# Second Row - Smart and Imagery modules
-st.markdown('<div class="modules-row">', unsafe_allow_html=True)
-
+# Row 2
 col3, col4 = st.columns(2, gap="large")
 
 with col3:
     module = MODULES[2]  # Smart module
     st.markdown(f"""
+    <div class="module-card" style="--border-color: {module['border_color']}; --title-color: {module['color']}; background: {module['bg_color']};">
+        <div>
+            <span class="module-icon">{module['icon']}</span>
+            <div class="module-title">{module['title']}</div>
+            <div class="module-description">{module['description']}</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Custom button styling for this module
+    st.markdown(f"""
     <style>
-    div[data-testid="column"]:nth-child(1) div[data-testid="stButton"]:last-child > button {{
-        border-color: {module['border_color']} !important;
-        color: {module['color']} !important;
-        background: {module['bg_color']} !important;
+    div[data-testid="column"]:nth-child(1) div[data-testid="stButton"]:last-of-type > button {{
+        --button-bg: {module['color']} !important;
+        background: {module['color']} !important;
     }}
     </style>
     """, unsafe_allow_html=True)
     
-    button_content = f"""
-    <div class="module-button-content">
-        <span class="module-icon">{module['icon']}</span>
-        <div class="module-title">{module['title']}</div>
-        <div class="module-description">{module['description']}</div>
-    </div>
-    """
-    
-    if st.button(button_content, key="smart_module", use_container_width=True):
+    if st.button(module['button_text'], key="smart_module", use_container_width=True):
         st.switch_page(module['page'])
 
 with col4:
     module = MODULES[3]  # Imagery module
     st.markdown(f"""
+    <div class="module-card" style="--border-color: {module['border_color']}; --title-color: {module['color']}; background: {module['bg_color']};">
+        <div>
+            <span class="module-icon">{module['icon']}</span>
+            <div class="module-title">{module['title']}</div>
+            <div class="module-description">{module['description']}</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Custom button styling for this module
+    st.markdown(f"""
     <style>
-    div[data-testid="column"]:nth-child(2) div[data-testid="stButton"]:last-child > button {{
-        border-color: {module['border_color']} !important;
-        color: {module['color']} !important;
-        background: {module['bg_color']} !important;
+    div[data-testid="column"]:nth-child(2) div[data-testid="stButton"]:last-of-type > button {{
+        --button-bg: {module['color']} !important;
+        background: {module['color']} !important;
     }}
     </style>
     """, unsafe_allow_html=True)
     
-    button_content = f"""
-    <div class="module-button-content">
-        <span class="module-icon">{module['icon']}</span>
-        <div class="module-title">{module['title']}</div>
-        <div class="module-description">{module['description']}</div>
-    </div>
-    """
-    
-    if st.button(button_content, key="imagery_module", use_container_width=True):
+    if st.button(module['button_text'], key="imagery_module", use_container_width=True):
         st.switch_page(module['page'])
 
 st.markdown('</div>', unsafe_allow_html=True)
-st.markdown('</div></div>', unsafe_allow_html=True)
 
 # Instructions section
 st.markdown("""

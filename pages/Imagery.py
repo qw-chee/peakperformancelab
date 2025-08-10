@@ -1,8 +1,14 @@
 import streamlit as st
 import openai
 
+st.set_page_config(
+    page_title="Imagery Rehearsal Stage", 
+    layout="centered",
+    page_icon="🎬"
+)
+
 openai.api_key = st.secrets.get("openai_api_key")
-🎬
+
 # ---------------------------- SCENARIOS ----------------------------
 SCENARIOS = {
     "Soccer Penalty Kick": {

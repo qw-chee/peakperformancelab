@@ -48,7 +48,7 @@ button[kind="header"][data-testid="baseButton-header"] {
 
 /* Full screen background */
 .stApp {
-    background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Instructions.gif');
+    background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Home.gif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -206,7 +206,7 @@ if not st.session_state.home_background_loaded:
             <div class="loading-bar-container">
                 <div class="loading-bar"></div>
             </div>
-            <div class="loading-subtitle">Loading instructions...</div>
+            <div class="loading-subtitle">Preparing your performance journey...</div>
         </div>
     </div>
     """, unsafe_allow_html=True)

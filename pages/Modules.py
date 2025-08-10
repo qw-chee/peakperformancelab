@@ -606,7 +606,7 @@ if not st.session_state.modules_background_loaded:
             <div class="kinetic-loading-bar">
                 <div class="kinetic-loading-fill"></div>
             </div>
-            <div class="loading-subtitle">Charging Energy Systems...</div>
+            <div class="loading-subtitle">Loading your training arsenal...</div>
         </div>
     </div>
     """, unsafe_allow_html=True)

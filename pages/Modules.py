@@ -20,8 +20,8 @@ MODULES = [
         "icon": "🌱",
         "description": "Discover your beliefs about ability and learning. Analyse growth potential through an interactive mindset assessment.",
         "page": "/Growth",
-        "color": "#59250e",
-        "energy_color": "",
+        "color": "#59250E",
+        "energy_color": "#32CD32",
         "button_text": "🌱 ENTER THE GARDEN"
     },
     {
@@ -48,7 +48,7 @@ MODULES = [
         "description": "Master the art of mental rehearsal and visualization. Train your mind through guided imagery techniques.",
         "page": "/Imagery",
         "color": "#4B0082",
-        "energy_color": "#32CD32",
+        "energy_color": "#FFD700",
         "button_text": "🎬 ENTER THE STAGE"
     }
 ]

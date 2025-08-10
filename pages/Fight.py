@@ -2,6 +2,12 @@ import streamlit as st
 import random
 import openai
 
+st.set_page_config(
+    page_title="Inner Critic Boss Fight", 
+    layout="centered",
+    page_icon="⚔️"
+)
+
 openai.api_key = st.secrets.get("openai_api_key")
 
 # ---------------------------- SCENARIOS ----------------------------
@@ -410,4 +416,5 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 

@@ -27,7 +27,7 @@ MODULES = [
     {
         "title": "Inner Critic Boss Fight",
         "icon": "⚔️",
-        "description": "Face your challenges head-on with positive self-talk and resilience. Build mental toughness through gamified scenarios.",
+        "description": "Face your challenges head-on with positive self-talk. Build mental toughness through gamified scenarios.",
         "page": "/Fight",
         "color": "#8B0000",
         "energy_color": "#FFD700",
@@ -239,7 +239,6 @@ def get_kinetic_energy_styles():
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        margin-bottom: 15px;
         cursor: pointer;
         transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         box-shadow: 

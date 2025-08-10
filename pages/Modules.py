@@ -19,7 +19,7 @@ MODULES = [
         "title": "Mindset Growth Garden",
         "icon": "🌱",
         "description": "Discover your beliefs about ability and learning. Transform fixed thinking into growth potential through an interactive mindset assessment.",
-        "page": "pages/Growth.py",
+        "page": "/Growth",
         "color": "#59250e",
         "energy_color": "#32CD32",
         "button_text": "🌱 ENTER THE GARDEN"
@@ -28,7 +28,7 @@ MODULES = [
         "title": "Inner Critic Boss Fight",
         "icon": "⚔️",
         "description": "Face your challenges head-on with positive self-talk and resilience. Build mental toughness through gamified scenarios.",
-        "page": "pages/Fight.py",
+        "page": "/Fight",
         "color": "#8B0000",
         "energy_color": "#FF4500",
         "button_text": "⚔️ START THE BATTLE"
@@ -37,7 +37,7 @@ MODULES = [
         "title": "Mission: SMART Possible",
         "icon": "🚀",
         "description": "Identify SMART goals that drive results. Learn the framework for setting and achieving meaningful objectives.",
-        "page": "pages/Smart.py",
+        "page": "/Smart",
         "color": "#FF8C00",
         "energy_color": "#FFD700",
         "button_text": "🚀 LAUNCH MISSION"
@@ -46,7 +46,7 @@ MODULES = [
         "title": "Imagery Rehearsal Stage",
         "icon": "🎬",
         "description": "Master the art of mental rehearsal and visualization. Train your mind to perform at peak levels through guided imagery techniques.",
-        "page": "pages/Imagery.py",
+        "page": "/Imagery",
         "color": "#4B0082",
         "energy_color": "#9370DB",
         "button_text": "🎬 ENTER THE STAGE"
@@ -641,9 +641,6 @@ if not st.session_state.modules_background_loaded:
     """, unsafe_allow_html=True)
     st.session_state.modules_background_loaded = True
 
-# Add spacing
-st.markdown("<div style='height: 2vh;'></div>", unsafe_allow_html=True)
-
 # ---------------------------- KINETIC MAIN CONTENT ----------------------------
 # Electric Title Section
 st.markdown("""
@@ -652,9 +649,6 @@ st.markdown("""
     <div class="energy-subtitle">Choose your path to peak performance</div>
 </div>
 """, unsafe_allow_html=True)
-
-# Modules Section with KINETIC effects
-st.markdown('<div class="main-container">', unsafe_allow_html=True)
 
 # Create 2x2 grid with physics-based interactions
 col1, col2 = st.columns(2, gap="large")
@@ -762,8 +756,6 @@ with col4:
     
     if st.button(module['button_text'], key="imagery_module", use_container_width=True):
         st.switch_page(module['page'])
-
-st.markdown('</div>', unsafe_allow_html=True)
 
 # Instructions section with kinetic energy
 st.markdown("""

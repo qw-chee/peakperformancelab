@@ -153,6 +153,7 @@ div[data-testid="stButton"] button {
     letter-spacing: 0.5px !important;
     width: 100% !important;
     min-width: fit-content !important;
+    white-space: nowrap !important;
 }
 
 .stApp .main .block-container div[data-testid="stButton"] > button:hover,

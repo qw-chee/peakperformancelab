@@ -42,7 +42,7 @@ MODULES = [
     }
 ]
 
-# ---------------------------- LIQUID GLASS STYLES ----------------------------
+# ---------------------------- FIXED LIQUID GLASS STYLES ----------------------------
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -59,14 +59,22 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Liquid glass background - transparent to show your green */
+    /* FIXED: Proper background instead of transparent */
     .stApp {
-        background: transparent;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
         position: relative;
         overflow-x: hidden;
+        min-height: 100vh;
     }
     
-    /* Floating liquid bubbles */
+    /* FIXED: Ensure main container is visible */
+    .main .block-container {
+        padding-top: 2rem !important;
+        position: relative !important;
+        z-index: 100 !important;
+    }
+    
+    /* Floating liquid bubbles - FIXED z-index */
     .stApp::before {
         content: '';
         position: fixed;
@@ -81,7 +89,7 @@ st.markdown("""
             radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 25%);
         animation: liquidBubbleFloat 25s ease-in-out infinite;
         pointer-events: none;
-        z-index: 1;
+        z-index: 1 !important;
     }
     
     @keyframes liquidBubbleFloat {
@@ -91,32 +99,28 @@ st.markdown("""
         75% { transform: translate(25px, 5px) scale(1.02); opacity: 0.7; }
     }
     
-    /* Liquid glass title styling */
+    /* Liquid glass title styling - FIXED colors */
     .main-title {
         font-family: 'Outfit', sans-serif;
         font-size: 3rem;
         font-weight: 800;
-        color: rgba(0, 0, 0, 0.9);
+        color: white !important;
         text-align: center;
         margin-bottom: 1rem;
-        text-shadow: 0 2px 8px rgba(255,255,255,0.6);
+        text-shadow: 0 2px 8px rgba(0,0,0,0.3);
         animation: titleLiquidFlow 6s ease-in-out infinite;
         position: relative;
-        z-index: 10;
-        background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        z-index: 101 !important;
     }
     
     @keyframes titleLiquidFlow {
         0%, 100% { 
             transform: translateY(0px);
-            filter: drop-shadow(0 2px 8px rgba(255,255,255,0.6));
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
         }
         50% { 
             transform: translateY(-3px);
-            filter: drop-shadow(0 4px 12px rgba(255,255,255,0.8));
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
         }
     }
     
@@ -124,23 +128,23 @@ st.markdown("""
         font-family: 'Space Grotesk', sans-serif;
         font-size: 1.2rem;
         font-weight: 500;
-        color: rgba(0, 0, 0, 0.8);
+        color: rgba(255, 255, 255, 0.9) !important;
         text-align: center;
         margin-bottom: 3rem;
-        text-shadow: 0 1px 4px rgba(255,255,255,0.5);
+        text-shadow: 0 1px 4px rgba(0,0,0,0.2);
         animation: subtitleLiquidWave 8s ease-in-out infinite;
         position: relative;
-        z-index: 10;
+        z-index: 101 !important;
     }
     
     @keyframes subtitleLiquidWave {
-        0%, 100% { opacity: 0.8; transform: scale(1); }
+        0%, 100% { opacity: 0.9; transform: scale(1); }
         50% { opacity: 1; transform: scale(1.01); }
     }
     
-    /* Liquid glass module cards */
+    /* Liquid glass module cards - FIXED visibility */
     .module-card {
-        background: rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.25) !important;
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-radius: 24px;
@@ -156,6 +160,7 @@ st.markdown("""
         position: relative;
         overflow: hidden;
         animation: cardLiquidFloat 10s ease-in-out infinite;
+        z-index: 101 !important;
     }
     
     @keyframes cardLiquidFloat {
@@ -179,6 +184,7 @@ st.markdown("""
             transparent);
         transition: left 0.8s ease;
         animation: liquidShimmer 4s ease-in-out infinite;
+        z-index: 1;
     }
     
     @keyframes liquidShimmer {
@@ -194,7 +200,7 @@ st.markdown("""
             0 1px 0 rgba(255,255,255,0.2),
             0 0 40px rgba(255,255,255,0.1);
         border-color: rgba(255,255,255,0.35);
-        background: rgba(255, 255, 255, 0.35);
+        background: rgba(255, 255, 255, 0.35) !important;
     }
     
     .module-card:hover::before {
@@ -216,6 +222,7 @@ st.markdown("""
         animation: iconLiquidBob 6s ease-in-out infinite;
         filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
         transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        z-index: 102 !important;
     }
     
     @keyframes iconLiquidBob {
@@ -237,16 +244,18 @@ st.markdown("""
         100% { transform: scale(1.15) rotateY(360deg); }
     }
     
-    /* Liquid glass typography */
+    /* Liquid glass typography - FIXED colors */
     .module-title {
         font-family: 'Space Grotesk', sans-serif;
         font-size: 1.6rem;
         font-weight: 600;
-        color: rgba(0, 0, 0, 0.9);
+        color: rgba(255, 255, 255, 0.95) !important;
         margin-bottom: 1.2rem;
-        text-shadow: 0 1px 3px rgba(255,255,255,0.6);
+        text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         animation: titleLiquidWave 8s ease-in-out infinite;
         transition: all 0.4s ease;
+        position: relative;
+        z-index: 102 !important;
     }
     
     @keyframes titleLiquidWave {
@@ -255,8 +264,8 @@ st.markdown("""
     }
     
     .module-card:hover .module-title {
-        color: rgba(0, 0, 0, 1);
-        text-shadow: 0 1px 6px rgba(255,255,255,0.8);
+        color: rgba(255, 255, 255, 1) !important;
+        text-shadow: 0 1px 6px rgba(0,0,0,0.4);
         transform: translateY(-3px) scale(1.02);
     }
     
@@ -264,44 +273,47 @@ st.markdown("""
         font-family: 'Inter', sans-serif;
         font-size: 1rem;
         font-weight: 400;
-        color: rgba(0, 0, 0, 0.75);
+        color: rgba(255, 255, 255, 0.8) !important;
         line-height: 1.6;
         margin-bottom: 2rem;
-        text-shadow: 0 1px 2px rgba(255,255,255,0.4);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         animation: descriptionLiquidFlow 7s ease-in-out infinite;
         transition: all 0.3s ease;
+        position: relative;
+        z-index: 102 !important;
     }
     
     @keyframes descriptionLiquidFlow {
-        0%, 100% { opacity: 0.75; transform: translateY(0px); }
+        0%, 100% { opacity: 0.8; transform: translateY(0px); }
         50% { opacity: 0.9; transform: translateY(-1px); }
     }
     
     .module-card:hover .module-description {
-        color: rgba(0, 0, 0, 0.85);
-        text-shadow: 0 1px 3px rgba(255,255,255,0.5);
+        color: rgba(255, 255, 255, 0.9) !important;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         transform: translateY(-2px);
     }
     
-    /* Liquid glass buttons */
+    /* Liquid glass buttons - FIXED z-index and visibility */
     .stButton > button {
-        width: 100%;
-        height: 55px;
-        font-family: 'Space Grotesk', sans-serif;
-        font-weight: 600;
-        font-size: 1rem;
-        border-radius: 18px;
-        border: 1px solid rgba(255,255,255,0.3);
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        position: relative;
-        overflow: hidden;
+        width: 100% !important;
+        height: 55px !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 600 !important;
+        font-size: 1rem !important;
+        border-radius: 18px !important;
+        border: 1px solid rgba(255,255,255,0.3) !important;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        position: relative !important;
+        overflow: hidden !important;
         box-shadow: 
             0 4px 20px rgba(0,0,0,0.15),
-            inset 0 1px 0 rgba(255,255,255,0.2);
+            inset 0 1px 0 rgba(255,255,255,0.2) !important;
+        z-index: 102 !important;
     }
     
     .stButton > button::before {
@@ -316,11 +328,11 @@ st.markdown("""
     }
     
     .stButton > button:hover {
-        transform: translateY(-4px) scale(1.02);
+        transform: translateY(-4px) scale(1.02) !important;
         box-shadow: 
             0 8px 30px rgba(0,0,0,0.25),
-            inset 0 1px 0 rgba(255,255,255,0.3);
-        border-color: rgba(255,255,255,0.4);
+            inset 0 1px 0 rgba(255,255,255,0.3) !important;
+        border-color: rgba(255,255,255,0.4) !important;
     }
     
     .stButton > button:hover::before {
@@ -328,15 +340,15 @@ st.markdown("""
     }
     
     .stButton > button:active {
-        transform: translateY(-2px) scale(0.98);
-        transition: all 0.1s ease-out;
+        transform: translateY(-2px) scale(0.98) !important;
+        transition: all 0.1s ease-out !important;
     }
     
     /* Individual liquid glass button colors */
     .growth-btn button {
         background: rgba(39, 174, 96, 0.8) !important;
         color: white !important;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
     }
     
     .growth-btn button:hover {
@@ -347,7 +359,7 @@ st.markdown("""
     .fight-btn button {
         background: rgba(231, 76, 60, 0.8) !important;
         color: white !important;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
     }
     
     .fight-btn button:hover {
@@ -358,7 +370,7 @@ st.markdown("""
     .smart-btn button {
         background: rgba(243, 156, 18, 0.8) !important;
         color: white !important;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
     }
     
     .smart-btn button:hover {
@@ -369,7 +381,7 @@ st.markdown("""
     .imagery-btn button {
         background: rgba(155, 89, 182, 0.8) !important;
         color: white !important;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
     }
     
     .imagery-btn button:hover {

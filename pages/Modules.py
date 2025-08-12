@@ -714,24 +714,15 @@ with col4:
     if st.button("", key=f"hidden_{module['key']}", label_visibility="hidden"):
         st.switch_page(module['page'])
 
-# Add CSS to hide the fallback buttons
+# Add CSS to hide the fallback selectbox
 st.markdown("""
 <style>
-/* Hide the fallback buttons completely */
-div[data-testid="stButton"] button[kind="secondary"] {
+/* Hide the fallback selectbox completely */
+div[data-testid="stSelectbox"] {
     display: none !important;
 }
 
-div[data-testid="stButton"]:has(button[kind="secondary"]) {
-    display: none !important;
-}
-
-/* More specific selector for hidden buttons */
-.stButton > button[data-testid="baseButton-secondary"] {
-    display: none !important;
-}
-
-.stButton {
+.stSelectbox {
     display: none !important;
 }
 </style>

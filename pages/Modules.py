@@ -339,7 +339,7 @@ st.markdown("""
     /* Fun bouncy text */
     .module-title {
         font-family: 'Baloo 2', cursive;
-        font-size: 1.6rem;
+        font-size: 1.8rem;
         font-weight: 700;
         color: #2C3E50 !important;
         margin-bottom: 1rem;
@@ -363,7 +363,7 @@ st.markdown("""
     
     .module-description {
         font-family: 'Baloo 2', cursive;
-        font-size: 1rem;
+        font-size: 1.1rem;
         font-weight: 500;
         color: #34495E !important;
         line-height: 1.6;
@@ -387,7 +387,7 @@ st.markdown("""
     
     /* Super fun bouncy buttons */
     .stButton > button {
-        width: 100% !important;
+        width: 90% !important;
         height: 60px !important;
         font-family: 'Fredoka', cursive !important;
         font-weight: 700 !important;

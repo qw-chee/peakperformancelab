@@ -397,7 +397,7 @@ st.markdown("""
         transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
         text-transform: uppercase !important;
         letter-spacing: 1px !important;
-        position: relative !important;
+        position: center !important;
         overflow: hidden !important;
         box-shadow: 
             0 8px 25px rgba(0,0,0,0.15),

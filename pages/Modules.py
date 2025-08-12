@@ -377,7 +377,8 @@ st.markdown("""
         letter-spacing: 0.5px !important;
         position: relative !important;
         overflow: hidden !important;
-        margin-top: -15px !important;
+        margin-top: -35px !important;
+        margin-bottom: -10px !important;
         box-shadow: 
             0 4px 20px rgba(0,0,0,0.15),
             inset 0 1px 0 rgba(255,255,255,0.2) !important;

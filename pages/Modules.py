@@ -605,24 +605,16 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Create module cards with working navigation
+# Create module cards with direct navigation
 col1, col2 = st.columns(2, gap="large")
 col3, col4 = st.columns(2, gap="large")
 
-# Navigation logic using session state
-if 'selected_page' not in st.session_state:
-    st.session_state.selected_page = None
-
-# Check if navigation was triggered
-if st.session_state.selected_page:
-    st.switch_page(st.session_state.selected_page)
-
+# Simple click-based navigation using columns
 with col1:
     module = MODULES[0]
     st.markdown(f"""
     <div class="liquid-card" 
          style="--accent-color: {module['accent_color']};"
-         data-module="{module['key']}"
          tabindex="0">
         <span class="liquid-icon">{module['icon']}</span>
         <div class="liquid-title">{module['title']}</div>
@@ -631,16 +623,15 @@ with col1:
     </div>
     """, unsafe_allow_html=True)
     
-    # Navigation button (invisible but functional)
-    if st.button("Navigate", key="nav_growth", help="Navigate to Growth module"):
-        st.switch_page("/Growth")
+    # Make the entire column clickable
+    if st.button("🌱 ENTER THE GARDEN", key="btn_growth", use_container_width=True):
+        st.switch_page("pages/Growth.py")
 
 with col2:
     module = MODULES[1]
     st.markdown(f"""
     <div class="liquid-card" 
          style="--accent-color: {module['accent_color']};"
-         data-module="{module['key']}"
          tabindex="0">
         <span class="liquid-icon">{module['icon']}</span>
         <div class="liquid-title">{module['title']}</div>
@@ -649,16 +640,14 @@ with col2:
     </div>
     """, unsafe_allow_html=True)
     
-    # Navigation button (invisible but functional)
-    if st.button("Navigate", key="nav_fight", help="Navigate to Fight module"):
-        st.switch_page("/Fight")
+    if st.button("⚔️ START THE BATTLE", key="btn_fight", use_container_width=True):
+        st.switch_page("pages/Fight.py")
 
 with col3:
     module = MODULES[2]
     st.markdown(f"""
     <div class="liquid-card" 
          style="--accent-color: {module['accent_color']};"
-         data-module="{module['key']}"
          tabindex="0">
         <span class="liquid-icon">{module['icon']}</span>
         <div class="liquid-title">{module['title']}</div>
@@ -667,16 +656,14 @@ with col3:
     </div>
     """, unsafe_allow_html=True)
     
-    # Navigation button (invisible but functional)
-    if st.button("Navigate", key="nav_smart", help="Navigate to Smart module"):
-        st.switch_page("/Smart")
+    if st.button("🚀 LAUNCH MISSION", key="btn_smart", use_container_width=True):
+        st.switch_page("pages/Smart.py")
 
 with col4:
     module = MODULES[3]
     st.markdown(f"""
     <div class="liquid-card" 
          style="--accent-color: {module['accent_color']};"
-         data-module="{module['key']}"
          tabindex="0">
         <span class="liquid-icon">{module['icon']}</span>
         <div class="liquid-title">{module['title']}</div>
@@ -685,62 +672,45 @@ with col4:
     </div>
     """, unsafe_allow_html=True)
     
-    # Navigation button (invisible but functional)
-    if st.button("Navigate", key="nav_imagery", help="Navigate to Imagery module"):
-        st.switch_page("/Imagery")
+    if st.button("🎬 ENTER THE STAGE", key="btn_imagery", use_container_width=True):
+        st.switch_page("pages/Imagery.py")
 
-# JavaScript to trigger button clicks when cards are clicked
+# Style the navigation buttons to match the liquid glass theme
 st.markdown("""
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Map module keys to button selectors
-    const moduleButtons = {
-        'growth': 'button[data-testid="baseButton-secondary"]:nth-of-type(1)',
-        'fight': 'button[data-testid="baseButton-secondary"]:nth-of-type(2)',
-        'smart': 'button[data-testid="baseButton-secondary"]:nth-of-type(3)',
-        'imagery': 'button[data-testid="baseButton-secondary"]:nth-of-type(4)'
-    };
-    
-    // Add click handlers to cards
-    const cards = document.querySelectorAll('.liquid-card');
-    cards.forEach((card, index) => {
-        card.addEventListener('click', function(e) {
-            e.preventDefault();
-            const moduleKey = this.getAttribute('data-module');
-            
-            // Find and click the corresponding hidden button
-            const buttons = document.querySelectorAll('button[data-testid="baseButton-secondary"]');
-            if (buttons[index]) {
-                buttons[index].click();
-            }
-        });
-        
-        // Keyboard navigation
-        card.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                this.click();
-            }
-        });
-    });
-});
-</script>
-
 <style>
-/* Hide all navigation buttons */
-button[data-testid="baseButton-secondary"] {
-    display: none !important;
-    visibility: hidden !important;
-    position: absolute !important;
-    top: -9999px !important;
+/* Style the navigation buttons to blend with liquid glass */
+.stButton > button {
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 20px !important;
+    color: rgba(0, 0, 0, 0.8) !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 0.95em !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    padding: 16px 24px !important;
+    margin-top: 20px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
 }
 
+.stButton > button:hover {
+    background: rgba(255, 255, 255, 0.5) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.stButton > button:active {
+    transform: translateY(0px) !important;
+    background: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Position buttons below cards */
 .stButton {
-    display: none !important;
-}
-
-div[data-testid="stButton"] {
-    display: none !important;
+    margin-top: -10px !important;
 }
 </style>
 """, unsafe_allow_html=True)

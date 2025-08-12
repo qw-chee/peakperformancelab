@@ -573,9 +573,20 @@ def get_liquid_glass_styles():
         }
     }
 
-    /* FORCE LIQUID GLASS FONTS */
-    * {
-        font-family: 'Inter', 'Outfit', 'Space Grotesk', sans-serif;
+    /* LIQUID GLASS ACCESSIBILITY */
+    .liquid-card[tabindex="0"]:focus {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 4px;
+        transform: translateY(-10px) scale(1.03);
+    }
+    
+    .liquid-card {
+        cursor: pointer;
+    }
+    
+    .liquid-card:active {
+        transform: translateY(-5px) scale(0.98);
+        transition: all 0.1s ease-out;
     }
     </style>
     """

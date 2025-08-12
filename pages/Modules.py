@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Peak Performance Lab", 
-    layout="wide",  # Changed to wide for full-screen fun
+    layout="wide",
     page_icon="🏆"
 )
 
@@ -46,7 +46,7 @@ MODULES = [
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:wght@300;400;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
     
     /* Hide Streamlit branding */
@@ -180,43 +180,9 @@ st.markdown("""
         75% { transform: translate(40px, 10px) scale(1.05) rotate(270deg); opacity: 0.7; }
     }
     
-    /* Big bouncy title */
-    .main-title {
-        font-family: 'Fredoka', cursive;
-        font-size: 4rem;
-        font-weight: 700;
-        color: #2C3E50 !important;
-        text-align: center;
-        margin: 2rem 0 1rem 0;
-        text-shadow: 
-            3px 3px 0px #FF6B6B,
-            6px 6px 0px #4ECDC4,
-            9px 9px 0px #45B7D1,
-            12px 12px 20px rgba(0,0,0,0.15);
-        animation: bounceTitle 3s ease-in-out infinite;
-        position: relative;
-        z-index: 101 !important;
-        transform-origin: center;
-    }
-    
-    @keyframes bounceTitle {
-        0%, 100% { 
-            transform: translateY(0px) rotate(-1deg) scale(1);
-        }
-        25% { 
-            transform: translateY(-10px) rotate(1deg) scale(1.02);
-        }
-        50% { 
-            transform: translateY(-5px) rotate(-0.5deg) scale(0.98);
-        }
-        75% { 
-            transform: translateY(-15px) rotate(1.5deg) scale(1.01);
-        }
-    }
-    
     /* Wiggling subtitle */
     .main-subtitle {
-        font-family: 'Comic Neue', cursive;
+        font-family: 'Sour Gummy', cursive;
         font-size: 1.4rem;
         font-weight: 600;
         color: #34495E !important;
@@ -396,7 +362,7 @@ st.markdown("""
     }
     
     .module-description {
-        font-family: 'Comic Neue', cursive;
+        font-family: 'Sour Gummy', cursive;
         font-size: 1.1rem;
         font-weight: 500;
         color: #34495E !important;
@@ -600,13 +566,11 @@ if not st.session_state.home_background_loaded:
     st.session_state.home_background_loaded = True
 
 # ---------------------------- MAIN CONTENT ----------------------------
-st.markdown('<div class="main-title">🏆 Peak Performance Lab</div>', unsafe_allow_html=True)
 st.markdown("""
 <div class="main-subtitle">🚀 Ready to unlock your potential? 🌟</div>
 <div class="main-subtitle">Choose a module to begin your epic journey toward peak performance! ✨</div>
 """, unsafe_allow_html=True)
 
-# Create a single row with 4 columns for full-screen fun
 col1, col2, col3, col4 = st.columns(4)
 
 # Module 1 - Growth

@@ -67,14 +67,13 @@ st.markdown("""
         min-height: 100vh;
     }
     
-    /* FIXED: Ensure main container is visible */
     .main .block-container {
         padding-top: 2rem !important;
         position: relative !important;
         z-index: 100 !important;
     }
     
-    /* Floating liquid bubbles - FIXED z-index */
+    /* Floating liquid bubbles */
     .stApp::before {
         content: '';
         position: fixed;
@@ -152,7 +151,7 @@ st.markdown("""
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-radius: 24px;
-        padding: 2.5rem;
+        padding: 5px;
         margin: 1.5rem 0;
         box-shadow: 
             0 8px 32px rgba(0,0,0,0.12),
@@ -184,7 +183,7 @@ st.markdown("""
             0 1px 0 rgba(255,255,255,0.1);
     }
     
-    .smart-card {
+    .imagery-card {
         border-color: rgba(243, 156, 18, 0.6) !important;
         box-shadow: 
             0 8px 32px rgba(243, 156, 18, 0.15),
@@ -192,7 +191,7 @@ st.markdown("""
             0 1px 0 rgba(255,255,255,0.1);
     }
     
-    .imagery-card {
+    .smart-card {
         border-color: rgba(155, 89, 182, 0.6) !important;
         box-shadow: 
             0 8px 32px rgba(155, 89, 182, 0.15),
@@ -362,7 +361,7 @@ st.markdown("""
         transform: translateY(-2px);
     }
     
-    /* Liquid glass buttons - FIXED z-index and visibility */
+    /* Liquid glass buttons */
     .stButton > button {
         width: 100% !important;
         height: 55px !important;
@@ -481,7 +480,6 @@ st.markdown("""
 
 # ---------------------------- MAIN CONTENT ----------------------------
 st.markdown("""
-<div class="main-title">🏆 Peak Performance Lab</div>
 <div class="main-subtitle">Ready to unlock your potential? Choose a module to begin your journey toward peak performance.</div>
 """, unsafe_allow_html=True)
 

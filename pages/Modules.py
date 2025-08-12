@@ -654,7 +654,7 @@ with col1:
     """, unsafe_allow_html=True)
     
     # Hidden button for Streamlit navigation fallback
-    if st.button("", key=f"hidden_{module['key']}", label_visibility="hidden"):
+    if st.button(f"Navigate to {module['title']}", key=f"hidden_{module['key']}", label_visibility="hidden"):
         st.switch_page(module['page'])
 
 with col2:
@@ -718,11 +718,20 @@ with col4:
 st.markdown("""
 <style>
 /* Hide the fallback buttons completely */
-div[data-testid="stButton"] button[aria-label=""] {
+div[data-testid="stButton"] button[kind="secondary"] {
     display: none !important;
 }
 
-div[data-testid="stButton"]:has(button[aria-label=""]) {
+div[data-testid="stButton"]:has(button[kind="secondary"]) {
+    display: none !important;
+}
+
+/* More specific selector for hidden buttons */
+.stButton > button[data-testid="baseButton-secondary"] {
+    display: none !important;
+}
+
+.stButton {
     display: none !important;
 }
 </style>

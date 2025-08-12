@@ -482,7 +482,8 @@ st.markdown("""
 
 # ---------------------------- MAIN CONTENT ----------------------------
 st.markdown("""
-<div class="main-subtitle">Ready to unlock your potential? Choose a module to begin your journey toward peak performance.</div>
+<div class="main-subtitle">Ready to unlock your potential?</div>
+<div class="main-subtitle">Choose a module to begin your journey toward peak performance.</div>
 """, unsafe_allow_html=True)
 
 # Create a 2x2 grid

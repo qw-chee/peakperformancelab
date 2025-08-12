@@ -61,7 +61,7 @@ st.markdown("""
     
     /* Full screen background */
     .stApp {
-        background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Instructions.gif');
+        background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Modules.jpg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;

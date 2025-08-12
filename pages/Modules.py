@@ -605,70 +605,142 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Create module cards with pure JavaScript navigation
+# Create module cards with working navigation
 col1, col2 = st.columns(2, gap="large")
 col3, col4 = st.columns(2, gap="large")
+
+# Navigation logic using session state
+if 'selected_page' not in st.session_state:
+    st.session_state.selected_page = None
+
+# Check if navigation was triggered
+if st.session_state.selected_page:
+    st.switch_page(st.session_state.selected_page)
 
 with col1:
     module = MODULES[0]
     st.markdown(f"""
     <div class="liquid-card" 
          style="--accent-color: {module['accent_color']};"
-         data-page="{module['page']}"
-         tabindex="0"
-         onclick="window.location.href = '{module['page']}'"
-         onkeydown="if(event.key==='Enter'||event.key===' '){{event.preventDefault();window.location.href='{module['page']}';}}">
+         data-module="{module['key']}"
+         tabindex="0">
         <span class="liquid-icon">{module['icon']}</span>
         <div class="liquid-title">{module['title']}</div>
         <div class="liquid-description">{module['description']}</div>
         <div class="liquid-cta">🌱 ENTER THE GARDEN</div>
     </div>
     """, unsafe_allow_html=True)
+    
+    # Navigation button (invisible but functional)
+    if st.button("Navigate", key="nav_growth", help="Navigate to Growth module"):
+        st.switch_page("/Growth")
 
 with col2:
     module = MODULES[1]
     st.markdown(f"""
     <div class="liquid-card" 
          style="--accent-color: {module['accent_color']};"
-         data-page="{module['page']}"
-         tabindex="0"
-         onclick="window.location.href = '{module['page']}'"
-         onkeydown="if(event.key==='Enter'||event.key===' '){{event.preventDefault();window.location.href='{module['page']}';}}">
+         data-module="{module['key']}"
+         tabindex="0">
         <span class="liquid-icon">{module['icon']}</span>
         <div class="liquid-title">{module['title']}</div>
         <div class="liquid-description">{module['description']}</div>
         <div class="liquid-cta">⚔️ START THE BATTLE</div>
     </div>
     """, unsafe_allow_html=True)
+    
+    # Navigation button (invisible but functional)
+    if st.button("Navigate", key="nav_fight", help="Navigate to Fight module"):
+        st.switch_page("/Fight")
 
 with col3:
     module = MODULES[2]
     st.markdown(f"""
     <div class="liquid-card" 
          style="--accent-color: {module['accent_color']};"
-         data-page="{module['page']}"
-         tabindex="0"
-         onclick="window.location.href = '{module['page']}'"
-         onkeydown="if(event.key==='Enter'||event.key===' '){{event.preventDefault();window.location.href='{module['page']}';}}">
+         data-module="{module['key']}"
+         tabindex="0">
         <span class="liquid-icon">{module['icon']}</span>
         <div class="liquid-title">{module['title']}</div>
         <div class="liquid-description">{module['description']}</div>
         <div class="liquid-cta">🚀 LAUNCH MISSION</div>
     </div>
     """, unsafe_allow_html=True)
+    
+    # Navigation button (invisible but functional)
+    if st.button("Navigate", key="nav_smart", help="Navigate to Smart module"):
+        st.switch_page("/Smart")
 
 with col4:
     module = MODULES[3]
     st.markdown(f"""
     <div class="liquid-card" 
          style="--accent-color: {module['accent_color']};"
-         data-page="{module['page']}"
-         tabindex="0"
-         onclick="window.location.href = '{module['page']}'"
-         onkeydown="if(event.key==='Enter'||event.key===' '){{event.preventDefault();window.location.href='{module['page']}';}}">
+         data-module="{module['key']}"
+         tabindex="0">
         <span class="liquid-icon">{module['icon']}</span>
         <div class="liquid-title">{module['title']}</div>
         <div class="liquid-description">{module['description']}</div>
         <div class="liquid-cta">🎬 ENTER THE STAGE</div>
     </div>
     """, unsafe_allow_html=True)
+    
+    # Navigation button (invisible but functional)
+    if st.button("Navigate", key="nav_imagery", help="Navigate to Imagery module"):
+        st.switch_page("/Imagery")
+
+# JavaScript to trigger button clicks when cards are clicked
+st.markdown("""
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Map module keys to button selectors
+    const moduleButtons = {
+        'growth': 'button[data-testid="baseButton-secondary"]:nth-of-type(1)',
+        'fight': 'button[data-testid="baseButton-secondary"]:nth-of-type(2)',
+        'smart': 'button[data-testid="baseButton-secondary"]:nth-of-type(3)',
+        'imagery': 'button[data-testid="baseButton-secondary"]:nth-of-type(4)'
+    };
+    
+    // Add click handlers to cards
+    const cards = document.querySelectorAll('.liquid-card');
+    cards.forEach((card, index) => {
+        card.addEventListener('click', function(e) {
+            e.preventDefault();
+            const moduleKey = this.getAttribute('data-module');
+            
+            // Find and click the corresponding hidden button
+            const buttons = document.querySelectorAll('button[data-testid="baseButton-secondary"]');
+            if (buttons[index]) {
+                buttons[index].click();
+            }
+        });
+        
+        // Keyboard navigation
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    });
+});
+</script>
+
+<style>
+/* Hide all navigation buttons */
+button[data-testid="baseButton-secondary"] {
+    display: none !important;
+    visibility: hidden !important;
+    position: absolute !important;
+    top: -9999px !important;
+}
+
+.stButton {
+    display: none !important;
+}
+
+div[data-testid="stButton"] {
+    display: none !important;
+}
+</style>
+""", unsafe_allow_html=True)

@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Peak Performance Lab", 
-    layout="centered",
+    layout="wide",
     page_icon="🏆"
 )
 
@@ -580,7 +580,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Create a 2x2 grid
-col1, col2 = st.columns(2)
+col1, col2, col3, col4 = st.columns(4)
 
 # Row 1
 with col1:
@@ -612,9 +612,6 @@ with col2:
     if st.button("⚔️ START THE BATTLE", key="fight", use_container_width=True):
         st.switch_page(module['page'])
     st.markdown('</div>', unsafe_allow_html=True)
-
-# Row 2
-col3, col4 = st.columns(2)
 
 with col3:
     module = MODULES[2]  # Smart

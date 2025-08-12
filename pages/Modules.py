@@ -10,8 +10,6 @@ st.set_page_config(
 def init_session_state():
     if 'modules_background_loaded' not in st.session_state:
         st.session_state.modules_background_loaded = False
-    if 'selected_module' not in st.session_state:
-        st.session_state.selected_module = None
 
 init_session_state()
 
@@ -22,9 +20,7 @@ MODULES = [
         "icon": "🌱",
         "description": "Discover your beliefs about ability and learning. Analyse growth potential through an interactive mindset assessment.",
         "page": "/Growth",
-        "color": "#59250E",
         "accent_color": "#2ECC71",
-        "button_text": "🌱 ENTER THE GARDEN",
         "key": "growth"
     },
     {
@@ -32,9 +28,7 @@ MODULES = [
         "icon": "⚔️",
         "description": "Face your challenges head-on with positive self-talk. Build mental toughness through gamified scenarios.",
         "page": "/Fight",
-        "color": "#8B0000",
         "accent_color": "#E74C3C",
-        "button_text": "⚔️ START THE BATTLE",
         "key": "fight"
     },
     {
@@ -42,9 +36,7 @@ MODULES = [
         "icon": "🚀",
         "description": "Identify SMART goals that drive results. Learn the framework for setting and achieving meaningful objectives.",
         "page": "/Smart",
-        "color": "#FF8C00",
         "accent_color": "#F39C12",
-        "button_text": "🚀 LAUNCH MISSION",
         "key": "smart"
     },
     {
@@ -52,9 +44,7 @@ MODULES = [
         "icon": "🎬",
         "description": "Master the art of mental rehearsal and visualization. Train your mind through guided imagery techniques.",
         "page": "/Imagery",
-        "color": "#4B0082",
         "accent_color": "#9B59B6",
-        "button_text": "🎬 ENTER THE STAGE",
         "key": "imagery"
     }
 ]
@@ -72,17 +62,14 @@ def get_liquid_glass_styles():
     footer {visibility: hidden;}
     header {visibility: hidden;}
 
-    /* Hide sidebar permanently */
     section[data-testid="stSidebar"] {
         display: none !important;
     }
 
-    /* Hide sidebar toggle button */
     button[kind="header"][data-testid="baseButton-header"] {
         display: none !important;
     }
 
-    /* Remove padding from main container */
     .main .block-container {
         padding: 0 !important;
         max-width: none !important;
@@ -233,6 +220,7 @@ def get_liquid_glass_styles():
             0 1px 0 rgba(255, 255, 255, 0.15);
         user-select: none;
         animation: cardLiquidFloat 8s ease-in-out infinite;
+        tabindex: 0;
     }
 
     @keyframes cardLiquidFloat {
@@ -458,6 +446,18 @@ def get_liquid_glass_styles():
         left: 100%;
     }
 
+    /* LIQUID ACCESSIBILITY */
+    .liquid-card[tabindex="0"]:focus {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 4px;
+        transform: translateY(-10px) scale(1.03);
+    }
+    
+    .liquid-card:active {
+        transform: translateY(-5px) scale(0.98);
+        transition: all 0.1s ease-out;
+    }
+
     /* LIQUID LOADING OVERLAY */
     #liquid-loading {
         position: fixed;
@@ -572,48 +572,11 @@ def get_liquid_glass_styles():
             width: 250px;
         }
     }
-
-    /* LIQUID GLASS ACCESSIBILITY */
-    .liquid-card[tabindex="0"]:focus {
-        outline: 2px solid var(--accent-color);
-        outline-offset: 4px;
-        transform: translateY(-10px) scale(1.03);
-    }
-    
-    .liquid-card {
-        cursor: pointer;
-    }
-    
-    .liquid-card:active {
-        transform: translateY(-5px) scale(0.98);
-        transition: all 0.1s ease-out;
-    }
     </style>
     """
 
 # Apply the LIQUID GLASS styles
 st.markdown(get_liquid_glass_styles(), unsafe_allow_html=True)
-
-# Add JavaScript for handling card clicks
-st.markdown("""
-<script>
-function navigateToModule(page) {
-    window.selectedModule = page;
-    const event = new CustomEvent('moduleSelected', { detail: page });
-    window.dispatchEvent(event);
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('.liquid-card');
-    cards.forEach(card => {
-        card.addEventListener('click', function() {
-            const modulePage = this.getAttribute('data-page');
-            navigateToModule(modulePage);
-        });
-    });
-});
-</script>
-""", unsafe_allow_html=True)
 
 # ---------------------------- LIQUID LOADING OVERLAY ----------------------------
 if not st.session_state.modules_background_loaded:
@@ -642,99 +605,70 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Create 2x2 grid with liquid glass cards
+# Create module cards with pure JavaScript navigation
 col1, col2 = st.columns(2, gap="large")
-
-# Check if a module was selected via JavaScript
-if "selectedModule" not in st.session_state:
-    st.session_state.selectedModule = None
-
-# Row 1 - Growth and Fight modules
-with col1:
-    module = MODULES[0]  # Growth module
-    st.markdown(f"""
-    <div class="liquid-card" 
-         style="--accent-color: {module['accent_color']};"
-         data-page="{module['page']}"
-         onclick="window.location.href = '{module['page']}'">
-        <span class="liquid-icon">{module['icon']}</span>
-        <div class="liquid-title">{module['title']}</div>
-        <div class="liquid-description">{module['description']}</div>
-        <div class="liquid-cta">{module['button_text']}</div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Hidden button for Streamlit navigation fallback
-    if st.button(f"Navigate to {module['title']}", key=f"hidden_{module['key']}", label_visibility="hidden"):
-        st.switch_page(module['page'])
-
-with col2:
-    module = MODULES[1]  # Fight module
-    st.markdown(f"""
-    <div class="liquid-card" 
-         style="--accent-color: {module['accent_color']};"
-         data-page="{module['page']}"
-         onclick="window.location.href = '{module['page']}'">
-        <span class="liquid-icon">{module['icon']}</span>
-        <div class="liquid-title">{module['title']}</div>
-        <div class="liquid-description">{module['description']}</div>
-        <div class="liquid-cta">{module['button_text']}</div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Hidden button for Streamlit navigation fallback
-    if st.button("", key=f"hidden_{module['key']}", label_visibility="hidden"):
-        st.switch_page(module['page'])
-
-# Row 2 - Smart and Imagery modules
 col3, col4 = st.columns(2, gap="large")
 
-with col3:
-    module = MODULES[2]  # Smart module
+with col1:
+    module = MODULES[0]
     st.markdown(f"""
     <div class="liquid-card" 
          style="--accent-color: {module['accent_color']};"
          data-page="{module['page']}"
-         onclick="window.location.href = '{module['page']}'">
+         tabindex="0"
+         onclick="window.location.href = '{module['page']}'"
+         onkeydown="if(event.key==='Enter'||event.key===' '){{event.preventDefault();window.location.href='{module['page']}';}}">
         <span class="liquid-icon">{module['icon']}</span>
         <div class="liquid-title">{module['title']}</div>
         <div class="liquid-description">{module['description']}</div>
-        <div class="liquid-cta">{module['button_text']}</div>
+        <div class="liquid-cta">🌱 ENTER THE GARDEN</div>
     </div>
     """, unsafe_allow_html=True)
-    
-    # Hidden button for Streamlit navigation fallback
-    if st.button("", key=f"hidden_{module['key']}", label_visibility="hidden"):
-        st.switch_page(module['page'])
+
+with col2:
+    module = MODULES[1]
+    st.markdown(f"""
+    <div class="liquid-card" 
+         style="--accent-color: {module['accent_color']};"
+         data-page="{module['page']}"
+         tabindex="0"
+         onclick="window.location.href = '{module['page']}'"
+         onkeydown="if(event.key==='Enter'||event.key===' '){{event.preventDefault();window.location.href='{module['page']}';}}">
+        <span class="liquid-icon">{module['icon']}</span>
+        <div class="liquid-title">{module['title']}</div>
+        <div class="liquid-description">{module['description']}</div>
+        <div class="liquid-cta">⚔️ START THE BATTLE</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col3:
+    module = MODULES[2]
+    st.markdown(f"""
+    <div class="liquid-card" 
+         style="--accent-color: {module['accent_color']};"
+         data-page="{module['page']}"
+         tabindex="0"
+         onclick="window.location.href = '{module['page']}'"
+         onkeydown="if(event.key==='Enter'||event.key===' '){{event.preventDefault();window.location.href='{module['page']}';}}">
+        <span class="liquid-icon">{module['icon']}</span>
+        <div class="liquid-title">{module['title']}</div>
+        <div class="liquid-description">{module['description']}</div>
+        <div class="liquid-cta">🚀 LAUNCH MISSION</div>
+    </div>
+    """, unsafe_allow_html=True)
 
 with col4:
-    module = MODULES[3]  # Imagery module
+    module = MODULES[3]
     st.markdown(f"""
     <div class="liquid-card" 
          style="--accent-color: {module['accent_color']};"
          data-page="{module['page']}"
-         onclick="window.location.href = '{module['page']}'">
+         tabindex="0"
+         onclick="window.location.href = '{module['page']}'"
+         onkeydown="if(event.key==='Enter'||event.key===' '){{event.preventDefault();window.location.href='{module['page']}';}}">
         <span class="liquid-icon">{module['icon']}</span>
         <div class="liquid-title">{module['title']}</div>
         <div class="liquid-description">{module['description']}</div>
-        <div class="liquid-cta">{module['button_text']}</div>
+        <div class="liquid-cta">🎬 ENTER THE STAGE</div>
     </div>
     """, unsafe_allow_html=True)
-    
-    # Hidden button for Streamlit navigation fallback
-    if st.button("", key=f"hidden_{module['key']}", label_visibility="hidden"):
-        st.switch_page(module['page'])
-
-# Add CSS to hide the fallback selectbox
-st.markdown("""
-<style>
-/* Hide the fallback selectbox completely */
-div[data-testid="stSelectbox"] {
-    display: none !important;
-}
-
-.stSelectbox {
-    display: none !important;
-}
-</style>
-""", unsafe_allow_html=True)

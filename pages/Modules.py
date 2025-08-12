@@ -59,9 +59,9 @@ st.markdown("""
         display: none !important;
     }
     
-    /* FIXED: Proper background instead of transparent */
+    /* Transparent background for light background image */
     .stApp {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        background: transparent !important;
         position: relative;
         overflow-x: hidden;
         min-height: 100vh;
@@ -99,18 +99,22 @@ st.markdown("""
         75% { transform: translate(25px, 5px) scale(1.02); opacity: 0.7; }
     }
     
-    /* Liquid glass title styling - FIXED colors */
+    /* Title colors for light background */
     .main-title {
         font-family: 'Outfit', sans-serif;
         font-size: 3rem;
         font-weight: 800;
-        color: white !important;
+        color: rgba(0, 0, 0, 0.9) !important;
         text-align: center;
         margin-bottom: 1rem;
-        text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        text-shadow: 0 2px 8px rgba(255,255,255,0.6);
         animation: titleLiquidFlow 6s ease-in-out infinite;
         position: relative;
         z-index: 101 !important;
+        background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
     
     @keyframes titleLiquidFlow {
@@ -128,10 +132,10 @@ st.markdown("""
         font-family: 'Space Grotesk', sans-serif;
         font-size: 1.2rem;
         font-weight: 500;
-        color: rgba(255, 255, 255, 0.9) !important;
+        color: rgba(0, 0, 0, 0.8) !important;
         text-align: center;
         margin-bottom: 3rem;
-        text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        text-shadow: 0 1px 4px rgba(255,255,255,0.5);
         animation: subtitleLiquidWave 8s ease-in-out infinite;
         position: relative;
         z-index: 101 !important;
@@ -142,7 +146,7 @@ st.markdown("""
         50% { opacity: 1; transform: scale(1.01); }
     }
     
-    /* Liquid glass module cards - FIXED visibility */
+    /* Module cards with colored borders */
     .module-card {
         background: rgba(255, 255, 255, 0.25) !important;
         backdrop-filter: blur(20px);
@@ -154,13 +158,46 @@ st.markdown("""
             0 8px 32px rgba(0,0,0,0.12),
             inset 0 1px 0 rgba(255,255,255,0.3),
             0 1px 0 rgba(255,255,255,0.1);
-        border: 1px solid rgba(255,255,255,0.2);
+        border: 2px solid transparent;
         transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         text-align: center;
         position: relative;
         overflow: hidden;
         animation: cardLiquidFloat 10s ease-in-out infinite;
         z-index: 101 !important;
+    }
+    
+    /* Individual module card colors */
+    .growth-card {
+        border-color: rgba(39, 174, 96, 0.6) !important;
+        box-shadow: 
+            0 8px 32px rgba(39, 174, 96, 0.15),
+            inset 0 1px 0 rgba(255,255,255,0.3),
+            0 1px 0 rgba(255,255,255,0.1);
+    }
+    
+    .fight-card {
+        border-color: rgba(231, 76, 60, 0.6) !important;
+        box-shadow: 
+            0 8px 32px rgba(231, 76, 60, 0.15),
+            inset 0 1px 0 rgba(255,255,255,0.3),
+            0 1px 0 rgba(255,255,255,0.1);
+    }
+    
+    .smart-card {
+        border-color: rgba(243, 156, 18, 0.6) !important;
+        box-shadow: 
+            0 8px 32px rgba(243, 156, 18, 0.15),
+            inset 0 1px 0 rgba(255,255,255,0.3),
+            0 1px 0 rgba(255,255,255,0.1);
+    }
+    
+    .imagery-card {
+        border-color: rgba(155, 89, 182, 0.6) !important;
+        box-shadow: 
+            0 8px 32px rgba(155, 89, 182, 0.15),
+            inset 0 1px 0 rgba(255,255,255,0.3),
+            0 1px 0 rgba(255,255,255,0.1);
     }
     
     @keyframes cardLiquidFloat {
@@ -192,15 +229,46 @@ st.markdown("""
         50% { left: 100%; opacity: 1; }
     }
     
+    /* Hover effects with enhanced colors */
     .module-card:hover {
         transform: translateY(-12px) scale(1.03);
+        background: rgba(255, 255, 255, 0.35) !important;
+    }
+    
+    .growth-card:hover {
+        border-color: rgba(39, 174, 96, 0.8) !important;
         box-shadow: 
-            0 20px 60px rgba(0,0,0,0.18),
+            0 20px 60px rgba(39, 174, 96, 0.25),
             inset 0 1px 0 rgba(255,255,255,0.4),
             0 1px 0 rgba(255,255,255,0.2),
-            0 0 40px rgba(255,255,255,0.1);
-        border-color: rgba(255,255,255,0.35);
-        background: rgba(255, 255, 255, 0.35) !important;
+            0 0 40px rgba(39, 174, 96, 0.15) !important;
+    }
+    
+    .fight-card:hover {
+        border-color: rgba(231, 76, 60, 0.8) !important;
+        box-shadow: 
+            0 20px 60px rgba(231, 76, 60, 0.25),
+            inset 0 1px 0 rgba(255,255,255,0.4),
+            0 1px 0 rgba(255,255,255,0.2),
+            0 0 40px rgba(231, 76, 60, 0.15) !important;
+    }
+    
+    .smart-card:hover {
+        border-color: rgba(243, 156, 18, 0.8) !important;
+        box-shadow: 
+            0 20px 60px rgba(243, 156, 18, 0.25),
+            inset 0 1px 0 rgba(255,255,255,0.4),
+            0 1px 0 rgba(255,255,255,0.2),
+            0 0 40px rgba(243, 156, 18, 0.15) !important;
+    }
+    
+    .imagery-card:hover {
+        border-color: rgba(155, 89, 182, 0.8) !important;
+        box-shadow: 
+            0 20px 60px rgba(155, 89, 182, 0.25),
+            inset 0 1px 0 rgba(255,255,255,0.4),
+            0 1px 0 rgba(255,255,255,0.2),
+            0 0 40px rgba(155, 89, 182, 0.15) !important;
     }
     
     .module-card:hover::before {
@@ -244,14 +312,14 @@ st.markdown("""
         100% { transform: scale(1.15) rotateY(360deg); }
     }
     
-    /* Liquid glass typography - FIXED colors */
+    /* Text colors for light background */
     .module-title {
         font-family: 'Space Grotesk', sans-serif;
         font-size: 1.6rem;
         font-weight: 600;
-        color: rgba(255, 255, 255, 0.95) !important;
+        color: rgba(0, 0, 0, 0.9) !important;
         margin-bottom: 1.2rem;
-        text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        text-shadow: 0 1px 3px rgba(255,255,255,0.6);
         animation: titleLiquidWave 8s ease-in-out infinite;
         transition: all 0.4s ease;
         position: relative;
@@ -264,8 +332,8 @@ st.markdown("""
     }
     
     .module-card:hover .module-title {
-        color: rgba(255, 255, 255, 1) !important;
-        text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+        color: rgba(0, 0, 0, 1) !important;
+        text-shadow: 0 1px 6px rgba(255,255,255,0.8);
         transform: translateY(-3px) scale(1.02);
     }
     
@@ -273,10 +341,10 @@ st.markdown("""
         font-family: 'Inter', sans-serif;
         font-size: 1rem;
         font-weight: 400;
-        color: rgba(255, 255, 255, 0.8) !important;
+        color: rgba(0, 0, 0, 0.75) !important;
         line-height: 1.6;
         margin-bottom: 2rem;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        text-shadow: 0 1px 2px rgba(255,255,255,0.4);
         animation: descriptionLiquidFlow 7s ease-in-out infinite;
         transition: all 0.3s ease;
         position: relative;
@@ -289,8 +357,8 @@ st.markdown("""
     }
     
     .module-card:hover .module-description {
-        color: rgba(255, 255, 255, 0.9) !important;
-        text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        color: rgba(0, 0, 0, 0.85) !important;
+        text-shadow: 0 1px 3px rgba(255,255,255,0.5);
         transform: translateY(-2px);
     }
     
@@ -424,7 +492,7 @@ col1, col2 = st.columns(2)
 with col1:
     module = MODULES[0]  # Growth
     st.markdown(f"""
-    <div class="module-card">
+    <div class="module-card growth-card">
         <div class="module-icon">{module['icon']}</div>
         <div class="module-title">{module['title']}</div>
         <div class="module-description">{module['description']}</div>
@@ -439,7 +507,7 @@ with col1:
 with col2:
     module = MODULES[1]  # Fight
     st.markdown(f"""
-    <div class="module-card">
+    <div class="module-card fight-card">
         <div class="module-icon">{module['icon']}</div>
         <div class="module-title">{module['title']}</div>
         <div class="module-description">{module['description']}</div>
@@ -457,7 +525,7 @@ col3, col4 = st.columns(2)
 with col3:
     module = MODULES[2]  # Smart
     st.markdown(f"""
-    <div class="module-card">
+    <div class="module-card smart-card">
         <div class="module-icon">{module['icon']}</div>
         <div class="module-title">{module['title']}</div>
         <div class="module-description">{module['description']}</div>
@@ -472,7 +540,7 @@ with col3:
 with col4:
     module = MODULES[3]  # Imagery
     st.markdown(f"""
-    <div class="module-card">
+    <div class="module-card imagery-card">
         <div class="module-icon">{module['icon']}</div>
         <div class="module-title">{module['title']}</div>
         <div class="module-description">{module['description']}</div>

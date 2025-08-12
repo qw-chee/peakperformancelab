@@ -133,7 +133,7 @@ st.markdown("""
         font-weight: 500;
         color: rgba(0, 0, 0, 0.8) !important;
         text-align: center;
-        margin-bottom: 3rem;
+        margin-bottom: 0;
         text-shadow: 0 1px 4px rgba(255,255,255,0.5);
         animation: subtitleLiquidWave 8s ease-in-out infinite;
         position: relative;

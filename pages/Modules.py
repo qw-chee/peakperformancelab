@@ -207,7 +207,7 @@ st.markdown("""
     
     .main-subtitle {
         font-family: 'Space Grotesk', sans-serif;
-        font-size: 1.2rem;
+        font-size: 3rem;
         font-weight: 500;
         color: rgba(0, 0, 0, 0.8) !important;
         text-align: center;

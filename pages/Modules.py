@@ -339,7 +339,7 @@ st.markdown("""
     /* Fun bouncy text */
     .module-title {
         font-family: 'Baloo 2', cursive;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         font-weight: 700;
         color: #2C3E50 !important;
         margin-bottom: 1rem;

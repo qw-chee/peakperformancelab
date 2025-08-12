@@ -42,7 +42,7 @@ MODULES = [
     }
 ]
 
-# ---------------------------- FIXED LIQUID GLASS STYLES ----------------------------
+# ---------------------------- LIQUID GLASS STYLES ----------------------------
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -557,6 +557,21 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
+
+# ---------------------------- LOADING OVERLAY ----------------------------
+if not st.session_state.home_background_loaded:
+    st.markdown("""
+    <div id="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-title">🏆 Peak Performance Lab</div>
+            <div class="loading-bar-container">
+                <div class="loading-bar"></div>
+            </div>
+            <div class="loading-subtitle">Loading your training arsenal...</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.session_state.home_background_loaded = True
 
 # ---------------------------- MAIN CONTENT ----------------------------
 st.markdown("""

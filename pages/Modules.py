@@ -20,7 +20,7 @@ MODULES = [
         "title": "Inner Critic Boss Fight",
         "icon": "⚔️",
         "description": "Face your challenges head-on with positive self-talk. Build mental toughness through gamified scenarios.",
-        "page": "/Fight",
+        "page": "pages/Fight.py",
         "color": "#E74C3C",
         "key": "fight"
     },
@@ -28,7 +28,7 @@ MODULES = [
         "title": "Mission: SMART Possible",
         "icon": "🚀",
         "description": "Identify SMART goals that drive results. Learn the framework for setting and achieving meaningful objectives.",
-        "page": "/Smart",
+        "page": "pages/Smart.py",
         "color": "#F39C12",
         "key": "smart"
     },
@@ -36,16 +36,18 @@ MODULES = [
         "title": "Imagery Rehearsal Stage",
         "icon": "🎬",
         "description": "Master the art of mental rehearsal and visualization. Train your mind through guided imagery techniques.",
-        "page": "/Imagery",
+        "page": "pages/Imagery.py",
         "color": "#9B59B6",
         "key": "imagery"
     }
 ]
 
-# ---------------------------- CLEAN CARD STYLES ----------------------------
+# ---------------------------- LIQUID GLASS STYLES ----------------------------
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
     
     /* Hide Streamlit branding */
     #MainMenu {visibility: hidden;}
@@ -57,107 +59,342 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Clean background - shows your green */
+    /* Liquid glass background - transparent to show your green */
     .stApp {
         background: transparent;
+        position: relative;
+        overflow-x: hidden;
     }
     
-    /* Title styling */
+    /* Floating liquid bubbles */
+    .stApp::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.08) 0%, transparent 35%),
+            radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.06) 0%, transparent 30%),
+            radial-gradient(circle at 35% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+            radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 25%);
+        animation: liquidBubbleFloat 25s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 1;
+    }
+    
+    @keyframes liquidBubbleFloat {
+        0%, 100% { transform: translate(0px, 0px) scale(1); opacity: 0.6; }
+        25% { transform: translate(20px, -15px) scale(1.05); opacity: 0.8; }
+        50% { transform: translate(-15px, 10px) scale(0.95); opacity: 0.5; }
+        75% { transform: translate(25px, 5px) scale(1.02); opacity: 0.7; }
+    }
+    
+    /* Liquid glass title styling */
     .main-title {
-        font-family: 'Inter', sans-serif;
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #2c3e50;
+        font-family: 'Outfit', sans-serif;
+        font-size: 3rem;
+        font-weight: 800;
+        color: rgba(0, 0, 0, 0.9);
         text-align: center;
         margin-bottom: 1rem;
-        text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        text-shadow: 0 2px 8px rgba(255,255,255,0.6);
+        animation: titleLiquidFlow 6s ease-in-out infinite;
+        position: relative;
+        z-index: 10;
+        background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    @keyframes titleLiquidFlow {
+        0%, 100% { 
+            transform: translateY(0px);
+            filter: drop-shadow(0 2px 8px rgba(255,255,255,0.6));
+        }
+        50% { 
+            transform: translateY(-3px);
+            filter: drop-shadow(0 4px 12px rgba(255,255,255,0.8));
+        }
     }
     
     .main-subtitle {
-        font-family: 'Inter', sans-serif;
-        font-size: 1.1rem;
-        color: #34495e;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.8);
         text-align: center;
-        margin-bottom: 2rem;
-        text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        margin-bottom: 3rem;
+        text-shadow: 0 1px 4px rgba(255,255,255,0.5);
+        animation: subtitleLiquidWave 8s ease-in-out infinite;
+        position: relative;
+        z-index: 10;
     }
     
-    /* Module cards */
+    @keyframes subtitleLiquidWave {
+        0%, 100% { opacity: 0.8; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.01); }
+    }
+    
+    /* Liquid glass module cards */
     .module-card {
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 16px;
-        padding: 2rem;
-        margin: 1rem 0;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        border: 1px solid rgba(255,255,255,0.8);
-        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 24px;
+        padding: 2.5rem;
+        margin: 1.5rem 0;
+        box-shadow: 
+            0 8px 32px rgba(0,0,0,0.12),
+            inset 0 1px 0 rgba(255,255,255,0.3),
+            0 1px 0 rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.2);
+        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         text-align: center;
+        position: relative;
+        overflow: hidden;
+        animation: cardLiquidFloat 10s ease-in-out infinite;
+    }
+    
+    @keyframes cardLiquidFloat {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        25% { transform: translateY(-8px) rotate(0.2deg); }
+        50% { transform: translateY(-4px) rotate(-0.15deg); }
+        75% { transform: translateY(-12px) rotate(0.3deg); }
+    }
+    
+    /* Liquid shimmer effect */
+    .module-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, 
+            transparent, 
+            rgba(255, 255, 255, 0.3), 
+            transparent);
+        transition: left 0.8s ease;
+        animation: liquidShimmer 4s ease-in-out infinite;
+    }
+    
+    @keyframes liquidShimmer {
+        0%, 100% { left: -100%; opacity: 0; }
+        50% { left: 100%; opacity: 1; }
     }
     
     .module-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        transform: translateY(-12px) scale(1.03);
+        box-shadow: 
+            0 20px 60px rgba(0,0,0,0.18),
+            inset 0 1px 0 rgba(255,255,255,0.4),
+            0 1px 0 rgba(255,255,255,0.2),
+            0 0 40px rgba(255,255,255,0.1);
+        border-color: rgba(255,255,255,0.35);
+        background: rgba(255, 255, 255, 0.35);
     }
     
+    .module-card:hover::before {
+        animation: liquidShimmerActive 1s ease-out;
+    }
+    
+    @keyframes liquidShimmerActive {
+        0% { left: -100%; opacity: 0; }
+        50% { left: 50%; opacity: 0.8; }
+        100% { left: 100%; opacity: 0; }
+    }
+    
+    /* Floating liquid icons */
     .module-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
         display: block;
+        position: relative;
+        animation: iconLiquidBob 6s ease-in-out infinite;
+        filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
+    @keyframes iconLiquidBob {
+        0%, 100% { transform: translateY(0px) scale(1); }
+        25% { transform: translateY(-8px) scale(1.02); }
+        50% { transform: translateY(-4px) scale(1); }
+        75% { transform: translateY(-10px) scale(1.01); }
+    }
+    
+    .module-card:hover .module-icon {
+        transform: scale(1.15);
+        animation: iconLiquidActive 1.2s ease-out, iconLiquidBob 6s ease-in-out infinite;
+        filter: drop-shadow(0 8px 20px rgba(0,0,0,0.2));
+    }
+    
+    @keyframes iconLiquidActive {
+        0% { transform: scale(1) rotateY(0deg); }
+        50% { transform: scale(1.2) rotateY(180deg); }
+        100% { transform: scale(1.15) rotateY(360deg); }
+    }
+    
+    /* Liquid glass typography */
     .module-title {
-        font-family: 'Inter', sans-serif;
-        font-size: 1.5rem;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.6rem;
         font-weight: 600;
-        color: #2c3e50;
-        margin-bottom: 1rem;
+        color: rgba(0, 0, 0, 0.9);
+        margin-bottom: 1.2rem;
+        text-shadow: 0 1px 3px rgba(255,255,255,0.6);
+        animation: titleLiquidWave 8s ease-in-out infinite;
+        transition: all 0.4s ease;
+    }
+    
+    @keyframes titleLiquidWave {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-2px); }
+    }
+    
+    .module-card:hover .module-title {
+        color: rgba(0, 0, 0, 1);
+        text-shadow: 0 1px 6px rgba(255,255,255,0.8);
+        transform: translateY(-3px) scale(1.02);
     }
     
     .module-description {
         font-family: 'Inter', sans-serif;
         font-size: 1rem;
-        color: #5d6d7e;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.75);
         line-height: 1.6;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
+        text-shadow: 0 1px 2px rgba(255,255,255,0.4);
+        animation: descriptionLiquidFlow 7s ease-in-out infinite;
+        transition: all 0.3s ease;
     }
     
-    /* Custom button styling */
+    @keyframes descriptionLiquidFlow {
+        0%, 100% { opacity: 0.75; transform: translateY(0px); }
+        50% { opacity: 0.9; transform: translateY(-1px); }
+    }
+    
+    .module-card:hover .module-description {
+        color: rgba(0, 0, 0, 0.85);
+        text-shadow: 0 1px 3px rgba(255,255,255,0.5);
+        transform: translateY(-2px);
+    }
+    
+    /* Liquid glass buttons */
     .stButton > button {
         width: 100%;
-        height: 50px;
-        font-family: 'Inter', sans-serif;
+        height: 55px;
+        font-family: 'Space Grotesk', sans-serif;
         font-weight: 600;
         font-size: 1rem;
-        border-radius: 12px;
-        border: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.3);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 
+            0 4px 20px rgba(0,0,0,0.15),
+            inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    
+    .stButton > button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.6s ease;
     }
     
     .stButton > button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 
+            0 8px 30px rgba(0,0,0,0.25),
+            inset 0 1px 0 rgba(255,255,255,0.3);
+        border-color: rgba(255,255,255,0.4);
     }
     
-    /* Individual button colors */
+    .stButton > button:hover::before {
+        left: 100%;
+    }
+    
+    .stButton > button:active {
+        transform: translateY(-2px) scale(0.98);
+        transition: all 0.1s ease-out;
+    }
+    
+    /* Individual liquid glass button colors */
     .growth-btn button {
-        background: linear-gradient(135deg, #27AE60, #2ECC71) !important;
+        background: rgba(39, 174, 96, 0.8) !important;
         color: white !important;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+    
+    .growth-btn button:hover {
+        background: rgba(39, 174, 96, 0.9) !important;
+        box-shadow: 0 8px 30px rgba(39, 174, 96, 0.4), inset 0 1px 0 rgba(255,255,255,0.3) !important;
     }
     
     .fight-btn button {
-        background: linear-gradient(135deg, #E74C3C, #EC7063) !important;
+        background: rgba(231, 76, 60, 0.8) !important;
         color: white !important;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+    
+    .fight-btn button:hover {
+        background: rgba(231, 76, 60, 0.9) !important;
+        box-shadow: 0 8px 30px rgba(231, 76, 60, 0.4), inset 0 1px 0 rgba(255,255,255,0.3) !important;
     }
     
     .smart-btn button {
-        background: linear-gradient(135deg, #F39C12, #F4D03F) !important;
+        background: rgba(243, 156, 18, 0.8) !important;
         color: white !important;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+    
+    .smart-btn button:hover {
+        background: rgba(243, 156, 18, 0.9) !important;
+        box-shadow: 0 8px 30px rgba(243, 156, 18, 0.4), inset 0 1px 0 rgba(255,255,255,0.3) !important;
     }
     
     .imagery-btn button {
-        background: linear-gradient(135deg, #9B59B6, #BB8FCE) !important;
+        background: rgba(155, 89, 182, 0.8) !important;
         color: white !important;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+    
+    .imagery-btn button:hover {
+        background: rgba(155, 89, 182, 0.9) !important;
+        box-shadow: 0 8px 30px rgba(155, 89, 182, 0.4), inset 0 1px 0 rgba(255,255,255,0.3) !important;
+    }
+    
+    /* Responsive liquid glass */
+    @media (max-width: 768px) {
+        .main-title {
+            font-size: 2.5rem;
+        }
+        
+        .module-icon {
+            font-size: 3rem;
+        }
+        
+        .module-title {
+            font-size: 1.4rem;
+        }
+        
+        .module-card {
+            padding: 2rem;
+            margin: 1rem 0;
+        }
     }
 </style>
 """, unsafe_allow_html=True)

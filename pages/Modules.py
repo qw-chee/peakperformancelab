@@ -625,7 +625,7 @@ with col1:
     
     # Make the entire column clickable
     if st.button("🌱 ENTER THE GARDEN", key="btn_growth", use_container_width=True):
-        st.switch_page("pages/Growth.py")
+        st.switch_page("/Growth")
 
 with col2:
     module = MODULES[1]

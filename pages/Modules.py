@@ -179,7 +179,41 @@ st.markdown("""
         50% { transform: translate(-20px, 15px) scale(0.9) rotate(180deg); opacity: 0.5; }
         75% { transform: translate(40px, 10px) scale(1.05) rotate(270deg); opacity: 0.7; }
     }
-     
+    
+    /* Big bouncy title */
+    .main-title {
+        font-family: 'Fredoka', cursive;
+        font-size: 4rem;
+        font-weight: 700;
+        color: #2C3E50 !important;
+        text-align: center;
+        margin: 2rem 0 1rem 0;
+        text-shadow: 
+            3px 3px 0px #FF6B6B,
+            6px 6px 0px #4ECDC4,
+            9px 9px 0px #45B7D1,
+            12px 12px 20px rgba(0,0,0,0.15);
+        animation: bounceTitle 3s ease-in-out infinite;
+        position: relative;
+        z-index: 101 !important;
+        transform-origin: center;
+    }
+    
+    @keyframes bounceTitle {
+        0%, 100% { 
+            transform: translateY(0px) rotate(-1deg) scale(1);
+        }
+        25% { 
+            transform: translateY(-10px) rotate(1deg) scale(1.02);
+        }
+        50% { 
+            transform: translateY(-5px) rotate(-0.5deg) scale(0.98);
+        }
+        75% { 
+            transform: translateY(-15px) rotate(1.5deg) scale(1.01);
+        }
+    }
+    
     /* Wiggling subtitle */
     .main-subtitle {
         font-family: 'Comic Neue', cursive;
@@ -385,10 +419,8 @@ st.markdown("""
         transform: translateY(-2px);
     }
     
-    /* Super fun bouncy buttons with stronger overrides */
-    .stButton > button,
-    button[kind="primary"],
-    button[kind="secondary"] {
+    /* Super fun bouncy buttons */
+    .stButton > button {
         width: 100% !important;
         height: 60px !important;
         font-family: 'Fredoka', cursive !important;
@@ -406,7 +438,6 @@ st.markdown("""
             inset 0 1px 0 rgba(255,255,255,0.3) !important;
         z-index: 102 !important;
         animation: buttonBounce 3s ease-in-out infinite;
-        opacity: 1 !important;
     }
     
     @keyframes buttonBounce {
@@ -414,9 +445,7 @@ st.markdown("""
         50% { transform: translateY(-2px) scale(1.01); }
     }
     
-    .stButton > button::before,
-    button[kind="primary"]::before,
-    button[kind="secondary"]::before {
+    .stButton > button::before {
         content: '✨';
         position: absolute;
         top: 50%;
@@ -432,9 +461,7 @@ st.markdown("""
         50% { left: 10px; opacity: 1; }
     }
     
-    .stButton > button::after,
-    button[kind="primary"]::after,
-    button[kind="secondary"]::after {
+    .stButton > button::after {
         content: '✨';
         position: absolute;
         top: 50%;
@@ -450,23 +477,12 @@ st.markdown("""
         50% { right: 10px; opacity: 1; }
     }
     
-    .stButton > button:hover,
-    .stButton > button:focus,
-    .stButton > button:active,
-    button[kind="primary"]:hover,
-    button[kind="primary"]:focus,
-    button[kind="primary"]:active,
-    button[kind="secondary"]:hover,
-    button[kind="secondary"]:focus,
-    button[kind="secondary"]:active {
+    .stButton > button:hover {
         transform: translateY(-8px) scale(1.05) !important;
         box-shadow: 
             0 15px 35px rgba(0,0,0,0.25),
             inset 0 1px 0 rgba(255,255,255,0.4) !important;
         animation: buttonParty 0.6s ease-out infinite;
-        opacity: 1 !important;
-        background-color: inherit !important;
-        background-image: inherit !important;
     }
     
     @keyframes buttonParty {
@@ -476,113 +492,57 @@ st.markdown("""
     }
     
     .stButton > button:hover::before,
-    .stButton > button:hover::after,
-    button[kind="primary"]:hover::before,
-    button[kind="primary"]:hover::after,
-    button[kind="secondary"]:hover::before,
-    button[kind="secondary"]:hover::after {
+    .stButton > button:hover::after {
         animation-duration: 0.5s;
     }
     
-    /* Colorful fun buttons with multiple selectors */
-    .growth-btn button,
-    .growth-btn button[kind="primary"],
-    .growth-btn button[kind="secondary"] {
+    /* Colorful fun buttons */
+    .growth-btn button {
         background: linear-gradient(135deg, #27AE60, #2ECC71) !important;
-        background-color: #27AE60 !important;
         color: white !important;
         text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
         box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
     }
     
-    .growth-btn button:hover,
-    .growth-btn button:focus,
-    .growth-btn button:active,
-    .growth-btn button[kind="primary"]:hover,
-    .growth-btn button[kind="primary"]:focus,
-    .growth-btn button[kind="primary"]:active,
-    .growth-btn button[kind="secondary"]:hover,
-    .growth-btn button[kind="secondary"]:focus,
-    .growth-btn button[kind="secondary"]:active {
+    .growth-btn button:hover {
         background: linear-gradient(135deg, #2ECC71, #27AE60) !important;
-        background-color: #2ECC71 !important;
         box-shadow: 0 15px 35px rgba(39, 174, 96, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
-        opacity: 1 !important;
     }
     
-    .fight-btn button,
-    .fight-btn button[kind="primary"],
-    .fight-btn button[kind="secondary"] {
+    .fight-btn button {
         background: linear-gradient(135deg, #E74C3C, #C0392B) !important;
-        background-color: #E74C3C !important;
         color: white !important;
         text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
         box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
     }
     
-    .fight-btn button:hover,
-    .fight-btn button:focus,
-    .fight-btn button:active,
-    .fight-btn button[kind="primary"]:hover,
-    .fight-btn button[kind="primary"]:focus,
-    .fight-btn button[kind="primary"]:active,
-    .fight-btn button[kind="secondary"]:hover,
-    .fight-btn button[kind="secondary"]:focus,
-    .fight-btn button[kind="secondary"]:active {
+    .fight-btn button:hover {
         background: linear-gradient(135deg, #C0392B, #E74C3C) !important;
-        background-color: #C0392B !important;
         box-shadow: 0 15px 35px rgba(231, 76, 60, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
-        opacity: 1 !important;
     }
     
-    .smart-btn button,
-    .smart-btn button[kind="primary"],
-    .smart-btn button[kind="secondary"] {
+    .smart-btn button {
         background: linear-gradient(135deg, #F39C12, #E67E22) !important;
-        background-color: #F39C12 !important;
         color: white !important;
         text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
         box-shadow: 0 8px 25px rgba(243, 156, 18, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
     }
     
-    .smart-btn button:hover,
-    .smart-btn button:focus,
-    .smart-btn button:active,
-    .smart-btn button[kind="primary"]:hover,
-    .smart-btn button[kind="primary"]:focus,
-    .smart-btn button[kind="primary"]:active,
-    .smart-btn button[kind="secondary"]:hover,
-    .smart-btn button[kind="secondary"]:focus,
-    .smart-btn button[kind="secondary"]:active {
+    .smart-btn button:hover {
         background: linear-gradient(135deg, #E67E22, #F39C12) !important;
-        background-color: #E67E22 !important;
         box-shadow: 0 15px 35px rgba(243, 156, 18, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
-        opacity: 1 !important;
     }
     
-    .imagery-btn button,
-    .imagery-btn button[kind="primary"],
-    .imagery-btn button[kind="secondary"] {
+    .imagery-btn button {
         background: linear-gradient(135deg, #9B59B6, #8E44AD) !important;
-        background-color: #9B59B6 !important;
         color: white !important;
         text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
         box-shadow: 0 8px 25px rgba(155, 89, 182, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
     }
     
-    .imagery-btn button:hover,
-    .imagery-btn button:focus,
-    .imagery-btn button:active,
-    .imagery-btn button[kind="primary"]:hover,
-    .imagery-btn button[kind="primary"]:focus,
-    .imagery-btn button[kind="primary"]:active,
-    .imagery-btn button[kind="secondary"]:hover,
-    .imagery-btn button[kind="secondary"]:focus,
-    .imagery-btn button[kind="secondary"]:active {
+    .imagery-btn button:hover {
         background: linear-gradient(135deg, #8E44AD, #9B59B6) !important;
-        background-color: #8E44AD !important;
         box-shadow: 0 15px 35px rgba(155, 89, 182, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
-        opacity: 1 !important;
     }
     
     /* Mobile responsiveness */
@@ -640,11 +600,13 @@ if not st.session_state.home_background_loaded:
     st.session_state.home_background_loaded = True
 
 # ---------------------------- MAIN CONTENT ----------------------------
+st.markdown('<div class="main-title">🏆 Peak Performance Lab</div>', unsafe_allow_html=True)
 st.markdown("""
 <div class="main-subtitle">🚀 Ready to unlock your potential? 🌟</div>
 <div class="main-subtitle">Choose a module to begin your epic journey toward peak performance! ✨</div>
 """, unsafe_allow_html=True)
 
+# Create a single row with 4 columns for full-screen fun
 col1, col2, col3, col4 = st.columns(4)
 
 # Module 1 - Growth

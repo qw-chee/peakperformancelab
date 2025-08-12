@@ -183,7 +183,7 @@ st.markdown("""
     /* Wiggling subtitle */
     .main-subtitle {
         font-family: 'Sour Gummy', cursive;
-        font-size: 2rem;
+        font-size: 1.8rem;
         font-weight: 600;
         color: #34495E !important;
         text-align: center;

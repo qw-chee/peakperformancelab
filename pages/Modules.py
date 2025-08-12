@@ -183,7 +183,7 @@ st.markdown("""
     /* Wiggling subtitle */
     .main-subtitle {
         font-family: 'Sour Gummy', cursive;
-        font-size: 1.4rem;
+        font-size: 2rem;
         font-weight: 600;
         color: #34495E !important;
         text-align: center;
@@ -362,8 +362,8 @@ st.markdown("""
     }
     
     .module-description {
-        font-family: 'Sour Gummy', cursive;
-        font-size: 1.1rem;
+        font-family: 'Baloo 2', cursive;
+        font-size: 1.2rem;
         font-weight: 500;
         color: #34495E !important;
         line-height: 1.6;

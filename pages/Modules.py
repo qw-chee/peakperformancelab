@@ -363,7 +363,7 @@ st.markdown("""
     
     .module-description {
         font-family: 'Baloo 2', cursive;
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: 500;
         color: #34495E !important;
         line-height: 1.6;

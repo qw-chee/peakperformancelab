@@ -471,9 +471,3 @@ with col4:
     if st.button("🎬 ENTER THE STAGE", key="imagery", use_container_width=True):
         st.switch_page(module['page'])
     st.markdown('</div>', unsafe_allow_html=True)
-
-# Debug info to help troubleshoot
-st.markdown("---")
-st.markdown("**Debug Info:** If navigation isn't working, check that these files exist:")
-for module in MODULES:
-    st.write(f"- {module['page']}")

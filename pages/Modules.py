@@ -560,7 +560,7 @@ st.markdown("""
         <div class="loading-bar-container">
             <div class="loading-bar"></div>
         </div>
-        <div class="loading-subtitle">Loading instructions...</div>
+        <div class="loading-subtitle">Loading your training arsenal...</div>
     </div>
 </div>
 """, unsafe_allow_html=True)

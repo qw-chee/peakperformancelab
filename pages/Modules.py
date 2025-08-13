@@ -158,7 +158,7 @@ st.markdown("""
     /* Adaptive wiggling subtitle */
     .main-subtitle {
         font-family: 'Sour Gummy', cursive;
-        font-size: clamp(1rem, 2.5vw, 2.2rem);
+        font-size: clamp(1rem, 2vw, 2.2rem);
         font-weight: 600;
         color: #34495E !important;
         text-align: center;
@@ -314,7 +314,7 @@ st.markdown("""
     /* Adaptive bouncy text */
     .module-title {
         font-family: 'Baloo 2', cursive;
-        font-size: clamp(1.1rem, 2.2vw, 2.2rem);
+        font-size: clamp(1.1rem, 1.8vw, 2.2rem);
         font-weight: 700;
         color: #2C3E50 !important;
         margin-bottom: clamp(0.8rem, 1.5vw, 1.5rem);
@@ -338,7 +338,7 @@ st.markdown("""
     
     .module-description {
         font-family: 'Baloo 2', cursive;
-        font-size: clamp(0.9rem, 1.8vw, 1.4rem);
+        font-size: clamp(0.9rem, 1.4vw, 1.4rem);
         font-weight: 500;
         color: #34495E !important;
         line-height: 1.6;

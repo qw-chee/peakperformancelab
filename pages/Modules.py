@@ -70,8 +70,6 @@ st.markdown("""
         min-height: 100vh;
         position: relative;
         overflow-x: hidden;
-        transform: scale(clamp(0.7, 1vw, 1.2));
-        transform-origin: top center;
     }
     
     /* Loading overlay - simple CSS animation */
@@ -155,6 +153,8 @@ st.markdown("""
         max-width: none !important;
         position: relative !important;
         z-index: 100 !important;
+        transform: scale(clamp(0.7, 1vw, 1.2));
+        transform-origin: top center;
     }
        
     /* Wiggling subtitle */

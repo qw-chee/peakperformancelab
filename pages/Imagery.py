@@ -707,7 +707,7 @@ if not st.session_state.background_loaded:
         justify-content: center;
         align-items: center;
         z-index: 9999;
-        animation: loading-sequence 3s ease-in-out forwards;
+        animation: loading-sequence 5s ease-in-out forwards;
     }
 
     .loading-content {

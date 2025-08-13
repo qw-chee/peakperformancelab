@@ -202,26 +202,36 @@ st.markdown("""
         75% { transform: translateX(1px) rotate(0.3deg); }
     }
     
-    /* Super fun bouncing cards */
-    .module-card {
+    /* Super fun bouncing card-buttons */
+    .stButton > button {
         background: rgba(255, 255, 255, 0.9) !important;
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        border-radius: 30px;
-        padding: 1.6rem;
-        margin: 2rem;
+        border-radius: 30px !important;
+        padding: 2rem !important;
+        margin: 1rem 0 !important;
         box-shadow: 
             0 15px 35px rgba(0,0,0,0.1),
             0 5px 15px rgba(0,0,0,0.05),
-            inset 0 1px 0 rgba(255,255,255,0.6);
-        border: 3px solid;
-        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        text-align: center;
-        position: relative;
-        overflow: visible;
-        animation: cardBounceFloat 8s ease-in-out infinite;
+            inset 0 1px 0 rgba(255,255,255,0.6) !important;
+        border: 3px solid !important;
+        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+        text-align: center !important;
+        position: relative !important;
+        overflow: visible !important;
+        animation: cardBounceFloat 8s ease-in-out infinite !important;
         z-index: 101 !important;
-        transform-origin: center;
+        transform-origin: center !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 300px !important;
+        font-family: 'Baloo 2', cursive !important;
+        font-size: 1rem !important;
+        font-weight: 500 !important;
+        color: #34495E !important;
+        line-height: 1.6 !important;
+        white-space: pre-line !important;
+        text-shadow: 1px 1px 2px rgba(255,255,255,0.8) !important;
     }
     
     @keyframes cardBounceFloat {
@@ -239,29 +249,29 @@ st.markdown("""
         }
     }
     
-    /* Individual fun card colors with rainbow borders */
-    .growth-card {
+    /* Individual card-button colors */
+    div[data-testid="column"]:nth-child(1) .stButton > button {
         border-color: #27AE60 !important;
-        animation-delay: 0s;
+        animation-delay: 0s !important;
     }
     
-    .fight-card {
+    div[data-testid="column"]:nth-child(2) .stButton > button {
         border-color: #E74C3C !important;
-        animation-delay: 0.2s;
+        animation-delay: 0.2s !important;
     }
     
-    .smart-card {
+    div[data-testid="column"]:nth-child(3) .stButton > button {
         border-color: #F39C12 !important;
-        animation-delay: 0.4s;
+        animation-delay: 0.4s !important;
     }
     
-    .imagery-card {
+    div[data-testid="column"]:nth-child(4) .stButton > button {
         border-color: #9B59B6 !important;
-        animation-delay: 0.6s;
+        animation-delay: 0.6s !important;
     }
     
     /* Rainbow shimmer effect */
-    .module-card::before {
+    .stButton > button::before {
         content: '';
         position: absolute;
         top: -5px;
@@ -284,242 +294,25 @@ st.markdown("""
     }
     
     /* Super bouncy hover effects */
-    .module-card:hover {
+    .stButton > button:hover {
         transform: translateY(-30px) scale(1.08) rotate(3deg) !important;
         box-shadow: 
             0 25px 50px rgba(0,0,0,0.2),
             0 10px 25px rgba(0,0,0,0.1),
             inset 0 1px 0 rgba(255,255,255,0.8) !important;
-        animation: none;
+        animation: none !important;
+        color: #2C3E50 !important;
     }
     
-    .module-card:hover::before {
+    .stButton > button:hover::before {
         opacity: 0.3;
     }
     
-    /* Bouncing dancing icons */
-    .module-icon {
-        font-size: 4.5rem;
-        margin-bottom: 1.5rem;
-        display: inline-block;
-        position: relative;
-        animation: iconDance 2s ease-in-out infinite;
-        filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
-        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        z-index: 102 !important;
-    }
-    
-    @keyframes iconDance {
-        0%, 100% { 
-            transform: translateY(0px) scale(1) rotate(0deg); 
-        }
-        25% { 
-            transform: translateY(-15px) scale(1.1) rotate(-5deg); 
-        }
-        50% { 
-            transform: translateY(-8px) scale(0.95) rotate(5deg); 
-        }
-        75% { 
-            transform: translateY(-20px) scale(1.05) rotate(-3deg); 
-        }
-    }
-    
-    .module-card:hover .module-icon {
-        transform: scale(1.3) rotateY(360deg) !important;
-        animation: iconParty 0.8s ease-out, iconDance 2s ease-in-out infinite 0.8s;
-    }
-    
-    @keyframes iconParty {
-        0% { transform: scale(1) rotateY(0deg) rotateZ(0deg); }
-        25% { transform: scale(1.1) rotateY(90deg) rotateZ(10deg); }
-        50% { transform: scale(1.2) rotateY(180deg) rotateZ(-10deg); }
-        75% { transform: scale(1.1) rotateY(270deg) rotateZ(5deg); }
-        100% { transform: scale(1.3) rotateY(360deg) rotateZ(0deg); }
-    }
-    
-    /* Fun bouncy text */
-    .module-title {
-        font-family: 'Baloo 2', cursive;
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: #2C3E50 !important;
-        margin-bottom: 1rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        animation: textBounce 3s ease-in-out infinite;
-        transition: all 0.4s ease;
-        position: relative;
-        z-index: 102 !important;
-    }
-    
-    @keyframes textBounce {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-3px); }
-    }
-    
-    .module-card:hover .module-title {
-        color: #E74C3C !important;
-        transform: translateY(-5px) scale(1.05);
-        text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
-    }
-    
-    .module-description {
-        font-family: 'Baloo 2', cursive;
-        font-size: 1.1rem;
-        font-weight: 500;
-        color: #34495E !important;
-        line-height: 1.6;
-        margin-bottom: 0.5rem;
-        text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
-        animation: descriptionWave 4s ease-in-out infinite;
-        transition: all 0.3s ease;
-        position: relative;
-        z-index: 102 !important;
-    }
-    
-    @keyframes descriptionWave {
-        0%, 100% { opacity: 0.9; }
-        50% { opacity: 1; }
-    }
-    
-    .module-card:hover .module-description {
-        color: #2C3E50 !important;
-        transform: translateY(-2px);
-    }
-    
-    /* Super fun bouncy buttons */
+    /* Button centering */
     .stButton {
-    display: flex;
-    justify-content: center;  /* Horizontal center */
-    }
-
-    .stButton > button {
-        width: 85% !important;
-        height: 60px !important;
-        font-family: 'Fredoka', cursive !important;
-        font-weight: 700 !important;
-        font-size: 1.1rem !important;
-        margin-top: -30px !important;
-        border-radius: 30px !important;
-        border: 3px solid rgba(255,255,255,0.8) !important;
-        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
-        text-transform: uppercase !important;
-        letter-spacing: 1px !important;
-        overflow: hidden !important;
-        box-shadow: 
-            0 8px 25px rgba(0,0,0,0.15),
-            inset 0 1px 0 rgba(255,255,255,0.3) !important;
-        z-index: 102 !important;
-        animation: buttonBounce 3s ease-in-out infinite;
-    }
-    
-    @keyframes buttonBounce {
-        0%, 100% { transform: translateY(0px) scale(1); }
-        50% { transform: translateY(-2px) scale(1.01); }
-    }
-    
-    .stButton > button::before {
-        content: '✨';
-        position: absolute;
-        top: 50%;
-        left: -30px;
-        transform: translateY(-50%);
-        font-size: 1.2rem;
-        transition: all 0.6s ease;
-        animation: sparkleMove 2s ease-in-out infinite;
-    }
-    
-    @keyframes sparkleMove {
-        0%, 100% { left: -30px; opacity: 0; }
-        50% { left: 10px; opacity: 1; }
-    }
-    
-    .stButton > button::after {
-        content: '✨';
-        position: absolute;
-        top: 50%;
-        right: -30px;
-        transform: translateY(-50%);
-        font-size: 1.2rem;
-        transition: all 0.6s ease;
-        animation: sparkleMove2 2s ease-in-out infinite;
-    }
-    
-    @keyframes sparkleMove2 {
-        0%, 100% { right: -30px; opacity: 0; }
-        50% { right: 10px; opacity: 1; }
-    }
-    
-    .stButton > button:hover {
-        transform: translateY(-8px) scale(1.05) !important;
-        box-shadow: 
-            0 15px 35px rgba(0,0,0,0.25),
-            inset 0 1px 0 rgba(255,255,255,0.4) !important;
-        animation: buttonParty 0.6s ease-out infinite;
-    }
-    
-    @keyframes buttonParty {
-        0%, 100% { transform: translateY(-8px) scale(1.05) rotate(0deg); }
-        25% { transform: translateY(-8px) scale(1.05) rotate(1deg); }
-        75% { transform: translateY(-8px) scale(1.05) rotate(-1deg); }
-    }
-    
-    .stButton > button:hover::before,
-    .stButton > button:hover::after {
-        animation-duration: 0.5s;
-    }
-    
-    /* Colorful fun buttons */
-    .stButton > button[kind="primary"] {
-        background: linear-gradient(135deg, #27AE60, #2ECC71) !important;
-        color: white !important;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
-        box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
-    }
-    
-    .stButton > button[kind="primary"]:hover {
-        background: linear-gradient(135deg, #2ECC71, #27AE60) !important;
-        box-shadow: 0 15px 35px rgba(39, 174, 96, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
-    }
-    
-    /* Individual button colors based on position */
-    div[data-testid="column"]:nth-child(1) .stButton > button[kind="primary"] {
-        background: linear-gradient(135deg, #27AE60, #2ECC71) !important;
-        box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
-    }
-    
-    div[data-testid="column"]:nth-child(1) .stButton > button[kind="primary"]:hover {
-        background: linear-gradient(135deg, #2ECC71, #27AE60) !important;
-        box-shadow: 0 15px 35px rgba(39, 174, 96, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
-    }
-    
-    div[data-testid="column"]:nth-child(2) .stButton > button[kind="primary"] {
-        background: linear-gradient(135deg, #E74C3C, #C0392B) !important;
-        box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
-    }
-    
-    div[data-testid="column"]:nth-child(2) .stButton > button[kind="primary"]:hover {
-        background: linear-gradient(135deg, #C0392B, #E74C3C) !important;
-        box-shadow: 0 15px 35px rgba(231, 76, 60, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
-    }
-    
-    div[data-testid="column"]:nth-child(3) .stButton > button[kind="primary"] {
-        background: linear-gradient(135deg, #F39C12, #E67E22) !important;
-        box-shadow: 0 8px 25px rgba(243, 156, 18, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
-    }
-    
-    div[data-testid="column"]:nth-child(3) .stButton > button[kind="primary"]:hover {
-        background: linear-gradient(135deg, #E67E22, #F39C12) !important;
-        box-shadow: 0 15px 35px rgba(243, 156, 18, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
-    }
-    
-    div[data-testid="column"]:nth-child(4) .stButton > button[kind="primary"] {
-        background: linear-gradient(135deg, #9B59B6, #8E44AD) !important;
-        box-shadow: 0 8px 25px rgba(155, 89, 182, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
-    }
-    
-    div[data-testid="column"]:nth-child(4) .stButton > button[kind="primary"]:hover {
-        background: linear-gradient(135deg, #8E44AD, #9B59B6) !important;
-        box-shadow: 0 15px 35px rgba(155, 89, 182, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0;
     }
     
     /* Mobile responsiveness */
@@ -582,56 +375,52 @@ col1, col2, col3, col4 = st.columns(4)
 # Module 1 - Growth
 with col1:
     module = MODULES[0]  # Growth
-    st.markdown(f"""
-    <div class="module-card growth-card">
-        <div class="module-icon">{module['icon']}</div>
-        <div class="module-title">{module['title']}</div>
-        <div class="module-description">{module['description']}</div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Invisible button that spans the full width for better UX
-    if st.button("🌱 ENTER THE GARDEN", key="growth", use_container_width=True, type="primary"):
+    # Make the entire card a clickable button
+    if st.button(f"""
+        {module['icon']}
+        **{module['title']}**
+        {module['description']}
+        """, 
+        key="growth", 
+        use_container_width=True,
+        help="Click to enter the Mindset Growth Garden"):
         st.switch_page(module['page'])
 
 # Module 2 - Fight
 with col2:
     module = MODULES[1]  # Fight
-    st.markdown(f"""
-    <div class="module-card fight-card">
-        <div class="module-icon">{module['icon']}</div>
-        <div class="module-title">{module['title']}</div>
-        <div class="module-description">{module['description']}</div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    if st.button("⚔️ START THE BATTLE", key="fight", use_container_width=True, type="primary"):
+    if st.button(f"""
+        {module['icon']}
+        **{module['title']}**
+        {module['description']}
+        """, 
+        key="fight", 
+        use_container_width=True,
+        help="Click to start the Inner Critic Boss Fight"):
         st.switch_page(module['page'])
 
 # Module 3 - Smart
 with col3:
     module = MODULES[2]  # Smart
-    st.markdown(f"""
-    <div class="module-card smart-card">
-        <div class="module-icon">{module['icon']}</div>
-        <div class="module-title">{module['title']}</div>
-        <div class="module-description">{module['description']}</div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    if st.button("🚀 LAUNCH MISSION", key="smart", use_container_width=True, type="primary"):
+    if st.button(f"""
+        {module['icon']}
+        **{module['title']}**
+        {module['description']}
+        """, 
+        key="smart", 
+        use_container_width=True,
+        help="Click to launch Mission: SMART Possible"):
         st.switch_page(module['page'])
 
 # Module 4 - Imagery
 with col4:
     module = MODULES[3]  # Imagery
-    st.markdown(f"""
-    <div class="module-card imagery-card">
-        <div class="module-icon">{module['icon']}</div>
-        <div class="module-title">{module['title']}</div>
-        <div class="module-description">{module['description']}</div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    if st.button("🎬 ENTER THE STAGE", key="imagery", use_container_width=True, type="primary"):
+    if st.button(f"""
+        {module['icon']}
+        **{module['title']}**
+        {module['description']}
+        """, 
+        key="imagery", 
+        use_container_width=True,
+        help="Click to enter the Imagery Rehearsal Stage"):
         st.switch_page(module['page'])

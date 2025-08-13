@@ -71,7 +71,7 @@ st.markdown("""
         overflow-x: hidden;
     }
     
-    /* Loading overlay (unchanged as requested) */
+    /* Loading overlay - simple CSS animation */
     #loading-overlay {
         position: fixed;
         top: 0;
@@ -83,7 +83,13 @@ st.markdown("""
         justify-content: center;
         align-items: center;
         z-index: 9999;
-        animation: loading-sequence 3s ease-in-out forwards;
+        animation: loading-sequence 2.5s ease-in-out forwards;
+    }
+    
+    @keyframes loading-sequence {
+        0% { opacity: 1; }
+        85% { opacity: 1; }
+        100% { opacity: 0; pointer-events: none; }
     }
     
     .loading-content {
@@ -138,12 +144,6 @@ st.markdown("""
         0% { transform: translateX(-100%); }
         50% { transform: translateX(0%); }
         100% { transform: translateX(300%); }
-    }
-    
-    @keyframes loading-sequence {
-        0% { opacity: 1; }
-        85% { opacity: 1; }
-        100% { opacity: 0; pointer-events: none; }
     }
     
     /* Wider container for full-screen fun */
@@ -552,22 +552,17 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---------------------------- LOADING OVERLAY (UNCHANGED) ----------------------------
-if 'home_background_loaded' not in st.session_state:
-    st.session_state.home_background_loaded = False
-
-if not st.session_state.home_background_loaded:
-    st.markdown("""
-    <div id="loading-overlay">
-        <div class="loading-content">
-            <div class="loading-title">🏆 Peak Performance Lab</div>
-            <div class="loading-bar-container">
-                <div class="loading-bar"></div>
-            </div>
-            <div class="loading-subtitle">Loading your training arsenal...</div>
+st.markdown("""
+<div id="loading-overlay">
+    <div class="loading-content">
+        <div class="loading-title">🏆 Peak Performance Lab</div>
+        <div class="loading-bar-container">
+            <div class="loading-bar"></div>
         </div>
+        <div class="loading-subtitle">Loading instructions...</div>
     </div>
-    """, unsafe_allow_html=True)
-    st.session_state.home_background_loaded = True
+</div>
+""", unsafe_allow_html=True)
 
 # ---------------------------- MAIN CONTENT ----------------------------
 st.markdown("""

@@ -661,7 +661,7 @@ st.markdown("""
     font-family: 'Rajdhani', sans-serif;
     color: rgba(255, 255, 255, 0.7);
     margin-top: 15px;
-    font-size: 1.2em;
+    font-size: 1.4em;
 }
 
 @keyframes pulse {

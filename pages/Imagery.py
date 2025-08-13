@@ -683,8 +683,7 @@ def get_movie_styles():
 st.markdown(get_movie_styles(), unsafe_allow_html=True)
 
 # ---------------------------- LOADING OVERLAY ----------------------------
-if not st.session_state.background_loaded:
-    st.markdown("""
+st.markdown("""
     <div id="loading-overlay">
         <div class="loading-content">
             <div class="loading-title">🎬 Setting Up Stage...</div>
@@ -770,8 +769,7 @@ if not st.session_state.background_loaded:
         100% { opacity: 0; pointer-events: none; }
     }
     </style>
-    """, unsafe_allow_html=True)
-    st.session_state.background_loaded = True
+""", unsafe_allow_html=True)    
 
 # ---------------------------- NAVIGATION FUNCTIONS ----------------------------
 def next_step():

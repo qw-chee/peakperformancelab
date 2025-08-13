@@ -58,7 +58,7 @@ button[kind="header"][data-testid="baseButton-header"] {
     position: relative;
 }
 
-/* Loading overlay - Always visible initially */
+/* Loading overlay */
 #loading-overlay {
     position: fixed;
     top: 0;
@@ -70,15 +70,13 @@ button[kind="header"][data-testid="baseButton-header"] {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    opacity: 1;
-    pointer-events: all;
+    animation: loading-sequence 1.5s ease-in-out forwards;
 }
 
-/* Hidden state for overlay */
-#loading-overlay.hidden {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease-out;
+@keyframes loading-sequence {
+    0% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; pointer-events: none; }
 }
 
 .loading-content {
@@ -193,40 +191,23 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# JavaScript to handle overlay timing
+# Simple JavaScript for button styling only
 st.markdown("""
 <script>
-// Wait for DOM to be ready
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-        const overlay = document.getElementById('loading-overlay');
-        if (overlay) {
-            overlay.classList.add('hidden');
-        }
-        
-        // Style buttons
-        const buttons = document.querySelectorAll('button');
-        buttons.forEach(button => {
-            button.style.fontFamily = 'Poetsen One, cursive';
-            button.style.fontSize = '3em';
-            button.style.fontWeight = '700';
-            button.style.color = 'white';
-            button.style.background = '#f05151';
-            button.style.border = '6px solid #353535';
-            button.style.borderRadius = '30px';
-            button.style.padding = '18px 30px';
-            button.style.minWidth = 'fit-content';
-        });
-    }, 1500); // Simple 1.5 second delay
-});
-
-// Fallback in case DOMContentLoaded already fired
 setTimeout(function() {
-    const overlay = document.getElementById('loading-overlay');
-    if (overlay) {
-        overlay.classList.add('hidden');
-    }
-}, 2000);
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.style.fontFamily = 'Poetsen One, cursive';
+        button.style.fontSize = '3em';
+        button.style.fontWeight = '700';
+        button.style.color = 'white';
+        button.style.background = '#f05151';
+        button.style.border = '6px solid #353535';
+        button.style.borderRadius = '30px';
+        button.style.padding = '18px 30px';
+        button.style.minWidth = 'fit-content';
+    });
+}, 500);
 </script>
 """, unsafe_allow_html=True)
 

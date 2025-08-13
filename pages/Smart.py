@@ -599,7 +599,7 @@ st.markdown(get_futuristic_styles(), unsafe_allow_html=True)
 st.markdown("""
 <div id="loading-overlay">
     <div class="loading-content">
-        <div class="loading-title">LAUNCHING MISSILE...</div>
+        <div class="loading-title">LAUNCHING MISSION...</div>
         <div class="loading-bar-container">
             <div class="loading-bar"></div>
         </div>

@@ -193,66 +193,18 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# JavaScript to handle overlay timing and background loading
+# JavaScript to handle overlay timing
 st.markdown("""
 <script>
-(function() {
-    let overlayRemoved = false;
-    const overlay = document.getElementById('loading-overlay');
-    
-    // Function to hide overlay
-    function hideOverlay() {
-        if (overlay && !overlayRemoved) {
+// Wait for DOM to be ready
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        const overlay = document.getElementById('loading-overlay');
+        if (overlay) {
             overlay.classList.add('hidden');
-            overlayRemoved = true;
         }
-    }
-    
-    // Function to check if background image is loaded
-    function checkBackgroundLoaded() {
-        const app = document.querySelector('.stApp');
-        if (!app) return false;
         
-        const computedStyle = window.getComputedStyle(app);
-        const backgroundImage = computedStyle.backgroundImage;
-        
-        if (backgroundImage && backgroundImage !== 'none') {
-            const imageUrl = backgroundImage.replace(/url\(["']?/, '').replace(/["']?\)$/, '');
-            
-            const img = new Image();
-            img.onload = function() {
-                // Background loaded, but still wait for minimum time
-                setTimeout(hideOverlay, Math.max(0, 1500 - (Date.now() - startTime)));
-            };
-            img.onerror = function() {
-                // Background failed to load, hide after minimum time
-                setTimeout(hideOverlay, Math.max(0, 1500 - (Date.now() - startTime)));
-            };
-            img.src = imageUrl;
-            return true;
-        }
-        return false;
-    }
-    
-    const startTime = Date.now();
-    
-    // Minimum 1.5 seconds display time
-    setTimeout(function() {
-        hideOverlay();
-    }, 1500);
-    
-    // Try to check background loading
-    setTimeout(function() {
-        checkBackgroundLoaded();
-    }, 100);
-    
-    // Fallback - ensure overlay is hidden after reasonable time
-    setTimeout(function() {
-        hideOverlay();
-    }, 5000);
-    
-    // Style buttons when DOM is ready
-    setTimeout(function() {
+        // Style buttons
         const buttons = document.querySelectorAll('button');
         buttons.forEach(button => {
             button.style.fontFamily = 'Poetsen One, cursive';
@@ -265,8 +217,16 @@ st.markdown("""
             button.style.padding = '18px 30px';
             button.style.minWidth = 'fit-content';
         });
-    }, 100);
-})();
+    }, 1500); // Simple 1.5 second delay
+});
+
+// Fallback in case DOMContentLoaded already fired
+setTimeout(function() {
+    const overlay = document.getElementById('loading-overlay');
+    if (overlay) {
+        overlay.classList.add('hidden');
+    }
+}, 2000);
 </script>
 """, unsafe_allow_html=True)
 

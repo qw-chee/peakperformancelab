@@ -46,6 +46,7 @@ MODULES = [
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Capriola:wght@300;400;500;600;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:wght@300;400;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
     

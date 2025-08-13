@@ -58,7 +58,7 @@ button[kind="header"][data-testid="baseButton-header"] {
     position: relative;
 }
 
-/* Loading overlay - controlled by JavaScript */
+/* Loading overlay - simple CSS animation */
 #loading-overlay {
     position: fixed;
     top: 0;
@@ -70,13 +70,13 @@ button[kind="header"][data-testid="baseButton-header"] {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    opacity: 1;
-    transition: opacity 0.5s ease-out;
+    animation: loading-sequence 1.5s ease-in-out forwards;
 }
 
-#loading-overlay.hidden {
-    opacity: 0;
-    pointer-events: none;
+@keyframes loading-sequence {
+    0% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { opacity: 0; pointer-events: none; }
 }
 
 .loading-content {
@@ -191,80 +191,23 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# JavaScript to handle overlay timing and background loading
+# Simple JavaScript for button styling only
 st.markdown("""
 <script>
-(function() {
-    const startTime = Date.now();
-    let backgroundLoaded = false;
-    let minTimeReached = false;
-    let overlayHidden = false;
-    
-    const backgroundImageUrl = 'https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Instruction.gif';
-    
-    function hideOverlay() {
-        if (overlayHidden) return;
-        
-        const overlay = document.getElementById('loading-overlay');
-        if (overlay && minTimeReached && backgroundLoaded) {
-            overlay.classList.add('hidden');
-            overlayHidden = true;
-        }
-    }
-    
-    // Check if background image is loaded
-    function checkBackgroundImage() {
-        const img = new Image();
-        img.onload = function() {
-            backgroundLoaded = true;
-            hideOverlay();
-        };
-        img.onerror = function() {
-            // If image fails to load, treat as loaded after 3 seconds
-            setTimeout(function() {
-                backgroundLoaded = true;
-                hideOverlay();
-            }, 3000);
-        };
-        img.src = backgroundImageUrl;
-    }
-    
-    // Minimum 1.5 second timer
-    setTimeout(function() {
-        minTimeReached = true;
-        hideOverlay();
-    }, 1500);
-    
-    // Maximum 5 second failsafe
-    setTimeout(function() {
-        backgroundLoaded = true;
-        minTimeReached = true;
-        const overlay = document.getElementById('loading-overlay');
-        if (overlay && !overlayHidden) {
-            overlay.classList.add('hidden');
-            overlayHidden = true;
-        }
-    }, 5000);
-    
-    // Start checking background image
-    checkBackgroundImage();
-    
-    // Style buttons
-    setTimeout(function() {
-        const buttons = document.querySelectorAll('button');
-        buttons.forEach(button => {
-            button.style.fontFamily = 'Poetsen One, cursive';
-            button.style.fontSize = '3em';
-            button.style.fontWeight = '700';
-            button.style.color = 'white';
-            button.style.background = '#f05151';
-            button.style.border = '6px solid #353535';
-            button.style.borderRadius = '30px';
-            button.style.padding = '18px 30px';
-            button.style.minWidth = 'fit-content';
-        });
-    }, 500);
-})();
+setTimeout(function() {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.style.fontFamily = 'Poetsen One, cursive';
+        button.style.fontSize = '3em';
+        button.style.fontWeight = '700';
+        button.style.color = 'white';
+        button.style.background = '#f05151';
+        button.style.border = '6px solid #353535';
+        button.style.borderRadius = '30px';
+        button.style.padding = '18px 30px';
+        button.style.minWidth = 'fit-content';
+    });
+}, 500);
 </script>
 """, unsafe_allow_html=True)
 

@@ -469,50 +469,55 @@ st.markdown("""
     }
     
     /* Colorful fun buttons */
-    .growth-btn button {
+    .stButton > button[kind="primary"] {
         background: linear-gradient(135deg, #27AE60, #2ECC71) !important;
         color: white !important;
         text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
         box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
     }
     
-    .growth-btn button:hover {
+    .stButton > button[kind="primary"]:hover {
         background: linear-gradient(135deg, #2ECC71, #27AE60) !important;
         box-shadow: 0 15px 35px rgba(39, 174, 96, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
     }
     
-    .fight-btn button {
+    /* Individual button colors based on position */
+    div[data-testid="column"]:nth-child(1) .stButton > button[kind="primary"] {
+        background: linear-gradient(135deg, #27AE60, #2ECC71) !important;
+        box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
+    }
+    
+    div[data-testid="column"]:nth-child(1) .stButton > button[kind="primary"]:hover {
+        background: linear-gradient(135deg, #2ECC71, #27AE60) !important;
+        box-shadow: 0 15px 35px rgba(39, 174, 96, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
+    }
+    
+    div[data-testid="column"]:nth-child(2) .stButton > button[kind="primary"] {
         background: linear-gradient(135deg, #E74C3C, #C0392B) !important;
-        color: white !important;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
         box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
     }
     
-    .fight-btn button:hover {
+    div[data-testid="column"]:nth-child(2) .stButton > button[kind="primary"]:hover {
         background: linear-gradient(135deg, #C0392B, #E74C3C) !important;
         box-shadow: 0 15px 35px rgba(231, 76, 60, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
     }
     
-    .smart-btn button {
+    div[data-testid="column"]:nth-child(3) .stButton > button[kind="primary"] {
         background: linear-gradient(135deg, #F39C12, #E67E22) !important;
-        color: white !important;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
         box-shadow: 0 8px 25px rgba(243, 156, 18, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
     }
     
-    .smart-btn button:hover {
+    div[data-testid="column"]:nth-child(3) .stButton > button[kind="primary"]:hover {
         background: linear-gradient(135deg, #E67E22, #F39C12) !important;
         box-shadow: 0 15px 35px rgba(243, 156, 18, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
     }
     
-    .imagery-btn button {
+    div[data-testid="column"]:nth-child(4) .stButton > button[kind="primary"] {
         background: linear-gradient(135deg, #9B59B6, #8E44AD) !important;
-        color: white !important;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
         box-shadow: 0 8px 25px rgba(155, 89, 182, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
     }
     
-    .imagery-btn button:hover {
+    div[data-testid="column"]:nth-child(4) .stButton > button[kind="primary"]:hover {
         background: linear-gradient(135deg, #8E44AD, #9B59B6) !important;
         box-shadow: 0 15px 35px rgba(155, 89, 182, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
     }
@@ -585,10 +590,9 @@ with col1:
     </div>
     """, unsafe_allow_html=True)
     
-    st.markdown('<div class="growth-btn">', unsafe_allow_html=True)
-    if st.button("🌱 ENTER THE GARDEN", key="growth", use_container_width=True):
+    # Invisible button that spans the full width for better UX
+    if st.button("🌱 ENTER THE GARDEN", key="growth", use_container_width=True, type="primary"):
         st.switch_page(module['page'])
-    st.markdown('</div>', unsafe_allow_html=True)
 
 # Module 2 - Fight
 with col2:
@@ -601,10 +605,8 @@ with col2:
     </div>
     """, unsafe_allow_html=True)
     
-    st.markdown('<div class="fight-btn">', unsafe_allow_html=True)
-    if st.button("⚔️ START THE BATTLE", key="fight", use_container_width=True):
+    if st.button("⚔️ START THE BATTLE", key="fight", use_container_width=True, type="primary"):
         st.switch_page(module['page'])
-    st.markdown('</div>', unsafe_allow_html=True)
 
 # Module 3 - Smart
 with col3:
@@ -617,10 +619,8 @@ with col3:
     </div>
     """, unsafe_allow_html=True)
     
-    st.markdown('<div class="smart-btn">', unsafe_allow_html=True)
-    if st.button("🚀 LAUNCH MISSION", key="smart", use_container_width=True):
+    if st.button("🚀 LAUNCH MISSION", key="smart", use_container_width=True, type="primary"):
         st.switch_page(module['page'])
-    st.markdown('</div>', unsafe_allow_html=True)
 
 # Module 4 - Imagery
 with col4:
@@ -633,7 +633,5 @@ with col4:
     </div>
     """, unsafe_allow_html=True)
     
-    st.markdown('<div class="imagery-btn">', unsafe_allow_html=True)
-    if st.button("🎬 ENTER THE STAGE", key="imagery", use_container_width=True):
+    if st.button("🎬 ENTER THE STAGE", key="imagery", use_container_width=True, type="primary"):
         st.switch_page(module['page'])
-    st.markdown('</div>', unsafe_allow_html=True)

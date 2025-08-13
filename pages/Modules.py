@@ -62,6 +62,8 @@ st.markdown("""
     
     /* Fun colorful background with the provided image */
     .stApp {
+        transform: scale(clamp(0.7, 1vw, 1.2));
+        transform-origin: top center;
         background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Modules.jpg');
         background-size: cover;
         background-position: center;

@@ -186,7 +186,7 @@ st.markdown("""
         <div class="loading-bar-container">
             <div class="loading-bar"></div>
         </div>
-        <div class="loading-subtitle">Loading instructions...</div>
+        <div class="loading-subtitle">Onboarding your mindset...</div>
     </div>
 </div>
 """, unsafe_allow_html=True)

@@ -213,7 +213,7 @@ setTimeout(function() {
 
 # ---------------------------- MAIN CONTENT ----------------------------
 # Add some spacing to position the button
-st.markdown("<div style='height: 60vh;'></div>", unsafe_allow_html=True)
+st.markdown("<div style='height: 58vh;'></div>", unsafe_allow_html=True)
 
 # Navigation button
 col1, col2, col3 = st.columns([1, 2, 1])

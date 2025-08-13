@@ -603,7 +603,7 @@ st.markdown("""
         <div class="loading-bar-container">
             <div class="loading-bar"></div>
         </div>
-        <div class="loading-subtitle">Initializing SMART Protocol...</div>
+        <div class="loading-subtitle">Initializing SMART Protocol</div>
     </div>
 </div>
 

@@ -560,7 +560,7 @@ with col3:
     st.markdown('<div class="smart-btn">', unsafe_allow_html=True)
     if st.button("🚀 LAUNCH MISSION", key="smart", use_container_width=True):
         st.switch_page(module['page'])
-    st.markdown('</div>', unsafe_container_width=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # Module 4 - Imagery
 with col4:

@@ -42,7 +42,7 @@ MODULES = [
     }
 ]
 
-# ---------------------------- FUN PLAYFUL STYLES ----------------------------
+# ---------------------------- FULLY ADAPTIVE STYLES ----------------------------
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
@@ -99,17 +99,17 @@ st.markdown("""
     
     .loading-title {
         font-family: 'Capriola', sans-serif;
-        font-size: 3em;
+        font-size: clamp(2rem, 5vw, 4rem);
         font-weight: 700;
         color: white;
-        margin-bottom: 20px;
+        margin-bottom: clamp(10px, 2vw, 30px);
         text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         animation: title-glow 2s ease-in-out infinite;
     }
     
     .loading-bar-container {
-        width: 300px;
-        height: 8px;
+        width: clamp(200px, 40vw, 400px);
+        height: clamp(6px, 1vw, 12px);
         background: rgba(255, 255, 255, 0.3);
         border-radius: 4px;
         overflow: hidden;
@@ -129,9 +129,9 @@ st.markdown("""
     
     .loading-subtitle {
         color: rgba(255, 255, 255, 0.9);
-        margin-top: 15px;
+        margin-top: clamp(10px, 2vw, 20px);
         font-family: 'Segoe UI' !important;
-        font-size: 1.3em;
+        font-size: clamp(1rem, 2vw, 1.6rem);
         font-weight: 500;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
@@ -149,22 +149,20 @@ st.markdown("""
     
     /* Wider container for full-screen fun */
     .main .block-container {
-        padding: 2rem 1rem !important;
+        padding: clamp(1rem, 3vw, 3rem) clamp(0.5rem, 2vw, 2rem) !important;
         max-width: none !important;
         position: relative !important;
         z-index: 100 !important;
-        transform: scale(clamp(0.7, 1vw, 1.2));
-        transform-origin: top center;
     }
-       
-    /* Wiggling subtitle */
+    
+    /* Adaptive wiggling subtitle */
     .main-subtitle {
         font-family: 'Sour Gummy', cursive;
-        font-size: 1.8rem;
+        font-size: clamp(1rem, 2.5vw, 2.2rem);
         font-weight: 600;
         color: #34495E !important;
         text-align: center;
-        margin-bottom: 1rem;
+        margin-bottom: clamp(0.5rem, 1.5vw, 1.5rem);
         text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
         animation: wiggleSubtitle 4s ease-in-out infinite;
         position: relative;
@@ -178,19 +176,19 @@ st.markdown("""
         75% { transform: translateX(1px) rotate(0.3deg); }
     }
     
-    /* Super fun bouncing cards */
+    /* Adaptive bouncing cards */
     .module-card {
         background: rgba(255, 255, 255, 0.9) !important;
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        border-radius: 30px;
-        padding: 1.6rem;
-        margin: 2rem;
+        border-radius: clamp(20px, 3vw, 40px);
+        padding: clamp(1rem, 2.5vw, 2rem);
+        margin: clamp(1rem, 2vw, 2.5rem);
         box-shadow: 
             0 15px 35px rgba(0,0,0,0.1),
             0 5px 15px rgba(0,0,0,0.05),
             inset 0 1px 0 rgba(255,255,255,0.6);
-        border: 3px solid;
+        border: clamp(2px, 0.3vw, 4px) solid;
         transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         text-align: center;
         position: relative;
@@ -205,13 +203,13 @@ st.markdown("""
             transform: translateY(0px) rotate(0deg) scale(1);
         }
         25% { 
-            transform: translateY(-20px) rotate(1deg) scale(1.02);
+            transform: translateY(clamp(-15px, -2vw, -25px)) rotate(1deg) scale(1.02);
         }
         50% { 
-            transform: translateY(-10px) rotate(-0.5deg) scale(0.98);
+            transform: translateY(clamp(-8px, -1vw, -12px)) rotate(-0.5deg) scale(0.98);
         }
         75% { 
-            transform: translateY(-25px) rotate(1.2deg) scale(1.01);
+            transform: translateY(clamp(-20px, -2.5vw, -30px)) rotate(1.2deg) scale(1.01);
         }
     }
     
@@ -240,14 +238,14 @@ st.markdown("""
     .module-card::before {
         content: '';
         position: absolute;
-        top: -5px;
-        left: -5px;
-        right: -5px;
-        bottom: -5px;
+        top: clamp(-3px, -0.5vw, -6px);
+        left: clamp(-3px, -0.5vw, -6px);
+        right: clamp(-3px, -0.5vw, -6px);
+        bottom: clamp(-3px, -0.5vw, -6px);
         background: linear-gradient(45deg, 
             #FF6B6B, #4ECDC4, #45B7D1, #96CEB4, #FECA57, #FF9F43, #EE5A24, #0F3460);
         background-size: 400% 400%;
-        border-radius: 35px;
+        border-radius: clamp(25px, 3.5vw, 45px);
         z-index: -1;
         animation: rainbowShimmer 3s ease-in-out infinite;
         opacity: 0;
@@ -259,9 +257,9 @@ st.markdown("""
         50% { background-position: 100% 50%; }
     }
     
-    /* Super bouncy hover effects */
+    /* Adaptive hover effects */
     .module-card:hover {
-        transform: translateY(-30px) scale(1.08) rotate(3deg) !important;
+        transform: translateY(clamp(-20px, -3vw, -40px)) scale(clamp(1.03, 1.05, 1.1)) rotate(3deg) !important;
         box-shadow: 
             0 25px 50px rgba(0,0,0,0.2),
             0 10px 25px rgba(0,0,0,0.1),
@@ -273,10 +271,10 @@ st.markdown("""
         opacity: 0.3;
     }
     
-    /* Bouncing dancing icons */
+    /* Adaptive dancing icons */
     .module-icon {
-        font-size: 4.5rem;
-        margin-bottom: 1.5rem;
+        font-size: clamp(3rem, 6vw, 6rem);
+        margin-bottom: clamp(1rem, 2vw, 2rem);
         display: inline-block;
         position: relative;
         animation: iconDance 2s ease-in-out infinite;
@@ -290,18 +288,18 @@ st.markdown("""
             transform: translateY(0px) scale(1) rotate(0deg); 
         }
         25% { 
-            transform: translateY(-15px) scale(1.1) rotate(-5deg); 
+            transform: translateY(clamp(-10px, -1.5vw, -20px)) scale(clamp(1.05, 1.08, 1.15)) rotate(-5deg); 
         }
         50% { 
-            transform: translateY(-8px) scale(0.95) rotate(5deg); 
+            transform: translateY(clamp(-5px, -1vw, -12px)) scale(clamp(0.95, 0.95, 0.98)) rotate(5deg); 
         }
         75% { 
-            transform: translateY(-20px) scale(1.05) rotate(-3deg); 
+            transform: translateY(clamp(-15px, -2vw, -25px)) scale(clamp(1.02, 1.05, 1.08)) rotate(-3deg); 
         }
     }
     
     .module-card:hover .module-icon {
-        transform: scale(1.3) rotateY(360deg) !important;
+        transform: scale(clamp(1.1, 1.2, 1.4)) rotateY(360deg) !important;
         animation: iconParty 0.8s ease-out, iconDance 2s ease-in-out infinite 0.8s;
     }
     
@@ -310,16 +308,16 @@ st.markdown("""
         25% { transform: scale(1.1) rotateY(90deg) rotateZ(10deg); }
         50% { transform: scale(1.2) rotateY(180deg) rotateZ(-10deg); }
         75% { transform: scale(1.1) rotateY(270deg) rotateZ(5deg); }
-        100% { transform: scale(1.3) rotateY(360deg) rotateZ(0deg); }
+        100% { transform: scale(clamp(1.1, 1.2, 1.4)) rotateY(360deg) rotateZ(0deg); }
     }
     
-    /* Fun bouncy text */
+    /* Adaptive bouncy text */
     .module-title {
         font-family: 'Baloo 2', cursive;
-        font-size: 1.8rem;
+        font-size: clamp(1.1rem, 2.2vw, 2.2rem);
         font-weight: 700;
         color: #2C3E50 !important;
-        margin-bottom: 1rem;
+        margin-bottom: clamp(0.8rem, 1.5vw, 1.5rem);
         text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         animation: textBounce 3s ease-in-out infinite;
         transition: all 0.4s ease;
@@ -329,22 +327,22 @@ st.markdown("""
     
     @keyframes textBounce {
         0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-3px); }
+        50% { transform: translateY(clamp(-2px, -0.5vw, -5px)); }
     }
     
     .module-card:hover .module-title {
         color: #E74C3C !important;
-        transform: translateY(-5px) scale(1.05);
+        transform: translateY(clamp(-3px, -0.8vw, -8px)) scale(clamp(1.02, 1.05, 1.08));
         text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
     }
     
     .module-description {
         font-family: 'Baloo 2', cursive;
-        font-size: 1.1rem;
+        font-size: clamp(0.9rem, 1.8vw, 1.4rem);
         font-weight: 500;
         color: #34495E !important;
         line-height: 1.6;
-        margin-bottom: 0.5rem;
+        margin-bottom: clamp(0.3rem, 1vw, 0.8rem);
         text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         animation: descriptionWave 4s ease-in-out infinite;
         transition: all 0.3s ease;
@@ -359,27 +357,27 @@ st.markdown("""
     
     .module-card:hover .module-description {
         color: #2C3E50 !important;
-        transform: translateY(-2px);
+        transform: translateY(clamp(-1px, -0.3vw, -3px));
     }
     
-    /* Super fun bouncy buttons */
+    /* Adaptive bouncy buttons */
     .stButton {
-    display: flex;
-    justify-content: center;  /* Horizontal center */
+        display: flex;
+        justify-content: center;
     }
 
     .stButton > button {
         width: 85% !important;
-        height: 60px !important;
+        height: clamp(45px, 8vw, 75px) !important;
         font-family: 'Fredoka', cursive !important;
         font-weight: 700 !important;
-        font-size: 1.1rem !important;
-        margin-top: -30px !important;
-        border-radius: 30px !important;
-        border: 3px solid rgba(255,255,255,0.8) !important;
+        font-size: clamp(0.8rem, 1.8vw, 1.4rem) !important;
+        margin-top: clamp(-20px, -3vw, -40px) !important;
+        border-radius: clamp(20px, 4vw, 40px) !important;
+        border: clamp(2px, 0.3vw, 4px) solid rgba(255,255,255,0.8) !important;
         transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
         text-transform: uppercase !important;
-        letter-spacing: 1px !important;
+        letter-spacing: clamp(0.5px, 0.1vw, 2px) !important;
         overflow: hidden !important;
         box-shadow: 
             0 8px 25px rgba(0,0,0,0.15),
@@ -390,43 +388,43 @@ st.markdown("""
     
     @keyframes buttonBounce {
         0%, 100% { transform: translateY(0px) scale(1); }
-        50% { transform: translateY(-2px) scale(1.01); }
+        50% { transform: translateY(clamp(-1px, -0.3vw, -3px)) scale(clamp(1.005, 1.01, 1.02)); }
     }
     
     .stButton > button::before {
         content: '✨';
         position: absolute;
         top: 50%;
-        left: -30px;
+        left: clamp(-25px, -3vw, -40px);
         transform: translateY(-50%);
-        font-size: 1.2rem;
+        font-size: clamp(1rem, 2vw, 1.5rem);
         transition: all 0.6s ease;
         animation: sparkleMove 2s ease-in-out infinite;
     }
     
     @keyframes sparkleMove {
-        0%, 100% { left: -30px; opacity: 0; }
-        50% { left: 10px; opacity: 1; }
+        0%, 100% { left: clamp(-25px, -3vw, -40px); opacity: 0; }
+        50% { left: clamp(8px, 1.5vw, 15px); opacity: 1; }
     }
     
     .stButton > button::after {
         content: '✨';
         position: absolute;
         top: 50%;
-        right: -30px;
+        right: clamp(-25px, -3vw, -40px);
         transform: translateY(-50%);
-        font-size: 1.2rem;
+        font-size: clamp(1rem, 2vw, 1.5rem);
         transition: all 0.6s ease;
         animation: sparkleMove2 2s ease-in-out infinite;
     }
     
     @keyframes sparkleMove2 {
-        0%, 100% { right: -30px; opacity: 0; }
-        50% { right: 10px; opacity: 1; }
+        0%, 100% { right: clamp(-25px, -3vw, -40px); opacity: 0; }
+        50% { right: clamp(8px, 1.5vw, 15px); opacity: 1; }
     }
     
     .stButton > button:hover {
-        transform: translateY(-8px) scale(1.05) !important;
+        transform: translateY(clamp(-5px, -1vw, -12px)) scale(clamp(1.02, 1.05, 1.08)) !important;
         box-shadow: 
             0 15px 35px rgba(0,0,0,0.25),
             inset 0 1px 0 rgba(255,255,255,0.4) !important;
@@ -434,9 +432,9 @@ st.markdown("""
     }
     
     @keyframes buttonParty {
-        0%, 100% { transform: translateY(-8px) scale(1.05) rotate(0deg); }
-        25% { transform: translateY(-8px) scale(1.05) rotate(1deg); }
-        75% { transform: translateY(-8px) scale(1.05) rotate(-1deg); }
+        0%, 100% { transform: translateY(clamp(-5px, -1vw, -12px)) scale(clamp(1.02, 1.05, 1.08)) rotate(0deg); }
+        25% { transform: translateY(clamp(-5px, -1vw, -12px)) scale(clamp(1.02, 1.05, 1.08)) rotate(1deg); }
+        75% { transform: translateY(clamp(-5px, -1vw, -12px)) scale(clamp(1.02, 1.05, 1.08)) rotate(-1deg); }
     }
     
     .stButton > button:hover::before,
@@ -492,44 +490,10 @@ st.markdown("""
         background: linear-gradient(135deg, #8E44AD, #9B59B6) !important;
         box-shadow: 0 15px 35px rgba(155, 89, 182, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
     }
-    
-    /* Mobile responsiveness */
-    @media (max-width: 768px) {
-        .main-title {
-            font-size: 3rem;
-        }
-        
-        .module-icon {
-            font-size: 3.5rem;
-        }
-        
-        .module-title {
-            font-size: 1.6rem;
-        }
-        
-        .module-card {
-            padding: 1.5rem;
-            margin: 1rem 0.5rem;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .main-title {
-            font-size: 2.5rem;
-        }
-        
-        .main-subtitle {
-            font-size: 1.2rem;
-        }
-        
-        .module-card {
-            margin: 1rem 0;
-        }
-    }
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------------------- LOADING OVERLAY (UNCHANGED) ----------------------------
+# ---------------------------- LOADING OVERLAY ----------------------------
 st.markdown("""
 <div id="loading-overlay">
     <div class="loading-content">
@@ -596,7 +560,7 @@ with col3:
     st.markdown('<div class="smart-btn">', unsafe_allow_html=True)
     if st.button("🚀 LAUNCH MISSION", key="smart", use_container_width=True):
         st.switch_page(module['page'])
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_container_width=True)
 
 # Module 4 - Imagery
 with col4:

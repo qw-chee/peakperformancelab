@@ -230,11 +230,8 @@ Comment: [Feedback must match the verdict. Be encouraging only for "Strong and p
         st.error(f"Error: {e}")
         st.session_state.current_feedback = "Error evaluating response."
 
-# ---------------------------- GAME FLOW ----------------------------
-
-# Show loading screen briefly on first load
-if not st.session_state.background_loaded:
-    st.markdown("""
+# ---------------------------- LOADING OVERLAY ----------------------------
+st.markdown("""
     <div id="loading-overlay">
         <div class="loading-content">
             <div class="loading-title">⚔️ Inner Critic Boss Fight</div>
@@ -318,10 +315,7 @@ if not st.session_state.background_loaded:
         100% { opacity: 0; pointer-events: none; }
     }
     </style>
-    """, unsafe_allow_html=True)
-    
-    # Set the background as loaded after showing the loading screen
-    st.session_state.background_loaded = True
+""", unsafe_allow_html=True)
 
 st.markdown("<div style='height: 12vh;'></div>", unsafe_allow_html=True)
 
@@ -450,6 +444,7 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

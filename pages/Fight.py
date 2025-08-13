@@ -294,7 +294,7 @@ st.markdown("""
         font-family: 'Quantico', monospace;
         color: rgba(255, 255, 255, 0.9);
         margin-top: 15px;
-        font-size: 1.2em;
+        font-size: 1.3em;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
     }
 
@@ -444,6 +444,7 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

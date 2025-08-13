@@ -393,7 +393,7 @@ st.markdown("""
     }
 
     .stButton > button {
-        width: 80% !important;
+        width: 85% !important;
         height: 60px !important;
         font-family: 'Fredoka', cursive !important;
         font-weight: 700 !important;

@@ -542,7 +542,7 @@ st.markdown("""
         justify-content: center;
         align-items: center;
         z-index: 9999;
-        animation: loading-sequence 3s ease-in-out forwards;
+        animation: loading-sequence 5s ease-in-out forwards;
     }
 
     .loading-content {
@@ -759,3 +759,4 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
             st.rerun()
 
 st.markdown("<div style='height: 4vh;'></div>", unsafe_allow_html=True)
+

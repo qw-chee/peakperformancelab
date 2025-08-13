@@ -206,7 +206,7 @@ if not st.session_state.home_background_loaded:
             <div class="loading-bar-container">
                 <div class="loading-bar"></div>
             </div>
-            <div class="loading-subtitle">Preparing your performance journey...</div>
+            <div class="loading-subtitle">Launching your performance journey...</div>
         </div>
     </div>
     """, unsafe_allow_html=True)

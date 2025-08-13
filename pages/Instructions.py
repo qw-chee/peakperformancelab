@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 
 st.set_page_config(
     page_title="Peak Performance Lab", 
@@ -57,7 +58,7 @@ button[kind="header"][data-testid="baseButton-header"] {
     position: relative;
 }
 
-/* Loading overlay */
+/* Loading overlay - Always visible initially */
 #loading-overlay {
     position: fixed;
     top: 0;
@@ -69,7 +70,15 @@ button[kind="header"][data-testid="baseButton-header"] {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    animation: loading-sequence 3s ease-in-out forwards;
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Hidden state for overlay */
+#loading-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-out;
 }
 
 .loading-content {
@@ -126,12 +135,6 @@ button[kind="header"][data-testid="baseButton-header"] {
     100% { transform: translateX(300%); }
 }
 
-@keyframes loading-sequence {
-    0% { opacity: 1; }
-    85% { opacity: 1; }
-    100% { opacity: 0; pointer-events: none; }
-}
-
 /* More specific button styling with higher specificity */
 .stApp .main .block-container div[data-testid="stButton"] {
     display: flex !important;
@@ -177,40 +180,95 @@ div[data-testid="stButton"] button:hover {
 # Apply styles
 st.markdown(page_styles, unsafe_allow_html=True)
 
-# Force styles with JavaScript (additional fix)
+# ---------------------------- LOADING OVERLAY (Always loads first) ----------------------------
 st.markdown("""
-<script>
-setTimeout(function() {
-    const buttons = document.querySelectorAll('button');
-    buttons.forEach(button => {
-        button.style.fontFamily = 'Poetsen One, cursive';
-        button.style.fontSize = '3em';
-        button.style.fontWeight = '700';
-        button.style.color = 'white';
-        button.style.background = '#f05151';
-        button.style.border = '6px solid #353535';
-        button.style.borderRadius = '30px';
-        button.style.padding = '18px 30px';
-        button.style.minWidth = 'fit-content';
-    });
-}, 100);
-</script>
+<div id="loading-overlay">
+    <div class="loading-content">
+        <div class="loading-title">🏆 Peak Performance Lab</div>
+        <div class="loading-bar-container">
+            <div class="loading-bar"></div>
+        </div>
+        <div class="loading-subtitle">Loading instructions...</div>
+    </div>
+</div>
 """, unsafe_allow_html=True)
 
-# ---------------------------- LOADING OVERLAY ----------------------------
-if not st.session_state.home_background_loaded:
-    st.markdown("""
-    <div id="loading-overlay">
-        <div class="loading-content">
-            <div class="loading-title">🏆 Peak Performance Lab</div>
-            <div class="loading-bar-container">
-                <div class="loading-bar"></div>
-            </div>
-            <div class="loading-subtitle">Loading instructions...</div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    st.session_state.home_background_loaded = True
+# JavaScript to handle overlay timing and background loading
+st.markdown("""
+<script>
+(function() {
+    let overlayRemoved = false;
+    const overlay = document.getElementById('loading-overlay');
+    
+    // Function to hide overlay
+    function hideOverlay() {
+        if (overlay && !overlayRemoved) {
+            overlay.classList.add('hidden');
+            overlayRemoved = true;
+        }
+    }
+    
+    // Function to check if background image is loaded
+    function checkBackgroundLoaded() {
+        const app = document.querySelector('.stApp');
+        if (!app) return false;
+        
+        const computedStyle = window.getComputedStyle(app);
+        const backgroundImage = computedStyle.backgroundImage;
+        
+        if (backgroundImage && backgroundImage !== 'none') {
+            const imageUrl = backgroundImage.replace(/url\(["']?/, '').replace(/["']?\)$/, '');
+            
+            const img = new Image();
+            img.onload = function() {
+                // Background loaded, but still wait for minimum time
+                setTimeout(hideOverlay, Math.max(0, 1500 - (Date.now() - startTime)));
+            };
+            img.onerror = function() {
+                // Background failed to load, hide after minimum time
+                setTimeout(hideOverlay, Math.max(0, 1500 - (Date.now() - startTime)));
+            };
+            img.src = imageUrl;
+            return true;
+        }
+        return false;
+    }
+    
+    const startTime = Date.now();
+    
+    // Minimum 1.5 seconds display time
+    setTimeout(function() {
+        hideOverlay();
+    }, 1500);
+    
+    // Try to check background loading
+    setTimeout(function() {
+        checkBackgroundLoaded();
+    }, 100);
+    
+    // Fallback - ensure overlay is hidden after reasonable time
+    setTimeout(function() {
+        hideOverlay();
+    }, 5000);
+    
+    // Style buttons when DOM is ready
+    setTimeout(function() {
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => {
+            button.style.fontFamily = 'Poetsen One, cursive';
+            button.style.fontSize = '3em';
+            button.style.fontWeight = '700';
+            button.style.color = 'white';
+            button.style.background = '#f05151';
+            button.style.border = '6px solid #353535';
+            button.style.borderRadius = '30px';
+            button.style.padding = '18px 30px';
+            button.style.minWidth = 'fit-content';
+        });
+    }, 100);
+})();
+</script>
+""", unsafe_allow_html=True)
 
 # ---------------------------- MAIN CONTENT ----------------------------
 # Add some spacing to position the button

@@ -234,7 +234,7 @@ Comment: [Feedback must match the verdict. Be encouraging only for "Strong and p
 st.markdown("""
     <div id="loading-overlay">
         <div class="loading-content">
-            <div class="loading-title">Summoning the Boss...</div>
+            <div class="loading-title">⚔️ Summoning The Boss...</div>
             <div class="loading-bar-container">
                 <div class="loading-bar"></div>
             </div>
@@ -254,7 +254,7 @@ st.markdown("""
         justify-content: center;
         align-items: center;
         z-index: 9999;
-        animation: loading-sequence 3s ease-in-out forwards;
+        animation: loading-sequence 4s ease-in-out forwards;
     }
 
     .loading-content {
@@ -444,6 +444,7 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

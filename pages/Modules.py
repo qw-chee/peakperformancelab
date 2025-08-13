@@ -62,8 +62,6 @@ st.markdown("""
     
     /* Fun colorful background with the provided image */
     .stApp {
-        transform: scale(clamp(0.7, 1vw, 1.2));
-        transform-origin: top center;
         background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Modules.jpg');
         background-size: cover;
         background-position: center;
@@ -72,6 +70,8 @@ st.markdown("""
         min-height: 100vh;
         position: relative;
         overflow-x: hidden;
+        transform: scale(clamp(0.7, 1vw, 1.2));
+        transform-origin: top center;
     }
     
     /* Loading overlay - simple CSS animation */
@@ -156,33 +156,7 @@ st.markdown("""
         position: relative !important;
         z-index: 100 !important;
     }
-    
-    /* Floating fun particles */
-    .stApp::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: 
-            radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
-            radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 25%),
-            radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.12) 0%, transparent 30%),
-            radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.06) 0%, transparent 20%),
-            radial-gradient(circle at 20% 90%, rgba(255, 255, 255, 0.09) 0%, transparent 25%);
-        animation: funParticleFloat 20s ease-in-out infinite;
-        pointer-events: none;
-        z-index: 1 !important;
-    }
-    
-    @keyframes funParticleFloat {
-        0%, 100% { transform: translate(0px, 0px) scale(1) rotate(0deg); opacity: 0.6; }
-        25% { transform: translate(30px, -20px) scale(1.1) rotate(90deg); opacity: 0.8; }
-        50% { transform: translate(-20px, 15px) scale(0.9) rotate(180deg); opacity: 0.5; }
-        75% { transform: translate(40px, 10px) scale(1.05) rotate(270deg); opacity: 0.7; }
-    }
-    
+       
     /* Wiggling subtitle */
     .main-subtitle {
         font-family: 'Sour Gummy', cursive;

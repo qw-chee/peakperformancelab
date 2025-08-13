@@ -368,7 +368,7 @@ st.markdown("""
         font-weight: 500;
         color: #34495E !important;
         line-height: 1.6;
-        margin-bottom: 2rem;
+        margin-bottom: 0.5rem;
         text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         animation: descriptionWave 4s ease-in-out infinite;
         transition: all 0.3s ease;

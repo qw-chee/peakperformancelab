@@ -234,11 +234,11 @@ Comment: [Feedback must match the verdict. Be encouraging only for "Strong and p
 st.markdown("""
     <div id="loading-overlay">
         <div class="loading-content">
-            <div class="loading-title">⚔️ Inner Critic Boss Fight</div>
+            <div class="loading-title">Summoning the Boss...</div>
             <div class="loading-bar-container">
                 <div class="loading-bar"></div>
             </div>
-            <div class="loading-subtitle">Preparing your mental battlefield...</div>
+            <div class="loading-subtitle">Preparing your mental battlefield</div>
         </div>
     </div>
 
@@ -444,6 +444,7 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

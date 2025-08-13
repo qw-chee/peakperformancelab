@@ -519,8 +519,7 @@ def reset_quiz(to_start=False):
     st.session_state.generating_feedback = False
 
 # ---------------------------- LOADING OVERLAY ----------------------------
-if not st.session_state.background_loaded:
-    st.markdown("""
+st.markdown("""
     <div id="loading-overlay">
         <div class="loading-content">
             <div class="loading-title">🌱 Planting Your Garden...</div>
@@ -607,7 +606,6 @@ if not st.session_state.background_loaded:
     }
     </style>
     """, unsafe_allow_html=True)
-    st.session_state.background_loaded = True
 
 # Add spacing
 st.markdown("<div style='height: 4vh;'></div>", unsafe_allow_html=True)
@@ -761,6 +759,3 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
             st.rerun()
 
 st.markdown("<div style='height: 4vh;'></div>", unsafe_allow_html=True)
-
-
-

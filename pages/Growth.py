@@ -754,10 +754,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
             st.rerun()
     
     with col2:
-        if st.button("🏡 Return to Garden Gate", use_container_width=True):
-            reset_quiz()
-            st.rerun()
+        if st.button("🏡 Return to Home", use_container_width=True):
+            st.switch_page("pages/Modules.py")
 
 st.markdown("<div style='height: 4vh;'></div>", unsafe_allow_html=True)
-
-

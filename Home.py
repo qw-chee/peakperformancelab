@@ -198,7 +198,7 @@ page_styles = """
 
     /* Responsive spacing for button positioning */
     .button-spacing {
-        height: clamp(40vh, 60vh, 65vh) !important;
+        height: clamp(50vh, 65vh, 70vh) !important;
     }
 
     /* Force font loading for desktop only */

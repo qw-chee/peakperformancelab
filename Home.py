@@ -19,30 +19,6 @@ page_styles = """
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Capriola&display=swap');
 
-/* Block tablet and mobile devices */
-@media screen and (max-width: 1023px) {
-    .stApp {
-        display: none !important;
-    }
-    body::before {
-        content: "This application is designed for desktop and laptop screens only.";
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: linear-gradient(135deg, #64ccba 0%, #41c0a9 50%, #1da088 100%);
-        color: white;
-        font-size: 1.5rem;
-        text-align: center;
-        z-index: 99999;
-        font-family: 'Capriola', sans-serif;
-    }
-}
-
 /* Desktop/Laptop Only Styles */
 @media screen and (min-width: 1024px) {
     /* Hide Streamlit default elements */
@@ -105,7 +81,7 @@ page_styles = """
     /* Responsive title sizing */
     .loading-title {
         font-family: 'Capriola', sans-serif;
-        font-size: clamp(2rem, 4vw, 4rem);
+        font-size: clamp(1.5rem, 4vw, 3rem);
         font-weight: 700;
         color: white;
         margin-bottom: clamp(15px, 2vh, 25px);
@@ -139,7 +115,7 @@ page_styles = """
         color: rgba(255, 255, 255, 0.9);
         margin-top: clamp(10px, 1.5vh, 20px);
         font-family: 'Segoe UI', sans-serif !important;
-        font-size: clamp(1rem, 1.5vw, 1.5rem);
+        font-size: clamp(0.8rem, 1.5vw, 1.2rem);
         font-weight: 500;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }

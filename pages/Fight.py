@@ -391,9 +391,16 @@ else:
             <p style='font: 1.2em Quantico, monospace; margin-top: 0px;'>You've conquered your inner critic!</p>
         </div>
         """, unsafe_allow_html=True)
-        if st.button("🔄 Play Again or Try Another Scenario", use_container_width=True):
-            st.session_state.clear()
-            st.rerun()
+
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("🔄 Try Another Scenario", use_container_width=True):
+                st.session_state.clear()
+                st.rerun()
+        with col2:
+            if st.button("🏡 Return to Home", use_container_width=True):
+                st.switch_page("pages/Modules.py")
+                
     elif st.session_state.player_hp <= 0:
         st.markdown("""
         <div style='background: linear-gradient(135deg, #da531f 0%, #029316 100%); color: white; border: 3px solid #da531f;
@@ -403,27 +410,16 @@ else:
             <p style='font: 1.2em Quantico, monospace; margin-top: 0px;'>The inner critic won this time. Try again!</p>
         </div>
         """, unsafe_allow_html=True)
-        if st.button("🔄 Try Again!", use_container_width=True):
-            st.session_state.clear()
-            st.rerun()
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("🔄 Try Another Scenario", use_container_width=True):
+                st.session_state.clear()
+                st.rerun()
+        with col2:
+            if st.button("🏡 Return to Home", use_container_width=True):
+                st.switch_page("pages/Modules.py")
     else:
         def next_round():
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

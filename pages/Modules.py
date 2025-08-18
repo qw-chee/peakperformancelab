@@ -321,7 +321,7 @@ st.markdown("""
         /* Responsive fun bouncy text */
         .module-title {
             font-family: 'Baloo 2', cursive;
-            font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+            font-size: clamp(0.5rem, 1.4vw, 1.4rem);
             font-weight: 700;
             color: #2C3E50 !important;
             margin-bottom: clamp(0.8rem, 1.5vh, 1.5rem);

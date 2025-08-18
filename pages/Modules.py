@@ -281,8 +281,8 @@ st.markdown("""
         
         /* Responsive bouncing dancing icons */
         .module-icon {
-            font-size: clamp(3rem, 4.5vw, 5.5rem);
-            margin-bottom: clamp(1rem, 2vh, 2rem);
+            font-size: clamp(1.5rem, 4.5vw, 3rem);
+            margin-bottom: clamp(0.5rem, 2vh, 1rem);
             display: inline-block;
             position: relative;
             animation: iconDance 2s ease-in-out infinite;

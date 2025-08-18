@@ -324,7 +324,7 @@ st.markdown("""
             font-size: clamp(0.5rem, 1.2vw, 1.2rem);
             font-weight: 700;
             color: #2C3E50 !important;
-            margin-bottom: clamp(0.8rem, 1.5vh, 1.5rem);
+            margin-bottom: clamp(0.8rem, 1.8vh, 1.8rem);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
             animation: textBounce 3s ease-in-out infinite;
             transition: all 0.4s ease;

@@ -98,7 +98,7 @@ def get_styles():
         
     .loading-overlay {
         position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
-        background: linear-gradient(135deg, #134bab 0%, #5a98d1 50%, #027511 100%);
+        background: linear-gradient(135deg, #0f3a82 0%, #356a9b 50%, #01560c 100%);
         z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center;
         font-family: 'Quantico', monospace; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
@@ -444,6 +444,7 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

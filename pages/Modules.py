@@ -161,6 +161,7 @@ st.markdown("""
             /* Scale based on reference size 2033x983 where it looks perfect */
             transform: scale(clamp(0.6, calc(100vw / 2033), 1.4));
             transform-origin: top center;
+            margin-top: calc(-50vh * (1 - clamp(0.6, calc(100vw / 2033), 1.4)));
         }
            
         /* Responsive wiggling subtitle */

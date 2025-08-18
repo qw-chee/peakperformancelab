@@ -178,8 +178,8 @@ page_styles = """
         height: clamp(45vh, 58vh, 65vh) !important;
     }
 
-    /* Force font loading for desktop only */
-    .desktop-font {
+    /* Force font loading for desktop only - Remove conflicting universal selector */
+    .stApp {
         font-family: 'Poetsen One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 }
@@ -264,41 +264,67 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# JavaScript for button styling and responsive handling - Desktop only
+# JavaScript for enhanced font loading and responsive handling - Desktop only
 st.markdown("""
 <script>
 // Only apply if screen width > 1024px
 if (window.innerWidth >= 1024) {
-    setTimeout(function() {
+    // Force font loading
+    const fontLoad = new FontFace('Poetsen One', 'url(https://fonts.gstatic.com/s/poetsenone/v7/LhWmMV3BOfM6WJbVa1wdF0MzZA6sNw.woff2)');
+    fontLoad.load().then(function(font) {
+        document.fonts.add(font);
+    });
+    
+    function applyButtonStyles() {
         const buttons = document.querySelectorAll('button');
         buttons.forEach(button => {
-            button.classList.add('desktop-font');
-            button.style.fontFamily = 'Poetsen One, cursive';
             const screenWidth = window.innerWidth;
+            
+            // Apply font with higher specificity
+            button.style.setProperty('font-family', 'Poetsen One, cursive', 'important');
+            button.style.setProperty('font-weight', '700', 'important');
+            button.style.setProperty('color', 'white', 'important');
+            button.style.setProperty('background', '#f05151', 'important');
+            
             if (screenWidth >= 1920) {
-                button.style.fontSize = '4rem';
-                button.style.padding = '30px 50px';
+                button.style.setProperty('font-size', '4rem', 'important');
+                button.style.setProperty('padding', '30px 50px', 'important');
             } else if (screenWidth >= 1440) {
-                button.style.fontSize = '3.5rem';
-                button.style.padding = '25px 45px';
+                button.style.setProperty('font-size', '3.5rem', 'important');
+                button.style.setProperty('padding', '25px 45px', 'important');
             } else {
-                button.style.fontSize = '2.8rem';
-                button.style.padding = '18px 35px';
+                button.style.setProperty('font-size', '2.8rem', 'important');
+                button.style.setProperty('padding', '18px 35px', 'important');
             }
-            button.style.fontWeight = '700';
-            button.style.color = 'white';
-            button.style.background = '#f05151';
-            button.style.border = Math.max(4, screenWidth * 0.005) + 'px solid #353535';
-            button.style.borderRadius = Math.max(20, screenWidth * 0.02) + 'px';
-            button.style.minWidth = 'fit-content';
+            
+            button.style.setProperty('border', Math.max(4, screenWidth * 0.005) + 'px solid #353535', 'important');
+            button.style.setProperty('border-radius', Math.max(20, screenWidth * 0.02) + 'px', 'important');
+            button.style.setProperty('min-width', 'fit-content', 'important');
         });
-    }, 500);
+    }
+    
+    // Apply styles multiple times to ensure they stick
+    setTimeout(applyButtonStyles, 100);
+    setTimeout(applyButtonStyles, 500);
+    setTimeout(applyButtonStyles, 1000);
+    
+    // Watch for new buttons
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length) {
+                setTimeout(applyButtonStyles, 100);
+            }
+        });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
     
     // Handle window resize
     window.addEventListener('resize', function() {
         if (window.innerWidth < 1024) {
             document.body.style.display = 'none';
             document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, #64ccba 0%, #41c0a9 50%, #1da088 100%); color: white; font-size: 1.5rem; text-align: center; font-family: Capriola, sans-serif;">This application is designed for desktop and laptop screens only.</div>';
+        } else {
+            applyButtonStyles();
         }
     });
 }

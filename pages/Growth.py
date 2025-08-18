@@ -126,42 +126,13 @@ Format your response as a simple list with each recommendation on a new line, st
         <li><strong>Celebrate small wins and incremental improvements</strong></li>
         """
 
-# ---------------------------- RESPONSIVE STYLES ----------------------------
+# ---------------------------- STYLES ----------------------------
 def get_styles():
     return """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap');
 
-    /* CSS Variables for responsive scaling */
-    :root {
-        --base-width: 2033px;
-        --base-height: 983px;
-        --scale-factor: min(100vw / var(--base-width), 100vh / var(--base-height));
-        --container-padding: calc(1rem * var(--scale-factor));
-        --border-width: max(2px, calc(3px * var(--scale-factor)));
-        --border-radius: calc(20px * var(--scale-factor));
-        --font-size-base: calc(1rem * var(--scale-factor));
-        --font-size-large: calc(1.4em * var(--scale-factor));
-        --font-size-xlarge: calc(3.5em * var(--scale-factor));
-        --spacing-small: calc(10px * var(--scale-factor));
-        --spacing-medium: calc(20px * var(--scale-factor));
-        --spacing-large: calc(30px * var(--scale-factor));
-    }
-
-    /* Ensure minimum readability */
-    @media (max-width: 1200px) {
-        :root {
-            --scale-factor: 0.6;
-        }
-    }
-
-    @media (max-width: 900px) {
-        :root {
-            --scale-factor: 0.5;
-        }
-    }
-
-    /* Hide Streamlit default elements */
+        /* Hide Streamlit default elements */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
@@ -178,9 +149,14 @@ def get_styles():
     
     /* Expand main content to full width */
     .main .block-container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        max-width: none !important;
+    }
+    /* Remove padding from main container */
+    .main .block-container {
         padding: 0 !important;
         max-width: none !important;
-        width: 100vw !important;
     }
     
     /* Full screen background */
@@ -192,17 +168,14 @@ def get_styles():
         background-attachment: fixed;
         min-height: 100vh;
         position: relative;
-        width: 100vw;
-        overflow-x: hidden;
     }
       
     .nature-container {
         background: rgba(255, 255, 255, 0.95);
-        border: var(--border-width) solid #59250e;
-        border-radius: var(--border-radius);
-        padding: var(--container-padding);
-        margin: var(--spacing-medium) auto;
-        max-width: calc(800px * var(--scale-factor));
+        border: 3px solid #59250e;
+        border-radius: 20px;
+        padding: 10px;
+        margin: 15px 0;
         position: relative;
         backdrop-filter: blur(8px);
         box-shadow: 0 8px 32px rgba(255, 161, 102, 0.2), inset 0 0 20px rgba(255, 161, 102, 0.1);
@@ -211,12 +184,12 @@ def get_styles():
     .nature-container::before {
         content: '';
         position: absolute;
-        top: calc(-5px * var(--scale-factor));
-        left: calc(-5px * var(--scale-factor));
-        right: calc(-5px * var(--scale-factor));
-        bottom: calc(-5px * var(--scale-factor));
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
         background: white;
-        border-radius: calc(23px * var(--scale-factor));
+        border-radius: 23px;
         z-index: -1;
         opacity: 0.3;
     }
@@ -224,20 +197,20 @@ def get_styles():
     .growth-title {
         font-family: 'Fredoka', cursive;
         font-weight: 700;
-        font-size: var(--font-size-xlarge);
+        font-size: 3.5em;
         color: #59250e;
         text-align: center;
-        margin-bottom: var(--spacing-small);
+        margin-bottom: 10px;
         text-shadow: 2px 2px 4px rgba(255, 161, 102, 0.2);
         line-height: 1.1;
     }
     
     .leaf-subtitle {
         font-family: 'Comfortaa', cursive;
-        font-size: var(--font-size-large);
+        font-size: 1.4em;
         color: #32CD32;
         text-align: center;
-        margin-bottom: var(--spacing-medium);
+        margin-bottom: 20px;
         font-weight: 500;
         text-shadow: 1px 1px 2px rgba(50, 205, 50, 0.2);
     }
@@ -246,7 +219,7 @@ def get_styles():
         font-family: 'Comfortaa', cursive;
         display: block;
         color: #08692d;
-        font-size: calc(1.05em * var(--scale-factor));
+        font-size: 1.05em;
         line-height: 1.2;
         text-align: center;
         margin-bottom: 1em;
@@ -254,18 +227,17 @@ def get_styles():
     
     .question-container {
         background: rgba(255, 255, 255, 0.9);
-        border: var(--border-width) solid #9ACD32;
-        border-radius: var(--border-radius);
-        padding: var(--spacing-large);
-        margin: calc(25px * var(--scale-factor)) auto;
-        max-width: calc(800px * var(--scale-factor));
+        border: 3px solid #9ACD32;
+        border-radius: 20px;
+        padding: 30px;
+        margin: 25px 0;
         position: relative;
         box-shadow: 0 8px 25px rgba(154, 205, 50, 0.2);
     }
     
     .question-text {
         font-family: 'Comfortaa', cursive;
-        font-size: calc(1.3em * var(--scale-factor));
+        font-size: 1.3em;
         color: #2E8B57;
         line-height: 1.6;
         margin: 0;
@@ -274,24 +246,23 @@ def get_styles():
     }
     
     .response-grid {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: calc(15px * var(--scale-factor)) !important;
-        margin: calc(25px * var(--scale-factor)) 0 !important;
-        width: 100% !important;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin: 25px 0;
     }
     
     .response-option {
         background: rgba(255, 255, 255, 0.8);
-        border: var(--border-width) solid #32CD32;
-        border-radius: calc(15px * var(--scale-factor));
-        padding: var(--spacing-medium);
+        border: 3px solid #32CD32;
+        border-radius: 15px;
+        padding: 20px;
         text-align: center;
         cursor: pointer;
         transition: all 0.3s ease;
         font-family: 'Fredoka', cursive;
         font-weight: 500;
-        font-size: calc(1.1em * var(--scale-factor));
+        font-size: 1.1em;
         color: #59250e;
         position: relative;
         overflow: hidden;
@@ -311,7 +282,7 @@ def get_styles():
     .response-option:hover {
         background: rgba(124, 252, 0, 0.2);
         border-color: #7CFC00;
-        transform: translateY(calc(-3px * var(--scale-factor))) scale(1.02);
+        transform: translateY(-3px) scale(1.02);
         box-shadow: 0 8px 25px rgba(124, 252, 0, 0.3);
     }
     
@@ -321,12 +292,12 @@ def get_styles():
     
     .results-container {
         text-align: center;
-        padding: var(--container-padding);
+        padding: 10px;
     }
     
     .result-icon {
-        font-size: calc(3em * var(--scale-factor));
-        margin-bottom: calc(-10px * var(--scale-factor));
+        font-size: 3em;
+        margin-bottom: -10px;
         display: block;
         animation: bounce-grow 2s ease-in-out infinite;
     }
@@ -339,14 +310,14 @@ def get_styles():
     .result-title {
         font-family: 'Fredoka' !important;
         font-weight: 700;
-        font-size: calc(2.8em * var(--scale-factor));
-        margin-bottom: calc(-25px * var(--scale-factor));
+        font-size: 2.8em;
+        margin-bottom: -25px;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     }
     
     .result-description {
         font-family: 'Comfortaa', cursive;
-        font-size: calc(1.1em * var(--scale-factor));
+        font-size: 1.1em;
         line-height: 1.2;
         margin-bottom: 0px;
         text-align: left;
@@ -355,20 +326,20 @@ def get_styles():
     
     .loading-feedback {
         text-align: center;
-        padding: var(--spacing-medium);
+        padding: 20px;
         font-family: 'Comfortaa', cursive;
         color: #2E8B57;
-        font-size: calc(1.1em * var(--scale-factor));
+        font-size: 1.1em;
     }
     
     .spinner {
         border: 4px solid #f3f3f3;
         border-top: 4px solid #32CD32;
         border-radius: 50%;
-        width: calc(40px * var(--scale-factor));
-        height: calc(40px * var(--scale-factor));
+        width: 40px;
+        height: 40px;
         animation: spin 1s linear infinite;
-        margin: 0 auto calc(15px * var(--scale-factor)) auto;
+        margin: 0 auto 15px auto;
     }
     
     @keyframes spin {
@@ -376,26 +347,24 @@ def get_styles():
         100% { transform: rotate(360deg); }
     }
     
-    /* Regular buttons styling */
     div[data-testid="stButton"] > button:not([data-testid*="response_"]) {
         background: linear-gradient(135deg, #FF6347 0%, #FF8C00 50%, #FFD700 100%) !important;
-        border: var(--border-width) solid #FF6347 !important;
+        border: 3px solid #FF6347 !important;
         color: white !important;
         font-weight: 600 !important;
-        font-size: calc(1.2em * var(--scale-factor)) !important;
+        font-size: 1.2em !important;
         font-family: 'Fredoka', cursive !important;
-        padding: calc(15px * var(--scale-factor)) calc(30px * var(--scale-factor)) !important;
-        border-radius: calc(25px * var(--scale-factor)) !important;
+        padding: 15px 30px !important;
+        border-radius: 25px !important;
         box-shadow: 0 6px 20px rgba(34, 139, 34, 0.3) !important;
         transition: all 0.3s ease !important;
         text-transform: none !important;
         letter-spacing: 0.5px !important;
-        width: 100% !important;
     }
 
     div[data-testid="stButton"] > button:not([data-testid*="response_"]):hover {
         background: linear-gradient(135deg, #FF8C00 0%, #FFD700 50%, #FFFF00 100%) !important;
-        transform: translateY(calc(-3px * var(--scale-factor))) scale(1.05) !important;
+        transform: translateY(-3px) scale(1.05) !important;
         box-shadow: 0 8px 30px rgba(50, 205, 50, 0.4) !important;
         border-color: #FF8C00 !important;
     }
@@ -416,19 +385,16 @@ def get_styles():
         border-color: #FF8C00 !important;
     }
     
-    /* Radio button styling - FIXED FOR FULL WIDTH */
     div[data-testid="stRadio"] > div[role="radiogroup"] {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        gap: calc(15px * var(--scale-factor)) !important;
-        margin: calc(25px * var(--scale-factor)) 0 !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
+        gap: 15px !important;
+        margin: 25px 0 !important;
     }
     
     div[data-testid="stRadio"] > div[role="radiogroup"] > label {
-        border-radius: calc(15px * var(--scale-factor)) !important;
-        padding: calc(20px * var(--scale-factor)) !important;
+        border-radius: 15px !important;
+        padding: 5px !important;
         margin: 0 !important;
         display: flex !important;
         align-items: center !important;
@@ -437,14 +403,11 @@ def get_styles():
         transition: all 0.3s ease !important;
         font-family: 'Fredoka', cursive !important;
         font-weight: 600 !important;
-        font-size: calc(1.1em * var(--scale-factor)) !important;
+        font-size: 1.1em !important;
         color: white !important;
         text-align: center !important;
         box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-        border: calc(2px * var(--scale-factor)) solid !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        min-height: calc(60px * var(--scale-factor)) !important;
+        border: 2px solid !important;
     }
     
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:nth-child(1) {
@@ -468,7 +431,7 @@ def get_styles():
     }
     
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:hover {
-        transform: translateY(calc(-2px * var(--scale-factor))) scale(1.02) !important;
+        transform: translateY(-2px) scale(1.02) !important;
         box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
     }
     
@@ -479,7 +442,6 @@ def get_styles():
         font-weight: 700 !important;
     }
     
-    /* Hide radio button circles */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
         display: none !important;
         visibility: hidden !important;
@@ -494,7 +456,7 @@ def get_styles():
         color: white !important;
         font-family: 'Fredoka', cursive !important;
         font-weight: 600 !important;
-        font-size: calc(1.1em * var(--scale-factor)) !important;
+        font-size: 1.1em !important;
         text-align: center !important;
     }
     
@@ -504,33 +466,27 @@ def get_styles():
         opacity: 0 !important;
     }
     
-    /* Custom scrollbar */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    
     ::-webkit-scrollbar {
-        width: calc(12px * var(--scale-factor));
+        width: 12px;
     }
     
     ::-webkit-scrollbar-track {
         background: rgba(34, 139, 34, 0.1);
-        border-radius: calc(6px * var(--scale-factor));
+        border-radius: 6px;
     }
     
     ::-webkit-scrollbar-thumb {
         background: linear-gradient(45deg, #59250e, #32CD32);
-        border-radius: calc(6px * var(--scale-factor));
-        border: calc(2px * var(--scale-factor)) solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
     }
     
     ::-webkit-scrollbar-thumb:hover {
         background: linear-gradient(45deg, #32CD32, #7CFC00);
-    }
-
-    /* Responsive spacing adjustments */
-    .responsive-spacing-small {
-        height: calc(4vh * var(--scale-factor));
-    }
-    
-    .responsive-spacing-large {
-        height: calc(10vh * var(--scale-factor));
     }
     </style>
     """
@@ -595,39 +551,39 @@ st.markdown("""
 
     .loading-title {
         font-family: 'Fredoka', cursive;
-        font-size: calc(3.5em * var(--scale-factor));
+        font-size: 3.5em;
         font-weight: 700;
         color: white;
-        margin-bottom: calc(20px * var(--scale-factor));
+        margin-bottom: 20px;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         animation: grow-bounce 2s ease-in-out infinite;
     }
 
     .loading-bar-container {
-        width: calc(300px * var(--scale-factor));
-        height: calc(8px * var(--scale-factor));
+        width: 300px;
+        height: 8px;
         background: rgba(255, 255, 255, 0.3);
-        border-radius: calc(4px * var(--scale-factor));
+        border-radius: 4px;
         overflow: hidden;
         position: relative;
         margin: 0 auto;
-        border: calc(1px * var(--scale-factor)) solid white;
+        border: 1px solid white;
     }
 
     .loading-bar {
         width: 40%;
         height: 100%;
         background: linear-gradient(90deg, white, #FFFF00);
-        border-radius: calc(4px * var(--scale-factor));
+        border-radius: 4px;
         animation: loading-bar 2s ease-in-out infinite;
-        box-shadow: 0 0 calc(15px * var(--scale-factor)) rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
     }
 
     .loading-subtitle {
         font-family: 'Comfortaa', cursive;
         color: rgba(255, 255, 255, 0.9);
-        margin-top: calc(15px * var(--scale-factor));
-        font-size: calc(1.3em * var(--scale-factor));
+        margin-top: 15px;
+        font-size: 1.3em;
         font-weight: 500;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
@@ -651,15 +607,15 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# Add responsive spacing
-st.markdown("<div class='responsive-spacing-small'></div>", unsafe_allow_html=True)
+# Add spacing
+st.markdown("<div style='height: 4vh;'></div>", unsafe_allow_html=True)
 
 # ---------------------------- MAIN APP LOGIC ----------------------------
 # OVERVIEW PAGE
 if st.session_state.current_question == 0 and not st.session_state.quiz_completed:
     st.markdown("""
     <div class="nature-container">
-        <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: calc(1.6em * var(--scale-factor)); margin-bottom: calc(-5px * var(--scale-factor)); text-align: center;">
+        <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: 1.6em; margin-bottom: -5px; text-align: center;">
             🌱 What is a Growth Mindset?
         </h3>
         <div class="nature-text">
@@ -677,24 +633,24 @@ if st.session_state.current_question == 0 and not st.session_state.quiz_complete
         
     st.markdown("""
     <div class="nature-container">
-        <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: calc(1.6em * var(--scale-factor)); margin-bottom: calc(-5px * var(--scale-factor)); text-align: center;">
+        <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: 1.6em; margin-bottom: -5px; text-align: center;">
             ✨ How to Respond
         </h3>
         <div class="nature-text">
             You'll read 20 statements about learning and ability. Take your time for each statement, then click on the option that best matches how you truly feel:
         </div>
-        <div style="margin: calc(-5px * var(--scale-factor)) 0 calc(-10px * var(--scale-factor)) 0;">
+        <div style="margin: -5px 0 -10px 0;">
             <div class="response-grid">
-                <div style="background: rgba(153, 21, 21, 0.8); border: calc(2px * var(--scale-factor)) solid #FF6347; border-radius: calc(15px * var(--scale-factor)); padding: calc(15px * var(--scale-factor)); text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
+                <div style="background: rgba(153, 21, 21, 0.8); border: 2px solid #FF6347; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
                     Strongly Disagree
                 </div>
-                <div style="background: rgba(255, 157, 0, 0.8); border: calc(2px * var(--scale-factor)) solid #FFA500; border-radius: calc(15px * var(--scale-factor)); padding: calc(15px * var(--scale-factor)); text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
+                <div style="background: rgba(255, 157, 0, 0.8); border: 2px solid #FFA500; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
                     Disagree
                 </div>
-                <div style="background: rgba(11, 176, 90, 0.8); border: calc(2px * var(--scale-factor)) solid #1bf282; border-radius: calc(15px * var(--scale-factor)); padding: calc(15px * var(--scale-factor)); text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
+                <div style="background: rgba(11, 176, 90, 0.8); border: 2px solid #1bf282; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
                     Agree
                 </div>
-                <div style="background: rgba(7, 135, 61, 0.8); border: calc(2px * var(--scale-factor)) solid #0bb05a; border-radius: calc(15px * var(--scale-factor)); padding: calc(15px * var(--scale-factor)); text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
+                <div style="background: rgba(7, 135, 61, 0.8); border: 2px solid #0bb05a; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
                     Strongly Agree
                 </div>
             </div>
@@ -708,7 +664,7 @@ if st.session_state.current_question == 0 and not st.session_state.quiz_complete
 
 # QUIZ QUESTIONS
 elif 1 <= st.session_state.current_question <= st.session_state.total_questions and not st.session_state.quiz_completed:
-    st.markdown("<div class='responsive-spacing-large'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 10vh;'></div>", unsafe_allow_html=True)
     
     current_question = QUIZ_QUESTIONS[st.session_state.current_question - 1]
     
@@ -743,7 +699,7 @@ elif st.session_state.quiz_completed and not st.session_state.show_results:
     # Clear screen with full viewport container
     st.markdown("""
     <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255, 255, 255, 0.98); z-index: 1000; display: flex; align-items: center; justify-content: center;">
-        <div class="nature-container" style="margin: 0; padding: calc(40px * var(--scale-factor));">
+        <div class="nature-container" style="margin: 0; padding: 40px;">
             <div class="loading-feedback">
                 <div class="spinner"></div>
                 Generating your personalized growth recommendations...
@@ -780,11 +736,11 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     
     st.markdown(f"""
     <div class="nature-container">
-        <div class="result-description" style="color: #6e3f09; padding: calc(10px * var(--scale-factor)) calc(15px * var(--scale-factor)) calc(10px * var(--scale-factor)) calc(10px * var(--scale-factor));">
+        <div class="result-description" style="color: #6e3f09; padding: 10px 15px 10px 10px;">
             Based on your responses, here are some ways you can nurture your growth mindset:
         </div>
-        <div class="result-description" style="color: #2E8B57; padding: 0 calc(15px * var(--scale-factor)) calc(5px * var(--scale-factor)) calc(10px * var(--scale-factor));">
-            <ul style="padding-left: calc(10px * var(--scale-factor)); margin: calc(10px * var(--scale-factor)) 0;">
+        <div class="result-description" style="color: #2E8B57; padding: 0 15px 5px 10px;">
+            <ul style="padding-left: 10px; margin: 10px 0;">
                 {st.session_state.gpt_feedback}
             </ul>
         </div>
@@ -801,4 +757,5 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
 
-st.markdown("<div class='responsive-spacing-small'></div>", unsafe_allow_html=True)
+st.markdown("<div style='height: 4vh;'></div>", unsafe_allow_html=True)
+

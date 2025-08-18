@@ -11,7 +11,7 @@ MODULES = [
     {
         "title": "Mindset Growth Garden",
         "icon": "🌱",
-        "description": "Discover your beliefs about ability and learning. Analyse growth potential through an interactive mindset assessment.",
+        "description": "Discover your beliefs about ability and learning. Analyse growth potential through a mindset assessment.",
         "page": "pages/Growth.py",
         "color": "#27AE60",
         "key": "growth"

@@ -588,8 +588,7 @@ st.markdown("""
 
 # ---------------------------- MAIN CONTENT ----------------------------
 st.markdown("""
-<div class="main-subtitle">🚀 Ready to unlock your potential? 🌟</div>
-<div class="main-subtitle">Choose a module to begin your epic journey toward peak performance! ✨</div>
+<div class="main-subtitle">🚀 Ready to unlock your potential? 🌟 <br>Choose a module to begin your epic journey toward peak performance! ✨</div>
 """, unsafe_allow_html=True)
 
 col1, col2, col3, col4 = st.columns(4)

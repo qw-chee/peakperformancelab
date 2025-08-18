@@ -154,7 +154,10 @@ st.markdown("""
         
         /* Responsive container - scales based on 2033x983 reference */
         .main .block-container {
-            padding: clamp(0.5rem, 1vw, 1rem) clamp(0.5rem, 1vw, 1rem) !important;
+            padding-top: 0 !important; /* Remove top padding entirely */
+            padding-left: clamp(0.5rem, 1vw, 1rem) !important;
+            padding-right: clamp(0.5rem, 1vw, 1rem) !important;
+            padding-bottom: clamp(1rem, 2vw, 2rem) !important;
             max-width: none !important;
             position: relative !important;
             z-index: 100 !important;

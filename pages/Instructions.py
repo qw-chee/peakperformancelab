@@ -152,7 +152,7 @@ page_styles = """
         color: white !important;
         font-weight: 700 !important;
         font-size: clamp(1.5rem, 3vw, 3.5rem) !important;
-        font-family: 'Fredoka', cursive !important;
+        font-family: 'Poetsen One', cursive !important;
         padding: clamp(12px, 2vh, 25px) clamp(20px, 3vw, 40px) !important;
         border-radius: clamp(20px, 3vw, 35px) !important;
         box-shadow: 0 clamp(6px, 1vh, 12px) clamp(20px, 3vh, 35px) rgba(29, 160, 136, 0.4) !important;

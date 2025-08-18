@@ -169,7 +169,7 @@ st.markdown("""
             color: #34495E !important;
             text-align: center;
             margin-bottom: clamp(0.5rem, 1vh, 1rem);
-            margin-top: -5rem;
+            margin-top: clamp(-8rem, -5vw, -2rem);
             text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
             animation: wiggleSubtitle 4s ease-in-out infinite;
             position: relative;

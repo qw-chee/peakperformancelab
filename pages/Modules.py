@@ -191,8 +191,8 @@ st.markdown("""
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: clamp(20px, 3vw, 35px);
-            padding: clamp(0.6rem, 2vw, 1.2rem);
-            margin: clamp(0.5rem, 2vw, 1.5rem);
+            padding: clamp(0.6rem, 1vw, 1.2rem);
+            margin: clamp(0.5rem, 1vw, 1.5rem);
             box-shadow: 
                 0 15px 35px rgba(0,0,0,0.1),
                 0 5px 15px rgba(0,0,0,0.05),

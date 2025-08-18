@@ -95,46 +95,7 @@ def get_styles():
         min-height: 100vh;
         position: relative;
     }
-        
-    .loading-overlay {
-        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
-        background: linear-gradient(135deg, #0f3a82 0%, #356a9b 50%, #01560c 100%);
-        z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center;
-        font-family: 'Quantico', monospace; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-    
-    .loading-title {
-        font-size: 3em; font-weight: 900; margin-bottom: 20px; text-align: center;
-        animation: pulse 2s ease-in-out infinite alternate;
-    }
-    
-    .loading-subtitle {
-        font-size: 1.2em; font-weight: 400; margin-bottom: 30px; text-align: center;
-        opacity: 0.9;
-    }
-    
-    .loading-spinner {
-        width: 60px; height: 60px; border: 4px solid rgba(255,255,255,0.3);
-        border-top: 4px solid white; border-radius: 50%; 
-        animation: spin 1s linear infinite;
-    }
-    
-    @keyframes pulse {
-        from { opacity: 0.7; transform: scale(0.95); }
-        to { opacity: 1; transform: scale(1.05); }
-    }
-    
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-    
-    .overlay {
-        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(126,190,254,0.9);
-        z-index: 9999; display: flex; align-items: center; justify-content: center;
-        font: bold 2em 'Quantico', monospace; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-    
+       
     .pixel-card {
         background: rgba(255,255,255,0.95); border: 3px solid #175dcf; border-radius: 8px;
         padding: 15px; margin: 5px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -444,6 +405,7 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

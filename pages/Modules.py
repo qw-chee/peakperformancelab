@@ -154,14 +154,9 @@ st.markdown("""
         
         /* Responsive container - scales based on 2033x983 reference */
         .main .block-container {
-            padding-top: 0 !important; /* Remove top padding entirely */
-            padding-left: clamp(0.5rem, 1vw, 1rem) !important;
-            padding-right: clamp(0.5rem, 1vw, 1rem) !important;
-            padding-bottom: clamp(1rem, 2vw, 2rem) !important;
             max-width: none !important;
             position: relative !important;
             z-index: 100 !important;
-            /* Scale based on reference size 2033x983 where it looks perfect */
             transform: scale(clamp(0.6, calc(100vw / 2033), 1.4));
             transform-origin: top center;
         }
@@ -174,6 +169,7 @@ st.markdown("""
             color: #34495E !important;
             text-align: center;
             margin-bottom: clamp(0.8rem, 1.5vh, 1.5rem);
+            margin-top: -1.5rem;
             text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
             animation: wiggleSubtitle 4s ease-in-out infinite;
             position: relative;

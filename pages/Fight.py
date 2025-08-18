@@ -249,7 +249,7 @@ st.markdown("""
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, #175dcf 0%, #7ebefe 50%, #029316 100%);
+        background: linear-gradient(135deg, #0f3a82 0%, #356a9b 50%, #01560c 100%);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -444,6 +444,7 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

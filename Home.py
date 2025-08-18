@@ -166,6 +166,11 @@ div[data-testid="stButton"] button:hover {
     box-shadow: 0 12px 35px rgba(29, 160, 136, 0.5) !important;
 }
 
+/* Force font loading */
+* {
+    font-family: 'Poetsen One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 </style>
 """
 

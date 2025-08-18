@@ -50,30 +50,6 @@ st.markdown("""
     @import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:wght@300;400;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
     
-    /* Block tablet and mobile devices */
-    @media screen and (max-width: 1023px) {
-        .stApp {
-            display: none !important;
-        }
-        body::before {
-            content: "This application is designed for desktop and laptop screens only.";
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(135deg, #64ccba 0%, #41c0a9 50%, #1da088 100%);
-            color: white;
-            font-size: 1.5rem;
-            text-align: center;
-            z-index: 99999;
-            font-family: 'Capriola', sans-serif;
-        }
-    }
-
     /* Desktop/Laptop Only Styles */
     @media screen and (min-width: 1024px) {
         /* Hide Streamlit branding */
@@ -126,7 +102,7 @@ st.markdown("""
         /* Responsive loading title */
         .loading-title {
             font-family: 'Capriola', sans-serif;
-            font-size: clamp(2rem, 4vw, 4rem);
+            font-size: clamp(1.5rem, 4vw, 3rem);
             font-weight: 700;
             color: white;
             margin-bottom: clamp(15px, 2vh, 25px);
@@ -160,7 +136,7 @@ st.markdown("""
             color: rgba(255, 255, 255, 0.9);
             margin-top: clamp(10px, 1.5vh, 20px);
             font-family: 'Segoe UI', sans-serif !important;
-            font-size: clamp(1rem, 1.5vw, 1.5rem);
+            font-size: clamp(0.8rem, 1.5vw, 1.2rem);
             font-weight: 500;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
@@ -214,8 +190,8 @@ st.markdown("""
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: clamp(20px, 3vw, 35px);
-            padding: clamp(1.2rem, 2vw, 2rem);
-            margin: clamp(1rem, 2vw, 2.5rem);
+            padding: clamp(0.8rem, 2vw, 1.5rem);
+            margin: clamp(0.5rem, 2vw, 1.5rem);
             box-shadow: 
                 0 15px 35px rgba(0,0,0,0.1),
                 0 5px 15px rgba(0,0,0,0.05),

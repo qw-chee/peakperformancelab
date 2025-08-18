@@ -154,14 +154,13 @@ st.markdown("""
         
         /* Responsive container - scales based on 2033x983 reference */
         .main .block-container {
-            padding: clamp(1rem, 2vw, 2rem) clamp(0.5rem, 1vw, 1rem) !important;
+            padding: clamp(0.5rem, 1vw, 1rem) clamp(0.5rem, 1vw, 1rem) !important;
             max-width: none !important;
             position: relative !important;
             z-index: 100 !important;
             /* Scale based on reference size 2033x983 where it looks perfect */
             transform: scale(clamp(0.6, calc(100vw / 2033), 1.4));
             transform-origin: top center;
-            margin-top: calc(-50vh * (1 - clamp(0.6, calc(100vw / 2033), 1.4)));
         }
            
         /* Responsive wiggling subtitle */

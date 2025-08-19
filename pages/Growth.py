@@ -409,7 +409,6 @@ def get_styles():
             border-radius: 15px !important;
             padding: 5px !important;
             margin: 0 !important;
-            display: flex !important;
             align-items: center !important;
             justify-content: center !important;
             cursor: pointer !important;
@@ -811,5 +810,6 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
+
 
 

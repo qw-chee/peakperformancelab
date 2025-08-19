@@ -397,14 +397,23 @@ def get_styles():
             background: linear-gradient(135deg, #FF8C00 0%, #FFD700 50%, #FFFF00 100%) !important;
             border-color: #FF8C00 !important;
         }
+             
+        /* Force radio group to full width */
+        div[data-testid="stRadio"] {
+            width: 100% !important;
+        }
         
-        /* Fixed radio button grid layout and full width styling */
+        div[data-testid="stRadio"] > div {
+            width: 100% !important;
+        }
+        
         div[data-testid="stRadio"] > div[role="radiogroup"] {
             display: grid !important;
             grid-template-columns: 1fr 1fr !important;
             gap: clamp(10px, 1.5vw, 15px) !important;
             margin: clamp(20px, 2.5vh, 25px) 0 !important;
             width: 100% !important;
+            box-sizing: border-box !important;
         }
         
         div[data-testid="stRadio"] > div[role="radiogroup"] > label {
@@ -425,6 +434,8 @@ def get_styles():
             border: clamp(1px, 0.2vw, 2px) solid !important;
             width: 100% !important;
             min-height: clamp(50px, 6vh, 65px) !important;
+            box-sizing: border-box !important;
+            flex: 1 !important;
         }
         
         div[data-testid="stRadio"] > div[role="radiogroup"] > label:nth-child(1) {
@@ -815,4 +826,3 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
-

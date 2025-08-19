@@ -187,6 +187,7 @@ def get_styles():
             border-radius: clamp(15px, 2vw, 20px);
             padding: clamp(7px, 0.9vw, 9px);
             margin: clamp(9px, 1.4vh, 14px) 0;
+            margin-bottom: -5px;
             position: relative;
             backdrop-filter: blur(8px);
             box-shadow: 0 8px 32px rgba(255, 161, 102, 0.2), inset 0 0 20px rgba(255, 161, 102, 0.1);
@@ -844,3 +845,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+

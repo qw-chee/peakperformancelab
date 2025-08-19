@@ -162,7 +162,7 @@ def get_styles():
         
         /* Full screen background */
         .stApp {
-            background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/growth.gif');
+            background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Growth.gif');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -810,3 +810,4 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
             st.switch_page("pages/Modules.py")
 
 st.markdown("<div style='height: 4vh;'></div>", unsafe_allow_html=True)
+

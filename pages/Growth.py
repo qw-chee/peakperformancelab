@@ -365,7 +365,7 @@ def get_styles():
             border: clamp(2px, 0.3vw, 3px) solid #FF6347 !important;
             color: white !important;
             font-weight: 600 !important;
-            font-size: clamp(1rem, 1.3vw, 2rem) !important;
+            font-size: clamp(1rem, 1.3vw, 1.6rem) !important;
             font-family: 'Fredoka', cursive !important;
             padding: clamp(12px, 1.5vh, 15px) clamp(25px, 3vw, 30px) !important;
             border-radius: clamp(20px, 2.5vw, 25px) !important;
@@ -844,3 +844,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+

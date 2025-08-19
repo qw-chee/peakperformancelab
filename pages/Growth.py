@@ -698,7 +698,7 @@ if st.session_state.current_question == 0 and not st.session_state.quiz_complete
         <div class="nature-text">
             You'll read 20 statements about learning and ability. Take your time for each statement, then click on the option that best matches how you truly feel:
         </div>
-        <div style="margin: -5px 0 -10px 0;">
+        <div style="margin: -10px 0 -15px 0;">
             <div class="response-grid">
                 <div style="background: rgba(153, 21, 21, 0.8); border: 2px solid #FF6347; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
                     Strongly Disagree
@@ -815,6 +815,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
+
 
 
 

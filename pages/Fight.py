@@ -58,79 +58,222 @@ def get_styles():
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Quantico&display=swap');
 
-    /* Hide Streamlit default elements */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    
-    /* Hide sidebar permanently */
-    section[data-testid="stSidebar"] {
-        display: none !important;
-    }
-    
-    /* Hide sidebar toggle button */
-    button[kind="header"][data-testid="baseButton-header"] {
-        display: none !important;
-    }
-    
-    /* Expand main content to full width */
-    .main .block-container {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-        max-width: none !important;
-    }
-    /* Remove padding from main container */
-    .main .block-container {
-        padding: 0 !important;
-        max-width: none !important;
-    }
-    
-    /* Full screen background */
-    .stApp {
-        background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/ICBF.gif');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        min-height: 100vh;
-        position: relative;
-    }
-    
-    .overlay {
-        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(126,190,254,0.9);
-        z-index: 9999; display: flex; align-items: center; justify-content: center;
-        font: bold 2em 'Quantico', monospace; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-       
-    .pixel-card {
-        background: rgba(255,255,255,0.95); border: 3px solid #175dcf; border-radius: 8px;
-        padding: 15px; margin: 5px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        font-family: 'Quantico', monospace;
-    }
-    
-    .pixel-title { font: 900 1em 'Quantico', monospace; color: #029316; text-shadow: 1px 1px 2px rgba(255,255,255,0.8);}
-    .pixel-text { font: 400 1em 'Quantico', monospace; color: #2d3748; line-height: 1.5; font-family: 'Quantico', monospace;}
+    /* Desktop/Laptop Only Styles */
+    @media screen and (min-width: 1024px) {
+        /* Hide Streamlit default elements */
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        header {visibility: hidden;}
+        
+        /* Hide sidebar permanently */
+        section[data-testid="stSidebar"] {
+            display: none !important;
+        }
+        
+        /* Hide sidebar toggle button */
+        button[kind="header"][data-testid="baseButton-header"] {
+            display: none !important;
+        }
 
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    
-    .hp-container {
-        display: flex; align-items: center; gap: 15px; margin-bottom: 15px; padding: 15px;
-        background: white; border: 3px solid #175dcf; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        .stApp > div:first-child {
+            padding-top: 0 !important;
+            margin-top: -3rem !important;
+        }
+
+        .block-container {
+            padding-top: 0 !important;
+            margin-top: -2rem !important;
+        }
+
+        /* Responsive container - scales based on 2033x983 reference */
+        .main .block-container {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            max-width: none !important;
+            position: relative !important;
+            z-index: 100 !important;
+            transform: scale(clamp(0.6, calc(100vw / 2033), 1.4));
+            transform-origin: top center;
+        }
+        
+        /* Remove padding from main container */
+        .main .block-container {
+            padding: 0 !important;
+            max-width: none !important;
+        }
+        
+        /* Full screen background */
+        .stApp {
+            background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/ICBF.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(126,190,254,0.9);
+            z-index: 9999; display: flex; align-items: center; justify-content: center;
+            font: bold 2em 'Quantico', monospace; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+           
+        .pixel-card {
+            background: rgba(255,255,255,0.95); 
+            border: clamp(2px, 0.3vw, 3px) solid #175dcf; 
+            border-radius: clamp(6px, 1vw, 8px);
+            padding: clamp(10px, 1.5vw, 15px); 
+            margin: clamp(3px, 0.5vh, 5px) 0; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-family: 'Quantico', monospace;
+        }
+        
+        .pixel-title { 
+            font: 900 clamp(0.8rem, 1.2vw, 1em) 'Quantico', monospace; 
+            color: #029316; 
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+        
+        .pixel-text { 
+            font: 400 clamp(0.8rem, 1vw, 1em) 'Quantico', monospace; 
+            color: #2d3748; 
+            line-height: 1.5; 
+            font-family: 'Quantico', monospace;
+        }
+        
+        .hp-container {
+            display: flex; 
+            align-items: center; 
+            gap: clamp(10px, 1.5vw, 15px); 
+            margin-bottom: clamp(10px, 1.5vh, 15px); 
+            padding: clamp(10px, 1.5vw, 15px);
+            background: white; 
+            border: clamp(2px, 0.3vw, 3px) solid #175dcf; 
+            border-radius: clamp(6px, 1vw, 8px); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .hp-bar { 
+            height: clamp(15px, 2vh, 20px); 
+            background: #f1f5f9; 
+            border: clamp(1px, 0.2vw, 2px) solid #ffc738; 
+            border-radius: clamp(3px, 0.5vw, 4px); 
+            width: 100%; 
+            overflow: hidden; 
+        }
+        
+        .hp-fill-boss { 
+            height: 100%; 
+            background: linear-gradient(90deg, #ff0000 0%, #ff7373 100%); 
+            transition: width 0.5s ease; 
+        }
+        
+        .hp-fill-user { 
+            height: 100%; 
+            background: linear-gradient(90deg, #175dcf 0%, #00ccff 100%); 
+            transition: width 0.5s ease; 
+        }
+        
+        .hp-label { 
+            font: 700 clamp(16px, 2vw, 20px) 'Quantico', monospace; 
+            color: #175dcf; 
+            min-width: clamp(50px, 6vw, 60px); 
+            text-align: center; 
+        }
+        
+        .hp-icon { 
+            width: clamp(40px, 5vw, 50px); 
+            height: clamp(40px, 5vw, 50px); 
+            border-radius: clamp(4px, 0.8vw, 6px); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: clamp(18px, 2.5vw, 24px); 
+            background: white; 
+        }
+        
+        .stForm > div:first-child { 
+            background: rgba(255,255,255,0.95) !important; 
+            border: clamp(2px, 0.3vw, 3px) solid #175dcf !important; 
+            border-radius: clamp(6px, 1vw, 8px) !important; 
+            padding: clamp(10px, 1.5vw, 15px) !important; 
+            margin: -10px 0 !important; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important; 
+        }
+        
+        .stTextInput > div > div > input { 
+            font: clamp(12px, 1.4vw, 14px) 'Quantico', monospace !important; 
+            border: clamp(1px, 0.2vw, 2px) solid #7ebefe !important; 
+            border-radius: clamp(4px, 0.8vw, 6px) !important; 
+            padding: clamp(8px, 1.2vw, 12px) !important; 
+        }
+        
+        .stFormSubmitButton > button, div[data-testid="stButton"] > button { 
+            background: white !important; 
+            color: #175dcf !important; 
+            border: clamp(2px, 0.3vw, 3px) solid #175dcf !important;
+            font: 600 clamp(14px, 1.6vw, 16px) 'Quantico', monospace !important;
+            padding: clamp(8px, 1.2vw, 12px) clamp(20px, 2.5vw, 25px) !important;
+            border-radius: clamp(15px, 2vw, 20px) !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 15px rgba(23, 93, 207, 0.2) !important;
+        }
+        
+        .stFormSubmitButton > button:hover, div[data-testid="stButton"] > button:hover { 
+            transform: translateY(-2px) !important; 
+            box-shadow: 0 6px 20px rgba(126,190,254,0.4) !important; 
+        }
+
+        /* Specific breakpoint adjustments for optimal scaling */
+        
+        /* Standard Desktop (1024-1439px) */
+        @media screen and (min-width: 1024px) and (max-width: 1439px) {
+            .main .block-container {
+                transform: scale(0.75);
+            }
+        }
+
+        /* Large Desktop (1440-1919px) */
+        @media screen and (min-width: 1440px) and (max-width: 1919px) {
+            .main .block-container {
+                transform: scale(0.85);
+            }
+        }
+
+        /* Reference size (1920-2200px) - Perfect scaling maintained */
+        @media screen and (min-width: 1920px) and (max-width: 2200px) {
+            .main .block-container {
+                transform: scale(1.0);
+            }
+        }
+
+        /* Ultra-wide (2200px+) */
+        @media screen and (min-width: 2200px) {
+            .main .block-container {
+                transform: scale(1.15);
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: clamp(8px, 1vw, 12px);
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(23, 93, 207, 0.1);
+            border-radius: 6px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #175dcf, #7ebefe);
+            border-radius: 6px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #7ebefe, #00ccff);
+        }
     }
-    
-    .hp-bar { height: 20px; background: #f1f5f9; border: 2px solid #ffc738; border-radius: 4px; width: 100%; overflow: hidden; }
-    .hp-fill-boss { height: 100%; background: linear-gradient(90deg, #ff0000 0%, #ff7373 100%); transition: width 0.5s ease; }
-    .hp-fill-user { height: 100%; background: linear-gradient(90deg, #175dcf 0%, #00ccff 100%); transition: width 0.5s ease; }
-    .hp-label { font: 700 20px 'Quantico', monospace; color: #175dcf; min-width: 60px; text-align: center; }
-    .hp-icon { width: 50px; height: 50px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 24px; background: white; }
-    
-    .stForm > div:first-child { background: rgba(255,255,255,0.95) !important; border: 3px solid #175dcf !important; border-radius: 8px !important; padding: 15px !important; margin: -10px 0 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important; }
-    .stTextInput > div > div > input { font: 14px 'Quantico', monospace !important; border: 2px solid #7ebefe !important; border-radius: 6px !important; padding: 12px !important; }
-    .stFormSubmitButton > button, div[data-testid="stButton"] > button { 
-    background: white !important; color: #175dcf !important; border: 3px solid #175dcf !important;
-    .stFormSubmitButton > button:hover, div[data-testid="stButton"] > button:hover { transform: translateY(-2px) !important; box-shadow: 0 6px 20px rgba(126,190,254,0.4) !important; }
     </style>
     """
 
@@ -142,7 +285,7 @@ def render_hp_bars():
     <div class="hp-container">
         <div class="hp-icon" style="color: #029316;">😈</div>
         <div style="flex: 1;">
-            <div style="font: 700 20px 'Quantico', monospace; color: #da531f; margin-bottom: 5px;">Inner Critic Boss</div>
+            <div style="font: 700 clamp(16px, 2vw, 20px) 'Quantico', monospace; color: #da531f; margin-bottom: 5px;">Inner Critic Boss</div>
             <div class="hp-bar"><div class="hp-fill-boss" style="width: {st.session_state.boss_hp}%;"></div></div>
         </div>
         <div class="hp-label">{st.session_state.boss_hp} HP</div>
@@ -150,7 +293,7 @@ def render_hp_bars():
     <div class="hp-container">
         <div class="hp-icon" style="color: white;">🧠</div>
         <div style="flex: 1;">
-            <div style="font: 700 20px 'Quantico', monospace; color: #175dcf; margin-bottom: 5px;">Your Mental Strength</div>
+            <div style="font: 700 clamp(16px, 2vw, 20px) 'Quantico', monospace; color: #175dcf; margin-bottom: 5px;">Your Mental Strength</div>
             <div class="hp-bar"><div class="hp-fill-user" style="width: {st.session_state.player_hp}%;"></div></div>
         </div>
         <div class="hp-label">{st.session_state.player_hp} HP</div>
@@ -210,111 +353,143 @@ st.markdown("""
     </div>
 
     <style>
-    #loading-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #134bab 0%, #5a98d1 50%, #02756f 100%);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        animation: loading-sequence 4s ease-in-out forwards;
-    }
+    @media screen and (min-width: 1024px) {
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #134bab 0%, #5a98d1 50%, #02756f 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: loading-sequence 4s ease-in-out forwards;
+        }
 
-    .loading-content {
-        text-align: center;
-    }
+        .loading-content {
+            text-align: center;
+        }
 
-    .loading-title {
-        font-family: 'Quantico', monospace;
-        font-size: 3em;
-        font-weight: 900;
-        color: white;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        margin-bottom: 20px;
-        animation: pulse 2s ease-in-out infinite;
-    }
+        .loading-title {
+            font-family: 'Quantico', monospace;
+            font-size: clamp(2rem, 4vw, 3em);
+            font-weight: 900;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: clamp(15px, 2vh, 20px);
+            animation: pulse 2s ease-in-out infinite;
+        }
 
-    .loading-bar-container {
-        width: 200px;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 2px;
-        overflow: hidden;
-        position: relative;
-        margin: 0 auto;
-    }
+        .loading-bar-container {
+            width: clamp(150px, 20vw, 200px);
+            height: clamp(3px, 0.5vh, 4px);
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+        }
 
-    .loading-bar {
-        width: 40%;
-        height: 100%;
-        background: linear-gradient(90deg, #ffffff, #ffff00);
-        border-radius: 2px;
-        animation: loading-bar 2s ease-in-out infinite;
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-    }
+        .loading-bar {
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(90deg, #ffffff, #ffff00);
+            border-radius: 2px;
+            animation: loading-bar 2s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+        }
 
-    .loading-subtitle {
-        font-family: 'Quantico', monospace;
-        color: rgba(255, 255, 255, 0.9);
-        margin-top: 15px;
-        font-size: 1.3em;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-    }
+        .loading-subtitle {
+            font-family: 'Quantico', monospace;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: clamp(10px, 1.5vh, 15px);
+            font-size: clamp(1rem, 1.5vw, 1.3em);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
 
-    @keyframes pulse {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.8; transform: scale(1.05); }
-    }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
 
-    @keyframes loading-bar {
-        0% { transform: translateX(-100%); }
-        50% { transform: translateX(0%); }
-        100% { transform: translateX(300%); }
-    }
+        @keyframes loading-bar {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(0%); }
+            100% { transform: translateX(300%); }
+        }
 
-    @keyframes loading-sequence {
-        0% { opacity: 1; }
-        85% { opacity: 1; }
-        100% { opacity: 0; pointer-events: none; }
+        @keyframes loading-sequence {
+            0% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { opacity: 0; pointer-events: none; }
+        }
     }
     </style>
 """, unsafe_allow_html=True)
+
+# Handle window resize and mobile blocking with JavaScript
+st.markdown("""
+<script>
+// Block mobile and tablet, handle responsive scaling
+if (window.innerWidth >= 1024) {
+    // Handle window resize for responsive scaling
+    window.addEventListener('resize', function() {
+        if (window.innerWidth < 1024) {
+            document.body.style.display = 'none';
+            document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, #134bab 0%, #5a98d1 50%, #02756f 100%); color: white; font-size: 1.5rem; text-align: center; font-family: Quantico, monospace;">This application is designed for desktop and laptop screens only.</div>';
+        }
+    });
+}
+</script>
+""", unsafe_allow_html=True)
+
+st.markdown(
+    """
+    <style>
+    @media (min-width: 1300px) {
+        .custom-spacer {
+            height: 10vh;
+        }
+    }
+    </style>
+    <div class="custom-spacer"></div>
+    """,
+    unsafe_allow_html=True
+)
 
 # Scenario selection
 if st.session_state.scenario is None:
     st.markdown("""
     <div class='pixel-card' style='text-align: center;'>
-        <h3 class='pixel-title' style='margin-bottom: 0px; font-size: 1.6em;'>⚔️ Inner Critic Boss Fight</h3>
-        <p class='pixel-text' style='font-size: 1.1em; margin: 0;'>
+        <h3 class='pixel-title' style='margin-bottom: 0px; font-size: clamp(1.2rem, 2vw, 1.6em);'>⚔️ Inner Critic Boss Fight</h3>
+        <p class='pixel-text' style='font-size: clamp(0.9rem, 1.3vw, 1.1em); margin: 0;'>
             Positive self-talk includes words of encouragement you can say to yourself, especially in the face of stress. They can remind you of your ability to get through whatever comes your way. Using self-talk
             can also help you think more positively about yourself and situations, boost your confidence, and cope with uncertainty. Positive self-talk should remind you of your qualities and your ability to perservere.
             This game helps you practice countering negative thoughts with positive self-talk to cope with real-life challenges.
         </p>
     </div>
     <div class='pixel-card'>
-        <h3 class='pixel-title' style='margin-bottom:0px; font-size: 1.5em; text-align: center;'>🎮 How to Play</h3>
-        <div class='pixel-text' style='font-size: 1.1em;'>
-            <p style='margin-bottom: 10px;'><strong>Mission:</strong> Counter your inner critic with positive self-talk to defeat the Boss!</p>
-            <p style='margin-bottom: 10px;'><strong>Scoring System:</strong></p>
-            <div style='display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 0px;'>
-                <div style='background: #02b322; color: white; padding: 15px; border-radius: 6px; text-align: center; border: 2px solid #175dcf;'>
-                    <strong>Strong & Positive:</strong><br><small>Boss loses 15 HP</small>
+        <h3 class='pixel-title' style='margin-bottom:0px; font-size: clamp(1.2rem, 2vw, 1.5em); text-align: center;'>🎮 How to Play</h3>
+        <div class='pixel-text' style='font-size: clamp(0.9rem, 1.3vw, 1.1em);'>
+            <p style='margin-bottom: clamp(8px, 1vh, 10px);'><strong>Mission:</strong> Counter your inner critic with positive self-talk to defeat the Boss!</p>
+            <p style='margin-bottom: clamp(8px, 1vh, 10px);'><strong>Scoring System:</strong></p>
+            <div style='display: grid; grid-template-columns: 1fr 1fr 1fr; gap: clamp(10px, 1.5vw, 15px); margin-bottom: 0px;'>
+                <div style='background: #02b322; color: white; padding: clamp(10px, 1.5vw, 15px); border-radius: clamp(4px, 0.8vw, 6px); text-align: center; border: clamp(1px, 0.2vw, 2px) solid #175dcf;'>
+                    <strong style='font-size: clamp(0.8rem, 1.1vw, 1rem);'>Strong & Positive:</strong><br><small style='font-size: clamp(0.7rem, 1vw, 0.9rem);'>Boss loses 15 HP</small>
                 </div>
-                <div style='background: #ffbb00; color: white; padding: 15px; border-radius: 6px; text-align: center; border: 2px solid #175dcf;'>
-                    <strong>Weak or Generic:</strong><br><small>Boss loses 5 HP</small>
+                <div style='background: #ffbb00; color: white; padding: clamp(10px, 1.5vw, 15px); border-radius: clamp(4px, 0.8vw, 6px); text-align: center; border: clamp(1px, 0.2vw, 2px) solid #175dcf;'>
+                    <strong style='font-size: clamp(0.8rem, 1.1vw, 1rem);'>Weak or Generic:</strong><br><small style='font-size: clamp(0.7rem, 1vw, 0.9rem);'>Boss loses 5 HP</small>
                 </div>
-                <div style='background: #da531f; color: white; padding: 15px; border-radius: 6px; text-align: center; border: 2px solid #175dcf;'>
-                    <strong>Poor or Irrelevant:</strong><br><small>You lose 15 HP</small>
+                <div style='background: #da531f; color: white; padding: clamp(10px, 1.5vw, 15px); border-radius: clamp(4px, 0.8vw, 6px); text-align: center; border: clamp(1px, 0.2vw, 2px) solid #175dcf;'>
+                    <strong style='font-size: clamp(0.8rem, 1.1vw, 1rem);'>Poor or Irrelevant:</strong><br><small style='font-size: clamp(0.7rem, 1vw, 0.9rem);'>You lose 15 HP</small>
                 </div>
             </div>
         </div>
     </div>
-    <div style='text-align: center; margin-top: 5px; margin-bottom: 5px;'>
-        <h3 class='pixel-title' style='margin: 0; font-size: 1.5em;'>🎯 Choose Your Battle</h3>
+    <div style='text-align: center; margin-top: clamp(3px, 0.5vh, 5px); margin-bottom: clamp(3px, 0.5vh, 5px);'>
+        <h3 class='pixel-title' style='margin: 0; font-size: clamp(1.2rem, 2vw, 1.5em);'>🎯 Choose Your Battle</h3>
     </div>
     """, unsafe_allow_html=True)
     
@@ -348,12 +523,12 @@ elif st.session_state.awaiting_response:
 
     with st.form("reframe_form", clear_on_submit=True):
         st.markdown(f"""
-        <div style='font: 700 1.3em Quantico, monospace; margin: 5px 0 10px; color: #da531f;'>❗ <strong>Your inner critic says:</strong></div>
-        <blockquote style='font: italic 1.2em Quantico, monospace; color: #00822e; margin: 10px 0; padding: 15px; 
-                          background: rgba(173,189,79,0.1); border-left: 4px solid #00822e; border-radius: 4px;'>
+        <div style='font: 700 clamp(1rem, 1.8vw, 1.3em) Quantico, monospace; margin: clamp(3px, 0.5vh, 5px) 0 clamp(8px, 1vh, 10px); color: #da531f;'>❗ <strong>Your inner critic says:</strong></div>
+        <blockquote style='font: italic clamp(1rem, 1.6vw, 1.2em) Quantico, monospace; color: #00822e; margin: clamp(8px, 1vh, 10px) 0; padding: clamp(10px, 1.5vw, 15px); 
+                          background: rgba(173,189,79,0.1); border-left: clamp(3px, 0.5vw, 4px) solid #00822e; border-radius: clamp(3px, 0.5vw, 4px);'>
             "{st.session_state.current_line}"
         </blockquote>
-        <div style='font: 700 1.2em Quantico, monospace; margin: 15px 0 -30px; color: #175dcf;'>✍️ <strong>Your counter-response:</strong></div>
+        <div style='font: 700 clamp(1rem, 1.6vw, 1.2em) Quantico, monospace; margin: clamp(10px, 1.5vh, 15px) 0 -30px; color: #175dcf;'>✍️ <strong>Your counter-response:</strong></div>
         """, unsafe_allow_html=True)
                 
         user_input = st.text_input("", key="user_response",  autocomplete="off", placeholder="Type your positive reframe here...")
@@ -367,27 +542,27 @@ else:
     color = next((v for k, v in feedback_colors.items() if k in st.session_state.current_feedback), feedback_colors["default"])
     
     st.markdown(f"""
-    <div style='background: linear-gradient(135deg, {color} 0%, #7ebefe 100%); color: white; border: 3px solid {color};
-                border-radius: 8px; padding: 20px; text-align: center; margin: 5px 0; box-shadow: 0 6px 20px rgba(0,0,0,0.2);'>
-        <h2 style='margin: 0; font: 900 1.5em Quantico, monospace; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>{st.session_state.current_feedback}</h2>
+    <div style='background: linear-gradient(135deg, {color} 0%, #7ebefe 100%); color: white; border: clamp(2px, 0.3vw, 3px) solid {color};
+                border-radius: clamp(6px, 1vw, 8px); padding: clamp(15px, 2.5vw, 20px); text-align: center; margin: clamp(3px, 0.5vh, 5px) 0; box-shadow: 0 6px 20px rgba(0,0,0,0.2);'>
+        <h2 style='margin: 0; font: 900 clamp(1.2rem, 2vw, 1.5em) Quantico, monospace; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>{st.session_state.current_feedback}</h2>
     </div>
     <div class='pixel-card' style='border-color: #7ebefe;'>
-        <div style='display: flex; align-items: center; gap: 10px; margin-bottom: 10px;'>
-            <span style='font-size: 1.5em;'>🤖</span>
-            <strong class='pixel-title' style='font-size: 1.2em;'>Feedback</strong>
+        <div style='display: flex; align-items: center; gap: clamp(8px, 1vw, 10px); margin-bottom: clamp(8px, 1vh, 10px);'>
+            <span style='font-size: clamp(1.2rem, 2vw, 1.5em);'>🤖</span>
+            <strong class='pixel-title' style='font-size: clamp(1rem, 1.6vw, 1.2em);'>Feedback</strong>
         </div>
-        <p class='pixel-text' style='font-size: 1.1em; margin: 0;'>{st.session_state.last_comment}</p>
+        <p class='pixel-text' style='font-size: clamp(0.9rem, 1.3vw, 1.1em); margin: 0;'>{st.session_state.last_comment}</p>
     </div>
     """, unsafe_allow_html=True)
     
     # End game checks
     if st.session_state.boss_hp <= 0:
         st.markdown("""
-        <div style='background: linear-gradient(135deg, #029316 0%, #7ebefe 100%); color: white; border: 3px solid #029316;
-                    border-radius: 8px; padding: 15px; text-align: center; margin: 15px 0; box-shadow: 0 8px 25px rgba(2,147,22,0.3);'>
-            <div style='font-size: 3em; margin-bottom: 0px;'>🎉</div>
-            <h1 style='margin: 0; font: 900 2em Quantico, monospace; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>VICTORY!</h1>
-            <p style='font: 1.2em Quantico, monospace; margin-top: 0px;'>You've conquered your inner critic!</p>
+        <div style='background: linear-gradient(135deg, #029316 0%, #7ebefe 100%); color: white; border: clamp(2px, 0.3vw, 3px) solid #029316;
+                    border-radius: clamp(6px, 1vw, 8px); padding: clamp(10px, 1.5vw, 15px); text-align: center; margin: clamp(10px, 1.5vh, 15px) 0; box-shadow: 0 8px 25px rgba(2,147,22,0.3);'>
+            <div style='font-size: clamp(2rem, 4vw, 3em); margin-bottom: 0px;'>🎉</div>
+            <h1 style='margin: 0; font: 900 clamp(1.5rem, 2.5vw, 2em) Quantico, monospace; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>VICTORY!</h1>
+            <p style='font: clamp(1rem, 1.6vw, 1.2em) Quantico, monospace; margin-top: 0px;'>You've conquered your inner critic!</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -402,11 +577,11 @@ else:
                 
     elif st.session_state.player_hp <= 0:
         st.markdown("""
-        <div style='background: linear-gradient(135deg, #da531f 0%, #029316 100%); color: white; border: 3px solid #da531f;
-                    border-radius: 8px; padding: 15px; text-align: center; margin: 15px 0; box-shadow: 0 8px 25px rgba(218,83,31,0.3);'>
-            <div style='font-size: 3em; margin-bottom: 0px;'>💀</div>
-            <h1 style='margin: 0; font: 900 2em Quantico, monospace; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>DEFEAT</h1>
-            <p style='font: 1.2em Quantico, monospace; margin-top: 0px;'>The inner critic won this time. Try again!</p>
+        <div style='background: linear-gradient(135deg, #da531f 0%, #029316 100%); color: white; border: clamp(2px, 0.3vw, 3px) solid #da531f;
+                    border-radius: clamp(6px, 1vw, 8px); padding: clamp(10px, 1.5vw, 15px); text-align: center; margin: clamp(10px, 1.5vh, 15px) 0; box-shadow: 0 8px 25px rgba(218,83,31,0.3);'>
+            <div style='font-size: clamp(2rem, 4vw, 3em); margin-bottom: 0px;'>💀</div>
+            <h1 style='margin: 0; font: 900 clamp(1.5rem, 2.5vw, 2em) Quantico, monospace; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>DEFEAT</h1>
+            <p style='font: clamp(1rem, 1.6vw, 1.2em) Quantico, monospace; margin-top: 0px;'>The inner critic won this time. Try again!</p>
         </div>
         """, unsafe_allow_html=True)
         col1, col2 = st.columns(2)
@@ -422,4 +597,3 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
-

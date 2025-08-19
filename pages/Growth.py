@@ -673,9 +673,9 @@ if (window.innerWidth >= 1024) {
 st.markdown(
     """
     <style>
-    @media (min-width: 1200px) {
+    @media (min-width: 1300px) {
         .custom-spacer {
-            height: 4vh;
+            height: 6vh;
         }
     }
     </style>
@@ -830,3 +830,17 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
+
+st.markdown(
+    """
+    <style>
+    @media (min-width: 1300px) {
+        .custom-spacer {
+            height: 6vh;
+        }
+    }
+    </style>
+    <div class="custom-spacer"></div>
+    """,
+    unsafe_allow_html=True
+)

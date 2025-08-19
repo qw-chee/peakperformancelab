@@ -675,7 +675,7 @@ st.markdown(
     <style>
     @media (min-width: 1300px) {
         .custom-spacer {
-            height: 6vh;
+            height: 12vh;
         }
     }
     </style>
@@ -836,7 +836,7 @@ st.markdown(
     <style>
     @media (min-width: 1300px) {
         .custom-spacer {
-            height: 6vh;
+            height: 12vh;
         }
     }
     </style>
@@ -844,3 +844,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+

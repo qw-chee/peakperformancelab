@@ -417,7 +417,7 @@ def get_styles():
             transition: all 0.3s ease !important;
             font-family: 'Fredoka', cursive !important;
             font-weight: 600 !important;
-            font-size: clamp(0.9rem, 1.2vw, 2rem) !important;
+            font-size: clamp(0.9rem, 1.2vw, 1.6rem) !important;
             color: white !important;
             text-align: center !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
@@ -844,4 +844,5 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 

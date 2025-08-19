@@ -248,7 +248,7 @@ def get_styles():
         
         .question-text {
             font-family: 'Comfortaa', cursive;
-            font-size: clamp(1rem, 1.5vw, 2rem);
+            font-size: clamp(1rem, 1.5vw, 1.5rem);
             color: #2E8B57;
             line-height: 1.6;
             margin: 0;
@@ -816,6 +816,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
+
 
 
 

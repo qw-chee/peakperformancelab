@@ -401,17 +401,34 @@ def get_styles():
             border-color: #FF8C00 !important;
         }
              
+        /* Force the main radio container to full width */
+        div[data-testid="stRadio"] {
+            width: 100% !important;
+        }
+        
+        /* Force the radiogroup to be a proper grid */
         div[data-testid="stRadio"] > div[role="radiogroup"] {
             display: grid !important;
             grid-template-columns: 1fr 1fr !important;
+            grid-template-rows: 1fr 1fr !important;
             gap: 15px !important;
             margin: 25px 0 !important;
-            width: 100% !important; /* Ensure full width */
+            width: 100% !important;
+            max-width: none !important;
+            min-width: 100% !important;
         }
         
+        /* Override every possible width constraint on labels */
         div[data-testid="stRadio"] > div[role="radiogroup"] > label {
+            /* Grid and sizing overrides */
+            width: 100% !important;
+            min-width: 100% !important;
+            max-width: none !important;
+            flex: none !important;
+            
+            /* Visual styling */
             border-radius: 15px !important;
-            padding: 15px 5px !important; /* Increase vertical padding */
+            padding: 15px 10px !important;
             margin: 0 !important;
             display: flex !important;
             align-items: center !important;
@@ -425,34 +442,36 @@ def get_styles():
             text-align: center !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
             border: 2px solid !important;
-            
-            /* Force full width and equal sizing */
-            width: 100% !important;
-            min-width: 0 !important;
-            max-width: none !important;
-            flex: 1 !important;
-            flex-grow: 1 !important;
-            flex-shrink: 1 !important;
-            flex-basis: 0 !important;
             box-sizing: border-box !important;
             
-            /* Force text wrapping and centering */
+            /* Text handling */
             word-wrap: break-word !important;
             white-space: normal !important;
             line-height: 1.2 !important;
-            min-height: 60px !important; /* Ensure consistent height */
+            min-height: 60px !important;
+            
+            /* Position in grid */
+            grid-column: auto !important;
+            grid-row: auto !important;
         }
         
-        /* Override Streamlit's internal width calculations */
-        div[data-testid="stRadio"] > div[role="radiogroup"] > label > div {
+        /* Force all child elements to full width */
+        div[data-testid="stRadio"] > div[role="radiogroup"] > label > div,
+        div[data-testid="stRadio"] > div[role="radiogroup"] > label > div > div,
+        div[data-testid="stRadio"] > div[role="radiogroup"] > label > div > div > div,
+        div[data-testid="stRadio"] > div[role="radiogroup"] > label * {
             width: 100% !important;
+            max-width: none !important;
+            min-width: 0 !important;
+            flex: 1 !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
             text-align: center !important;
+            box-sizing: border-box !important;
         }
         
-        /* Force the text content to take full width */
+        /* Specific override for the text container */
         div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:last-child {
             width: 100% !important;
             flex: 1 !important;
@@ -462,14 +481,22 @@ def get_styles():
             text-align: center !important;
         }
         
-        /* Additional override for text content */
-        div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:last-child > * {
-            width: 100% !important;
+        /* Override text content styling */
+        div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:last-child > *,
+        div[data-testid="stRadio"] > div[role="radiogroup"] > label span,
+        div[data-testid="stRadio"] > div[role="radiogroup"] > label p {
+            color: white !important;
+            font-family: 'Fredoka', cursive !important;
+            font-weight: 600 !important;
+            font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
             text-align: center !important;
+            width: 100% !important;
             display: block !important;
+            margin: 0 !important;
+            padding: 0 !important;
         }
         
-        /* Color styling remains the same */
+        /* Color styling for each option */
         div[data-testid="stRadio"] > div[role="radiogroup"] > label:nth-child(1) {
             background: rgba(153, 21, 21, 0.9) !important;
             border-color: #FF6347 !important;
@@ -490,12 +517,13 @@ def get_styles():
             border-color: #0bb05a !important;
         }
         
-        /* Hover and selected states */
+        /* Hover effects */
         div[data-testid="stRadio"] > div[role="radiogroup"] > label:hover {
             transform: translateY(-2px) scale(1.02) !important;
             box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
         }
         
+        /* Selected state */
         div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
             transform: scale(1.05) !important;
             box-shadow: 0 8px 25px rgba(0,0,0,0.4) !important;
@@ -503,8 +531,10 @@ def get_styles():
             font-weight: 700 !important;
         }
         
-        /* Hide radio input circles */
-        div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
+        /* Completely hide radio input circles */
+        div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child,
+        div[data-testid="stRadio"] > div[role="radiogroup"] > label input[type="radio"],
+        div[data-testid="stRadio"] input[type="radio"] {
             display: none !important;
             visibility: hidden !important;
             opacity: 0 !important;
@@ -512,13 +542,25 @@ def get_styles():
             left: -9999px !important;
             width: 0 !important;
             height: 0 !important;
+            pointer-events: none !important;
         }
         
-        div[data-testid="stRadio"] input[type="radio"] {
+        /* Force grid layout even if Streamlit tries to override */
+        div[data-testid="stRadio"] > div[role="radiogroup"]::before {
+            content: '' !important;
             display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-        }  
+        }
+        
+        /* Additional nuclear option - force all elements in the radio to behave */
+        div[data-testid="stRadio"] * {
+            box-sizing: border-box !important;
+        }
+        
+        /* Ensure the radio group doesn't have flex properties interfering */
+        div[data-testid="stRadio"] > div[role="radiogroup"] > * {
+            flex: none !important;
+            width: 100% !important;
+        }
 
         ::-webkit-scrollbar {
             width: clamp(8px, 1vw, 12px);
@@ -880,6 +922,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

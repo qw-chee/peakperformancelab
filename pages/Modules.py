@@ -173,16 +173,6 @@ st.markdown("""
             75% { transform: translateX(1px) rotate(0.3deg); }
         }
         
-        /* Default: no margin for smaller screens */
-        @media (max-width: 1299.98px) {
-          .main-subtitle { margin-top: 0 !important; }
-        }
-        
-        /* Add big spacing only for large screens */
-        @media (min-width: 1300px) {
-          .main-subtitle { margin-top: 15vh !important; }
-        }
-
         /* Responsive super fun bouncing cards */
         .module-card {
             background: rgba(255, 255, 255, 0.9) !important;
@@ -586,6 +576,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---------------------------- MAIN CONTENT ----------------------------
+st.markdown( """ <style> @media (min-width: 1300px) { .custom-spacer { height: 15vh; } } </style> <div class="custom-spacer"></div> """, unsafe_allow_html=True )
+
 st.markdown("""
 <div class="main-subtitle">🚀 Ready to unlock your potential? 🌟 <br>Choose a module to begin your epic journey toward peak performance! ✨</div>
 """, unsafe_allow_html=True)

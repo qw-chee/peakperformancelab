@@ -579,7 +579,7 @@ st.markdown("""
 st.markdown( """ <style> @media (min-width: 1300px) { .custom-spacer { height: 15vh; } } </style> <div class="custom-spacer"></div> """, unsafe_allow_html=True )
 
 st.markdown("""
-<div class="main-subtitle">🚀 Ready to unlock your potential? 🌟 <br>Choose a module to begin your epic journey toward peak performance! ✨</div>
+<div class="main-subtitle">🚀 Ready to level up? 🌟 <br>Unlock your potential one step at a time. Choose a module and dive in! ✨</div>
 """, unsafe_allow_html=True)
 
 col1, col2, col3, col4 = st.columns(4)

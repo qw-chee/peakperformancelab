@@ -130,9 +130,11 @@ def get_styles():
             font-family: 'Quantico', monospace;
         }
         
-        .pixel-title { 
-            font: 900 clamp(0.8rem, 1.2vw, 2em) 'Quantico', monospace; 
-            color: #029316; 
+        .pixel-title {
+            font-family: 'Quantico', monospace;
+            font-weight: 900;
+            font-size: clamp(0.8rem, 1.2vw, 2em);
+            color: #029316;
             text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
         
@@ -597,6 +599,7 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

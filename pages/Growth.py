@@ -153,6 +153,8 @@ def get_styles():
         .main .block-container {
             padding-left: 1rem !important;
             padding-right: 1rem !important;
+            padding-top: 0 !important;
+            margin-top: -2rem !important;
             max-width: none !important;
             position: relative !important;
             z-index: 100 !important;
@@ -805,6 +807,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
+
 
 
 

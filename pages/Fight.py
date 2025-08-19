@@ -487,7 +487,7 @@ if st.session_state.scenario is None:
             </div>
         </div>
     </div>
-    <div style='text-align: center; margin-top: clamp(3px, 0.5vh, 5px); margin-bottom: clamp(-5px, -0.5vh, 5px);'>
+    <div style='text-align: center; margin-top: clamp(3px, 0.5vh, 5px); margin-bottom: -10px;'>
         <h3 class='pixel-title' style='margin: 0; font-size: clamp(1.2rem, 2vw, 1.5em);'>🎯 Choose Your Battle</h3>
     </div>
     """, unsafe_allow_html=True)
@@ -596,3 +596,4 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+

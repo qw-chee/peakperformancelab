@@ -592,7 +592,7 @@ st.markdown(
     <style>
     @media (min-width: 1300px) {
         .custom-spacer {
-            height: 10vh;
+            height: 20vh;
         }
     }
     </style>

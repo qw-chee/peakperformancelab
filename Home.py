@@ -284,19 +284,17 @@ if (window.innerWidth >= 1024) {
 """, unsafe_allow_html=True)
 
 # ---------------------------- LOADING OVERLAY ----------------------------
-if not st.session_state.home_background_loaded:
-    st.markdown("""
-    <div id="loading-overlay">
-        <div class="loading-content">
-            <div class="loading-title">🏆 Peak Performance Lab</div>
-            <div class="loading-bar-container">
-                <div class="loading-bar"></div>
-            </div>
-            <div class="loading-subtitle">Launching your performance journey...</div>
+st.markdown("""
+<div id="loading-overlay">
+    <div class="loading-content">
+        <div class="loading-title">🏆 Peak Performance Lab</div>
+        <div class="loading-bar-container">
+            <div class="loading-bar"></div>
         </div>
+        <div class="loading-subtitle">Launching your performance journey...</div>
     </div>
-    """, unsafe_allow_html=True)
-    st.session_state.home_background_loaded = True
+</div>
+""", unsafe_allow_html=True)
 
 # ---------------------------- MAIN CONTENT ----------------------------
 # Add responsive spacing to position the button

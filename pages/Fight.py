@@ -523,7 +523,7 @@ elif st.session_state.awaiting_response:
     with st.form("reframe_form", clear_on_submit=True):
         st.markdown(f"""
         <div style='font: 700 clamp(1rem, 1.8vw, 1.3em) Quantico, monospace; margin: clamp(3px, 0.5vh, 5px) 0 clamp(8px, 1vh, 10px); color: #da531f;'>❗ <strong>Your inner critic says:</strong></div>
-        <blockquote style='font: italic clamp(1rem, 1.6vw, 1.2em) Quantico, monospace; color: #00822e; margin: clamp(8px, 1vh, 10px) 0; padding: clamp(10px, 1.5vw, 15px); 
+        <blockquote style='font: italic clamp(1rem, 1.6vw, 1.2em) Quantico, monospace; color: #00521d; margin: clamp(8px, 1vh, 10px) 0; padding: clamp(10px, 1.5vw, 15px); 
                           background: rgba(173,189,79,0.1); border-left: clamp(3px, 0.5vw, 4px) solid #00822e; border-radius: clamp(3px, 0.5vw, 4px);'>
             "{st.session_state.current_line}"
         </blockquote>
@@ -596,5 +596,6 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 

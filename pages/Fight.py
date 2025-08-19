@@ -463,14 +463,14 @@ st.markdown(
 if st.session_state.scenario is None:
     st.markdown("""
     <div class='pixel-card' style='text-align: center;'>
-        <h3 class='pixel-title' style='margin-top: -5px; margin-bottom: -5px; font-size: clamp(1rem, 1.8vw, 2.5em);'>⚔️ Inner Critic Boss Fight</h3>
+        <h3 class='pixel-title' style='margin-top: -5px; margin-bottom: -5px; font-size: clamp(1rem, 1.8vw, 2em);'>⚔️ Inner Critic Boss Fight</h3>
         <p class='pixel-text' style='font-size: clamp(0.8rem, 1.2vw, 1.2em); margin: 0; line-height: 1.1;'>
             In times of stress, positive self-talk can remind you of your qualities and your ability to perservere. Using self-talk can also help you think 
             more positively about yourself and situations, boost your confidence, and cope with uncertainty. <br><br> This game helps you practice countering negative thoughts with positive self-talk to cope with real-life challenges.
         </p>
     </div>
     <div class='pixel-card'>
-        <h3 class='pixel-title' style='margin-top: -5px; margin-bottom: -5px; font-size: clamp(1rem, 1.8vw, 2.5em); text-align: center;'>🎮 How to Play</h3>
+        <h3 class='pixel-title' style='margin-top: -5px; margin-bottom: -5px; font-size: clamp(1rem, 1.8vw, 2em); text-align: center;'>🎮 How to Play</h3>
         <div class='pixel-text' style='font-size: clamp(0.8rem, 1.2vw, 1.2em);'>
             <p style='margin-bottom: clamp(4px, 0.6vh, 8px);'><strong>Mission:</strong> Counter your inner critic with positive self-talk to defeat the Boss!</p>
             <p style='margin-bottom: clamp(4px, 0.6vh, 8px);'><strong>Scoring System:</strong></p>
@@ -596,6 +596,7 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

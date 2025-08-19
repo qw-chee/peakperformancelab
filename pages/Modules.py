@@ -86,7 +86,7 @@ st.markdown("""
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            animation: loading-sequence 1.5s ease-in-out forwards;
+            animation: loading-sequence 2.5s ease-in-out forwards;
         }
         
         @keyframes loading-sequence {

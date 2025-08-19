@@ -213,6 +213,10 @@ page_styles = """
         font-size: 2.8rem !important;
         padding: 18px 35px !important;
     }
+
+    .button-spacing {
+        height: 50vh !important;
+    }
 }
 
 /* Ultrawide and 4K adjustments */
@@ -233,6 +237,10 @@ page_styles = """
         font-size: 4rem !important;
         padding: 30px 50px !important;
         max-width: 700px !important;
+    }
+
+    .button-spacing {
+        height: 60vh !important;
     }
 }
 

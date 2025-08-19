@@ -208,7 +208,7 @@ def get_styles():
         .growth-title {
             font-family: 'Fredoka', cursive;
             font-weight: 700;
-            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-size: clamp(2rem, 4vw, 5rem);
             color: #59250e;
             text-align: center;
             margin-bottom: clamp(5px, 1vh, 10px);
@@ -218,7 +218,7 @@ def get_styles():
         
         .leaf-subtitle {
             font-family: 'Comfortaa', cursive;
-            font-size: clamp(1rem, 1.8vw, 1.4rem);
+            font-size: clamp(1rem, 1.8vw, 3rem);
             color: #32CD32;
             text-align: center;
             margin-bottom: clamp(15px, 2vh, 20px);
@@ -248,7 +248,7 @@ def get_styles():
         
         .question-text {
             font-family: 'Comfortaa', cursive;
-            font-size: clamp(1rem, 1.5vw, 1.3rem);
+            font-size: clamp(1rem, 1.5vw, 2rem);
             color: #2E8B57;
             line-height: 1.6;
             margin: 0;
@@ -274,7 +274,7 @@ def get_styles():
             transition: all 0.3s ease;
             font-family: 'Fredoka', cursive;
             font-weight: 500;
-            font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+            font-size: clamp(0.9rem, 1.2vw, 2rem);
             color: #59250e;
             position: relative;
             overflow: hidden;
@@ -308,7 +308,7 @@ def get_styles():
         }
         
         .result-icon {
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2rem, 4vw, 4rem);
             margin-bottom: clamp(-8px, -1vh, -10px);
             display: block;
             animation: bounce-grow 2s ease-in-out infinite;
@@ -322,14 +322,14 @@ def get_styles():
         .result-title {
             font-family: 'Fredoka' !important;
             font-weight: 700;
-            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-size: clamp(1.8rem, 3.5vw, 4rem);
             margin-bottom: clamp(-20px, -2.5vh, -25px);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
         
         .result-description {
             font-family: 'Comfortaa', cursive;
-            font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+            font-size: clamp(0.9rem, 1.2vw, 2rem);
             line-height: 1.2;
             margin-bottom: 0px;
             text-align: left;
@@ -341,7 +341,7 @@ def get_styles():
             padding: clamp(15px, 2vh, 20px);
             font-family: 'Comfortaa', cursive;
             color: #2E8B57;
-            font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+            font-size: clamp(0.9rem, 1.2vw, 2rem);
         }
         
         .spinner {
@@ -365,7 +365,7 @@ def get_styles():
             border: clamp(2px, 0.3vw, 3px) solid #FF6347 !important;
             color: white !important;
             font-weight: 600 !important;
-            font-size: clamp(1rem, 1.3vw, 1.2rem) !important;
+            font-size: clamp(1rem, 1.3vw, 2rem) !important;
             font-family: 'Fredoka', cursive !important;
             padding: clamp(12px, 1.5vh, 15px) clamp(25px, 3vw, 30px) !important;
             border-radius: clamp(20px, 2.5vw, 25px) !important;
@@ -417,7 +417,7 @@ def get_styles():
             transition: all 0.3s ease !important;
             font-family: 'Fredoka', cursive !important;
             font-weight: 600 !important;
-            font-size: clamp(0.9rem, 1.2vw, 1.1rem) !important;
+            font-size: clamp(0.9rem, 1.2vw, 2rem) !important;
             color: white !important;
             text-align: center !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
@@ -816,6 +816,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
+
 
 
 

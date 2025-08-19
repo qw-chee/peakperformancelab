@@ -416,7 +416,7 @@ def get_styles():
             transition: all 0.3s ease !important;
             font-family: 'Fredoka', cursive !important;
             font-weight: 600 !important;
-            font-size: 1.1em !important;
+            font-size: clamp(0.9rem, 1.2vw, 1.1rem) !important;
             color: white !important;
             text-align: center !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
@@ -811,4 +811,5 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
+
 

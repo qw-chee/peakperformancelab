@@ -284,16 +284,15 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<div style='height: 12vh;'></div>", unsafe_allow_html=True)
-
 # Scenario selection
 if st.session_state.scenario is None:
     st.markdown("""
     <div class='pixel-card' style='text-align: center;'>
-        <h3 class='pixel-title' style='margin-bottom: 0px; font-size: 1.6em;'>⚔️ Overview</h3>
+        <h3 class='pixel-title' style='margin-bottom: 0px; font-size: 1.6em;'>⚔️ Inner Critic Boss Fight</h3>
         <p class='pixel-text' style='font-size: 1.1em; margin: 0;'>
-            Positive self-talk is a powerful tool for peak performance. This game helps you 
-            practice countering negative thoughts with constructive reframes, strengthening your self-talk for real-life challenges.
+            Positive self-talk includes words of encouragement you can say to yourself, especially in the face of stress. They can remind you of your ability to get through whatever comes your way. Using self-talk
+            can also help you think more positively about yourself and situations, boost your confidence, and cope with uncertainty. Positive self-talk should remind you of your qualities and your ability to perservere.
+            This game helps you practice countering negative thoughts with positive self-talk to cope with real-life challenges.
         </p>
     </div>
     <div class='pixel-card'>

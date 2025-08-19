@@ -176,7 +176,7 @@ def get_styles():
             border: clamp(2px, 0.3vw, 3px) solid #59250e;
             border-radius: clamp(15px, 2vw, 20px);
             padding: clamp(8px, 1vw, 10px);
-            margin: clamp(10px, 1.5vh, 15px) 0;
+            margin: clamp(5px, 0.5vh, 10px) 0;
             position: relative;
             backdrop-filter: blur(8px);
             box-shadow: 0 8px 32px rgba(255, 161, 102, 0.2), inset 0 0 20px rgba(255, 161, 102, 0.1);
@@ -664,7 +664,7 @@ if (window.innerWidth >= 1024) {
 if st.session_state.current_question == 0 and not st.session_state.quiz_completed:
     st.markdown("""
     <div class="nature-container">
-        <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: 1.6em; margin-bottom: -5px; margin-top: -10px; text-align: center;">
+        <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: 1.6em; margin-bottom: -5px; text-align: center;">
             🌱 Mindset Growth Garden
         </h3>
         <div class="nature-text">
@@ -805,6 +805,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
+
 
 
 

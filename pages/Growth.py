@@ -659,9 +659,6 @@ if (window.innerWidth >= 1024) {
 </script>
 """, unsafe_allow_html=True)
 
-# Add spacing
-st.markdown("<div style='height: 4vh;'></div>", unsafe_allow_html=True)
-
 # ---------------------------- MAIN APP LOGIC ----------------------------
 # OVERVIEW PAGE
 if st.session_state.current_question == 0 and not st.session_state.quiz_completed:
@@ -808,4 +805,5 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
+
 

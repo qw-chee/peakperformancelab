@@ -152,16 +152,6 @@ st.markdown("""
             100% { transform: translateX(300%); }
         }
         
-        /* Responsive container - scales based on 2033x983 reference */
-        .main .block-container {
-            max-width: none !important;
-            position: relative !important;
-            z-index: 100 !important;
-            transform: scale(clamp(0.6, calc(100vw / 2033), 1.4));
-            transform-origin: top center;
-        }
-           
-        /* Responsive wiggling subtitle */
         .main-subtitle {
             font-family: 'Sour Gummy', cursive;
             font-size: clamp(1.2rem, 1.8vw, 2.2rem);
@@ -169,7 +159,7 @@ st.markdown("""
             color: #34495E !important;
             text-align: center;
             margin-bottom: clamp(1.5rem, 2vh, 2rem);
-            margin-top: clamp(-8rem, -6vw, 5rem);
+            margin-top: clamp(-8rem, -6vw, 5rem); /* base margin */
             text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
             animation: wiggleSubtitle 4s ease-in-out infinite;
             position: relative;
@@ -183,6 +173,16 @@ st.markdown("""
             75% { transform: translateX(1px) rotate(0.3deg); }
         }
         
+        /* Default: no margin for smaller screens */
+        @media (max-width: 1299.98px) {
+          .main-subtitle { margin-top: 0 !important; }
+        }
+        
+        /* Add big spacing only for large screens */
+        @media (min-width: 1300px) {
+          .main-subtitle { margin-top: 15vh !important; }
+        }
+
         /* Responsive super fun bouncing cards */
         .module-card {
             background: rgba(255, 255, 255, 0.9) !important;
@@ -572,24 +572,6 @@ if (window.innerWidth >= 1024) {
 }
 </script>
 """, unsafe_allow_html=True)
-
-st.markdown("""
-<style>
-.custom-spacer { height: 0 !important; }
-
-.element-container:has(.custom-spacer),
-[data-testid="stMarkdown"]:has(.custom-spacer) {
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-@media (min-width: 1300px) {
-  .custom-spacer { height: 15vh !important; }
-}
-</style>
-""", unsafe_allow_html=True)
-
-st.markdown("<div class='custom-spacer' aria-hidden='true'></div>", unsafe_allow_html=True)
 # ---------------------------- LOADING OVERLAY ----------------------------
 st.markdown("""
 <div id="loading-overlay">

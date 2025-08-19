@@ -398,27 +398,16 @@ def get_styles():
             border-color: #FF8C00 !important;
         }
              
-        /* Force radio group to full width */
-        div[data-testid="stRadio"] {
-            width: 100% !important;
-        }
-        
-        div[data-testid="stRadio"] > div {
-            width: 100% !important;
-        }
-        
         div[data-testid="stRadio"] > div[role="radiogroup"] {
             display: grid !important;
             grid-template-columns: 1fr 1fr !important;
-            gap: clamp(10px, 1.5vw, 15px) !important;
-            margin: clamp(20px, 2.5vh, 25px) 0 !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
+            gap: 15px !important;
+            margin: 25px 0 !important;
         }
         
         div[data-testid="stRadio"] > div[role="radiogroup"] > label {
-            border-radius: clamp(12px, 1.5vw, 15px) !important;
-            padding: clamp(15px, 2vh, 20px) !important;
+            border-radius: 15px !important;
+            padding: 5px !important;
             margin: 0 !important;
             display: flex !important;
             align-items: center !important;
@@ -427,15 +416,11 @@ def get_styles():
             transition: all 0.3s ease !important;
             font-family: 'Fredoka', cursive !important;
             font-weight: 600 !important;
-            font-size: clamp(0.9rem, 1.2vw, 1.1rem) !important;
+            font-size: 1.1em !important;
             color: white !important;
             text-align: center !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-            border: clamp(1px, 0.2vw, 2px) solid !important;
-            width: 100% !important;
-            min-height: clamp(50px, 6vh, 65px) !important;
-            box-sizing: border-box !important;
-            flex: 1 !important;
+            border: 2px solid !important;
         }
         
         div[data-testid="stRadio"] > div[role="radiogroup"] > label:nth-child(1) {
@@ -484,7 +469,7 @@ def get_styles():
             color: white !important;
             font-family: 'Fredoka', cursive !important;
             font-weight: 600 !important;
-            font-size: clamp(0.9rem, 1.2vw, 1.1rem) !important;
+            font-size: 1.1em !important;
             text-align: center !important;
         }
         
@@ -826,3 +811,4 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
+

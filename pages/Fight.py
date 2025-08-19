@@ -468,7 +468,7 @@ if st.session_state.scenario is None:
     <div class='pixel-card' style='text-align: center;'>
         <h3 class='pixel-title 'style='color: #0052a3; margin-top: -5px; margin-bottom: -5px; font-size: clamp(1rem, 1.8vw, 2em);'>⚔️ Inner Critic Boss Fight</h3>
         <p class='pixel-text' style='font-size: clamp(0.8rem, 1.2vw, 1.2em); margin: 0; line-height: 1.1;'>
-            In times of stress, positive self-talk can remind you of your qualities and your ability to perservere. Using self-talk can also help you think 
+            To achieve peak performance, positive self-talk is a powerful tool that can remind you of your qualities and your ability to perservere. Using self-talk can also help you think 
             more positively about yourself and situations, boost your confidence, and cope with uncertainty. <br><br> This challenge helps you practice countering negative thoughts with positive self-talk to cope with real-life challenges.
         </p>
     </div>
@@ -599,6 +599,7 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

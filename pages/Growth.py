@@ -799,7 +799,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     <div class="nature-container">
         <div class="results-container">
             <span class="result-icon">{result_data['icon']}</span>
-            <h3 class="result-title" style="color: {result_data['color']};">{result_data['title']}</h2>
+            <h3 class="result-title" style="color: {result_data['color']}; margin-bottom: -15px;">{result_data['title']}</h2>
             <h4 class="result-title" style="color: {result_data['color']};">{result_data['subtitle']}</h3>
             <div class="result-description" style="color: #6e3f09;">
                 {result_data['description']}
@@ -844,5 +844,3 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-

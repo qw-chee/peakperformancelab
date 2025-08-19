@@ -60,83 +60,83 @@ page_styles = """
         position: relative;
     }
 
-    /* Loading overlay - responsive sizing */
-    #loading-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #64ccba 0%, #41c0a9 50%, #1da088 100%);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        animation: loading-sequence 1.5s ease-in-out forwards;
-    }
-
-    @keyframes loading-sequence {
-        0% { opacity: 1; }
-        85% { opacity: 1; }
-        100% { opacity: 0; pointer-events: none; }
-    }
-
-    .loading-content {
-        text-align: center;
-    }
-
-    /* Responsive title sizing */
-    .loading-title {
-        font-family: 'Capriola', sans-serif;
-        font-size: clamp(1.5rem, 4vw, 3rem);
-        font-weight: 700;
-        color: white;
-        margin-bottom: clamp(15px, 2vh, 25px);
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        animation: title-glow 2s ease-in-out infinite;
-    }
-
-    /* Responsive loading bar */
-    .loading-bar-container {
-        width: clamp(250px, 30vw, 400px);
-        height: clamp(6px, 1vh, 10px);
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 4px;
-        overflow: hidden;
-        position: relative;
-        margin: 0 auto;
-        border: 1px solid white;
-    }
-
-    .loading-bar {
-        width: 40%;
-        height: 100%;
-        background: linear-gradient(90deg, white, #fbbf24);
-        border-radius: 4px;
-        animation: loading-bar 2s ease-in-out infinite;
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-    }
-
-    /* Responsive subtitle */
-    .loading-subtitle {
-        color: rgba(255, 255, 255, 0.9);
-        margin-top: clamp(10px, 1.5vh, 20px);
-        font-family: 'Segoe UI', sans-serif !important;
-        font-size: clamp(0.8rem, 1.5vw, 1.2rem);
-        font-weight: 500;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-    }
-
-    @keyframes title-glow {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.8; transform: scale(1.05); }
-    }
-
-    @keyframes loading-bar {
-        0% { transform: translateX(-100%); }
-        50% { transform: translateX(0%); }
-        100% { transform: translateX(300%); }
-    }
+/* Loading overlay - responsive sizing */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #64ccba 0%, #41c0a9 50%, #1da088 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: loading-sequence 1.5s ease-in-out forwards;
+        }
+        
+        @keyframes loading-sequence {
+            0% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { opacity: 0; pointer-events: none; }
+        }
+        
+        .loading-content {
+            text-align: center;
+        }
+        
+        /* Responsive loading title */
+        .loading-title {
+            font-family: 'Capriola', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 700;
+            color: white;
+            margin-bottom: clamp(15px, 2vh, 25px);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: title-glow 2s ease-in-out infinite;
+        }
+        
+        /* Responsive loading bar */
+        .loading-bar-container {
+            width: clamp(250px, 30vw, 400px);
+            height: clamp(6px, 1vh, 10px);
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+            border: 1px solid white;
+        }
+        
+        .loading-bar {
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(90deg, white, #fbbf24);
+            border-radius: 4px;
+            animation: loading-bar 2s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Responsive loading subtitle */
+        .loading-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: clamp(10px, 1.5vh, 20px);
+            font-family: 'Segoe UI', sans-serif !important;
+            font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        @keyframes title-glow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        
+        @keyframes loading-bar {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(0%); }
+            100% { transform: translateX(300%); }
+        }
 
     /* Responsive button styling for different desktop sizes */
     .stApp .main .block-container div[data-testid="stButton"] {

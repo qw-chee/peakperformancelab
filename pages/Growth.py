@@ -87,7 +87,7 @@ Please provide recommendations in the following format:
 - Use encouraging and supportive language
 - Use simple and understandable laymen language
 
-Format your response as a simple list with each recommendation on a new line, starting with a dash (-). Give a maximum of 4 recommendations.
+Format your response as a simple list with each recommendation on a new line, starting with a dash (-). Give a maximum of 4 recommendations with a maximum of 9 words each.
 """
 
         response = openai.ChatCompletion.create(
@@ -844,4 +844,5 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 

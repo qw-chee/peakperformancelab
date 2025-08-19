@@ -361,7 +361,7 @@ def get_styles():
         
         /* Main buttons (not radio options) */
         div[data-testid="stButton"] > button:not([data-testid*="response_"]) {
-            background: linear-gradient(135deg, #FF6347 0%, #FF8C00 50%, #FFD700 100%) !important;
+            background: linear-gradient(135deg, #cc5a39 0%, #d97a2b 50%, #e6b800 100%) !important;
             border: clamp(2px, 0.3vw, 3px) solid #FF6347 !important;
             color: white !important;
             font-weight: 600 !important;
@@ -384,7 +384,7 @@ def get_styles():
         }
 
         div[data-testid="stButton"] > button[kind="primary"] {
-            background: linear-gradient(135deg, #FF6347 0%, #FF8C00 50%, #FFD700 100%) !important;
+            background: linear-gradient(135deg, #cc5a39 0%, #d97a2b 50%, #e6b800 100%) !important;
             border-color: #FF6347 !important;
             animation: sunny-glow 2s ease-in-out infinite alternate;
         }
@@ -844,3 +844,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+

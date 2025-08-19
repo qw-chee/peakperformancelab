@@ -322,8 +322,8 @@ def get_styles():
         .result-title {
             font-family: 'Fredoka' !important;
             font-weight: 700;
-            font-size: clamp(0.8rem, 2vw, 4rem);
-            margin-bottom: clamp(-25px, -2.5vh, -20px);
+            font-size: clamp(0.6rem, 1.5vw, 4rem);
+            margin-bottom: clamp(-40px, -2.5vh, -20px);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
         
@@ -844,4 +844,5 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 

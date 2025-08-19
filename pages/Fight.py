@@ -123,8 +123,8 @@ def get_styles():
             background: rgba(255,255,255,0.95); 
             border: clamp(2px, 0.3vw, 3px) solid #175dcf; 
             border-radius: clamp(6px, 1vw, 8px);
-            padding: clamp(8px, 1.2vw, 12px); 
-            margin: clamp(2px, 0.4vh, 4px) 0; 
+            padding: clamp(8px, 1.2vw, 15px); 
+            margin: clamp(2px, 0.4vh, 6px) 0; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             font-family: 'Quantico', monospace;
         }
@@ -596,6 +596,7 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

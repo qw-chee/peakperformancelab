@@ -410,6 +410,7 @@ def get_styles():
             border-radius: 15px !important;
             padding: 5px !important;
             margin: 0 !important;
+            display: flex !important;  /* Add this */
             align-items: center !important;
             justify-content: center !important;
             cursor: pointer !important;
@@ -421,6 +422,10 @@ def get_styles():
             text-align: center !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
             border: 2px solid !important;
+            width: 100% !important;  /* Add this */
+            min-width: 0 !important;  /* Add this */
+            flex-grow: 1 !important;  /* Add this */
+            box-sizing: border-box !important;  /* Add this */
         }
         
         div[data-testid="stRadio"] > div[role="radiogroup"] > label:nth-child(1) {
@@ -811,6 +816,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
+
 
 
 

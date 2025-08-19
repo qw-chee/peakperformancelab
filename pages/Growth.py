@@ -329,7 +329,7 @@ def get_styles():
         
         .result-description {
             font-family: 'Comfortaa', cursive;
-            font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+            font-size: clamp(0.9rem, 1.2vw, 1.1rem);
             line-height: 1.2;
             margin-bottom: 0px;
             text-align: left;
@@ -844,6 +844,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

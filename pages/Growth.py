@@ -810,4 +810,3 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
             st.switch_page("pages/Modules.py")
 
 st.markdown("<div style='height: 4vh;'></div>", unsafe_allow_html=True)
-    }

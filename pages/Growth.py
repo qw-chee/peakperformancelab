@@ -675,7 +675,7 @@ if (window.innerWidth >= 1024) {
 if st.session_state.current_question == 0 and not st.session_state.quiz_completed:
     st.markdown("""
     <div class="nature-container">
-        <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: clamp(1.4rem, 1.1vw, 5rem); margin-bottom: -5px; text-align: center;">
+        <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: clamp(1.4rem, 0.8vw, 5rem); margin-bottom: -5px; text-align: center;">
             🌱 Mindset Growth Garden
         </h3>
         <div class="nature-text">
@@ -693,7 +693,7 @@ if st.session_state.current_question == 0 and not st.session_state.quiz_complete
         
     st.markdown("""
     <div class="nature-container">
-        <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: clamp(1.4rem, 1.1vw, 5rem); margin-bottom: -5px; text-align: center;">
+        <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: clamp(1.4rem, 0.8vw, 5rem); margin-bottom: -5px; text-align: center;">
             ✨ How to Respond
         </h3>
         <div class="nature-text">
@@ -816,3 +816,4 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
+

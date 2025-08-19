@@ -465,8 +465,8 @@ if st.session_state.scenario is None:
     <div class='pixel-card' style='text-align: center;'>
         <h3 class='pixel-title' style='margin-bottom: 0px; font-size: clamp(1.2rem, 2vw, 1.6em);'>⚔️ Inner Critic Boss Fight</h3>
         <p class='pixel-text' style='font-size: clamp(0.9rem, 1.3vw, 1.1em); margin: 0;'>
-            Positive self-talk are words of encouragement you can say to yourself, especially in the face of stress. Using self-talk can help you think more positively about yourself and situations, 
-            boost your confidence, and cope with uncertainty. Positive self-talk should remind you of your qualities and your ability to perservere. <br> This game helps you practice countering negative thoughts with positive self-talk to cope with real-life challenges.
+            In times of stress, positive self-talk are words of encouragement you can say to yourself to remind you of your qualities and your ability to perservere. <br> Using self-talk can also help you think 
+            more positively about yourself and situations, boost your confidence, and cope with uncertainty. <br> This game helps you practice countering negative thoughts with positive self-talk to cope with real-life challenges.
         </p>
     </div>
     <div class='pixel-card'>
@@ -596,4 +596,5 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 

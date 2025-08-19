@@ -573,6 +573,23 @@ if (window.innerWidth >= 1024) {
 </script>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<style>
+.custom-spacer { height: 0 !important; }
+
+.element-container:has(.custom-spacer),
+[data-testid="stMarkdown"]:has(.custom-spacer) {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+@media (min-width: 1300px) {
+  .custom-spacer { height: 15vh !important; }
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown("<div class='custom-spacer' aria-hidden='true'></div>", unsafe_allow_html=True)
 # ---------------------------- LOADING OVERLAY ----------------------------
 st.markdown("""
 <div id="loading-overlay">

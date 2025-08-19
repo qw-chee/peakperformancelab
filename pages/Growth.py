@@ -373,6 +373,7 @@ def get_styles():
             transition: all 0.3s ease !important;
             text-transform: none !important;
             letter-spacing: 0.5px !important;
+            width: 100% !important;
         }
 
         div[data-testid="stButton"] > button:not([data-testid*="response_"]):hover {
@@ -810,6 +811,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
+
 
 
 

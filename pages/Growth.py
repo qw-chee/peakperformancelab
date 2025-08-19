@@ -185,7 +185,7 @@ def get_styles():
             background: rgba(255, 255, 255, 0.95);
             border: clamp(2px, 0.3vw, 3px) solid #59250e;
             border-radius: clamp(15px, 2vw, 20px);
-            padding: clamp(8px, 1vw, 10px);
+            padding: clamp(7px, 0.9vw, 9px);
             margin: clamp(9px, 1.4vh, 14px) 0;
             position: relative;
             backdrop-filter: blur(8px);
@@ -815,6 +815,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
+
 
 
 

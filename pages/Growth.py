@@ -148,7 +148,17 @@ def get_styles():
         button[kind="header"][data-testid="baseButton-header"] {
             display: none !important;
         }
-        
+
+        .stApp > div:first-child {
+            padding-top: 0 !important;
+            margin-top: -3rem !important;
+        }
+
+        .block-container {
+            padding-top: 0 !important;
+            margin-top: -2rem !important;
+        }
+
         /* Responsive container - scales based on 2033x983 reference */
         .main .block-container {
             padding-left: 1rem !important;
@@ -663,7 +673,7 @@ if (window.innerWidth >= 1024) {
 # OVERVIEW PAGE
 if st.session_state.current_question == 0 and not st.session_state.quiz_completed:
     st.markdown("""
-    <div class="nature-container" style="margin-top: -3rem !important;">
+    <div class="nature-container">
         <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: 1.6em; margin-bottom: -5px; text-align: center;">
             🌱 Mindset Growth Garden
         </h3>
@@ -805,6 +815,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
+
 
 
 

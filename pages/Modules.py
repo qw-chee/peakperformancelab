@@ -591,18 +591,19 @@ st.markdown(
     """
     <style>
     .custom-spacer {
-        height: 0; /* default for all screen sizes */
+        height: 0px; /* default for all screen sizes */
     }
     @media (min-width: 1300px) {
         .custom-spacer {
-            height: 15vh; /* only on large screens */
+            height: 15vh !important; /* override only on large screens */
         }
     }
     </style>
-    <div class="custom-spacer"></div>
     """,
     unsafe_allow_html=True
 )
+
+st.markdown("<div class='custom-spacer'></div>", unsafe_allow_html=True)
 
 st.markdown("""
 <div class="main-subtitle">🚀 Ready to unlock your potential? 🌟 <br>Choose a module to begin your epic journey toward peak performance! ✨</div>

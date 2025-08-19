@@ -708,7 +708,7 @@ if st.session_state.current_question == 0 and not st.session_state.quiz_complete
         
     st.markdown("""
     <div class="nature-container">
-        <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: 1.5em; text-align: center;">
+        <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: 1.5em; margin-bottom: -5px; text-align: center;">
             ✨ How to Respond
         </h3>
         <div class="nature-text">
@@ -845,5 +845,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 

@@ -476,13 +476,13 @@ if st.session_state.scenario is None:
             <p style='margin-bottom: clamp(4px, 0.6vh, 8px);'><strong>Mission:</strong> Counter your inner critic with positive self-talk to defeat the Boss!</p>
             <p style='margin-bottom: clamp(4px, 0.6vh, 8px);'><strong>Scoring System:</strong></p>
             <div style='display: grid; grid-template-columns: 1fr 1fr 1fr; gap: clamp(8px, 1.2vw, 12px); margin-bottom: 0px;'>
-                <div style='background: #02b322; color: white; padding: clamp(8px, 1.3vw, 15px); border-radius: clamp(4px, 0.8vw, 6px); text-align: center; border: clamp(1px, 0.2vw, 2px) solid #175dcf;'>
+                <div style='background: #02b322; color: white; padding: clamp(8px, 1.3vw, 15px); border-radius: clamp(4px, 0.8vw, 6px); text-align: center; border: clamp(1px, 0.2vw, 2px) solid #175dcf; margin-top: 5px; margin-bottom: 5px;'>
                     <strong style='font-size: clamp(1rem, 1.3vw, 1rem);'>Strong & Positive:</strong><br><small style='font-size: clamp(0.9rem, 1.2vw, 0.9rem);'>Boss loses 15 HP</small>
                 </div>
-                <div style='background: #ffbb00; color: white; padding: clamp(8px, 1.3vw, 15px); border-radius: clamp(4px, 0.8vw, 6px); text-align: center; border: clamp(1px, 0.2vw, 2px) solid #175dcf;'>
+                <div style='background: #ffbb00; color: white; padding: clamp(8px, 1.3vw, 15px); border-radius: clamp(4px, 0.8vw, 6px); text-align: center; border: clamp(1px, 0.2vw, 2px) solid #175dcf; margin-top: 5px; margin-bottom: 5px;'>
                     <strong style='font-size: clamp(1rem, 1.3vw, 1rem);'>Weak or Generic:</strong><br><small style='font-size: clamp(0.9rem, 1.2vw, 0.9rem);'>Boss loses 5 HP</small>
                 </div>
-                <div style='background: #da531f; color: white; padding: clamp(8px, 1.3vw, 15px); border-radius: clamp(4px, 0.8vw, 6px); text-align: center; border: clamp(1px, 0.2vw, 2px) solid #175dcf;'>
+                <div style='background: #da531f; color: white; padding: clamp(8px, 1.3vw, 15px); border-radius: clamp(4px, 0.8vw, 6px); text-align: center; border: clamp(1px, 0.2vw, 2px) solid #175dcf; margin-top: 5px; margin-bottom: 5px;'>
                     <strong style='font-size: clamp(1rem, 1.3vw, 1rem);'>Poor or Irrelevant:</strong><br><small style='font-size: clamp(0.9rem, 1.2vw, 0.9rem);'>You lose 15 HP</small>
                 </div>
             </div>
@@ -597,6 +597,7 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

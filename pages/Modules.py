@@ -590,9 +590,12 @@ st.markdown("""
 st.markdown(
     """
     <style>
-    @media (min-width: 1400px) {
+    .custom-spacer {
+        height: 0; /* default for all screen sizes */
+    }
+    @media (min-width: 1300px) {
         .custom-spacer {
-            height: 15vh;
+            height: 15vh; /* only on large screens */
         }
     }
     </style>

@@ -184,15 +184,7 @@ page_styles = """
 }
 
 /* Large Desktop (1440px+) */
-@media screen and (min-width: 1440px) {
-    .loading-title {
-        font-size: 4.5rem;
-    }
-    
-    .loading-subtitle {
-        font-size: 1.8rem;
-    }
-    
+@media screen and (min-width: 1440px) {  
     div[data-testid="stButton"] button {
         font-size: 3.5rem !important;
         padding: 25px 45px !important;
@@ -200,15 +192,7 @@ page_styles = """
 }
 
 /* Standard Desktop (1024px-1439px) */
-@media screen and (min-width: 1024px) and (max-width: 1439px) {
-    .loading-title {
-        font-size: 3.5rem;
-    }
-    
-    .loading-subtitle {
-        font-size: 1.4rem;
-    }
-    
+@media screen and (min-width: 1024px) and (max-width: 1439px) {    
     div[data-testid="stButton"] button {
         font-size: 2.8rem !important;
         padding: 18px 35px !important;
@@ -221,18 +205,6 @@ page_styles = """
 
 /* Ultrawide and 4K adjustments */
 @media screen and (min-width: 1920px) {
-    .loading-bar-container {
-        width: 500px;
-    }
-    
-    .loading-title {
-        font-size: 5rem;
-    }
-    
-    .loading-subtitle {
-        font-size: 2rem;
-    }
-    
     div[data-testid="stButton"] button {
         font-size: 4rem !important;
         padding: 30px 50px !important;

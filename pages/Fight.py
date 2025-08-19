@@ -147,7 +147,7 @@ def get_styles():
             align-items: center; 
             gap: clamp(10px, 1.5vw, 15px); 
             margin-bottom: clamp(10px, 1.5vh, 15px); 
-            padding: clamp(10px, 1.5vw, 15px);
+            padding: clamp(8px, 1.2vw, 15px);
             background: white; 
             border: clamp(2px, 0.3vw, 3px) solid #175dcf; 
             border-radius: clamp(6px, 1vw, 8px); 
@@ -285,7 +285,7 @@ def render_hp_bars():
     <div class="hp-container">
         <div class="hp-icon" style="color: #029316;">😈</div>
         <div style="flex: 1;">
-            <div style="font: 700 clamp(16px, 2vw, 20px) 'Quantico', monospace; color: #da531f; margin-bottom: 5px;">Inner Critic Boss</div>
+            <div style="font: 700 clamp(14px, 1.8vw, 20px) 'Quantico', monospace; color: #da531f; margin-bottom: 5px;">Inner Critic Boss</div>
             <div class="hp-bar"><div class="hp-fill-boss" style="width: {st.session_state.boss_hp}%;"></div></div>
         </div>
         <div class="hp-label">{st.session_state.boss_hp} HP</div>
@@ -293,7 +293,7 @@ def render_hp_bars():
     <div class="hp-container">
         <div class="hp-icon" style="color: white;">🧠</div>
         <div style="flex: 1;">
-            <div style="font: 700 clamp(16px, 2vw, 20px) 'Quantico', monospace; color: #175dcf; margin-bottom: 5px;">Your Mental Strength</div>
+            <div style="font: 700 clamp(14px, 1.8vw, 20px) 'Quantico', monospace; color: #175dcf; margin-bottom: 5px;">Your Mental Strength</div>
             <div class="hp-bar"><div class="hp-fill-user" style="width: {st.session_state.player_hp}%;"></div></div>
         </div>
         <div class="hp-label">{st.session_state.player_hp} HP</div>
@@ -542,7 +542,7 @@ else:
     
     st.markdown(f"""
     <div style='background: linear-gradient(135deg, {color} 0%, #7ebefe 100%); color: white; border: clamp(2px, 0.3vw, 3px) solid {color};
-                border-radius: clamp(6px, 1vw, 8px); padding: clamp(15px, 2.5vw, 20px); text-align: center; margin: clamp(3px, 0.5vh, 5px) 0; box-shadow: 0 6px 20px rgba(0,0,0,0.2);'>
+                border-radius: clamp(6px, 1vw, 8px); padding: clamp(10px, 2vw, 20px); text-align: center; margin: clamp(3px, 0.5vh, 5px) 0; box-shadow: 0 6px 20px rgba(0,0,0,0.2);'>
         <h2 style='margin: 0; font: 900 clamp(1.2rem, 2vw, 1.5em) Quantico, monospace; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>{st.session_state.current_feedback}</h2>
     </div>
     <div class='pixel-card' style='border-color: #7ebefe;'>
@@ -596,6 +596,7 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

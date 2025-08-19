@@ -87,7 +87,7 @@ def get_styles():
     
     /* Full screen background */
     .stApp {
-        background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/icbf.gif');
+        background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/ICBF.gif');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -422,3 +422,4 @@ else:
             st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
         
         st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+

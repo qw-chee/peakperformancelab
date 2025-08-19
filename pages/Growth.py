@@ -698,7 +698,7 @@ if st.session_state.current_question == 0 and not st.session_state.quiz_complete
         <div class="nature-text">
             You'll read 20 statements about learning and ability. Take your time for each statement, then click on the option that best matches how you truly feel:
         </div>
-        <div style="margin: -20px 0 -20px 0;">
+        <div style="margin: -10px 0 -20px 0;">
             <div class="response-grid">
                 <div style="background: rgba(153, 21, 21, 0.8); border: 2px solid #FF6347; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
                     Strongly Disagree
@@ -706,10 +706,10 @@ if st.session_state.current_question == 0 and not st.session_state.quiz_complete
                 <div style="background: rgba(255, 157, 0, 0.8); border: 2px solid #FFA500; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
                     Disagree
                 </div>
-                <div style="background: rgba(11, 176, 90, 0.8); border: 2px solid #1bf282; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
+                <div style="background: rgba(11, 176, 90, 0.8); border: 2px solid #1bf282; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;">
                     Agree
                 </div>
-                <div style="background: rgba(7, 135, 61, 0.8); border: 2px solid #0bb05a; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
+                <div style="background: rgba(7, 135, 61, 0.8); border: 2px solid #0bb05a; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;">
                     Strongly Agree
                 </div>
             </div>
@@ -815,3 +815,4 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.switch_page("pages/Modules.py")
+

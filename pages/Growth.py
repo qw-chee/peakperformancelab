@@ -408,63 +408,6 @@ def get_styles():
             position: absolute !important;
             left: -9999px !important;
         }
-
-        /* Force radio buttons into a 2x2 grid */
-        div[role="radiogroup"] {
-            display: grid !important;
-            grid-template-columns: 1fr 1fr !important;
-            gap: 15px !important;
-            width: 100% !important;
-        }
-        
-        /* Style each radio button as a big block */
-        div[role="radiogroup"] > label {
-            border-radius: 15px !important;
-            padding: 20px 10px !important;
-            text-align: center !important;
-            cursor: pointer !important;
-            font-family: 'Fredoka', cursive !important;
-            font-weight: 600 !important;
-            font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-            color: white !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-            border: 2px solid transparent !important;
-            transition: all 0.3s ease !important;
-            min-height: 70px !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-        }
-        
-        /* Specific colors for each option */
-        div[role="radiogroup"] > label:nth-child(1) {
-            background: rgba(153, 21, 21, 0.9) !important;   /* Strongly Disagree */
-            border-color: #FF6347 !important;
-        }
-        div[role="radiogroup"] > label:nth-child(2) {
-            background: rgba(255, 157, 0, 0.9) !important;   /* Disagree */
-            border-color: #FFA500 !important;
-        }
-        div[role="radiogroup"] > label:nth-child(3) {
-            background: rgba(11, 176, 90, 0.9) !important;   /* Agree */
-            border-color: #1bf282 !important;
-        }
-        div[role="radiogroup"] > label:nth-child(4) {
-            background: rgba(7, 135, 61, 0.9) !important;    /* Strongly Agree */
-            border-color: #0bb05a !important;
-        }
-        
-        /* Hover + selected states */
-        div[role="radiogroup"] > label:hover {
-            transform: translateY(-2px) scale(1.02) !important;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
-        }
-        div[role="radiogroup"] > label[data-checked="true"] {
-            transform: scale(1.05) !important;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4) !important;
-            font-weight: 700 !important;
-        }
-
         ::-webkit-scrollbar {
             width: clamp(8px, 1vw, 12px);
         }
@@ -533,13 +476,151 @@ def get_mindset_result(score):
     return "Unknown", {}
 
 def render_custom_radio(options, question_num):
-    choice = st.radio(
-        f"Question {question_num}",
-        options,
-        label_visibility="collapsed",
-        key=f"radio_widget_q{question_num}",  # ensure unique key
-    )
-    return choice
+    """Render custom HTML radio buttons that form a proper 2x2 grid"""
+    
+    # Generate unique IDs for this question
+    button_id = f"q{question_num}"
+    
+    # Create the HTML for custom radio buttons
+    html_content = f"""
+    <div class="custom-radio-container" id="radio-{button_id}">
+        <div class="custom-radio-grid">
+            <div class="custom-radio-option" data-value="{options[0]}" onclick="selectOption('{button_id}', '{options[0]}')" id="btn-{button_id}-0">
+                <span>{options[0]}</span>
+            </div>
+            <div class="custom-radio-option" data-value="{options[1]}" onclick="selectOption('{button_id}', '{options[1]}')" id="btn-{button_id}-1">
+                <span>{options[1]}</span>
+            </div>
+            <div class="custom-radio-option" data-value="{options[2]}" onclick="selectOption('{button_id}', '{options[2]}')" id="btn-{button_id}-2">
+                <span>{options[2]}</span>
+            </div>
+            <div class="custom-radio-option" data-value="{options[3]}" onclick="selectOption('{button_id}', '{options[3]}')" id="btn-{button_id}-3">
+                <span>{options[3]}</span>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+    .custom-radio-container {{
+        margin: 25px 0;
+        width: 100%;
+    }}
+    
+    .custom-radio-grid {{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        width: 100%;
+    }}
+    
+    .custom-radio-option {{
+        border-radius: 15px;
+        padding: 15px 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: 'Fredoka', cursive;
+        font-weight: 600;
+        font-size: clamp(0.9rem, 1.2vw, 1.4rem);
+        color: white;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        word-wrap: break-word;
+        line-height: 1.2;
+        border: 2px solid;
+    }}
+    
+    .custom-radio-option:nth-child(1) {{
+        background: rgba(153, 21, 21, 0.9);
+        border-color: #FF6347;
+    }}
+    
+    .custom-radio-option:nth-child(2) {{
+        background: rgba(255, 157, 0, 0.9);
+        border-color: #FFA500;
+    }}
+    
+    .custom-radio-option:nth-child(3) {{
+        background: rgba(11, 176, 90, 0.9);
+        border-color: #1bf282;
+    }}
+    
+    .custom-radio-option:nth-child(4) {{
+        background: rgba(7, 135, 61, 0.9);
+        border-color: #0bb05a;
+    }}
+    
+    .custom-radio-option:hover {{
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }}
+    
+    .custom-radio-option.selected {{
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        font-weight: 700;
+    }}
+    </style>
+    
+    <script>
+    function selectOption(questionId, value) {{
+        // Store selection in session storage for Streamlit to read
+        sessionStorage.setItem('selected_' + questionId, value);
+        
+        // Remove selected class from all options in this question
+        const container = document.getElementById('radio-' + questionId);
+        if (container) {{
+            const options = container.querySelectorAll('.custom-radio-option');
+            options.forEach(option => option.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            event.target.closest('.custom-radio-option').classList.add('selected');
+        }}
+        
+        // Trigger a rerun by setting a flag
+        sessionStorage.setItem('selection_made', 'true');
+    }}
+    
+    // Check for stored selection on page load
+    document.addEventListener('DOMContentLoaded', function() {{
+        const questionId = '{button_id}';
+        const storedValue = sessionStorage.getItem('selected_' + questionId);
+        if (storedValue) {{
+            const container = document.getElementById('radio-' + questionId);
+            if (container) {{
+                const options = container.querySelectorAll('.custom-radio-option');
+                options.forEach(option => {{
+                    if (option.dataset.value === storedValue) {{
+                        option.classList.add('selected');
+                    }}
+                }});
+            }}
+        }}
+    }});
+    </script>
+    """
+    
+    # Display the custom HTML
+    st.markdown(html_content, unsafe_allow_html=True)
+    
+    # Check for selection using JavaScript communication
+    st.markdown("""
+    <script>
+    // Check if selection was made
+    if (sessionStorage.getItem('selection_made') === 'true') {
+        sessionStorage.removeItem('selection_made');
+        // Force a rerun
+        window.parent.location.reload();
+    }
+    </script>
+    """, unsafe_allow_html=True)
+    
+    # Return the stored selection
+    selection_key = f"selected_q{question_num}"
+    return st.session_state.get(selection_key, None)
 
 def check_javascript_selection(question_num):
     pass
@@ -744,18 +825,64 @@ elif 1 <= st.session_state.current_question <= st.session_state.total_questions 
     # Use custom HTML radio buttons
     render_custom_radio(RESPONSE_OPTIONS, st.session_state.current_question)
     
-    choice = render_custom_radio(RESPONSE_OPTIONS, st.session_state.current_question)
+    # Create invisible buttons for each option to handle selection
+    col1, col2, col3, col4 = st.columns(4)
     
-    if choice:
-        st.session_state.responses[st.session_state.current_question] = choice
-        if st.session_state.current_question < st.session_state.total_questions:
-            st.session_state.current_question += 1
-            st.rerun()
-        else:
-            st.session_state.quiz_completed = True
-            st.session_state.show_results = False
-            st.session_state.current_question = 999
-            st.rerun()
+    with col1:
+        if st.button("Select Strongly Disagree", key=f"btn_sd_{st.session_state.current_question}", 
+                    type="secondary", use_container_width=True,
+                    help="Click to select Strongly Disagree"):
+            st.session_state.responses[st.session_state.current_question] = "Strongly Disagree"
+            if st.session_state.current_question < st.session_state.total_questions:
+                st.session_state.current_question += 1
+                st.rerun()
+            else:
+                st.session_state.quiz_completed = True
+                st.session_state.show_results = False
+                st.session_state.current_question = 999
+                st.rerun()
+    
+    with col2:
+        if st.button("Select Disagree", key=f"btn_d_{st.session_state.current_question}", 
+                    type="secondary", use_container_width=True,
+                    help="Click to select Disagree"):
+            st.session_state.responses[st.session_state.current_question] = "Disagree"
+            if st.session_state.current_question < st.session_state.total_questions:
+                st.session_state.current_question += 1
+                st.rerun()
+            else:
+                st.session_state.quiz_completed = True
+                st.session_state.show_results = False
+                st.session_state.current_question = 999
+                st.rerun()
+    
+    with col3:
+        if st.button("Select Agree", key=f"btn_a_{st.session_state.current_question}", 
+                    type="secondary", use_container_width=True,
+                    help="Click to select Agree"):
+            st.session_state.responses[st.session_state.current_question] = "Agree"
+            if st.session_state.current_question < st.session_state.total_questions:
+                st.session_state.current_question += 1
+                st.rerun()
+            else:
+                st.session_state.quiz_completed = True
+                st.session_state.show_results = False
+                st.session_state.current_question = 999
+                st.rerun()
+    
+    with col4:
+        if st.button("Select Strongly Agree", key=f"btn_sa_{st.session_state.current_question}", 
+                    type="secondary", use_container_width=True,
+                    help="Click to select Strongly Agree"):
+            st.session_state.responses[st.session_state.current_question] = "Strongly Agree"
+            if st.session_state.current_question < st.session_state.total_questions:
+                st.session_state.current_question += 1
+                st.rerun()
+            else:
+                st.session_state.quiz_completed = True
+                st.session_state.show_results = False
+                st.session_state.current_question = 999
+                st.rerun()
 
 # LOADING FEEDBACK PAGE
 elif st.session_state.quiz_completed and not st.session_state.show_results:
@@ -833,7 +960,3 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-
-
-

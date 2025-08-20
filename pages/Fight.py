@@ -405,7 +405,7 @@ def render_victory_screen():
                 border-radius: clamp(6px, 1vw, 8px); padding: clamp(10px, 1.5vw, 15px); text-align: center; margin: clamp(10px, 1.5vh, 15px) 0; box-shadow: 0 8px 25px rgba(2,147,22,0.3);'>
         <div style='font-size: clamp(2rem, 4vw, 3em); margin-bottom: 0px;'>🎉</div>
         <h1 style='margin: 0; font: 900 clamp(1.5rem, 2.5vw, 2em) Quantico, monospace; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>VICTORY!</h1>
-        <p style='font: clamp(1rem, 1.6vw, 1.2em) Quantico, monospace; margin-top: 0px;'>You're a champion of self-talk! The inner critic has been silenced!c!</p>
+        <p style='font: clamp(1rem, 1.6vw, 1.2em) Quantico, monospace; margin-top: 0px;'>You're a champion of self-talk! The inner critic has been silenced!</p>
         <p style='font: clamp(0.8rem, 1.4vw, 1em) Quantico, monospace; margin-top: 0px;'>💡 <strong>Remember:</strong> You now have the tools to counter negative self-talk in real life! Your positive reframes are your superpower! 🦸‍♂️</p>
     </div>
     """, unsafe_allow_html=True)
@@ -653,3 +653,4 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+

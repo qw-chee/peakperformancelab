@@ -360,8 +360,97 @@ def get_styles():
             100% { transform: rotate(360deg); }
         }
         
-        /* Main buttons (not radio options) */
-        div[data-testid="stButton"] > button:not([data-testid*="response_"]) {
+        /* RESPONSE BUTTONS - Custom styling with highest priority */
+        div[data-testid="stButton"]:has(button[aria-label*="Strongly Disagree"]) > button {
+            all: initial !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border-radius: 15px !important;
+            padding: 15px 10px !important;
+            text-align: center !important;
+            font-family: 'Fredoka', cursive !important;
+            font-weight: 600 !important;
+            font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+            min-height: 60px !important;
+            transition: all 0.3s ease !important;
+            width: 100% !important;
+            cursor: pointer !important;
+            background: rgba(153, 21, 21, 0.9) !important;
+            border: 2px solid #FF6347 !important;
+            box-sizing: border-box !important;
+        }
+        
+        div[data-testid="stButton"]:has(button[aria-label*="Disagree"]:not([aria-label*="Strongly"])) > button {
+            all: initial !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border-radius: 15px !important;
+            padding: 15px 10px !important;
+            text-align: center !important;
+            font-family: 'Fredoka', cursive !important;
+            font-weight: 600 !important;
+            font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+            min-height: 60px !important;
+            transition: all 0.3s ease !important;
+            width: 100% !important;
+            cursor: pointer !important;
+            background: rgba(255, 157, 0, 0.9) !important;
+            border: 2px solid #FFA500 !important;
+            box-sizing: border-box !important;
+        }
+        
+        div[data-testid="stButton"]:has(button[aria-label*="Agree"]:not([aria-label*="Strongly"])) > button {
+            all: initial !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border-radius: 15px !important;
+            padding: 15px 10px !important;
+            text-align: center !important;
+            font-family: 'Fredoka', cursive !important;
+            font-weight: 600 !important;
+            font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+            min-height: 60px !important;
+            transition: all 0.3s ease !important;
+            width: 100% !important;
+            cursor: pointer !important;
+            background: rgba(11, 176, 90, 0.9) !important;
+            border: 2px solid #1bf282 !important;
+            box-sizing: border-box !important;
+        }
+        
+        div[data-testid="stButton"]:has(button[aria-label*="Strongly Agree"]) > button {
+            all: initial !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border-radius: 15px !important;
+            padding: 15px 10px !important;
+            text-align: center !important;
+            font-family: 'Fredoka', cursive !important;
+            font-weight: 600 !important;
+            font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+            min-height: 60px !important;
+            transition: all 0.3s ease !important;
+            width: 100% !important;
+            cursor: pointer !important;
+            background: rgba(7, 135, 61, 0.9) !important;
+            border: 2px solid #0bb05a !important;
+            box-sizing: border-box !important;
+        }
+
+        /* Main buttons (EXCLUDE response buttons) - Modified to exclude response buttons */
+        div[data-testid="stButton"]:not(:has(button[aria-label*="Strongly Disagree"])):not(:has(button[aria-label*="Disagree"])):not(:has(button[aria-label*="Agree"])) > button {
             background: linear-gradient(135deg, #e6733c 0%, #f2a93b 50%, #f6d860 100%) !important;
             border: clamp(2px, 0.3vw, 3px) solid #FF6347 !important;
             color: white !important;
@@ -378,7 +467,7 @@ def get_styles():
             width: 100% !important;
         }
 
-        div[data-testid="stButton"] > button:not([data-testid*="response_"]):hover {
+        div[data-testid="stButton"]:not(:has(button[aria-label*="Strongly Disagree"])):not(:has(button[aria-label*="Disagree"])):not(:has(button[aria-label*="Agree"])) > button:hover {
             background: linear-gradient(135deg, #FF8C00 0%, #FFD700 50%, #FFFF00 100%) !important;
             transform: translateY(-3px) scale(1.05) !important;
             box-shadow: 0 8px 30px rgba(50, 205, 50, 0.4) !important;
@@ -477,129 +566,6 @@ def get_mindset_result(score):
 
 def render_custom_radio(options, question_num):
     """Render functional custom styled buttons that work with Streamlit"""
-    
-    # Create the visual styling with highest specificity possible
-    st.markdown(f"""
-    <style>
-    /* RESPONSE BUTTONS - Maximum specificity to override main button styles */
-    [data-testid="stButton"] button[key="response_{question_num}_0"] {{
-        all: unset !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        border-radius: 15px !important;
-        padding: 15px 10px !important;
-        text-align: center !important;
-        font-family: 'Fredoka', cursive !important;
-        font-weight: 600 !important;
-        font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-        color: white !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-        min-height: 60px !important;
-        transition: all 0.3s ease !important;
-        width: 100% !important;
-        cursor: pointer !important;
-        background: rgba(153, 21, 21, 0.9) !important;
-        border: 2px solid #FF6347 !important;
-        box-sizing: border-box !important;
-    }}
-    
-    [data-testid="stButton"] button[key="response_{question_num}_1"] {{
-        all: unset !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        border-radius: 15px !important;
-        padding: 15px 10px !important;
-        text-align: center !important;
-        font-family: 'Fredoka', cursive !important;
-        font-weight: 600 !important;
-        font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-        color: white !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-        min-height: 60px !important;
-        transition: all 0.3s ease !important;
-        width: 100% !important;
-        cursor: pointer !important;
-        background: rgba(255, 157, 0, 0.9) !important;
-        border: 2px solid #FFA500 !important;
-        box-sizing: border-box !important;
-    }}
-    
-    [data-testid="stButton"] button[key="response_{question_num}_2"] {{
-        all: unset !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        border-radius: 15px !important;
-        padding: 15px 10px !important;
-        text-align: center !important;
-        font-family: 'Fredoka', cursive !important;
-        font-weight: 600 !important;
-        font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-        color: white !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-        min-height: 60px !important;
-        transition: all 0.3s ease !important;
-        width: 100% !important;
-        cursor: pointer !important;
-        background: rgba(11, 176, 90, 0.9) !important;
-        border: 2px solid #1bf282 !important;
-        box-sizing: border-box !important;
-    }}
-    
-    [data-testid="stButton"] button[key="response_{question_num}_3"] {{
-        all: unset !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        border-radius: 15px !important;
-        padding: 15px 10px !important;
-        text-align: center !important;
-        font-family: 'Fredoka', cursive !important;
-        font-weight: 600 !important;
-        font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-        color: white !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-        min-height: 60px !important;
-        transition: all 0.3s ease !important;
-        width: 100% !important;
-        cursor: pointer !important;
-        background: rgba(7, 135, 61, 0.9) !important;
-        border: 2px solid #0bb05a !important;
-        box-sizing: border-box !important;
-    }}
-    
-    /* Hover effects for response buttons */
-    [data-testid="stButton"] button[key="response_{question_num}_0"]:hover {{
-        transform: translateY(-2px) scale(1.02) !important;
-        background: rgba(153, 21, 21, 1.0) !important;
-        border-color: #FF4500 !important;
-        box-shadow: 0 6px 20px rgba(153, 21, 21, 0.4) !important;
-    }}
-    
-    [data-testid="stButton"] button[key="response_{question_num}_1"]:hover {{
-        transform: translateY(-2px) scale(1.02) !important;
-        background: rgba(255, 157, 0, 1.0) !important;
-        border-color: #FF8C00 !important;
-        box-shadow: 0 6px 20px rgba(255, 157, 0, 0.4) !important;
-    }}
-    
-    [data-testid="stButton"] button[key="response_{question_num}_2"]:hover {{
-        transform: translateY(-2px) scale(1.02) !important;
-        background: rgba(11, 176, 90, 1.0) !important;
-        border-color: #00FF7F !important;
-        box-shadow: 0 6px 20px rgba(11, 176, 90, 0.4) !important;
-    }}
-    
-    [data-testid="stButton"] button[key="response_{question_num}_3"]:hover {{
-        transform: translateY(-2px) scale(1.02) !important;
-        background: rgba(7, 135, 61, 1.0) !important;
-        border-color: #32CD32 !important;
-        box-shadow: 0 6px 20px rgba(7, 135, 61, 0.4) !important;
-    }}
-    </style>
-    """, unsafe_allow_html=True)
     
     # Create a 2x2 grid using Streamlit columns
     col1, col2 = st.columns(2)
@@ -913,5 +879,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 

@@ -489,8 +489,8 @@ def render_custom_radio(options, question_num):
         margin: 25px 0;
     }}
     
-    /* Style the actual Streamlit buttons */
-    div[data-testid="stButton"] button[data-testid="response_{question_num}_0"] {{
+    /* Base styling for all response buttons */
+    div[data-testid="stButton"] button[data-testid^="response_{question_num}_"] {{
         border-radius: 15px !important;
         padding: 15px 10px !important;
         text-align: center !important;
@@ -500,58 +500,32 @@ def render_custom_radio(options, question_num):
         color: white !important;
         box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
         min-height: 60px !important;
+        transition: all 0.3s ease !important;
+        width: 100% !important;
+    }}
+    
+    /* Strongly Disagree - Red */
+    div[data-testid="stButton"] button[data-testid="response_{question_num}_0"] {{
         background: rgba(153, 21, 21, 0.9) !important;
         border: 2px solid #FF6347 !important;
-        transition: all 0.3s ease !important;
-        width: 100% !important;
     }}
     
+    /* Disagree - Orange */  
     div[data-testid="stButton"] button[data-testid="response_{question_num}_1"] {{
-        border-radius: 15px !important;
-        padding: 15px 10px !important;
-        text-align: center !important;
-        font-family: 'Fredoka', cursive !important;
-        font-weight: 600 !important;
-        font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-        color: white !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-        min-height: 60px !important;
         background: rgba(255, 157, 0, 0.9) !important;
         border: 2px solid #FFA500 !important;
-        transition: all 0.3s ease !important;
-        width: 100% !important;
     }}
     
+    /* Agree - Light Green */
     div[data-testid="stButton"] button[data-testid="response_{question_num}_2"] {{
-        border-radius: 15px !important;
-        padding: 15px 10px !important;
-        text-align: center !important;
-        font-family: 'Fredoka', cursive !important;
-        font-weight: 600 !important;
-        font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-        color: white !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-        min-height: 60px !important;
         background: rgba(11, 176, 90, 0.9) !important;
         border: 2px solid #1bf282 !important;
-        transition: all 0.3s ease !important;
-        width: 100% !important;
     }}
     
+    /* Strongly Agree - Dark Green */
     div[data-testid="stButton"] button[data-testid="response_{question_num}_3"] {{
-        border-radius: 15px !important;
-        padding: 15px 10px !important;
-        text-align: center !important;
-        font-family: 'Fredoka', cursive !important;
-        font-weight: 600 !important;
-        font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-        color: white !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-        min-height: 60px !important;
         background: rgba(7, 135, 61, 0.9) !important;
         border: 2px solid #0bb05a !important;
-        transition: all 0.3s ease !important;
-        width: 100% !important;
     }}
     
     /* Hover effects */
@@ -874,4 +848,3 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-

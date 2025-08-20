@@ -407,60 +407,80 @@ def render_victory_screen():
         "⚡ Mind over matter - you've proven your mental resilience!"
     ]
     
-    st.markdown(f"""
-    <div class="game-over-container" style="background: linear-gradient(135deg, #029316 0%, #7ebefe 50%, #ffb700 100%);">
-        <div style="text-align: center; background: rgba(255,255,255,0.95); border: 4px solid #029316; 
-                    border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(2,147,22,0.4); 
-                    max-width: 600px; margin: 20px;">
-            
-            <div class="victory-animation" style="font-size: 6rem; margin-bottom: 20px;">
-                <span class="sparkle-effect">🎉</span>
-                <span class="sparkle-effect" style="animation-delay: 0.3s;">👑</span>
-                <span class="sparkle-effect" style="animation-delay: 0.6s;">🎉</span>
-            </div>
-            
-            <h1 style="font: 900 3rem 'Quantico', monospace; color: #029316; margin: 20px 0; 
-                       text-shadow: 2px 2px 4px rgba(0,0,0,0.2); animation: bounce 2s infinite;">
-                EPIC VICTORY!
-            </h1>
-            
-            <div style="background: linear-gradient(90deg, #029316, #7ebefe); color: white; 
-                        padding: 20px; border-radius: 15px; margin: 20px 0;">
-                <h2 style="font: 700 1.5rem 'Quantico', monospace; margin: 0 0 10px 0;">
-                    🏆 BOSS DEFEATED! 🏆
-                </h2>
-                <p style="font: 1.2rem 'Quantico', monospace; margin: 0;">
-                    {random.choice(victory_messages)}
-                </p>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 20px 0; 
-                        font: 1rem 'Quantico', monospace;">
-                <div style="background: #ffb700; color: white; padding: 15px; border-radius: 10px; 
-                            border: 2px solid #029316;">
-                    <div style="font-size: 2rem;">⚡</div>
-                    <strong>Mental Power<br/>MAXED OUT!</strong>
-                </div>
-                <div style="background: #029316; color: white; padding: 15px; border-radius: 10px; 
-                            border: 2px solid #ffb700;">
-                    <div style="font-size: 2rem;">🧠</div>
-                    <strong>Mindset<br/>UPGRADED!</strong>
-                </div>
-                <div style="background: #175dcf; color: white; padding: 15px; border-radius: 10px; 
-                            border: 2px solid #029316;">
-                    <div style="font-size: 2rem;">🎯</div>
-                    <strong>Confidence<br/>BOOSTED!</strong>
-                </div>
-            </div>
-            
-            <div style="font: 1.1rem 'Quantico', monospace; color: #2d3748; margin: 20px 0; 
-                        padding: 15px; background: rgba(2,147,22,0.1); border-radius: 10px;">
-                💡 <strong>Remember:</strong> You now have the tools to counter negative self-talk in real life!<br/>
-                Your positive reframes are your superpower! 🦸‍♂️
-            </div>
-        </div>
-    </div>
+    # Create the victory screen using Streamlit components instead of complex HTML
+    st.markdown("""
+    <style>
+    .victory-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(135deg, #029316 0%, #7ebefe 50%, #ffb700 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        animation: gameOverAppear 1s ease-out;
+    }
+    </style>
     """, unsafe_allow_html=True)
+    
+    st.markdown('<div class="victory-screen"></div>', unsafe_allow_html=True)
+    
+    # Use centered columns for better layout
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.markdown("""
+        <div style='background: rgba(255,255,255,0.95); border: 4px solid #029316; 
+                    border-radius: 20px; padding: 40px; text-align: center; margin-top: 100px;
+                    box-shadow: 0 20px 60px rgba(2,147,22,0.4);'>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Victory content using Streamlit components
+        st.markdown("<div style='text-align: center; font-size: 6rem; margin-bottom: 20px;'>🎉👑🎉</div>", unsafe_allow_html=True)
+        
+        st.markdown("<h1 style='text-align: center; font-family: Quantico, monospace; font-size: 3rem; color: #029316; margin: 20px 0;'>🏆 EPIC VICTORY! 🏆</h1>", unsafe_allow_html=True)
+        
+        st.markdown(f"<h2 style='text-align: center; font-family: Quantico, monospace; font-size: 1.5rem; color: #175dcf; margin: 20px 0;'>BOSS DEFEATED!</h2>", unsafe_allow_html=True)
+        
+        st.markdown(f"<p style='text-align: center; font-family: Quantico, monospace; font-size: 1.2rem; color: #029316; margin: 20px 0;'>{random.choice(victory_messages)}</p>", unsafe_allow_html=True)
+        
+        # Achievement cards
+        col_a, col_b, col_c = st.columns(3)
+        with col_a:
+            st.markdown("""
+            <div style='background: #ffb700; color: white; padding: 15px; border-radius: 10px; 
+                        border: 2px solid #029316; text-align: center; font-family: Quantico, monospace;'>
+                <div style='font-size: 2rem;'>⚡</div>
+                <strong>Mental Power<br/>MAXED OUT!</strong>
+            </div>
+            """, unsafe_allow_html=True)
+        with col_b:
+            st.markdown("""
+            <div style='background: #029316; color: white; padding: 15px; border-radius: 10px; 
+                        border: 2px solid #ffb700; text-align: center; font-family: Quantico, monospace;'>
+                <div style='font-size: 2rem;'>🧠</div>
+                <strong>Mindset<br/>UPGRADED!</strong>
+            </div>
+            """, unsafe_allow_html=True)
+        with col_c:
+            st.markdown("""
+            <div style='background: #175dcf; color: white; padding: 15px; border-radius: 10px; 
+                        border: 2px solid #029316; text-align: center; font-family: Quantico, monospace;'>
+                <div style='font-size: 2rem;'>🎯</div>
+                <strong>Confidence<br/>BOOSTED!</strong>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div style='font-family: Quantico, monospace; color: #2d3748; margin: 20px 0; 
+                    padding: 15px; background: rgba(2,147,22,0.1); border-radius: 10px; text-align: center;'>
+            💡 <strong>Remember:</strong> You now have the tools to counter negative self-talk in real life!<br/>
+            Your positive reframes are your superpower! 🦸‍♂️
+        </div>
+        """, unsafe_allow_html=True)
 
 def render_defeat_screen():
     defeat_messages = [
@@ -470,60 +490,79 @@ def render_defeat_screen():
         "🎯 Practice makes perfect - let's train that positive mindset!"
     ]
     
-    st.markdown(f"""
-    <div class="game-over-container" style="background: linear-gradient(135deg, #da531f 0%, #175dcf 50%, #029316 100%);">
-        <div style="text-align: center; background: rgba(255,255,255,0.95); border: 4px solid #da531f; 
-                    border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(218,83,31,0.4); 
-                    max-width: 600px; margin: 20px;">
-            
-            <div class="defeat-animation" style="font-size: 6rem; margin-bottom: 20px;">
-                <span>💀</span>
-                <span style="animation-delay: 0.5s;">⚡</span>
-                <span style="animation-delay: 1s;">💀</span>
-            </div>
-            
-            <h1 style="font: 900 3rem 'Quantico', monospace; color: #da531f; margin: 20px 0; 
-                       text-shadow: 2px 2px 4px rgba(0,0,0,0.2); animation: pulse 2s infinite;">
-                BOSS WINS!
-            </h1>
-            
-            <div style="background: linear-gradient(90deg, #da531f, #175dcf); color: white; 
-                        padding: 20px; border-radius: 15px; margin: 20px 0;">
-                <h2 style="font: 700 1.5rem 'Quantico', monospace; margin: 0 0 10px 0;">
-                    😈 INNER CRITIC PREVAILS! 😈
-                </h2>
-                <p style="font: 1.2rem 'Quantico', monospace; margin: 0;">
-                    {random.choice(defeat_messages)}
-                </p>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; 
-                        font: 1rem 'Quantico', monospace;">
-                <div style="background: #ffb700; color: white; padding: 20px; border-radius: 10px; 
-                            border: 2px solid #da531f;">
-                    <div style="font-size: 2rem;">🎯</div>
-                    <strong>Learning<br/>Opportunity!</strong>
-                </div>
-                <div style="background: #175dcf; color: white; padding: 20px; border-radius: 10px; 
-                            border: 2px solid #ffb700;">
-                    <div style="font-size: 2rem;">💪</div>
-                    <strong>Mental Training<br/>In Progress!</strong>
-                </div>
-            </div>
-            
-            <div style="font: 1.1rem 'Quantico', monospace; color: #2d3748; margin: 20px 0; 
-                        padding: 15px; background: rgba(218,83,31,0.1); border-radius: 10px;">
-                💡 <strong>Pro Tip:</strong> Focus on specific, positive reframes that directly counter the critic's message.<br/>
-                You're building stronger mental muscles with each battle! 🧠💪
-            </div>
-            
-            <div style="background: rgba(2,147,22,0.1); color: #029316; padding: 15px; 
-                        border-radius: 10px; margin: 20px 0; font: bold 1.1rem 'Quantico', monospace;">
-                🌟 Ready for Round 2? Champions never give up! 🌟
-            </div>
-        </div>
-    </div>
+    # Create the defeat screen using Streamlit components instead of complex HTML
+    st.markdown("""
+    <style>
+    .defeat-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(135deg, #da531f 0%, #175dcf 50%, #029316 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        animation: gameOverAppear 1s ease-out;
+    }
+    </style>
     """, unsafe_allow_html=True)
+    
+    st.markdown('<div class="defeat-screen"></div>', unsafe_allow_html=True)
+    
+    # Use centered columns for better layout
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.markdown("""
+        <div style='background: rgba(255,255,255,0.95); border: 4px solid #da531f; 
+                    border-radius: 20px; padding: 40px; text-align: center; margin-top: 100px;
+                    box-shadow: 0 20px 60px rgba(218,83,31,0.4);'>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Defeat content using Streamlit components
+        st.markdown("<div style='text-align: center; font-size: 6rem; margin-bottom: 20px;'>💀⚡💀</div>", unsafe_allow_html=True)
+        
+        st.markdown("<h1 style='text-align: center; font-family: Quantico, monospace; font-size: 3rem; color: #da531f; margin: 20px 0;'>💀 BOSS WINS! 💀</h1>", unsafe_allow_html=True)
+        
+        st.markdown("<h2 style='text-align: center; font-family: Quantico, monospace; font-size: 1.5rem; color: #175dcf; margin: 20px 0;'>😈 INNER CRITIC PREVAILS! 😈</h2>", unsafe_allow_html=True)
+        
+        st.markdown(f"<p style='text-align: center; font-family: Quantico, monospace; font-size: 1.2rem; color: #da531f; margin: 20px 0;'>{random.choice(defeat_messages)}</p>", unsafe_allow_html=True)
+        
+        # Learning cards
+        col_a, col_b = st.columns(2)
+        with col_a:
+            st.markdown("""
+            <div style='background: #ffb700; color: white; padding: 20px; border-radius: 10px; 
+                        border: 2px solid #da531f; text-align: center; font-family: Quantico, monospace;'>
+                <div style='font-size: 2rem;'>🎯</div>
+                <strong>Learning<br/>Opportunity!</strong>
+            </div>
+            """, unsafe_allow_html=True)
+        with col_b:
+            st.markdown("""
+            <div style='background: #175dcf; color: white; padding: 20px; border-radius: 10px; 
+                        border: 2px solid #ffb700; text-align: center; font-family: Quantico, monospace;'>
+                <div style='font-size: 2rem;'>💪</div>
+                <strong>Mental Training<br/>In Progress!</strong>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div style='font-family: Quantico, monospace; color: #2d3748; margin: 20px 0; 
+                    padding: 15px; background: rgba(218,83,31,0.1); border-radius: 10px; text-align: center;'>
+            💡 <strong>Pro Tip:</strong> Focus on specific, positive reframes that directly counter the critic's message.<br/>
+            You're building stronger mental muscles with each battle! 🧠💪
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div style='background: rgba(2,147,22,0.1); color: #029316; padding: 15px; 
+                    border-radius: 10px; margin: 20px 0; font: bold 1.1rem Quantico, monospace; text-align: center;'>
+            🌟 Ready for Round 2? Champions never give up! 🌟
+        </div>
+        """, unsafe_allow_html=True)
 
 # ---------------------------- LOADING OVERLAY ----------------------------
 st.markdown("""

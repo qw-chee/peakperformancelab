@@ -360,95 +360,6 @@ def get_styles():
             100% { transform: rotate(360deg); }
         }
         
-        /* RESPONSE BUTTONS - Custom styling with highest priority */
-        div[data-testid="stButton"]:has(button[aria-label*="Strongly Disagree"]) > button {
-            all: initial !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            border-radius: 15px !important;
-            padding: 15px 10px !important;
-            text-align: center !important;
-            font-family: 'Fredoka', cursive !important;
-            font-weight: 600 !important;
-            font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-            color: white !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-            min-height: 60px !important;
-            transition: all 0.3s ease !important;
-            width: 100% !important;
-            cursor: pointer !important;
-            background: rgba(153, 21, 21, 0.9) !important;
-            border: 2px solid #FF6347 !important;
-            box-sizing: border-box !important;
-        }
-        
-        div[data-testid="stButton"]:has(button[aria-label*="Disagree"]:not([aria-label*="Strongly"])) > button {
-            all: initial !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            border-radius: 15px !important;
-            padding: 15px 10px !important;
-            text-align: center !important;
-            font-family: 'Fredoka', cursive !important;
-            font-weight: 600 !important;
-            font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-            color: white !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-            min-height: 60px !important;
-            transition: all 0.3s ease !important;
-            width: 100% !important;
-            cursor: pointer !important;
-            background: rgba(255, 157, 0, 0.9) !important;
-            border: 2px solid #FFA500 !important;
-            box-sizing: border-box !important;
-        }
-        
-        div[data-testid="stButton"]:has(button[aria-label*="Agree"]:not([aria-label*="Strongly"])) > button {
-            all: initial !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            border-radius: 15px !important;
-            padding: 15px 10px !important;
-            text-align: center !important;
-            font-family: 'Fredoka', cursive !important;
-            font-weight: 600 !important;
-            font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-            color: white !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-            min-height: 60px !important;
-            transition: all 0.3s ease !important;
-            width: 100% !important;
-            cursor: pointer !important;
-            background: rgba(11, 176, 90, 0.9) !important;
-            border: 2px solid #1bf282 !important;
-            box-sizing: border-box !important;
-        }
-        
-        div[data-testid="stButton"]:has(button[aria-label*="Strongly Agree"]) > button {
-            all: initial !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            border-radius: 15px !important;
-            padding: 15px 10px !important;
-            text-align: center !important;
-            font-family: 'Fredoka', cursive !important;
-            font-weight: 600 !important;
-            font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-            color: white !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-            min-height: 60px !important;
-            transition: all 0.3s ease !important;
-            width: 100% !important;
-            cursor: pointer !important;
-            background: rgba(7, 135, 61, 0.9) !important;
-            border: 2px solid #0bb05a !important;
-            box-sizing: border-box !important;
-        }
-
         /* Main buttons (EXCLUDE response buttons) - Modified to exclude response buttons */
         div[data-testid="stButton"]:not(:has(button[aria-label*="Strongly Disagree"])):not(:has(button[aria-label*="Disagree"])):not(:has(button[aria-label*="Agree"])) > button {
             background: linear-gradient(135deg, #e6733c 0%, #f2a93b 50%, #f6d860 100%) !important;
@@ -497,6 +408,7 @@ def get_styles():
             position: absolute !important;
             left: -9999px !important;
         }
+        
         ::-webkit-scrollbar {
             width: clamp(8px, 1vw, 12px);
         }
@@ -947,3 +859,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+

@@ -476,93 +476,172 @@ def get_mindset_result(score):
             return category, data
     return "Unknown", {}
 
-def render_custom_radio_direct(options, question_num):
-    """Alternative approach using direct DOM manipulation"""
+def render_custom_radio(options, question_num):
+    """Render functional custom styled buttons with JavaScript CSS injection"""
     
     # Create the grid layout first
     col1, col2 = st.columns(2)
     
     with col1:
+        # First row, first column - Strongly Disagree
         if st.button(options[0], key=f"response_{question_num}_0", use_container_width=True):
             return options[0]
+        # Second row, first column - Agree
         if st.button(options[2], key=f"response_{question_num}_2", use_container_width=True):
             return options[2]
     
     with col2:
+        # First row, second column - Disagree
         if st.button(options[1], key=f"response_{question_num}_1", use_container_width=True):
             return options[1]
+        # Second row, second column - Strongly Agree
         if st.button(options[3], key=f"response_{question_num}_3", use_container_width=True):
             return options[3]
     
-    # Direct DOM manipulation approach
+    # Inject CSS via JavaScript AFTER the buttons are rendered
     st.markdown(f"""
     <script>
-    setTimeout(function() {{
-        // Find buttons by their key attributes
-        var buttons = document.querySelectorAll('button[data-testid*="baseButton"]');
-        
-        buttons.forEach(function(button) {{
-            var buttonText = button.innerText.trim();
-            var key = button.getAttribute('aria-label') || button.getAttribute('data-testid') || '';
+    (function() {{
+        // Wait for DOM to be ready
+        setTimeout(function() {{
+            // Remove any existing response button styles
+            var existingStyle = document.getElementById('response-button-styles-{question_num}');
+            if (existingStyle) {{
+                existingStyle.remove();
+            }}
             
-            // Style based on button text content
-            if (buttonText === 'Strongly Disagree') {{
-                button.style.cssText = `
+            // Create new style element
+            var style = document.createElement('style');
+            style.id = 'response-button-styles-{question_num}';
+            style.type = 'text/css';
+            
+            var css = `
+                /* Response buttons with maximum specificity */
+                button[data-testid="baseButton-secondary"][aria-label="response_{question_num}_0"] {{
+                    all: unset !important;
+                    display: inline-flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    border-radius: 15px !important;
+                    padding: 15px 10px !important;
+                    text-align: center !important;
+                    font-family: 'Fredoka', cursive !important;
+                    font-weight: 600 !important;
+                    font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
+                    color: white !important;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+                    min-height: 60px !important;
+                    transition: all 0.3s ease !important;
+                    width: 100% !important;
+                    cursor: pointer !important;
                     background: rgba(153, 21, 21, 0.9) !important;
                     border: 2px solid #FF6347 !important;
-                    color: white !important;
-                    font-family: 'Fredoka', cursive !important;
-                    font-weight: 600 !important;
+                    box-sizing: border-box !important;
+                }}
+                
+                button[data-testid="baseButton-secondary"][aria-label="response_{question_num}_1"] {{
+                    all: unset !important;
+                    display: inline-flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
                     border-radius: 15px !important;
                     padding: 15px 10px !important;
-                    min-height: 60px !important;
-                    width: 100% !important;
+                    text-align: center !important;
+                    font-family: 'Fredoka', cursive !important;
+                    font-weight: 600 !important;
                     font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-                `;
-            }} else if (buttonText === 'Disagree') {{
-                button.style.cssText = `
+                    color: white !important;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+                    min-height: 60px !important;
+                    transition: all 0.3s ease !important;
+                    width: 100% !important;
+                    cursor: pointer !important;
                     background: rgba(255, 157, 0, 0.9) !important;
                     border: 2px solid #FFA500 !important;
-                    color: white !important;
-                    font-family: 'Fredoka', cursive !important;
-                    font-weight: 600 !important;
+                    box-sizing: border-box !important;
+                }}
+                
+                button[data-testid="baseButton-secondary"][aria-label="response_{question_num}_2"] {{
+                    all: unset !important;
+                    display: inline-flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
                     border-radius: 15px !important;
                     padding: 15px 10px !important;
-                    min-height: 60px !important;
-                    width: 100% !important;
+                    text-align: center !important;
+                    font-family: 'Fredoka', cursive !important;
+                    font-weight: 600 !important;
                     font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-                `;
-            }} else if (buttonText === 'Agree') {{
-                button.style.cssText = `
+                    color: white !important;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+                    min-height: 60px !important;
+                    transition: all 0.3s ease !important;
+                    width: 100% !important;
+                    cursor: pointer !important;
                     background: rgba(11, 176, 90, 0.9) !important;
                     border: 2px solid #1bf282 !important;
-                    color: white !important;
-                    font-family: 'Fredoka', cursive !important;
-                    font-weight: 600 !important;
+                    box-sizing: border-box !important;
+                }}
+                
+                button[data-testid="baseButton-secondary"][aria-label="response_{question_num}_3"] {{
+                    all: unset !important;
+                    display: inline-flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
                     border-radius: 15px !important;
                     padding: 15px 10px !important;
-                    min-height: 60px !important;
-                    width: 100% !important;
+                    text-align: center !important;
+                    font-family: 'Fredoka', cursive !important;
+                    font-weight: 600 !important;
                     font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-                `;
-            }} else if (buttonText === 'Strongly Agree') {{
-                button.style.cssText = `
+                    color: white !important;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+                    min-height: 60px !important;
+                    transition: all 0.3s ease !important;
+                    width: 100% !important;
+                    cursor: pointer !important;
                     background: rgba(7, 135, 61, 0.9) !important;
                     border: 2px solid #0bb05a !important;
-                    color: white !important;
-                    font-family: 'Fredoka', cursive !important;
-                    font-weight: 600 !important;
-                    border-radius: 15px !important;
-                    padding: 15px 10px !important;
-                    min-height: 60px !important;
-                    width: 100% !important;
-                    font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-                `;
-            }}
-        }});
-        
-        console.log('Direct DOM styling applied to', buttons.length, 'buttons');
-    }}, 200);
+                    box-sizing: border-box !important;
+                }}
+                
+                /* Hover effects */
+                button[data-testid="baseButton-secondary"][aria-label="response_{question_num}_0"]:hover {{
+                    transform: translateY(-2px) scale(1.02) !important;
+                    background: rgba(153, 21, 21, 1.0) !important;
+                    border-color: #FF4500 !important;
+                    box-shadow: 0 6px 20px rgba(153, 21, 21, 0.4) !important;
+                }}
+                
+                button[data-testid="baseButton-secondary"][aria-label="response_{question_num}_1"]:hover {{
+                    transform: translateY(-2px) scale(1.02) !important;
+                    background: rgba(255, 157, 0, 1.0) !important;
+                    border-color: #FF8C00 !important;
+                    box-shadow: 0 6px 20px rgba(255, 157, 0, 0.4) !important;
+                }}
+                
+                button[data-testid="baseButton-secondary"][aria-label="response_{question_num}_2"]:hover {{
+                    transform: translateY(-2px) scale(1.02) !important;
+                    background: rgba(11, 176, 90, 1.0) !important;
+                    border-color: #00FF7F !important;
+                    box-shadow: 0 6px 20px rgba(11, 176, 90, 0.4) !important;
+                }}
+                
+                button[data-testid="baseButton-secondary"][aria-label="response_{question_num}_3"]:hover {{
+                    transform: translateY(-2px) scale(1.02) !important;
+                    background: rgba(7, 135, 61, 1.0) !important;
+                    border-color: #32CD32 !important;
+                    box-shadow: 0 6px 20px rgba(7, 135, 61, 0.4) !important;
+                }}
+            `;
+            
+            style.innerHTML = css;
+            document.head.appendChild(style);
+            
+            console.log('Response button styles injected for question {question_num}');
+            
+        }}, 100); // Small delay to ensure buttons are rendered
+    }})();
     </script>
     """, unsafe_allow_html=True)
     
@@ -769,7 +848,7 @@ elif 1 <= st.session_state.current_question <= st.session_state.total_questions 
     """, unsafe_allow_html=True)
     
     # Use the fixed custom radio function
-    selected_option = render_custom_radio_direct(RESPONSE_OPTIONS, st.session_state.current_question)
+    selected_option = render_custom_radio(RESPONSE_OPTIONS, st.session_state.current_question)
     
     # Handle the selection
     if selected_option:
@@ -859,4 +938,5 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 

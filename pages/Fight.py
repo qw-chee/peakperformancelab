@@ -43,7 +43,7 @@ def init_game_state():
     defaults = {
         'player_hp': 100, 'boss_hp': 100, 'scenario': None, 'current_line': "", 'awaiting_response': False,
         'is_evaluating': False, 'current_feedback': "", 'last_comment': "", 'used_lines': [], 'user_response_submitted': "",
-        'background_loaded': False
+        'background_loaded': False, 'game_over': False, 'victory': False
     }
     for k, v in defaults.items():
         if k not in st.session_state:
@@ -258,6 +258,52 @@ def get_styles():
             }
         }
 
+        .game-over-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: gameOverAppear 1s ease-out;
+        }
+
+        @keyframes gameOverAppear {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .victory-animation {
+            animation: bounce 2s infinite;
+        }
+
+        .defeat-animation {
+            animation: pulse 2s infinite;
+        }
+
+        .sparkle-effect {
+            animation: sparkle 1.5s infinite;
+        }
+
         ::-webkit-scrollbar {
             width: clamp(8px, 1vw, 12px);
         }
@@ -339,9 +385,145 @@ Comment: [Feedback must match the verdict. Be encouraging only for "Strong and p
         else:
             st.session_state.player_hp = max(0, st.session_state.player_hp - 15)
             st.session_state.current_feedback = "❌ Weak response. You lose 15 HP."
+            
+        # Check for game over conditions
+        if st.session_state.boss_hp <= 0:
+            st.session_state.game_over = True
+            st.session_state.victory = True
+        elif st.session_state.player_hp <= 0:
+            st.session_state.game_over = True
+            st.session_state.victory = False
+            
     except Exception as e:
         st.error(f"Error: {e}")
         st.session_state.current_feedback = "Error evaluating response."
+
+# ---------------------------- END GAME DISPLAYS ----------------------------
+def render_victory_screen():
+    victory_messages = [
+        "🎯 Your positive mindset conquered the inner critic!",
+        "🌟 Mental strength training complete - you're unstoppable!",
+        "🏆 Champion of self-talk! The inner critic has been silenced!",
+        "⚡ Mind over matter - you've proven your mental resilience!"
+    ]
+    
+    st.markdown(f"""
+    <div class="game-over-container" style="background: linear-gradient(135deg, #029316 0%, #7ebefe 50%, #ffb700 100%);">
+        <div style="text-align: center; background: rgba(255,255,255,0.95); border: 4px solid #029316; 
+                    border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(2,147,22,0.4); 
+                    max-width: 600px; margin: 20px;">
+            
+            <div class="victory-animation" style="font-size: 6rem; margin-bottom: 20px;">
+                <span class="sparkle-effect">🎉</span>
+                <span class="sparkle-effect" style="animation-delay: 0.3s;">👑</span>
+                <span class="sparkle-effect" style="animation-delay: 0.6s;">🎉</span>
+            </div>
+            
+            <h1 style="font: 900 3rem 'Quantico', monospace; color: #029316; margin: 20px 0; 
+                       text-shadow: 2px 2px 4px rgba(0,0,0,0.2); animation: bounce 2s infinite;">
+                EPIC VICTORY!
+            </h1>
+            
+            <div style="background: linear-gradient(90deg, #029316, #7ebefe); color: white; 
+                        padding: 20px; border-radius: 15px; margin: 20px 0;">
+                <h2 style="font: 700 1.5rem 'Quantico', monospace; margin: 0 0 10px 0;">
+                    🏆 BOSS DEFEATED! 🏆
+                </h2>
+                <p style="font: 1.2rem 'Quantico', monospace; margin: 0;">
+                    {random.choice(victory_messages)}
+                </p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 20px 0; 
+                        font: 1rem 'Quantico', monospace;">
+                <div style="background: #ffb700; color: white; padding: 15px; border-radius: 10px; 
+                            border: 2px solid #029316;">
+                    <div style="font-size: 2rem;">⚡</div>
+                    <strong>Mental Power<br/>MAXED OUT!</strong>
+                </div>
+                <div style="background: #029316; color: white; padding: 15px; border-radius: 10px; 
+                            border: 2px solid #ffb700;">
+                    <div style="font-size: 2rem;">🧠</div>
+                    <strong>Mindset<br/>UPGRADED!</strong>
+                </div>
+                <div style="background: #175dcf; color: white; padding: 15px; border-radius: 10px; 
+                            border: 2px solid #029316;">
+                    <div style="font-size: 2rem;">🎯</div>
+                    <strong>Confidence<br/>BOOSTED!</strong>
+                </div>
+            </div>
+            
+            <div style="font: 1.1rem 'Quantico', monospace; color: #2d3748; margin: 20px 0; 
+                        padding: 15px; background: rgba(2,147,22,0.1); border-radius: 10px;">
+                💡 <strong>Remember:</strong> You now have the tools to counter negative self-talk in real life!<br/>
+                Your positive reframes are your superpower! 🦸‍♂️
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+def render_defeat_screen():
+    defeat_messages = [
+        "😤 The inner critic got the upper hand this time!",
+        "🔄 Every champion faces setbacks - this is your comeback story!",
+        "💪 You're building mental resilience with each attempt!",
+        "🎯 Practice makes perfect - let's train that positive mindset!"
+    ]
+    
+    st.markdown(f"""
+    <div class="game-over-container" style="background: linear-gradient(135deg, #da531f 0%, #175dcf 50%, #029316 100%);">
+        <div style="text-align: center; background: rgba(255,255,255,0.95); border: 4px solid #da531f; 
+                    border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(218,83,31,0.4); 
+                    max-width: 600px; margin: 20px;">
+            
+            <div class="defeat-animation" style="font-size: 6rem; margin-bottom: 20px;">
+                <span>💀</span>
+                <span style="animation-delay: 0.5s;">⚡</span>
+                <span style="animation-delay: 1s;">💀</span>
+            </div>
+            
+            <h1 style="font: 900 3rem 'Quantico', monospace; color: #da531f; margin: 20px 0; 
+                       text-shadow: 2px 2px 4px rgba(0,0,0,0.2); animation: pulse 2s infinite;">
+                BOSS WINS!
+            </h1>
+            
+            <div style="background: linear-gradient(90deg, #da531f, #175dcf); color: white; 
+                        padding: 20px; border-radius: 15px; margin: 20px 0;">
+                <h2 style="font: 700 1.5rem 'Quantico', monospace; margin: 0 0 10px 0;">
+                    😈 INNER CRITIC PREVAILS! 😈
+                </h2>
+                <p style="font: 1.2rem 'Quantico', monospace; margin: 0;">
+                    {random.choice(defeat_messages)}
+                </p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; 
+                        font: 1rem 'Quantico', monospace;">
+                <div style="background: #ffb700; color: white; padding: 20px; border-radius: 10px; 
+                            border: 2px solid #da531f;">
+                    <div style="font-size: 2rem;">🎯</div>
+                    <strong>Learning<br/>Opportunity!</strong>
+                </div>
+                <div style="background: #175dcf; color: white; padding: 20px; border-radius: 10px; 
+                            border: 2px solid #ffb700;">
+                    <div style="font-size: 2rem;">💪</div>
+                    <strong>Mental Training<br/>In Progress!</strong>
+                </div>
+            </div>
+            
+            <div style="font: 1.1rem 'Quantico', monospace; color: #2d3748; margin: 20px 0; 
+                        padding: 15px; background: rgba(218,83,31,0.1); border-radius: 10px;">
+                💡 <strong>Pro Tip:</strong> Focus on specific, positive reframes that directly counter the critic's message.<br/>
+                You're building stronger mental muscles with each battle! 🧠💪
+            </div>
+            
+            <div style="background: rgba(2,147,22,0.1); color: #029316; padding: 15px; 
+                        border-radius: 10px; margin: 20px 0; font: bold 1.1rem 'Quantico', monospace;">
+                🌟 Ready for Round 2? Champions never give up! 🌟
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ---------------------------- LOADING OVERLAY ----------------------------
 st.markdown("""
@@ -412,11 +594,6 @@ st.markdown("""
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
-        }
-
         @keyframes loading-bar {
             0% { transform: translateX(-100%); }
             50% { transform: translateX(0%); }
@@ -461,6 +638,24 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+# Check for game over first - if game is over, show end screen and stop
+if st.session_state.game_over:
+    if st.session_state.victory:
+        render_victory_screen()
+    else:
+        render_defeat_screen()
+    
+    # Game over buttons
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("🔄 Try Another Scenario", use_container_width=True, key="restart_game"):
+            st.session_state.clear()
+            st.rerun()
+    with col2:
+        if st.button("🏡 Return to Home", use_container_width=True, key="return_home"):
+            st.switch_page("pages/Modules.py")
+    st.stop()
 
 # Scenario selection
 if st.session_state.scenario is None:
@@ -558,46 +753,7 @@ else:
     </div>
     """, unsafe_allow_html=True)
     
-    # End game checks
-    if st.session_state.boss_hp <= 0:
-        st.markdown("""
-        <div style='background: linear-gradient(135deg, #029316 0%, #7ebefe 100%); color: white; border: clamp(2px, 0.3vw, 3px) solid #029316;
-                    border-radius: clamp(6px, 1vw, 8px); padding: clamp(10px, 1.5vw, 15px); text-align: center; margin: clamp(10px, 1.5vh, 15px) 0; box-shadow: 0 8px 25px rgba(2,147,22,0.3);'>
-            <div style='font-size: clamp(2rem, 4vw, 3em); margin-bottom: 0px;'>🎉</div>
-            <h1 style='margin: 0; font: 900 clamp(1.5rem, 2.5vw, 2em) Quantico, monospace; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>VICTORY!</h1>
-            <p style='font: clamp(1rem, 1.6vw, 1.2em) Quantico, monospace; margin-top: 0px;'>You've conquered your inner critic!</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-        col1, col2 = st.columns(2)
-        with col1:
-            if st.button("🔄 Try Another Scenario", use_container_width=True):
-                st.session_state.clear()
-                st.rerun()
-        with col2:
-            if st.button("🏡 Return to Home", use_container_width=True):
-                st.switch_page("pages/Modules.py")
-                
-    elif st.session_state.player_hp <= 0:
-        st.markdown("""
-        <div style='background: linear-gradient(135deg, #da531f 0%, #029316 100%); color: white; border: clamp(2px, 0.3vw, 3px) solid #da531f;
-                    border-radius: clamp(6px, 1vw, 8px); padding: clamp(10px, 1.5vw, 15px); text-align: center; margin: clamp(10px, 1.5vh, 15px) 0; box-shadow: 0 8px 25px rgba(218,83,31,0.3);'>
-            <div style='font-size: clamp(2rem, 4vw, 3em); margin-bottom: 0px;'>💀</div>
-            <h1 style='margin: 0; font: 900 clamp(1.5rem, 2.5vw, 2em) Quantico, monospace; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>DEFEAT</h1>
-            <p style='font: clamp(1rem, 1.6vw, 1.2em) Quantico, monospace; margin-top: 0px;'>The inner critic won this time. Try again!</p>
-        </div>
-        """, unsafe_allow_html=True)
-        col1, col2 = st.columns(2)
-        with col1:
-            if st.button("🔄 Try Another Scenario", use_container_width=True):
-                st.session_state.clear()
-                st.rerun()
-        with col2:
-            if st.button("🏡 Return to Home", use_container_width=True):
-                st.switch_page("pages/Modules.py")
-    else:
-        def next_round():
-            st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
-        
-        st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
-
+    def next_round():
+        st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
+    
+    st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")

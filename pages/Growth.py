@@ -475,25 +475,18 @@ def get_mindset_result(score):
             return category, data
     return "Unknown", {}
 
-
 def render_custom_radio(options, question_num):
     """Render functional custom styled buttons that work with Streamlit"""
     
-    # Create the visual styling
+    # Create the visual styling with highest specificity possible
     st.markdown(f"""
     <style>
-    .custom-radio-grid-{question_num} {{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-        width: 100%;
-        margin: 25px 0;
-    }}
-    
-    /* Override main button styles specifically for response buttons */
-    div[data-testid="stButton"] > button[data-testid^="response_{question_num}_"] {{
-        background: unset !important;
-        border: unset !important;
+    /* RESPONSE BUTTONS - Maximum specificity to override main button styles */
+    [data-testid="stButton"] button[key="response_{question_num}_0"] {{
+        all: unset !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
         border-radius: 15px !important;
         padding: 15px 10px !important;
         text-align: center !important;
@@ -505,66 +498,105 @@ def render_custom_radio(options, question_num):
         min-height: 60px !important;
         transition: all 0.3s ease !important;
         width: 100% !important;
-        animation: none !important;
-    }}
-    
-    /* Strongly Disagree - Red */
-    div[data-testid="stButton"] > button[data-testid="response_{question_num}_0"] {{
+        cursor: pointer !important;
         background: rgba(153, 21, 21, 0.9) !important;
         border: 2px solid #FF6347 !important;
+        box-sizing: border-box !important;
     }}
     
-    /* Disagree - Orange */  
-    div[data-testid="stButton"] > button[data-testid="response_{question_num}_1"] {{
+    [data-testid="stButton"] button[key="response_{question_num}_1"] {{
+        all: unset !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 15px !important;
+        padding: 15px 10px !important;
+        text-align: center !important;
+        font-family: 'Fredoka', cursive !important;
+        font-weight: 600 !important;
+        font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
+        color: white !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+        min-height: 60px !important;
+        transition: all 0.3s ease !important;
+        width: 100% !important;
+        cursor: pointer !important;
         background: rgba(255, 157, 0, 0.9) !important;
         border: 2px solid #FFA500 !important;
+        box-sizing: border-box !important;
     }}
     
-    /* Agree - Light Green */
-    div[data-testid="stButton"] > button[data-testid="response_{question_num}_2"] {{
+    [data-testid="stButton"] button[key="response_{question_num}_2"] {{
+        all: unset !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 15px !important;
+        padding: 15px 10px !important;
+        text-align: center !important;
+        font-family: 'Fredoka', cursive !important;
+        font-weight: 600 !important;
+        font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
+        color: white !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+        min-height: 60px !important;
+        transition: all 0.3s ease !important;
+        width: 100% !important;
+        cursor: pointer !important;
         background: rgba(11, 176, 90, 0.9) !important;
         border: 2px solid #1bf282 !important;
+        box-sizing: border-box !important;
     }}
     
-    /* Strongly Agree - Dark Green */
-    div[data-testid="stButton"] > button[data-testid="response_{question_num}_3"] {{
+    [data-testid="stButton"] button[key="response_{question_num}_3"] {{
+        all: unset !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 15px !important;
+        padding: 15px 10px !important;
+        text-align: center !important;
+        font-family: 'Fredoka', cursive !important;
+        font-weight: 600 !important;
+        font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
+        color: white !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+        min-height: 60px !important;
+        transition: all 0.3s ease !important;
+        width: 100% !important;
+        cursor: pointer !important;
         background: rgba(7, 135, 61, 0.9) !important;
         border: 2px solid #0bb05a !important;
+        box-sizing: border-box !important;
     }}
     
-    /* Response button hover effects - override main button hover */
-    div[data-testid="stButton"] > button[data-testid^="response_{question_num}_"]:hover {{
+    /* Hover effects for response buttons */
+    [data-testid="stButton"] button[key="response_{question_num}_0"]:hover {{
         transform: translateY(-2px) scale(1.02) !important;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
-        background-image: none !important;
-        animation: none !important;
-    }}
-    
-    /* Specific hover colors for each button */
-    div[data-testid="stButton"] > button[data-testid="response_{question_num}_0"]:hover {{
         background: rgba(153, 21, 21, 1.0) !important;
         border-color: #FF4500 !important;
+        box-shadow: 0 6px 20px rgba(153, 21, 21, 0.4) !important;
     }}
     
-    div[data-testid="stButton"] > button[data-testid="response_{question_num}_1"]:hover {{
+    [data-testid="stButton"] button[key="response_{question_num}_1"]:hover {{
+        transform: translateY(-2px) scale(1.02) !important;
         background: rgba(255, 157, 0, 1.0) !important;
         border-color: #FF8C00 !important;
+        box-shadow: 0 6px 20px rgba(255, 157, 0, 0.4) !important;
     }}
     
-    div[data-testid="stButton"] > button[data-testid="response_{question_num}_2"]:hover {{
+    [data-testid="stButton"] button[key="response_{question_num}_2"]:hover {{
+        transform: translateY(-2px) scale(1.02) !important;
         background: rgba(11, 176, 90, 1.0) !important;
         border-color: #00FF7F !important;
+        box-shadow: 0 6px 20px rgba(11, 176, 90, 0.4) !important;
     }}
     
-    div[data-testid="stButton"] > button[data-testid="response_{question_num}_3"]:hover {{
+    [data-testid="stButton"] button[key="response_{question_num}_3"]:hover {{
+        transform: translateY(-2px) scale(1.02) !important;
         background: rgba(7, 135, 61, 1.0) !important;
         border-color: #32CD32 !important;
-    }}
-    
-    /* Hover effects */
-    div[data-testid="stButton"] button[data-testid^="response_{question_num}_"]:hover {{
-        transform: translateY(-2px) scale(1.02) !important;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
+        box-shadow: 0 6px 20px rgba(7, 135, 61, 0.4) !important;
     }}
     </style>
     """, unsafe_allow_html=True)
@@ -589,7 +621,7 @@ def render_custom_radio(options, question_num):
             return options[3]
     
     return None
-
+    
 def check_javascript_selection(question_num):
     pass
 
@@ -881,4 +913,5 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 

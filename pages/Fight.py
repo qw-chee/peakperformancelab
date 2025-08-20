@@ -13,11 +13,11 @@ openai.api_key = st.secrets.get("openai_api_key")
 # ---------------------------- SCENARIOS ----------------------------
 SCENARIO_LINES = {
     "Studying for Exam": [
-        "You're never going to remember all this.", "You're just wasting time.", "You're not smart enough to get this.",
+        "You're never going to remember all this.", "You can't cover everything with so little time.", "You're not smart enough to get this.",
         "Others are way ahead of you.", "You always mess up exams.", "This topic is too hard for you.",
-        "Why even try when you'll fail anyway?", "You don't have what it takes.", "You're so behind—what's the point?",
+        "You don’t remember things like you used to.", "You don't have what it takes.", "You're so behind—what's the point?",
         "You're a terrible student.", "You'll never catch up.", "Everyone else gets it but you.",
-        "You'll only get a B grade anyway.", "You're a disappointment.", "You always procrastinate and never change."
+        "You'll only get a B grade anyway.", "Everyone else has more time to study; you’re at a disadvantage.", "You always procrastinate and never change."
     ],
     "Job Interview Preparation": [
         "You're not qualified enough.", "They'll see right through you.", "Why would they hire you?",
@@ -654,5 +654,6 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 

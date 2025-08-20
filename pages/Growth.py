@@ -409,20 +409,31 @@ def get_styles():
             left: -9999px !important;
         }
 
+        /* Force radio buttons into a 2x2 grid */
+        div[role="radiogroup"] {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 15px !important;
+            width: 100% !important;
+        }
+        
+        /* Style each radio button as a big block */
         div[role="radiogroup"] > label {
-            display: block !important;
             border-radius: 15px !important;
-            padding: 15px 10px !important;
+            padding: 20px 10px !important;
             text-align: center !important;
             cursor: pointer !important;
             font-family: 'Fredoka', cursive !important;
             font-weight: 600 !important;
             font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
             color: white !important;
-            margin-bottom: 10px !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
             border: 2px solid transparent !important;
             transition: all 0.3s ease !important;
+            min-height: 70px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
         }
         
         /* Specific colors for each option */
@@ -522,15 +533,12 @@ def get_mindset_result(score):
     return "Unknown", {}
 
 def render_custom_radio(options, question_num):
-    """Render real st.radio buttons styled as large colored blocks."""
-
     choice = st.radio(
         f"Question {question_num}",
         options,
         label_visibility="collapsed",
         key=f"q{question_num}",
     )
-
     return choice
 
 def check_javascript_selection(question_num):
@@ -825,4 +833,5 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 

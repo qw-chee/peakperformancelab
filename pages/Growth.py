@@ -564,27 +564,95 @@ def get_mindset_result(score):
             return category, data
     return "Unknown", {}
 
-def render_custom_radio(options, question_num):
-    """Render functional custom styled buttons that work with Streamlit"""
+def render_custom_radio_direct(options, question_num):
+    """Alternative approach using direct DOM manipulation"""
     
-    # Create a 2x2 grid using Streamlit columns
+    # Create the grid layout first
     col1, col2 = st.columns(2)
     
     with col1:
-        # First row, first column
         if st.button(options[0], key=f"response_{question_num}_0", use_container_width=True):
             return options[0]
-        # Second row, first column  
         if st.button(options[2], key=f"response_{question_num}_2", use_container_width=True):
             return options[2]
     
     with col2:
-        # First row, second column
         if st.button(options[1], key=f"response_{question_num}_1", use_container_width=True):
             return options[1]
-        # Second row, second column
         if st.button(options[3], key=f"response_{question_num}_3", use_container_width=True):
             return options[3]
+    
+    # Direct DOM manipulation approach
+    st.markdown(f"""
+    <script>
+    setTimeout(function() {{
+        // Find buttons by their key attributes
+        var buttons = document.querySelectorAll('button[data-testid*="baseButton"]');
+        
+        buttons.forEach(function(button) {{
+            var buttonText = button.innerText.trim();
+            var key = button.getAttribute('aria-label') || button.getAttribute('data-testid') || '';
+            
+            // Style based on button text content
+            if (buttonText === 'Strongly Disagree') {{
+                button.style.cssText = `
+                    background: rgba(153, 21, 21, 0.9) !important;
+                    border: 2px solid #FF6347 !important;
+                    color: white !important;
+                    font-family: 'Fredoka', cursive !important;
+                    font-weight: 600 !important;
+                    border-radius: 15px !important;
+                    padding: 15px 10px !important;
+                    min-height: 60px !important;
+                    width: 100% !important;
+                    font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
+                `;
+            }} else if (buttonText === 'Disagree') {{
+                button.style.cssText = `
+                    background: rgba(255, 157, 0, 0.9) !important;
+                    border: 2px solid #FFA500 !important;
+                    color: white !important;
+                    font-family: 'Fredoka', cursive !important;
+                    font-weight: 600 !important;
+                    border-radius: 15px !important;
+                    padding: 15px 10px !important;
+                    min-height: 60px !important;
+                    width: 100% !important;
+                    font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
+                `;
+            }} else if (buttonText === 'Agree') {{
+                button.style.cssText = `
+                    background: rgba(11, 176, 90, 0.9) !important;
+                    border: 2px solid #1bf282 !important;
+                    color: white !important;
+                    font-family: 'Fredoka', cursive !important;
+                    font-weight: 600 !important;
+                    border-radius: 15px !important;
+                    padding: 15px 10px !important;
+                    min-height: 60px !important;
+                    width: 100% !important;
+                    font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
+                `;
+            }} else if (buttonText === 'Strongly Agree') {{
+                button.style.cssText = `
+                    background: rgba(7, 135, 61, 0.9) !important;
+                    border: 2px solid #0bb05a !important;
+                    color: white !important;
+                    font-family: 'Fredoka', cursive !important;
+                    font-weight: 600 !important;
+                    border-radius: 15px !important;
+                    padding: 15px 10px !important;
+                    min-height: 60px !important;
+                    width: 100% !important;
+                    font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
+                `;
+            }}
+        }});
+        
+        console.log('Direct DOM styling applied to', buttons.length, 'buttons');
+    }}, 200);
+    </script>
+    """, unsafe_allow_html=True)
     
     return None
     
@@ -789,7 +857,7 @@ elif 1 <= st.session_state.current_question <= st.session_state.total_questions 
     """, unsafe_allow_html=True)
     
     # Use the fixed custom radio function
-    selected_option = render_custom_radio(RESPONSE_OPTIONS, st.session_state.current_question)
+    selected_option = render_custom_radio_direct(RESPONSE_OPTIONS, st.session_state.current_question)
     
     # Handle the selection
     if selected_option:
@@ -879,6 +947,3 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-
-

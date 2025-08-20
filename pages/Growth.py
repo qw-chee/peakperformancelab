@@ -918,11 +918,13 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     col1, col2 = st.columns(2)
     with col1:
         if st.button("🔄 Try Again", use_container_width=True):
+            st.session_state.clear()
             reset_quiz(to_start=True)
             st.rerun()
     
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True):
+            st.session_state.clear()
             st.switch_page("pages/Modules.py")
 
 st.markdown(
@@ -938,5 +940,3 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-

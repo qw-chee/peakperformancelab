@@ -550,6 +550,7 @@ if st.session_state.game_over:
             st.rerun()
     with col2:
         if st.button("🏡 Return to Home", use_container_width=True, key="return_home"):
+            st.session_state.clear()
             st.switch_page("pages/Modules.py")
     st.stop()
 
@@ -653,4 +654,5 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 

@@ -537,7 +537,7 @@ def render_custom_radio(options, question_num):
         f"Question {question_num}",
         options,
         label_visibility="collapsed",
-        key=f"radio_q{question_num}",  # <-- fixed key
+        key=f"radio_widget_q{question_num}",  # ensure unique key
     )
     return choice
 
@@ -833,6 +833,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

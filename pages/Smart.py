@@ -867,7 +867,7 @@ if not st.session_state.game_completed:
         
         st.markdown(f"""
         <div class="neon-container">
-            <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1rem, 1.4vw, 1.4em);">
+            <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; font-size: clamp(1rem, 1.4vw, 1.4em);">
                 🔍 WHICH SMART COMPONENTS ARE MISSING?
             </h3>
             <div class="cyber-hint">

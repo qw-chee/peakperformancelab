@@ -826,7 +826,7 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
     """, unsafe_allow_html=True)
     
     st.markdown("""
-    <div class="neon-container">
+    <div class="neon-container; margin-bottom: 5px;">
         <h3 style="color: #ff00ff; font-family: 'Orbitron', monospace; text-align: center; margin-bottom: -5px; font-size: clamp(1rem, 1.6vw, 1.6em);">
             ⚡ MISSION PARAMETERS
         </h3>

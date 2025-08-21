@@ -309,7 +309,6 @@ def get_futuristic_styles():
             border-radius: clamp(8px, 1.2vw, 12px);
             padding: clamp(8px, 1.5vw, 15px);
             margin: clamp(8px, 1.5vw, 15px) 0;
-            margin-bottom: -5px;
             backdrop-filter: blur(10px);
         }
         

@@ -460,7 +460,7 @@ def get_futuristic_styles():
         
         .results-container {
             text-align: center;
-            padding: clamp(12px, 2vw, 20px);
+            padding: clamp(8px, 1.5vw, 20px);
         }
         
         .score-display {
@@ -471,7 +471,7 @@ def get_futuristic_styles():
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin: clamp(8px, 1.5vw, 15px) 0;
+            margin: clamp(4px, 1vw, 15px) 0;
             text-shadow: 0 0 clamp(20px, 3vw, 30px) rgba(0, 255, 255, 0.5);
         }
         

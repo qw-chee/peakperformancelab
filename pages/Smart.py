@@ -82,7 +82,7 @@ GOALS_DATABASE = [
     {
         "text": "I will become fluent in Japanese and Arabic to better connect with people.",
         "missing": ["Measurable", "Achievable", "Timebound"],
-        "feedback": "This goal isn't <strong>Measurable</strong> (what defines fluency?), isn't <strong>Achievable</strong> (three languages simultaneously is unrealistic), and isn't <strong>Timebound</strong> (no deadline specified).<br><br><strong>SMART Version:</strong> 'I will achieve conversational level in Korean (able to hold 10-minute conversations) within 18 months by studying 1 hour daily to connect with Korean colleagues at work.'"
+        "feedback": "This goal isn't <strong>Measurable</strong> (what defines fluency?), isn't <strong>Achievable</strong> (two languages simultaneously is unrealistic), and isn't <strong>Timebound</strong> (no deadline specified).<br><br><strong>SMART Version:</strong> 'I will achieve conversational level in Japanese (able to hold 10-minute conversations) within 18 months by studying 1 hour daily to connect with Japanese colleagues at work.'"
     },
     {
         "text": "I will ask for more feedback during the next meeting.",

@@ -199,7 +199,7 @@ def get_futuristic_styles():
             background: rgba(15, 15, 35, 0.95);
             border: clamp(1px, 0.2vw, 2px) solid transparent;
             border-radius: clamp(10px, 1.5vw, 15px);
-            padding: clamp(4px, 0.8vw, 10px);
+            padding: clamp(2px, 0.4vw, 10px);
             margin: clamp(6px, 1vw, 10px) 0;
             margin-bottom: -5px;
             position: relative;

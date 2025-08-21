@@ -134,461 +134,506 @@ def init_game_state():
 init_game_state()
 
 # ---------------------------- FUTURISTIC STYLES ----------------------------
+@st.cache_data
 def get_futuristic_styles():
     return """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
-    /* Hide Streamlit default elements */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    
-    /* Hide sidebar permanently */
-    section[data-testid="stSidebar"] {
-        display: none !important;
-    }
-    
-    /* Hide sidebar toggle button */
-    button[kind="header"][data-testid="baseButton-header"] {
-        display: none !important;
-    }
-    
-    /* Expand main content to full width */
-    .main .block-container {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-        max-width: none !important;
-    }
-    /* Remove padding from main container */
-    .main .block-container {
-        padding: 0 !important;
-        max-width: none !important;
-    }
-    
-    /* Full screen background */
-    .stApp {
-        background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/smart.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        min-height: 100vh;
-        position: relative;
-    }
-     
-    .neon-container {
-        background: rgba(15, 15, 35, 0.95);
-        border: 2px solid transparent;
-        border-radius: 15px;
-        padding: 15px;
-        margin: 10px 0;
-        position: relative;
-        backdrop-filter: blur(10px);
-        box-shadow: 
-            0 0 30px rgba(0, 255, 255, 0.2),
-            inset 0 0 30px rgba(0, 255, 255, 0.05);
-    }
-    
-    .neon-container::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: 18px;
-        padding: 2px;
-        background: linear-gradient(45deg, 
-            rgba(0, 255, 255, 0.8), 
-            rgba(255, 0, 255, 0.8), 
-            rgba(0, 255, 127, 0.8), 
-            rgba(255, 255, 0, 0.8));
-        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        mask-composite: subtract;
-        z-index: -1;
-        animation: border-glow 3s ease-in-out infinite alternate;
-    }
-    
-    @keyframes border-glow {
-        0% { opacity: 0.5; }
-        100% { opacity: 1; }
-    }
-    
-    .cyber-title {
-        font-family: 'Orbitron', monospace;
-        font-weight: 900;
-        font-size: 2.8em;
-        background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff7f);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-align: center;
-        margin-bottom: 10px;
-        text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
-        animation: title-pulse 2s ease-in-out infinite alternate;
-    }
-    
-    @keyframes title-pulse {
-        0% { filter: brightness(1) saturate(1); }
-        100% { filter: brightness(1.2) saturate(1.3); }
-    }
-    
-    .cyber-subtitle, .cyber-text {
-        font-family: 'Rajdhani', sans-serif;
-        color: rgba(0, 255, 255, 0.8);
-        text-align: center;
-        margin-bottom: 15px;
-        text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-    }
-    
-    .cyber-subtitle {
-        font-weight: 400;
-        font-size: 1.2em;
-    }
-    
-    .cyber-text {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1.1em;
-        line-height: 1.6;
-    }
-    
-    .smart-grid {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 5px;
-        margin: 5px 0;
-    }
-    
-    .smart-card {
-        background: rgba(0, 255, 255, 0.1);
-        border: 1px solid rgba(0, 255, 255, 0.3);
-        border-radius: 5px;
-        padding: 15px;
-        text-align: center;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(5px);
-    }
-    
-    .smart-card:hover {
-        background: rgba(0, 255, 255, 0.2);
-        border-color: rgba(0, 255, 255, 0.6);
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2);
-    }
-    
-    .smart-letter {
-        font-family: 'Orbitron', monospace;
-        font-weight: 700;
-        font-size: 2em;
-        background: linear-gradient(45deg, #00ffff, #00ff7f);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        display: block;
-        margin-bottom: 5px;
-    }
-    
-    .cyber-progress {
-        background: rgba(15, 15, 35, 0.9);
-        border: 1px solid rgba(0, 255, 255, 0.3);
-        border-radius: 12px;
-        padding: 15px;
-        margin: 15px 0;
-        backdrop-filter: blur(10px);
-    }
-    
-    .progress-track {
-        height: 8px;
-        background: rgba(0, 255, 255, 0.2);
-        border-radius: 4px;
-        overflow: hidden;
-        position: relative;
-    }
-    
-    .progress-fill {
-        height: 100%;
-        background: linear-gradient(90deg, #00ffff, #00ff7f);
-        border-radius: 4px;
-        transition: width 1s ease;
-        box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
-        animation: progress-glow 2s ease-in-out infinite alternate;
-    }
-    
-    @keyframes progress-glow {
-        0% { box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); }
-        100% { box-shadow: 0 0 25px rgba(0, 255, 255, 0.9); }
-    }
-    
-    .progress-text {
-        font-family: 'Orbitron', monospace;
-        color: #00ffff;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 10px;
-        font-size: 1.1em;
-        text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-    }
-    
-    .goal-statement {
-        background: rgba(15, 15, 35, 0.9);
-        border: 2px solid rgba(255, 0, 255, 0.3);
-        border-radius: 12px;
-        padding: 15px;
-        margin: 15px 0;
-        position: relative;
-        backdrop-filter: blur(5px);
-    }
-    
-    .goal-statement::before, .goal-statement::after {
-        position: absolute;
-        font-size: 4em;
-        color: rgba(255, 0, 255, 0.6);
-        font-family: 'Orbitron', monospace;
-    }
-    
-    .goal-statement::before {
-        content: '"';
-        top: -10px;
-        left: 20px;
-    }
-    
-    .goal-statement::after {
-        content: '"';
-        bottom: -30px;
-        right: 20px;
-    }
-    
-    .goal-text {
-        font-family: 'Rajdhani', sans-serif;
-        font-size: 1.3em;
-        color: rgba(255, 255, 255, 0.95);
-        font-style: italic;
-        line-height: 1.5;
-        margin: 0;
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-    }
-    
-    .cyber-hint {
-        background: rgba(0, 255, 127, 0.1);
-        border: 1px solid rgba(0, 255, 127, 0.4);
-        border-radius: 10px;
-        padding: 10px;
-        margin: 10px 0;
-        backdrop-filter: blur(5px);
-    }
-    
-    .hint-icon {
-        color: #00ff7f;
-        font-size: 1.2em;
-        margin-right: 8px;
-    }
-    
-    .hint-text {
-        color: rgba(0, 255, 127, 0.9);
-        font-family: 'Rajdhani', sans-serif;
-        font-weight: 500;
-    }
-    
-    .feedback-success {
-        background: rgba(15, 15, 35, 0.9);
-        border: 2px solid rgba(0, 255, 127, 0.6);
-        border-radius: 5px;
-        padding: 5px;
-        text-align: center;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 0 30px rgba(0, 255, 127, 0.3);
-    }
-    
-    .feedback-learning {
-        background: rgba(15, 15, 35, 0.9);
-        border: 2px solid rgba(255, 80, 80, 0.6);
-        border-radius: 5px;
-        padding: 5px;
-        text-align: center;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 0 30px rgba(255, 80, 80, 0.3);
-    }
-    
-    .feedback-title {
-        font-family: 'Orbitron', monospace;
-        font-weight: 700;
-        font-size: 2.2em;
-        margin: 0;
-        text-shadow: 0 0 15px currentColor;
-    }
-    
-    .feedback-icon {
-        font-size: 2.5em;
-        margin-bottom: 10px;
-        display: block;
-    }
-    
-    .missing-components {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-        margin: 20px 0;
-    }
-    
-    .component-tag {
-        background: rgba(255, 255, 0, 0.2);
-        color: #ffff00;
-        border: 1px solid rgba(255, 255, 0, 0.5);
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-family: 'Orbitron', monospace;
-        font-weight: 600;
-        font-size: 0.9em;
-        text-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
-    }
-    
-    .results-container {
-        text-align: center;
-        padding: 20px;
-    }
-    
-    .score-display {
-        font-family: 'Orbitron', monospace;
-        font-size: 3.5em;
-        font-weight: 900;
-        background: linear-gradient(45deg, #00ffff, #ff00ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin: 15px 0;
-        text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
-    }
-    
-    .stCheckbox > label {
-        font-family: 'Rajdhani', sans-serif !important;
-        color: white !important;
-        font-size: 1em !important;
-        font-weight: 600 !important;
-        background: rgba(0, 255, 255, 0.05) !important;
-        border: 1px solid rgba(0, 255, 255, 0.2) !important;
-        border-radius: 8px !important;
-        padding: 6px 8px !important;
-        margin: 2px 0 !important;
-        transition: all 0.3s ease !important;
-        backdrop-filter: blur(5px) !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-    }
-       
-    .stCheckbox > label[data-checked="true"] {
-        background-color: rgba(0, 255, 255) !important;
-        border-color: #00ffff !important;
-        margin-bottom: -10px;
-    }
-    
-    .stCheckbox > label:hover {
-        background: rgba(0, 255, 255, 0.1) !important;
-        border-color: rgba(0, 255, 255, 0.4) !important;
-        transform: translateX(5px) !important;
-    }
-    
-    .stCheckbox > label > div[data-checked="true"] {
-        background: linear-gradient(45deg, #00ffff, #00ff7f) !important;
-        border: none !important;
-        box-shadow: 0 0 15px rgba(0, 255, 255, 0.6) !important;
-    }
-    
-    .stCheckbox > label > span, .stCheckbox * {
-        color: white !important;
-    }
+    /* Desktop/Laptop Only Styles */
+    @media screen and (min-width: 1024px) {
+        /* Hide Streamlit default elements */
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        header {visibility: hidden;}
+        
+        /* Hide sidebar permanently */
+        section[data-testid="stSidebar"] {
+            display: none !important;
+        }
+        
+        /* Hide sidebar toggle button */
+        button[kind="header"][data-testid="baseButton-header"] {
+            display: none !important;
+        }
 
-    div[data-testid="stForm"] {
-        background-color: rgba(15, 15, 35, 0.9) !important;
-        padding: 20px;
-        border-radius: 10px;
-        border: 1px solid #333;
-    }
-    
-    div[data-testid="stForm"] label {
-        color: white !important;
-    }
-    
-    div[data-testid="stForm"] [data-testid="column"] {
-        padding-left: -0.5rem !important;
-        padding-right: -0.5rem !important;
-    }
-    
-    div[data-testid="stForm"] .element-container {
-        margin: 0 !important;
-    }
-    
-    div[data-testid="stButton"] > button[kind="primary"] {
-        background: linear-gradient(135deg, #00ffff 0%, #ff00ff 50%, #00ff7f 100%) !important;
-        border: 2px solid rgba(0, 255, 255, 0.5) !important;
-        color: #000000 !important;
-        font-weight: 900 !important;
-        font-size: 1.1em !important;
-        font-family: 'Orbitron', monospace !important;
-        padding: 15px 25px !important;
-        border-radius: 25px !important;
-        box-shadow: 
-            0 0 20px rgba(0, 255, 255, 0.4),
-            inset 0 0 20px rgba(255, 255, 255, 0.2) !important;
-        transition: all 0.3s ease !important;
-        text-transform: uppercase !important;
-        letter-spacing: 1px !important;
-    }
+        .stApp > div:first-child {
+            padding-top: 0 !important;
+            margin-top: -3rem !important;
+        }
 
-    div[data-testid="stButton"] > button[kind="primary"]:hover {
-        background: linear-gradient(135deg, #ff00ff 0%, #00ff7f 50%, #00ffff 100%) !important;
-        transform: translateY(-3px) scale(1.02) !important;
-        box-shadow: 
-            0 5px 25px rgba(0, 255, 255, 0.6),
-            0 0 30px rgba(255, 0, 255, 0.4),
-            inset 0 0 25px rgba(255, 255, 255, 0.3) !important;
-        border-color: rgba(255, 0, 255, 0.8) !important;
-    }
+        .block-container {
+            padding-top: 0 !important;
+            margin-top: -2rem !important;
+        }
 
-    div[data-testid="stButton"] > button {
-        background: linear-gradient(135deg, rgba(0, 255, 255, 0.2) 0%, rgba(255, 0, 255, 0.2) 100%) !important;
-        border: 1px solid rgba(0, 255, 255, 0.4) !important;
-        color: #00ffff !important;
-        font-weight: 600 !important;
-        font-family: 'Rajdhani', sans-serif !important;
-        border-radius: 15px !important;
-        backdrop-filter: blur(10px) !important;
-        transition: all 0.3s ease !important;
-    }
+        /* Responsive container - scales based on 2033x983 reference */
+        .main .block-container {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            max-width: none !important;
+            position: relative !important;
+            z-index: 100 !important;
+            transform: scale(clamp(0.6, calc(100vw / 2033), 1.4));
+            transform-origin: top center;
+        }
+        
+        /* Remove padding from main container */
+        .main .block-container {
+            padding: 0 !important;
+            max-width: none !important;
+        }
+        
+        /* Full screen background */
+        .stApp {
+            background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/smart.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            position: relative;
+        }
+         
+        .neon-container {
+            background: rgba(15, 15, 35, 0.95);
+            border: clamp(1px, 0.2vw, 2px) solid transparent;
+            border-radius: clamp(10px, 1.5vw, 15px);
+            padding: clamp(8px, 1.2vw, 15px);
+            margin: clamp(6px, 1vw, 10px) 0;
+            position: relative;
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 0 clamp(20px, 3vw, 30px) rgba(0, 255, 255, 0.2),
+                inset 0 0 clamp(20px, 3vw, 30px) rgba(0, 255, 255, 0.05);
+        }
+        
+        .neon-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: clamp(12px, 1.8vw, 18px);
+            padding: clamp(1px, 0.2vw, 2px);
+            background: linear-gradient(45deg, 
+                rgba(0, 255, 255, 0.8), 
+                rgba(255, 0, 255, 0.8), 
+                rgba(0, 255, 127, 0.8), 
+                rgba(255, 255, 0, 0.8));
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: subtract;
+            z-index: -1;
+            animation: border-glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes border-glow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .cyber-title {
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            font-size: clamp(1.8rem, 2.8vw, 2.8em);
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff7f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: clamp(5px, 1vw, 10px);
+            text-shadow: 0 0 clamp(20px, 3vw, 30px) rgba(0, 255, 255, 0.5);
+            animation: title-pulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes title-pulse {
+            0% { filter: brightness(1) saturate(1); }
+            100% { filter: brightness(1.2) saturate(1.3); }
+        }
+        
+        .cyber-subtitle, .cyber-text {
+            font-family: 'Rajdhani', sans-serif;
+            color: rgba(0, 255, 255, 0.8);
+            text-align: center;
+            margin-bottom: clamp(8px, 1.5vw, 15px);
+            text-shadow: 0 0 clamp(6px, 1vw, 10px) rgba(0, 255, 255, 0.3);
+        }
+        
+        .cyber-subtitle {
+            font-weight: 400;
+            font-size: clamp(1rem, 1.2vw, 1.2em);
+        }
+        
+        .cyber-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: clamp(0.9rem, 1.1vw, 1.1em);
+            line-height: 1.6;
+        }
+        
+        .smart-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: clamp(3px, 0.5vw, 5px);
+            margin: clamp(3px, 0.5vw, 5px) 0;
+        }
+        
+        .smart-card {
+            background: rgba(0, 255, 255, 0.1);
+            border: clamp(1px, 0.15vw, 1px) solid rgba(0, 255, 255, 0.3);
+            border-radius: clamp(3px, 0.5vw, 5px);
+            padding: clamp(8px, 1.5vw, 15px);
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .smart-card:hover {
+            background: rgba(0, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 0.6);
+            transform: translateY(clamp(-2px, -0.3vw, -3px));
+            box-shadow: 0 clamp(8px, 1.5vw, 10px) clamp(15px, 2vw, 20px) rgba(0, 255, 255, 0.2);
+        }
+        
+        .smart-letter {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: clamp(1.5em, 2vw, 2em);
+            background: linear-gradient(45deg, #00ffff, #00ff7f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: clamp(3px, 0.5vw, 5px);
+        }
+        
+        .cyber-progress {
+            background: rgba(15, 15, 35, 0.9);
+            border: clamp(1px, 0.15vw, 1px) solid rgba(0, 255, 255, 0.3);
+            border-radius: clamp(8px, 1.2vw, 12px);
+            padding: clamp(8px, 1.5vw, 15px);
+            margin: clamp(8px, 1.5vw, 15px) 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .progress-track {
+            height: clamp(6px, 0.8vw, 8px);
+            background: rgba(0, 255, 255, 0.2);
+            border-radius: clamp(3px, 0.4vw, 4px);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ffff, #00ff7f);
+            border-radius: clamp(3px, 0.4vw, 4px);
+            transition: width 1s ease;
+            box-shadow: 0 0 clamp(10px, 1.5vw, 15px) rgba(0, 255, 255, 0.6);
+            animation: progress-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes progress-glow {
+            0% { box-shadow: 0 0 clamp(10px, 1.5vw, 15px) rgba(0, 255, 255, 0.6); }
+            100% { box-shadow: 0 0 clamp(18px, 2.5vw, 25px) rgba(0, 255, 255, 0.9); }
+        }
+        
+        .progress-text {
+            font-family: 'Orbitron', monospace;
+            color: #00ffff;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: clamp(6px, 1vw, 10px);
+            font-size: clamp(0.9rem, 1.1vw, 1.1em);
+            text-shadow: 0 0 clamp(6px, 1vw, 10px) rgba(0, 255, 255, 0.5);
+        }
+        
+        .goal-statement {
+            background: rgba(15, 15, 35, 0.9);
+            border: clamp(1px, 0.2vw, 2px) solid rgba(255, 0, 255, 0.3);
+            border-radius: clamp(8px, 1.2vw, 12px);
+            padding: clamp(8px, 1.5vw, 15px);
+            margin: clamp(8px, 1.5vw, 15px) 0;
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
+        
+        .goal-statement::before, .goal-statement::after {
+            position: absolute;
+            font-size: clamp(2.5em, 4vw, 4em);
+            color: rgba(255, 0, 255, 0.6);
+            font-family: 'Orbitron', monospace;
+        }
+        
+        .goal-statement::before {
+            content: '"';
+            top: clamp(-6px, -1vw, -10px);
+            left: clamp(12px, 2vw, 20px);
+        }
+        
+        .goal-statement::after {
+            content: '"';
+            bottom: clamp(-20px, -3vw, -30px);
+            right: clamp(12px, 2vw, 20px);
+        }
+        
+        .goal-text {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: clamp(1rem, 1.3vw, 1.3em);
+            color: rgba(255, 255, 255, 0.95);
+            font-style: italic;
+            line-height: 1.5;
+            margin: 0;
+            text-shadow: 0 0 clamp(3px, 0.5vw, 5px) rgba(255, 255, 255, 0.3);
+        }
+        
+        .cyber-hint {
+            background: rgba(0, 255, 127, 0.1);
+            border: clamp(1px, 0.15vw, 1px) solid rgba(0, 255, 127, 0.4);
+            border-radius: clamp(6px, 1vw, 10px);
+            padding: clamp(6px, 1vw, 10px);
+            margin: clamp(6px, 1vw, 10px) 0;
+            backdrop-filter: blur(5px);
+        }
+        
+        .hint-icon {
+            color: #00ff7f;
+            font-size: clamp(1rem, 1.2vw, 1.2em);
+            margin-right: clamp(5px, 0.8vw, 8px);
+        }
+        
+        .hint-text {
+            color: rgba(0, 255, 127, 0.9);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+        }
+        
+        .feedback-success {
+            background: rgba(15, 15, 35, 0.9);
+            border: clamp(1px, 0.2vw, 2px) solid rgba(0, 255, 127, 0.6);
+            border-radius: clamp(3px, 0.5vw, 5px);
+            padding: clamp(3px, 0.5vw, 5px);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 clamp(20px, 3vw, 30px) rgba(0, 255, 127, 0.3);
+        }
+        
+        .feedback-learning {
+            background: rgba(15, 15, 35, 0.9);
+            border: clamp(1px, 0.2vw, 2px) solid rgba(255, 80, 80, 0.6);
+            border-radius: clamp(3px, 0.5vw, 5px);
+            padding: clamp(3px, 0.5vw, 5px);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 clamp(20px, 3vw, 30px) rgba(255, 80, 80, 0.3);
+        }
+        
+        .feedback-title {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: clamp(1.5rem, 2.2vw, 2.2em);
+            margin: 0;
+            text-shadow: 0 0 clamp(10px, 1.5vw, 15px) currentColor;
+        }
+        
+        .feedback-icon {
+            font-size: clamp(2rem, 2.5vw, 2.5em);
+            margin-bottom: clamp(6px, 1vw, 10px);
+            display: block;
+        }
+        
+        .missing-components {
+            display: flex;
+            flex-wrap: wrap;
+            gap: clamp(6px, 1vw, 10px);
+            justify-content: center;
+            margin: clamp(12px, 2vw, 20px) 0;
+        }
+        
+        .component-tag {
+            background: rgba(255, 255, 0, 0.2);
+            color: #ffff00;
+            border: clamp(1px, 0.15vw, 1px) solid rgba(255, 255, 0, 0.5);
+            padding: clamp(5px, 0.8vw, 8px) clamp(10px, 1.6vw, 16px);
+            border-radius: clamp(12px, 2vw, 20px);
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            font-size: clamp(0.7rem, 0.9vw, 0.9em);
+            text-shadow: 0 0 clamp(6px, 1vw, 10px) rgba(255, 255, 0, 0.5);
+        }
+        
+        .results-container {
+            text-align: center;
+            padding: clamp(12px, 2vw, 20px);
+        }
+        
+        .score-display {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2.5rem, 3.5vw, 3.5em);
+            font-weight: 900;
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: clamp(8px, 1.5vw, 15px) 0;
+            text-shadow: 0 0 clamp(20px, 3vw, 30px) rgba(0, 255, 255, 0.5);
+        }
+        
+        .stCheckbox > label {
+            font-family: 'Rajdhani', sans-serif !important;
+            color: white !important;
+            font-size: clamp(0.8rem, 1vw, 1em) !important;
+            font-weight: 600 !important;
+            background: rgba(0, 255, 255, 0.05) !important;
+            border: clamp(1px, 0.15vw, 1px) solid rgba(0, 255, 255, 0.2) !important;
+            border-radius: clamp(5px, 0.8vw, 8px) !important;
+            padding: clamp(4px, 0.6vw, 6px) clamp(5px, 0.8vw, 8px) !important;
+            margin: clamp(1px, 0.2vw, 2px) 0 !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+        }
+           
+        .stCheckbox > label[data-checked="true"] {
+            background-color: rgba(0, 255, 255) !important;
+            border-color: #00ffff !important;
+            margin-bottom: clamp(-8px, -1vw, -10px);
+        }
+        
+        .stCheckbox > label:hover {
+            background: rgba(0, 255, 255, 0.1) !important;
+            border-color: rgba(0, 255, 255, 0.4) !important;
+            transform: translateX(clamp(3px, 0.5vw, 5px)) !important;
+        }
+        
+        .stCheckbox > label > div[data-checked="true"] {
+            background: linear-gradient(45deg, #00ffff, #00ff7f) !important;
+            border: none !important;
+            box-shadow: 0 0 clamp(10px, 1.5vw, 15px) rgba(0, 255, 255, 0.6) !important;
+        }
+        
+        .stCheckbox > label > span, .stCheckbox * {
+            color: white !important;
+        }
 
-    div[data-testid="stButton"] > button:hover {
-        background: linear-gradient(135deg, rgba(0, 255, 255, 0.3) 0%, rgba(255, 0, 255, 0.3) 100%) !important;
-        border-color: rgba(0, 255, 255, 0.6) !important;
-        transform: translateY(-2px) !important;
-        box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3) !important;
-    }
+        div[data-testid="stForm"] {
+            background-color: rgba(15, 15, 35, 0.9) !important;
+            padding: clamp(12px, 2vw, 20px);
+            border-radius: clamp(6px, 1vw, 10px);
+            border: clamp(1px, 0.15vw, 1px) solid #333;
+        }
+        
+        div[data-testid="stForm"] label {
+            color: white !important;
+        }
+        
+        div[data-testid="stForm"] [data-testid="column"] {
+            padding-left: clamp(-0.3rem, -0.5vw, -0.5rem) !important;
+            padding-right: clamp(-0.3rem, -0.5vw, -0.5rem) !important;
+        }
+        
+        div[data-testid="stForm"] .element-container {
+            margin: 0 !important;
+        }
+        
+        div[data-testid="stButton"] > button[kind="primary"] {
+            background: linear-gradient(135deg, #00ffff 0%, #ff00ff 50%, #00ff7f 100%) !important;
+            border: clamp(1px, 0.2vw, 2px) solid rgba(0, 255, 255, 0.5) !important;
+            color: #000000 !important;
+            font-weight: 900 !important;
+            font-size: clamp(0.9rem, 1.1vw, 1.1em) !important;
+            font-family: 'Orbitron', monospace !important;
+            padding: clamp(10px, 1.5vw, 15px) clamp(15px, 2.5vw, 25px) !important;
+            border-radius: clamp(15px, 2.5vw, 25px) !important;
+            box-shadow: 
+                0 0 clamp(12px, 2vw, 20px) rgba(0, 255, 255, 0.4),
+                inset 0 0 clamp(12px, 2vw, 20px) rgba(255, 255, 255, 0.2) !important;
+            transition: all 0.3s ease !important;
+            text-transform: uppercase !important;
+            letter-spacing: clamp(0.5px, 0.1vw, 1px) !important;
+        }
 
-    div[data-testid="stForm"] div[data-testid="stButton"] > button[kind="primary"] {
-        width: 100% !important;
-        margin-top: 20px !important;
-    }
+        div[data-testid="stButton"] > button[kind="primary"]:hover {
+            background: linear-gradient(135deg, #ff00ff 0%, #00ff7f 50%, #00ffff 100%) !important;
+            transform: translateY(clamp(-2px, -0.3vw, -3px)) scale(1.02) !important;
+            box-shadow: 
+                0 clamp(3px, 0.5vw, 5px) clamp(15px, 2.5vw, 25px) rgba(0, 255, 255, 0.6),
+                0 0 clamp(20px, 3vw, 30px) rgba(255, 0, 255, 0.4),
+                inset 0 0 clamp(15px, 2.5vw, 25px) rgba(255, 255, 255, 0.3) !important;
+            border-color: rgba(255, 0, 255, 0.8) !important;
+        }
 
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
+        div[data-testid="stButton"] > button {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.2) 0%, rgba(255, 0, 255, 0.2) 100%) !important;
+            border: clamp(1px, 0.15vw, 1px) solid rgba(0, 255, 255, 0.4) !important;
+            color: #00ffff !important;
+            font-weight: 600 !important;
+            font-family: 'Rajdhani', sans-serif !important;
+            border-radius: clamp(10px, 1.5vw, 15px) !important;
+            backdrop-filter: blur(10px) !important;
+            transition: all 0.3s ease !important;
+        }
 
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
+        div[data-testid="stButton"] > button:hover {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.3) 0%, rgba(255, 0, 255, 0.3) 100%) !important;
+            border-color: rgba(0, 255, 255, 0.6) !important;
+            transform: translateY(clamp(-1px, -0.2vw, -2px)) !important;
+            box-shadow: 0 clamp(3px, 0.5vw, 5px) clamp(10px, 1.5vw, 15px) rgba(0, 255, 255, 0.3) !important;
+        }
 
-    ::-webkit-scrollbar-track {
-        background: rgba(15, 15, 35, 0.5);
-    }
+        div[data-testid="stForm"] div[data-testid="stButton"] > button[kind="primary"] {
+            width: 100% !important;
+            margin-top: clamp(12px, 2vw, 20px) !important;
+        }
 
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(45deg, #00ffff, #ff00ff);
-        border-radius: 4px;
-    }
+        /* Specific breakpoint adjustments for optimal scaling */
+        
+        /* Standard Desktop (1024-1439px) */
+        @media screen and (min-width: 1024px) and (max-width: 1439px) {
+            .main .block-container {
+                transform: scale(0.75);
+            }
+        }
 
-    ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(45deg, #ff00ff, #00ff7f);
+        /* Large Desktop (1440-1919px) */
+        @media screen and (min-width: 1440px) and (max-width: 1919px) {
+            .main .block-container {
+                transform: scale(0.85);
+            }
+        }
+
+        /* Reference size (1920-2200px) - Perfect scaling maintained */
+        @media screen and (min-width: 1920px) and (max-width: 2200px) {
+            .main .block-container {
+                transform: scale(1.0);
+            }
+        }
+
+        /* Ultra-wide (2200px+) */
+        @media screen and (min-width: 2200px) {
+            .main .block-container {
+                transform: scale(1.15);
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: clamp(6px, 1vw, 8px);
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 15, 35, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            border-radius: clamp(2px, 0.4vw, 4px);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #ff00ff, #00ff7f);
+        }
     }
     </style>
     """
@@ -608,79 +653,97 @@ st.markdown("""
 </div>
 
 <style>
-#loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #0a0a0a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    animation: loading-sequence 4s ease-in-out forwards;
-}
+@media screen and (min-width: 1024px) {
+    #loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #0a0a0a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        animation: loading-sequence 4s ease-in-out forwards;
+    }
 
-.loading-content {
-    text-align: center;
-}
+    .loading-content {
+        text-align: center;
+    }
 
-.loading-title {
-    font-family: 'Orbitron', monospace;
-    font-size: 3em;
-    font-weight: 900;
-    background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff7f);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 20px;
-    animation: pulse 2s ease-in-out infinite;
-}
+    .loading-title {
+        font-family: 'Orbitron', monospace;
+        font-size: clamp(2rem, 3vw, 3em);
+        font-weight: 900;
+        background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff7f);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: clamp(12px, 2vw, 20px);
+        animation: pulse 2s ease-in-out infinite;
+    }
 
-.loading-bar-container {
-    width: 200px;
-    height: 4px;
-    background: rgba(0, 255, 255, 0.2);
-    border-radius: 2px;
-    overflow: hidden;
-    position: relative;
-    margin: 0 auto;
-}
+    .loading-bar-container {
+        width: clamp(120px, 20vw, 200px);
+        height: clamp(3px, 0.4vw, 4px);
+        background: rgba(0, 255, 255, 0.2);
+        border-radius: clamp(1px, 0.2vw, 2px);
+        overflow: hidden;
+        position: relative;
+        margin: 0 auto;
+    }
 
-.loading-bar {
-    width: 40%;
-    height: 100%;
-    background: linear-gradient(90deg, #00ffff, #00ff7f);
-    border-radius: 2px;
-    animation: loading-bar 2s ease-in-out infinite;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
-}
+    .loading-bar {
+        width: 40%;
+        height: 100%;
+        background: linear-gradient(90deg, #00ffff, #00ff7f);
+        border-radius: clamp(1px, 0.2vw, 2px);
+        animation: loading-bar 2s ease-in-out infinite;
+        box-shadow: 0 0 clamp(10px, 1.5vw, 15px) rgba(0, 255, 255, 0.6);
+    }
 
-.loading-subtitle {
-    font-family: 'Rajdhani', sans-serif;
-    color: rgba(255, 255, 255, 0.7);
-    margin-top: 15px;
-    font-size: 1.4em;
-}
+    .loading-subtitle {
+        font-family: 'Rajdhani', sans-serif;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: clamp(8px, 1.5vw, 15px);
+        font-size: clamp(1rem, 1.4vw, 1.4em);
+    }
 
-@keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.05); }
-}
+    @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.05); }
+    }
 
-@keyframes loading-bar {
-    0% { transform: translateX(-100%); }
-    50% { transform: translateX(0%); }
-    100% { transform: translateX(300%); }
-}
+    @keyframes loading-bar {
+        0% { transform: translateX(-100%); }
+        50% { transform: translateX(0%); }
+        100% { transform: translateX(300%); }
+    }
 
-@keyframes loading-sequence {
-    0% { opacity: 1; }
-    85% { opacity: 1; }
-    100% { opacity: 0; pointer-events: none; }
+    @keyframes loading-sequence {
+        0% { opacity: 1; }
+        85% { opacity: 1; }
+        100% { opacity: 0; pointer-events: none; }
+    }
 }
 </style>
+""", unsafe_allow_html=True)
+
+# Block mobile and tablet, handle responsive scaling with JavaScript
+st.markdown("""
+<script>
+// Block mobile and tablet, handle responsive scaling
+if (window.innerWidth >= 1024) {
+    // Handle window resize for responsive scaling
+    window.addEventListener('resize', function() {
+        if (window.innerWidth < 1024) {
+            document.body.style.display = 'none';
+            document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%); color: white; font-size: 1.5rem; text-align: center; font-family: Orbitron, monospace;">This application is designed for desktop and laptop screens only.</div>';
+        }
+    });
+}
+</script>
 """, unsafe_allow_html=True)
 
 # ---------------------------- HELPER FUNCTIONS ----------------------------
@@ -728,34 +791,34 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
 
     st.markdown("""
     <div class="neon-container">
-        <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; text-align: center; margin-bottom: -5px; font-size: 1.8em;">
+        <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; text-align: center; margin-bottom: -5px; font-size: clamp(1.2rem, 1.8vw, 1.8em);">
             📡 SMART PROTOCOL COMPONENTS
         </h3>
         <div class="smart-grid">
             <div class="smart-card">
                 <span class="smart-letter">S</span>
-                <strong style="color: #00ffff;">SPECIFIC</strong><br>
-                <i style="color: rgba(255,255,255,0.7);">Is it well-defined?</i>
+                <strong style="color: #00ffff; font-size: clamp(0.7rem, 0.9vw, 0.9em);">SPECIFIC</strong><br>
+                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.6rem, 0.8vw, 0.8em);">Is it well-defined?</i>
             </div>
             <div class="smart-card">
                 <span class="smart-letter">M</span>
-                <strong style="color: #00ffff;">MEASURABLE</strong><br>
-                <i style="color: rgba(255,255,255,0.7);">Is it quantifiable?</i>
+                <strong style="color: #00ffff; font-size: clamp(0.7rem, 0.9vw, 0.9em);">MEASURABLE</strong><br>
+                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.6rem, 0.8vw, 0.8em);">Is it quantifiable?</i>
             </div>
             <div class="smart-card">
                 <span class="smart-letter">A</span>
-                <strong style="color: #00ffff;">ACHIEVABLE</strong><br>
-                <i style="color: rgba(255,255,255,0.7);">Is it realistic?</i>
+                <strong style="color: #00ffff; font-size: clamp(0.7rem, 0.9vw, 0.9em);">ACHIEVABLE</strong><br>
+                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.6rem, 0.8vw, 0.8em);">Is it realistic?</i>
             </div>
             <div class="smart-card">
                 <span class="smart-letter">R</span>
-                <strong style="color: #00ffff;">RELEVANT</strong><br>
-                <i style="color: rgba(255,255,255,0.7);">Is there a purpose?</i>
+                <strong style="color: #00ffff; font-size: clamp(0.7rem, 0.9vw, 0.9em);">RELEVANT</strong><br>
+                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.6rem, 0.8vw, 0.8em);">Is there a purpose?</i>
             </div>
             <div class="smart-card">
                 <span class="smart-letter">T</span>
-                <strong style="color: #00ffff;">TIMEBOUND</strong><br>
-                <i style="color: rgba(255,255,255,0.7);">Is there a time horizon?</i>
+                <strong style="color: #00ffff; font-size: clamp(0.7rem, 0.9vw, 0.9em);">TIMEBOUND</strong><br>
+                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.6rem, 0.8vw, 0.8em);">Is there a time horizon?</i>
             </div>
         </div>
     </div>
@@ -763,7 +826,7 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
     
     st.markdown("""
     <div class="neon-container">
-        <h3 style="color: #ff00ff; font-family: 'Orbitron', monospace; text-align: center; margin-bottom: -5px; font-size: 1.6em;">
+        <h3 style="color: #ff00ff; font-family: 'Orbitron', monospace; text-align: center; margin-bottom: -5px; font-size: clamp(1rem, 1.6vw, 1.6em);">
             ⚡ MISSION PARAMETERS
         </h3>
         <div class="cyber-text" style="text-align: center; margin-bottom: 5px;">
@@ -804,7 +867,7 @@ if not st.session_state.game_completed:
         
         st.markdown(f"""
         <div class="neon-container">
-            <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: 1.4em;">
+            <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1rem, 1.4vw, 1.4em);">
                 🔍 WHICH SMART COMPONENTS ARE MISSING?
             </h3>
             <div class="cyber-hint">
@@ -862,17 +925,17 @@ if not st.session_state.game_completed:
         # Show correct answer
         st.markdown(f"""
         <div class="neon-container">
-            <h3 style="color: #ffff00; font-family: 'Orbitron', monospace; margin-bottom: -20px; font-size: 1.3em; text-align: center;">
+            <h3 style="color: #ffff00; font-family: 'Orbitron', monospace; margin-bottom: -20px; font-size: clamp(1rem, 1.3vw, 1.3em); text-align: center;">
                 📊 MISSING COMPONENTS DETECTED
             </h3>
             <div class="missing-components">
                 {' '.join([f'<span class="component-tag">{comp}</span>' for comp in goal["missing"]])}
             </div>
-            <div style="background: rgba(0,255,255,0.1); border: 1px solid rgba(0,255,255,0.3); border-radius: 12px; padding: 20px; margin-top: 20px;">
-                <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-weight: 600; margin-bottom: 10px;">
+            <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(12px, 2vw, 20px); margin-top: clamp(12px, 2vw, 20px);">
+                <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-weight: 600; margin-bottom: clamp(6px, 1vw, 10px); font-size: clamp(0.9rem, 1.1vw, 1.1em);">
                     📝 SYSTEM ANALYSIS:
                 </div>
-                <div style="color: rgba(255,255,255,0.9); font-family: 'Rajdhani', sans-serif; line-height: 1.5;">
+                <div style="color: rgba(255,255,255,0.9); font-family: 'Rajdhani', sans-serif; line-height: 1.5; font-size: clamp(0.85rem, 1vw, 1em);">
                     {goal["feedback"]}
                 </div>
             </div>
@@ -898,7 +961,7 @@ if st.session_state.game_completed:
         <div class="results-container">
             <span class="feedback-icon">{result_config['icon']}</span>
             <h1 class="feedback-title" style="color: {result_config['color']}; margin-bottom: 5px;">{result_config['title']}</h1>
-            <div style="color: rgba(255,255,255,0.8); font-family: 'Rajdhani', sans-serif; font-size: 1.2em;">
+            <div style="color: rgba(255,255,255,0.8); font-family: 'Rajdhani', sans-serif; font-size: clamp(1rem, 1.2vw, 1.2em);">
                 {result_config['message']}
             </div>
         </div>
@@ -908,17 +971,17 @@ if st.session_state.game_completed:
     st.markdown(f"""
     <div class="neon-container">
         <div class="results-container">
-            <h2 style="color: #ff00ff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: 1.8em;">
+            <h2 style="color: #ff00ff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1.2rem, 1.8vw, 1.8em);">
                 📊 PERFORMANCE METRICS
             </h2>
             <div class="score-display">
                 {st.session_state.score}/{st.session_state.total_questions}
             </div>
-            <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-size: 1.6em; font-weight: 600; margin-bottom: 10px;">
+            <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-size: clamp(1.2rem, 1.6vw, 1.6em); font-weight: 600; margin-bottom: clamp(6px, 1vw, 10px);">
                 {score_percentage:.0f}% ACCURACY ACHIEVED
             </div>
-            <div style="background: rgba(0,255,255,0.1); border: 1px solid rgba(0,255,255,0.3); border-radius: 12px; padding: 10px;">
-                <div style="color: rgba(255,255,255,0.9); font-family: 'Rajdhani', sans-serif; font-size: 1.1em; line-height: 1.5;">
+            <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(6px, 1vw, 10px);">
+                <div style="color: rgba(255,255,255,0.9); font-family: 'Rajdhani', sans-serif; font-size: clamp(0.9rem, 1.1vw, 1.1em); line-height: 1.5;">
                     SMART goals are important because they make goals clear, focused, and achievable. By being Specific, Measurable, Achievable, Relevant, and Time-bound, SMART goals help you stay organized, track progress, stay motivated, and make better decisions. They turn vague ideas into clear action plans. Always practice SMART goals!
                 </div>
             </div>
@@ -928,16 +991,13 @@ if st.session_state.game_completed:
     
     col1, col2 = st.columns(2)
     with col1:
-        if st.button("🔄 RESTART PROTOCOL", use_container_width=True):
+        if st.button("🔄 TRY AGAIN", use_container_width=True):
             st.session_state.score = 0
             st.session_state.game_completed = False
             reset_to_question(1)
             st.rerun()
-    
     with col2:
-        if st.button("🏠 RETURN TO BASE", use_container_width=True):
-            st.session_state.score = 0
-            st.session_state.game_completed = False
-            st.session_state.current_goal = None
-            reset_to_question(0)
-            st.rerun()
+        if st.button("🏠 RETURN TO HOME", use_container_width=True):
+            st.session_state.clear()
+            st.switch_page("pages/Modules.py")
+    st.stop()

@@ -201,6 +201,7 @@ def get_futuristic_styles():
             border-radius: clamp(10px, 1.5vw, 15px);
             padding: clamp(8px, 1.2vw, 15px);
             margin: clamp(6px, 1vw, 10px) 0;
+            margin-bottom: -5px;
             position: relative;
             backdrop-filter: blur(10px);
             box-shadow: 
@@ -781,7 +782,7 @@ def get_result_config(score_percentage):
 if st.session_state.current_question == 0 and not st.session_state.game_completed:
     st.markdown("""
     <div class="neon-container">
-        <h1 class="cyber-title">Mission: SMART Possible</h1>
+        <h3 class="cyber-title">Mission: SMART Possible</h1>
         <div class="cyber-text" style="text-align: center; margin-bottom: 5px;">
             Initialize your goal-setting algorithms. Identify missing SMART components 
             to transform abstract goals into executable objectives.

@@ -201,7 +201,7 @@ def get_futuristic_styles():
             border-radius: clamp(10px, 1.5vw, 15px);
             padding: clamp(1.5px, 0.2vw, 10px);
             margin: clamp(6px, 1vw, 10px) 0;
-            margin-bottom: -10px;
+            margin-bottom: -20px;
             position: relative;
             backdrop-filter: blur(10px);
             box-shadow: 

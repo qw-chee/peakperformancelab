@@ -931,7 +931,7 @@ if not st.session_state.game_completed:
             <div class="missing-components">
                 {' '.join([f'<span class="component-tag">{comp}</span>' for comp in goal["missing"]])}
             </div>
-            <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(8px, 1.5vw, 20px); margin-top: clamp(8px, 1.5vw, 20px);">
+            <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(4px, 1vw, 20px); margin-top: clamp(4px, 1vw, 20px);">
                 <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-weight: 600; margin-bottom: clamp(6px, 1vw, 10px); font-size: clamp(0.9rem, 1.1vw, 1.1em);">
                     📝 SYSTEM ANALYSIS:
                 </div>

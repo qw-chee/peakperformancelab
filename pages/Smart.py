@@ -757,19 +757,19 @@ def get_result_config(score_percentage):
     """Get result configuration based on score"""
     if score_percentage >= 80:
         return {
-            "style": "feedback-success", "icon": "🏆", "title": "PROTOCOL MASTERED",
+            "style": "feedback-success", "title": "🏆 PROTOCOL MASTERED",
             "message": "EXCEPTIONAL PERFORMANCE: Neural pathways optimized for SMART goal identification.",
             "color": "#00ff7f"
         }
     elif score_percentage >= 50:
         return {
-            "style": "neon-container", "icon": "🎯", "title": "SYSTEM UPGRADED",
+            "style": "neon-container", "title": "🎯 SYSTEM UPGRADED",
             "message": "GOOD PROGRESS: Core algorithms functioning within acceptable parameters.",
             "color": "#00ffff"
         }
     else:
         return {
-            "style": "feedback-learning", "icon": "🔄", "title": "RECALIBRATION REQUIRED",
+            "style": "feedback-learning", "title": "🔄 RECALIBRATION REQUIRED",
             "message": "LEARNING MODE: Additional training cycles recommended for optimization.",
             "color": "#ff5050"
         }
@@ -972,13 +972,10 @@ if st.session_state.game_completed:
     st.markdown(f"""
     <div class="neon-container">
         <div class="results-container">
-            <h3 style="color: #ff00ff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1.2rem, 1.8vw, 1.8em);">
-                📊 PERFORMANCE METRICS
-            </h3>
             <div class="score-display">
                 {st.session_state.score}/{st.session_state.total_questions}
             </div>
-            <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-size: clamp(1.2rem, 1.6vw, 1.6em); font-weight: 600; margin-bottom: clamp(6px, 1vw, 10px);">
+            <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-size: clamp(1.2rem, 1.6vw, 1.6em); font-weight: 600; margin-bottom: clamp(8px, 1.2vw, 10px);">
                 {score_percentage:.0f}% ACCURACY ACHIEVED
             </div>
             <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(6px, 1vw, 10px);">
@@ -989,6 +986,8 @@ if st.session_state.game_completed:
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+    st.markdown('<div style="margin-top: 5px;">', unsafe_allow_html=True)
     
     col1, col2 = st.columns(2)
     with col1:

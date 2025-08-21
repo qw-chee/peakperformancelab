@@ -917,8 +917,7 @@ if not st.session_state.game_completed:
         
         st.markdown(f"""
         <div class="{feedback_class}">
-            <span class="feedback-icon">{feedback_icon}</span>
-            <h3 class="feedback-title" style="color: {title_color}; text-align: center;">{feedback_title}</h2>
+            <span class="feedback-icon">{feedback_icon}</span><h3 class="feedback-title" style="color: {title_color}; text-align: center;">{feedback_title}</h2>
         </div>
         """, unsafe_allow_html=True)
         

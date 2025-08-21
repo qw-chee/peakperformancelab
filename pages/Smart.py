@@ -243,7 +243,7 @@ def get_futuristic_styles():
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-align: center;
-            margin-bottom: clamp(3px, 0.8vw, 10px);
+            margin-bottom: clamp(2px, 0.6vw, 10px);
             text-shadow: 0 0 clamp(20px, 3vw, 30px) rgba(0, 255, 255, 0.5);
             animation: title-pulse 2s ease-in-out infinite alternate;
         }
@@ -253,23 +253,10 @@ def get_futuristic_styles():
             100% { filter: brightness(1.2) saturate(1.3); }
         }
         
-        .cyber-subtitle, .cyber-text {
-            font-family: 'Rajdhani', sans-serif;
-            color: rgba(0, 255, 255, 0.8);
-            text-align: center;
-            margin-bottom: clamp(8px, 1.5vw, 15px);
-            text-shadow: 0 0 clamp(6px, 1vw, 10px) rgba(0, 255, 255, 0.3);
-        }
-        
-        .cyber-subtitle {
-            font-weight: 400;
-            font-size: clamp(1rem, 1.2vw, 1.2em);
-        }
-        
         .cyber-text {
             color: rgba(255, 255, 255, 0.9);
             font-size: clamp(1.1rem, 1.3vw, 1.3em);
-            line-height: 1.4;
+            line-height: 1.2;
         }
         
         .smart-grid {

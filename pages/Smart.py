@@ -283,7 +283,7 @@ def get_futuristic_styles():
             background: rgba(0, 255, 255, 0.1);
             border: clamp(1px, 0.15vw, 1px) solid rgba(0, 255, 255, 0.3);
             border-radius: clamp(3px, 0.5vw, 5px);
-            padding: clamp(4px, 1vw, 8px);
+            padding: clamp(3px, 0.8vw, 5px);
             text-align: center;
             transition: all 0.3s ease;
             backdrop-filter: blur(5px);

@@ -243,7 +243,7 @@ def get_futuristic_styles():
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-align: center;
-            margin-bottom: clamp(5px, 1vw, 10px);
+            margin-bottom: clamp(3px, 0.8vw, 10px);
             text-shadow: 0 0 clamp(20px, 3vw, 30px) rgba(0, 255, 255, 0.5);
             animation: title-pulse 2s ease-in-out infinite alternate;
         }
@@ -792,7 +792,7 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
 
     st.markdown("""
     <div class="neon-container">
-        <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; text-align: center; font-size: clamp(1.2rem, 1.8vw, 1.8em);">
+        <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; text-align: center; font-size: clamp(1.2rem, 1.8vw, 1.8em); margin-bottom: -5px;">
             📡 SMART PROTOCOL COMPONENTS
         </h3>
         <div class="smart-grid">

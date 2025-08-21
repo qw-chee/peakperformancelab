@@ -547,7 +547,7 @@ def get_futuristic_styles():
             font-size: clamp(0.9rem, 1.1vw, 1.1em) !important;
             font-family: 'Orbitron', monospace !important;
             padding: clamp(10px, 1.5vw, 15px) clamp(15px, 2.5vw, 25px) !important;
-            margin-top: 5px !important;
+            margin-top: 15px !important;
             border-radius: clamp(15px, 2.5vw, 25px) !important;
             box-shadow: 
                 0 0 clamp(12px, 2vw, 20px) rgba(0, 255, 255, 0.4),

@@ -780,6 +780,8 @@ def get_result_config(score_percentage):
         }
 
 # ---------------------------- OVERVIEW PAGE ----------------------------
+st.markdown( """ <style> @media (min-width: 1300px) { .custom-spacer { height: 15vh; } } </style> <div class="custom-spacer"></div> """, unsafe_allow_html=True )
+
 if st.session_state.current_question == 0 and not st.session_state.game_completed:
     st.markdown("""
     <div class="neon-container">

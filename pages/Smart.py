@@ -835,7 +835,7 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
             ⚡ MISSION PARAMETERS
         </h3>
         <div class="cyber-text" style="text-align: center; margin-bottom: 5px;">
-            Analyze each goal statement. Identify the missing components. Process feedback. Complete all 20 challenges to succeed!
+            Analyze each goal. Identify missing component(s). Complete all 20 challenges to succeed!
         </div>
     </div>
     """, unsafe_allow_html=True)

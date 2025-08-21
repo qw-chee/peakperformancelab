@@ -201,7 +201,7 @@ def get_futuristic_styles():
             border-radius: clamp(10px, 1.5vw, 15px);
             padding: clamp(2px, 0.4vw, 10px);
             margin: clamp(6px, 1vw, 10px) 0;
-            margin-bottom: -5px;
+            margin-bottom: -10px;
             position: relative;
             backdrop-filter: blur(10px);
             box-shadow: 
@@ -792,7 +792,7 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
 
     st.markdown("""
     <div class="neon-container">
-        <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; text-align: center; margin-bottom: -5px; font-size: clamp(1.2rem, 1.8vw, 1.8em);">
+        <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; text-align: center; font-size: clamp(1.2rem, 1.8vw, 1.8em);">
             📡 SMART PROTOCOL COMPONENTS
         </h3>
         <div class="smart-grid">

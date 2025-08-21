@@ -13,12 +13,12 @@ GOALS_DATABASE = [
     {
         "text": "I will apply to 10 jobs to increase my chances of employment.",
         "missing": ["Timebound"],
-        "feedback": "This goal isn't <strong>Timebound</strong> - there's no deadline specified. Add a timeframe like 'within the next 2 months' or 'by the end of this quarter'.<br><br><strong>SMART Version:</strong> 'I will apply to 10 jobs within the next 6 weeks to increase my chances of employment in my field.'"
+        "feedback": "This goal isn't <strong>Timebound</strong> - there's no deadline specified. There should be a timeframe like 'within the next 2 months' or 'by the end of this quarter'.<br><br><strong>SMART Version:</strong> 'I will apply to 10 jobs within the next 6 weeks to increase my chances of employment in my field.'"
     },
     {
         "text": "To manage time, I will write some of my TMA every evening.",
         "missing": ["Measurable"],
-        "feedback": "This goal isn't <strong>Measurable</strong> - 'some' is vague. Specify exactly how much work, like '2 pages' or '500 words' or '1 hour of writing'.<br><br><strong>SMART Version:</strong> 'To manage time effectively, I will write 300 words of my TMA every evening until completion.'"
+        "feedback": "This goal isn't <strong>Measurable</strong> - 'some' is vague. How much work should be specified, like '2 pages' or '500 words' or '1 hour of writing'.<br><br><strong>SMART Version:</strong> 'To manage time effectively, I will write 300 words of my TMA every evening until completion.'"
     },
     {
         "text": "I will finish reading 10 books to improve my writing by tomorrow.",
@@ -28,17 +28,17 @@ GOALS_DATABASE = [
     {
         "text": "I will exercise more for better health each day.",
         "missing": ["Measurable"],
-        "feedback": "This goal isn't <strong>Measurable</strong> - 'more' is vague. Specify exactly how much exercise, like '30 minutes of cardio' or 'attend 3 gym sessions per week'.<br><br><strong>SMART Version:</strong> 'I will exercise for 30 minutes each day for the next 3 months to improve my cardiovascular health and energy levels.'"
+        "feedback": "This goal isn't <strong>Measurable</strong> - 'more' is vague. How much exercise should be specified, like '30 minutes of cardio' or 'attend 3 gym sessions per week'.<br><br><strong>SMART Version:</strong> 'I will exercise for 30 minutes each day for the next 3 months to improve my cardiovascular health and energy levels.'"
     },
     {
         "text": "I will aim to improve my GPA by 0.5 for better career prospects.",
         "missing": ["Timebound"],
-        "feedback": "This goal isn't <strong>Timebound</strong> - there's no deadline specified. Add a timeframe like 'by the end of this semester' or 'within one academic year'.<br><br><strong>SMART Version:</strong> 'I will improve my GPA by 0.5 points by the end of this academic year through consistent study habits to enhance my career prospects.'"
+        "feedback": "This goal isn't <strong>Timebound</strong> - there's no deadline specified. There should be a timeframe like 'by the end of this semester' or 'within one academic year'.<br><br><strong>SMART Version:</strong> 'I will improve my GPA by 0.5 points by the end of this academic year through consistent study habits to enhance my career prospects.'"
     },
     {
         "text": "I will volunteer twice at the foodbank each month.",
         "missing": ["Relevant"],
-        "feedback": "This goal lacks clear <strong>Relevance</strong> - it doesn't explain how volunteering connects to your personal or professional development goals.<br><br><strong>SMART Version:</strong> 'I will volunteer twice at the foodbank each month for 6 months to develop my leadership skills and give back to my community.'"
+        "feedback": "This goal lacks clear <strong>Relevance</strong> - it doesn't explain how volunteering connects to any goals.<br><br><strong>SMART Version:</strong> 'I will volunteer twice at the foodbank each month for 6 months to develop my leadership skills and give back to my community.'"
     },
     
     # Missing 2 elements
@@ -427,13 +427,13 @@ def get_futuristic_styles():
         .feedback-title {
             font-family: 'Orbitron', monospace;
             font-weight: 700;
-            font-size: clamp(1.5rem, 2.2vw, 2.2em);
+            font-size: clamp(1.2rem, 2vw, 2.2em);
             margin: 0;
             text-shadow: 0 0 clamp(10px, 1.5vw, 15px) currentColor;
         }
         
         .feedback-icon {
-            font-size: clamp(2rem, 2.5vw, 2.5em);
+            font-size: clamp(1.5rem, 2vw, 2.5em);
             margin-bottom: clamp(6px, 1vw, 10px);
             display: block;
         }
@@ -912,13 +912,13 @@ if not st.session_state.game_completed:
         # Feedback styling
         feedback_class = "feedback-success" if user_correct else "feedback-learning"
         feedback_icon = "✅" if user_correct else "❌"
-        feedback_title = "SUCCESS" if user_correct else "INCORRECT"
+        feedback_title = "SUCCESS!" if user_correct else "INCORRECT!"
         title_color = "#00ff7f" if user_correct else "#ff5050"
         
         st.markdown(f"""
         <div class="{feedback_class}">
             <span class="feedback-icon">{feedback_icon}</span>
-            <h2 class="feedback-title" style="color: {title_color}; text-align: center;">{feedback_title}</h2>
+            <h3 class="feedback-title" style="color: {title_color}; text-align: center;">{feedback_title}</h2>
         </div>
         """, unsafe_allow_html=True)
         
@@ -931,11 +931,11 @@ if not st.session_state.game_completed:
             <div class="missing-components">
                 {' '.join([f'<span class="component-tag">{comp}</span>' for comp in goal["missing"]])}
             </div>
-            <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(12px, 2vw, 20px); margin-top: clamp(12px, 2vw, 20px);">
+            <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(8px, 1.5vw, 20px); margin-top: clamp(8px, 1.5vw, 20px);">
                 <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-weight: 600; margin-bottom: clamp(6px, 1vw, 10px); font-size: clamp(0.9rem, 1.1vw, 1.1em);">
                     📝 SYSTEM ANALYSIS:
                 </div>
-                <div style="color: rgba(255,255,255,0.9); font-family: 'Rajdhani', sans-serif; line-height: 1.5; font-size: clamp(0.85rem, 1vw, 1em);">
+                <div style="color: rgba(255,255,255,0.9); font-family: 'Rajdhani', sans-serif; line-height: 1.2; font-size: clamp(1rem, 1.2vw, 1em);">
                     {goal["feedback"]}
                 </div>
             </div>

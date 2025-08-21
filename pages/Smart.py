@@ -547,6 +547,7 @@ def get_futuristic_styles():
             font-size: clamp(0.9rem, 1.1vw, 1.1em) !important;
             font-family: 'Orbitron', monospace !important;
             padding: clamp(10px, 1.5vw, 15px) clamp(15px, 2.5vw, 25px) !important;
+            margin-top: 5px !important;
             border-radius: clamp(15px, 2.5vw, 25px) !important;
             box-shadow: 
                 0 0 clamp(12px, 2vw, 20px) rgba(0, 255, 255, 0.4),
@@ -830,7 +831,7 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
         <h3 style="color: #ff00ff; font-family: 'Orbitron', monospace; text-align: center; margin-bottom: -5px; font-size: clamp(1rem, 1.6vw, 1.6em);">
             ⚡ MISSION PARAMETERS
         </h3>
-        <div class="cyber-text" style="text-align: center; margin-bottom: 15px;">
+        <div class="cyber-text" style="text-align: center; margin-bottom: 5px;">
             Analyze each goal statement. Identify the missing components. Process feedback. Complete all 20 challenges to succeed!
         </div>
     </div>

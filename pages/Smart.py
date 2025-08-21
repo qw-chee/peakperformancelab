@@ -787,8 +787,9 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
     <div class="neon-container">
         <h2 class="cyber-title">Mission: SMART Possible</h1>
         <div class="cyber-text" style="text-align: center;">
-            Initialize your goal-setting algorithms. Identify missing SMART components 
-            to transform abstract goals into executable objectives.
+            Initialize your goal-setting algorithms. SMART goals—Specific, Measurable, Achievable, Relevant, and Time-bound—are the blueprint for peak performance. 
+            They turn wishful thinking into clear action steps, reduce procrastination, and keep your focus locked on progress. 
+            By identifying the missing SMART components, you’ll sharpen your ability to set goals that actually drive results. Ready to power up your performance?
         </div>
     </div>
     """, unsafe_allow_html=True)

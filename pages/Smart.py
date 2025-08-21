@@ -961,7 +961,6 @@ if st.session_state.game_completed:
     st.markdown(f"""
     <div class="{result_config['style']}">
         <div class="results-container">
-            <span class="feedback-icon">{result_config['icon']}</span>
             <h3 class="feedback-title" style="color: {result_config['color']}; margin-bottom: 5px;">{result_config['title']}</h3>
             <div style="color: rgba(255,255,255,0.8); font-family: 'Rajdhani', sans-serif; font-size: clamp(1.1rem, 1.3vw, 1.2em);">
                 {result_config['message']}

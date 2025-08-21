@@ -99,7 +99,7 @@ GOALS_DATABASE = [
     {
         "text": "I will launch a successful online business by next week.",
         "missing": ["Specific", "Measurable", "Achievable", "Relevant"],
-        "feedback": "This goal isn't <strong>Specific</strong> (what type of business?), isn't <strong>Measurable</strong> (what defines success?), isn't <strong>Achievable</strong> (launching a successful business in one week is unrealistic), and lacks <strong>Relevance</strong> (why this business? How does it fit your skills?).<br><br><strong>SMART Version:</strong> 'I will launch my freelance graphic design website with 5 portfolio pieces and contact 20 potential clients within 6 months to generate $1,000 monthly income using my design skills.'"
+        "feedback": "This goal isn't <strong>Specific</strong> (what type of business?), isn't <strong>Measurable</strong> (what defines success?), isn't <strong>Achievable</strong> (launching a successful business in one week is unrealistic), and lacks <strong>Relevance</strong> (why this business?).<br><br><strong>SMART Version:</strong> 'I will launch a graphic design website with 5 portfolio pieces within 6 months to generate $1,000 monthly income.'"
     },
     {
         "text": "I want to build better habits.",
@@ -116,7 +116,7 @@ GOALS_DATABASE = [
     {
         "text": "I will do better.",
         "missing": ["Specific", "Measurable", "Achievable", "Relevant", "Timebound"],
-        "feedback": "This goal is missing all SMART elements: it's not <strong>Specific</strong> (better at what?), not <strong>Measurable</strong> (how to track progress?), not <strong>Achievable</strong> (too vague to assess), not <strong>Relevant</strong> (to what purpose?), and not <strong>Timebound</strong> (no deadline).<br><br><strong>SMART Version:</strong> 'I will improve my math test scores by 15% within the next semester by studying 1 hour daily and attending weekly tutoring sessions.'"
+        "feedback": "This goal is missing all SMART elements: it's not <strong>Specific</strong> (better at what?), not <strong>Measurable</strong> (how to track progress?), not <strong>Achievable</strong> (too vague to assess), not <strong>Relevant</strong> (to what purpose?), and not <strong>Timebound</strong> (no deadline).<br><br><strong>SMART Version:</strong> 'I will improve my math test scores by 15% by the next semester to boost my GPA.'"
     }
 ]
 

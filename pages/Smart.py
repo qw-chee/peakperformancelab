@@ -465,7 +465,7 @@ def get_futuristic_styles():
         
         .score-display {
             font-family: 'Orbitron', monospace;
-            font-size: clamp(2.5rem, 3.5vw, 3.5em);
+            font-size: clamp(1.5rem, 2.5vw, 3.5em);
             font-weight: 900;
             background: linear-gradient(45deg, #00ffff, #ff00ff);
             -webkit-background-clip: text;
@@ -962,8 +962,8 @@ if st.session_state.game_completed:
     <div class="{result_config['style']}">
         <div class="results-container">
             <span class="feedback-icon">{result_config['icon']}</span>
-            <h1 class="feedback-title" style="color: {result_config['color']}; margin-bottom: 5px;">{result_config['title']}</h1>
-            <div style="color: rgba(255,255,255,0.8); font-family: 'Rajdhani', sans-serif; font-size: clamp(1rem, 1.2vw, 1.2em);">
+            <h3 class="feedback-title" style="color: {result_config['color']}; margin-bottom: 5px;">{result_config['title']}</h3>
+            <div style="color: rgba(255,255,255,0.8); font-family: 'Rajdhani', sans-serif; font-size: clamp(1.1rem, 1.3vw, 1.2em);">
                 {result_config['message']}
             </div>
         </div>
@@ -973,9 +973,9 @@ if st.session_state.game_completed:
     st.markdown(f"""
     <div class="neon-container">
         <div class="results-container">
-            <h2 style="color: #ff00ff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1.2rem, 1.8vw, 1.8em);">
+            <h3 style="color: #ff00ff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1.2rem, 1.8vw, 1.8em);">
                 📊 PERFORMANCE METRICS
-            </h2>
+            </h3>
             <div class="score-display">
                 {st.session_state.score}/{st.session_state.total_questions}
             </div>

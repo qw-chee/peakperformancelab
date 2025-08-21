@@ -375,7 +375,7 @@ def get_futuristic_styles():
         
         .goal-text {
             font-family: 'Rajdhani', sans-serif;
-            font-size: clamp(1rem, 1.3vw, 1.3em);
+            font-size: clamp(1.2rem, 1.4vw, 1.3em);
             color: rgba(255, 255, 255, 0.95);
             font-style: italic;
             line-height: 1.5;

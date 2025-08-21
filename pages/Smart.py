@@ -199,7 +199,7 @@ def get_futuristic_styles():
             background: rgba(15, 15, 35, 0.95);
             border: clamp(1px, 0.2vw, 2px) solid transparent;
             border-radius: clamp(10px, 1.5vw, 15px);
-            padding: clamp(8px, 1.2vw, 15px);
+            padding: clamp(4px, 0.8vw, 10px);
             margin: clamp(6px, 1vw, 10px) 0;
             margin-bottom: -5px;
             position: relative;
@@ -283,7 +283,7 @@ def get_futuristic_styles():
             background: rgba(0, 255, 255, 0.1);
             border: clamp(1px, 0.15vw, 1px) solid rgba(0, 255, 255, 0.3);
             border-radius: clamp(3px, 0.5vw, 5px);
-            padding: clamp(8px, 1.5vw, 15px);
+            padding: clamp(4px, 1vw, 8px);
             text-align: center;
             transition: all 0.3s ease;
             backdrop-filter: blur(5px);
@@ -782,7 +782,7 @@ def get_result_config(score_percentage):
 if st.session_state.current_question == 0 and not st.session_state.game_completed:
     st.markdown("""
     <div class="neon-container">
-        <h3 class="cyber-title">Mission: SMART Possible</h1>
+        <h2 class="cyber-title">Mission: SMART Possible</h1>
         <div class="cyber-text" style="text-align: center; margin-bottom: 5px;">
             Initialize your goal-setting algorithms. Identify missing SMART components 
             to transform abstract goals into executable objectives.
@@ -798,28 +798,28 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
         <div class="smart-grid">
             <div class="smart-card">
                 <span class="smart-letter">S</span>
-                <strong style="color: #00ffff; font-size: clamp(0.7rem, 0.9vw, 0.9em);">SPECIFIC</strong><br>
-                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.6rem, 0.8vw, 0.8em);">Is it well-defined?</i>
+                <strong style="color: #00ffff; font-size: clamp(0.8rem, 1vw, 1em);">SPECIFIC</strong><br>
+                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.7rem, 0.9vw, 0.9em);">Is it well-defined?</i>
             </div>
             <div class="smart-card">
                 <span class="smart-letter">M</span>
-                <strong style="color: #00ffff; font-size: clamp(0.7rem, 0.9vw, 0.9em);">MEASURABLE</strong><br>
-                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.6rem, 0.8vw, 0.8em);">Is it quantifiable?</i>
+                <strong style="color: #00ffff; font-size: clamp(0.8rem, 1vw, 1em);">MEASURABLE</strong><br>
+                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.7rem, 0.9vw, 0.9em);">Is it quantifiable?</i>
             </div>
             <div class="smart-card">
                 <span class="smart-letter">A</span>
-                <strong style="color: #00ffff; font-size: clamp(0.7rem, 0.9vw, 0.9em);">ACHIEVABLE</strong><br>
-                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.6rem, 0.8vw, 0.8em);">Is it realistic?</i>
+                <strong style="color: #00ffff; font-size: clamp(0.8rem, 1vw, 1em);">ACHIEVABLE</strong><br>
+                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.7rem, 0.9vw, 0.9em);">Is it realistic?</i>
             </div>
             <div class="smart-card">
                 <span class="smart-letter">R</span>
-                <strong style="color: #00ffff; font-size: clamp(0.7rem, 0.9vw, 0.9em);">RELEVANT</strong><br>
-                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.6rem, 0.8vw, 0.8em);">Is there a purpose?</i>
+                <strong style="color: #00ffff; font-size: clamp(0.8rem, 1vw, 1em);">RELEVANT</strong><br>
+                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.7rem, 0.9vw, 0.9em);">Is there a purpose?</i>
             </div>
             <div class="smart-card">
                 <span class="smart-letter">T</span>
-                <strong style="color: #00ffff; font-size: clamp(0.7rem, 0.9vw, 0.9em);">TIMEBOUND</strong><br>
-                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.6rem, 0.8vw, 0.8em);">Is there a time horizon?</i>
+                <strong style="color: #00ffff; font-size: clamp(0.8rem, 1vw, 1em);">TIMEBOUND</strong><br>
+                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.7rem, 0.9vw, 0.9em);">Is there a time horizon?</i>
             </div>
         </div>
     </div>

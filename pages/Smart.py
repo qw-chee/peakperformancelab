@@ -263,8 +263,8 @@ def get_futuristic_styles():
     
         .cyber-text {
             color: rgba(255, 255, 255, 0.9);
-            font-size: clamp(1rem, 1.2vw, 1.3em);
-            line-height: 1;
+            font-size: clamp(1.1rem, 1.3vw, 1.3em);
+            line-height: 0.9;
         }
         
         .smart-grid {

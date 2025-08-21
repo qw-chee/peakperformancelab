@@ -564,7 +564,7 @@ def get_futuristic_styles():
 
         div[data-testid="stButton"] > button {
             background: linear-gradient(135deg, rgba(0, 255, 255, 0.8) 0%, rgba(255, 0, 255, 0.8) 100%) !important;
-            border: clamp(1px, 0.15vw, 1px) solid rgba(0, 255, 255, 0.4) !important;
+            border: clamp(1px, 0.15vw, 1px) solid rgba(0, 255, 255, 0.8) !important;
             color: #00ffff !important;
             font-weight: 600 !important;
             font-family: 'Rajdhani', sans-serif !important;
@@ -574,7 +574,7 @@ def get_futuristic_styles():
         }
 
         div[data-testid="stButton"] > button:hover {
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.3) 0%, rgba(255, 0, 255, 0.3) 100%) !important;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.8) 0%, rgba(255, 0, 255, 0.8) 100%) !important;
             border-color: rgba(0, 255, 255, 0.6) !important;
             transform: translateY(clamp(-1px, -0.2vw, -2px)) !important;
             box-shadow: 0 clamp(3px, 0.5vw, 5px) clamp(10px, 1.5vw, 15px) rgba(0, 255, 255, 0.3) !important;
@@ -979,7 +979,7 @@ if st.session_state.game_completed:
                 {score_percentage:.0f}% ACCURACY ACHIEVED
             </div>
             <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(6px, 1vw, 10px);">
-                <div style="color: rgba(255,255,255,0.9); font-family: 'Rajdhani', sans-serif; font-size: clamp(1rem, 1.2vw, 1.1em); line-height: 1.5;">
+                <div style="color: rgba(255,255,255,0.9); font-family: 'Rajdhani', sans-serif; font-size: clamp(0.9rem, 1.1vw, 1.1em); line-height: 1.5;">
                     SMART goals are important because they make goals clear, focused, and achievable. By being Specific, Measurable, Achievable, Relevant, and Time-bound, SMART goals help you stay organized, track progress, stay motivated, and make better decisions. Always practice SMART goals!
                 </div>
             </div>

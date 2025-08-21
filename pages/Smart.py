@@ -268,8 +268,8 @@ def get_futuristic_styles():
         
         .cyber-text {
             color: rgba(255, 255, 255, 0.9);
-            font-size: clamp(0.9rem, 1.1vw, 1.1em);
-            line-height: 1.6;
+            font-size: clamp(1.1rem, 1.3vw, 1.3em);
+            line-height: 1.4;
         }
         
         .smart-grid {
@@ -783,7 +783,7 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
     st.markdown("""
     <div class="neon-container">
         <h2 class="cyber-title">Mission: SMART Possible</h1>
-        <div class="cyber-text" style="text-align: center; margin-bottom: 5px;">
+        <div class="cyber-text" style="text-align: center;">
             Initialize your goal-setting algorithms. Identify missing SMART components 
             to transform abstract goals into executable objectives.
         </div>

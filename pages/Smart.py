@@ -252,7 +252,15 @@ def get_futuristic_styles():
             0% { filter: brightness(1) saturate(1); }
             100% { filter: brightness(1.2) saturate(1.3); }
         }
-        
+
+        .cyber-subtitle, .cyber-text {
+            font-family: 'Rajdhani', sans-serif;
+            color: rgba(0, 255, 255, 0.8);
+            text-align: center;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+    
         .cyber-text {
             color: rgba(255, 255, 255, 0.9);
             font-size: clamp(1.1rem, 1.3vw, 1.3em);

@@ -91,13 +91,14 @@ Format your response as a simple list with each recommendation on a new line, st
 """
 
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are an educational psychologist specializing in growth mindset development. Provide personalized, actionable advice based on assessment responses."},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=500,
-            temperature=0.7
+            max_tokens=150,
+            temperature=0.7,
+            timeout=30
         )
         
         feedback = response.choices[0].message.content.strip()
@@ -940,3 +941,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+

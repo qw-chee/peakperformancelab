@@ -352,7 +352,7 @@ def render_hp_bars():
 # ---------------------------- EVALUATION ----------------------------
 def evaluate_response():
     try:
-        prompt = f"""You are evaluating how well someone reframes negative self-talk. Rate their response in relevance to the inner critic using the scoring criteria below.
+        prompt = f"""You are evaluating how well a student reframes negative self-talk. Rate their response in relevance to the inner critic using the scoring criteria below and give feedback.
 
 Inner Critic: "{st.session_state.current_line}"
 Response: "{st.session_state.user_response_submitted}"
@@ -654,6 +654,7 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

@@ -686,6 +686,8 @@ def get_movie_styles():
             font-family: 'Sigmar', cursive !important;
             margin-top: 10px;
             width: fit-content !important;
+            margin: 10px auto !important;
+            display: block !important;
         }
 
         div[data-testid="stDownloadButton"] > button:hover {

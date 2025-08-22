@@ -233,7 +233,7 @@ def get_pettlep_elements(scenario):
             "name": "🏃 Physical",
             "letter": "P",
             "lesson": "The Physical element refers to the physical sensations and movements involved in the actual performance. It includes things like posture, muscle activation, breathing patterns, facial expressions, and clothing or equipment. The idea is to replicate the physical conditions as closely as possible, making the imagery more lifelike and connected to real execution.",
-            "example": "Example: 'I'm holding my tennis racket with both hands and bouncing slightly on the balls of my feet.'",
+            "example": "Example: 'I'm holding my tennis racket with both hands and bouncing on the balls of my feet.'",
             "elaboration_questions": [
                 "How is your body positioned?",
                 "What physical sensations do you feel (weight, texture, temperature)?"
@@ -243,7 +243,7 @@ def get_pettlep_elements(scenario):
             "name": "🌟 Environment",
             "letter": "E",
             "lesson": "The Environment element describes the surrounding context where the performance takes place. It involves imagining the setting's layout, colors, lighting, temperature, sounds, and even smells. The environment could include specific objects, people, or landmarks that are usually present. Recreating the environment in detail helps your brain anchor the imagery in a familiar setting.",
-            "example": "Example: 'I hear the whistle blow, smell the grass, and see the sun glare off the white lines of the field.'",
+            "example": "Example: 'I hear the whistle blow, smell the grass, and see the sun glare off the lines of the field.'",
             "elaboration_questions": [
                 "What do you see around you in detail?",
                 "What sounds do you hear?",

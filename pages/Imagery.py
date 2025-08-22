@@ -509,7 +509,16 @@ def get_movie_styles():
             backdrop-filter: blur(10px);
             box-shadow: 0 0 30px rgba(255, 215, 0, 0.3), inset 0 0 30px rgba(255, 215, 0, 0.1);
         }
-          
+        
+        .movie-description {
+            font-family: 'Lato', sans-serif;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: clamp(0.9rem, 1.3vw, 1.1em);
+            line-height: 1.2;
+            margin-bottom: clamp(4px, 0.6vh, 5px);
+            font-weight: 300;
+        }
+    
         .movie-text {
             font-family: 'Lato', sans-serif;
             color: rgba(255, 255, 255, 0.9);
@@ -882,11 +891,11 @@ if st.session_state.current_step == 0:
         <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.2vw, 2em); text-align: center; margin-bottom: -5px; letter-spacing: clamp(1px, 0.15vw, 1px);">
             🎬 Lights, Camera, Mental Action!
         </h3>
-        <div class="movie-text" style="text-align: center !important;">
+        <div class="movie-description">
             Welcome to your personal theatre!
             Mental imagery is like filming the perfect performance in your mind - you get to rehearse and replay your success before it happens in real life.
         </div>
-        <div class="movie-text" style="text-align: center !important;">
+        <div class="movie-description">
            This activity will guide you through the creation of a detailed mental script for your chosen scenario, 
             with feedback to ensure that every scene is vivid and impactful.
         </div>

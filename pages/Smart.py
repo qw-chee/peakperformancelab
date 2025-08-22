@@ -444,7 +444,7 @@ def get_futuristic_styles():
             flex-wrap: wrap;
             gap: clamp(6px, 1vw, 10px);
             justify-content: center;
-            margin: clamp(12px, 2vw, 20px) 0;
+            margin: clamp(6px, 1.5vw, 20px) 0;
         }
         
         .component-tag {
@@ -928,7 +928,7 @@ if not st.session_state.game_completed:
         # Show correct answer
         st.markdown(f"""
         <div class="neon-container">
-            <h3 style="color: #ffff00; font-family: 'Orbitron', monospace; margin-bottom: -20px; font-size: clamp(1rem, 1.3vw, 1.3em); text-align: center;">
+            <h3 style="color: #ffff00; font-family: 'Orbitron', monospace; margin-bottom: -20px; font-size: clamp(1rem, 1.3vw, 1.3em); text-align: center; margin-bottom: -5px;">
                 📊 MISSING COMPONENTS DETECTED
             </h3>
             <div class="missing-components">

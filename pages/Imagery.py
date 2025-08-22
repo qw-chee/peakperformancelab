@@ -981,7 +981,7 @@ if 1 <= st.session_state.current_step <= 7:
     # Display selected scenario at the top
     st.markdown(f"""
     <div>
-        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.8rem, 2.6vw, 2em); text-align: center; margin-bottom: clamp(-15px, -2.4vh, -20px); letter-spacing: clamp(1px, 0.15vw, 1px);">
+        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.3vw, 2em); text-align: center; margin-bottom: clamp(-15px, -2.4vh, -20px); letter-spacing: clamp(1px, 0.15vw, 1px);">
             {SCENARIOS[st.session_state.selected_scenario]['icon']} Scenario: {st.session_state.selected_scenario}
         </h3>
     </div>

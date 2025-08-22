@@ -644,7 +644,7 @@ def get_movie_styles():
             font-weight: 700 !important;
             font-size: clamp(1.1rem, 1.5vw, 1.2em) !important;
             font-family: 'Sigmar', cursive !important;
-            padding: clamp(12px, 1.8vw, 15px) clamp(24px, 3.6vw, 30px) !important;
+            padding: clamp(5px, 0.5vw, 15px) clamp(10px, 1.5vw, 30px) !important;
             border-radius: clamp(20px, 3vw, 25px) !important;
             box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4) !important;
             transition: all 0.3s ease !important;

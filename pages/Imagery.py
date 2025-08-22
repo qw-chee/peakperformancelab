@@ -781,7 +781,7 @@ st.markdown("""
 
         .loading-title {
             font-family: 'Sigmar', cursive;
-            font-size: clamp(2.5rem, 4.5vw, 3.5em);
+            font-size: clamp(2rem, 4vw, 3.5em);
             color: #FFD700;
             margin-bottom: clamp(15px, 2.4vh, 20px);
             text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);

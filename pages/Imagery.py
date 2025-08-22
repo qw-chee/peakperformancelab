@@ -1160,7 +1160,7 @@ elif st.session_state.current_step == 8:
     # Usage instructions
     st.markdown("""
     <div class="movie-container">
-        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2vw, 2em); text-align: center; margin-bottom: 0px;">
+        <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2vw, 2em); text-align: center; margin-bottom: 0px;">
             🎯 How to Use Your Script
         </h3>
         <div class="movie-text">

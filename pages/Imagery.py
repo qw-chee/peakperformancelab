@@ -1135,7 +1135,10 @@ elif st.session_state.current_step == 8:
             </h3>
             <div class="movie-description">
                 Congratulations! You've created a complete PETTLEP imagery script. This is your personal 
-                mental rehearsal tool - use it regularly to train your mind for peak performance.
+                mental rehearsal tool - use it regularly to train your mind for peak performance:
+            </div>
+            <div class="script-text">
+            {complete_script.replace(chr(10), '<br>') if complete_script else 'Error loading script.'}
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -1143,18 +1146,7 @@ elif st.session_state.current_step == 8:
         # Handle case where script generation failed
         if complete_script is None:
             complete_script = f"Unable to generate complete script at this time. Please use your individual responses for mental rehearsal.\n\nScenario: {st.session_state.selected_scenario}\n\nYour responses:\n" + "\n".join([f"{k}: {v}" for k, v in st.session_state.responses.items()])
-        
-        st.markdown(f"""
-        <div class="script-container">
-            <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px); margin-top: -5px;">
-                📜 Your Complete Imagery Script
-            </h3>
-            <div class="script-text">
-            {complete_script.replace(chr(10), '<br>') if complete_script else 'Error loading script.'}
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-        
+              
         # Usage instructions
         st.markdown("""
         <div class="movie-container">

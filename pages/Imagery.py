@@ -286,7 +286,7 @@ def get_pettlep_elements(scenario):
             "example": "E.g.: 'I feel calm and focused, with a surge of excitement as I prepare to perform.'",
             "elaboration_questions": [
                 "How are you feeling during this performance?",
-                "What positive emotions do you experience? How do you handle any nervousness or pressure?"
+                "What positive emotions do you experience? How do you handle any nervousness?"
             ]
         },
         {

@@ -928,7 +928,7 @@ if not st.session_state.game_completed:
         # Show correct answer
         st.markdown(f"""
         <div class="neon-container">
-            <h3 style="color: #ffff00; font-family: 'Orbitron', monospace; margin-bottom: -20px; font-size: clamp(1rem, 1.3vw, 1.3em); text-align: center; margin-bottom: -5px;">
+            <h3 style="color: #ffff00; font-family: 'Orbitron', monospace; margin-bottom: -20px; font-size: clamp(1rem, 1.3vw, 1.3em); text-align: center;">
                 📊 MISSING COMPONENTS DETECTED
             </h3>
             <div class="missing-components">

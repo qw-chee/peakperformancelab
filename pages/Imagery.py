@@ -1124,36 +1124,34 @@ elif st.session_state.current_step == 8:
         st.session_state.generating_script = False
         st.rerun()
     
-    else:
-        # SHOW RESULTS PAGE
-        complete_script = st.session_state.complete_script
-        
-        st.markdown("""
-        <div class="movie-container">
-            <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
-                🎉 That's A Wrap!
-            </h3>
-            <div class="movie-description">
-                Congratulations! You've created a complete PETTLEP imagery script. This is your personal 
-                mental rehearsal tool - use it regularly to train your mind for peak performance:
+        else:
+            # SHOW RESULTS PAGE
+            complete_script = st.session_state.complete_script
+            
+            st.markdown("""
+            <div class="movie-container">
+                <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
+                    🎉 That's A Wrap!
+                </h3>
+                <div class="movie-description">
+                    Congratulations! You've created a complete PETTLEP imagery script. This is your personal 
+                    mental rehearsal tool - use it regularly to train your mind for peak performance.
+                </div>
             </div>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Handle case where script generation failed
-        if complete_script is None:
-            complete_script = f"Unable to generate complete script at this time. Please use your individual responses for mental rehearsal.\n\nScenario: {st.session_state.selected_scenario}\n\nYour responses:\n" + "\n".join([f"{k}: {v}" for k, v in st.session_state.responses.items()])
-
-        st.markdown(f"""
-        <div class="script-container">
-            <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
-                📜 Your Complete Imagery Script
-            </h3>
-            <div class="script-text">
-            {complete_script.replace(chr(10), '<br>') if complete_script else 'Error loading script.'}
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+            """, unsafe_allow_html=True)
+            
+            # Handle case where script generation failed
+            if complete_script is None:
+                complete_script = f"Unable to generate complete script at this time. Please use your individual responses for mental rehearsal.\n\nScenario: {st.session_state.selected_scenario}\n\nYour responses:\n" + "\n".join([f"{k}: {v}" for k, v in st.session_state.responses.items()])
+            
+            # Download button for the script
+            st.download_button(
+                label="📜 Download Your Complete Imagery Script",
+                data=complete_script,
+                file_name=f"PETTLEP_Script_{st.session_state.selected_scenario.replace(' ', '_')}.txt",
+                mime="text/plain",
+                use_container_width=True
+            )
         
         # Usage instructions
         st.markdown("""

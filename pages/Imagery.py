@@ -646,7 +646,7 @@ def get_movie_styles():
             transition: all 0.3s ease !important;
             text-transform: uppercase !important;
             letter-spacing: clamp(1px, 0.2vw, 2px) !important;
-            margin-top: 10px !important;
+            margin-top: 30px !important;
         }
 
         div[data-testid="stButton"] > button[kind="primary"]:hover {

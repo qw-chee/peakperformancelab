@@ -916,31 +916,31 @@ if st.session_state.current_step == 0:
         <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: clamp(2px, 0.3vw, 3px); margin: clamp(8px, 1.4vh, 15px) auto; max-width: clamp(600px, 80vw, 800px);">
             <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
                 <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2.2vw, 2em); font-weight: bold; margin-bottom: clamp(4px, 0.8vh, 10px);">P</div>
-                <div style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.8rem, 1.2vw, 1em);">Physical</div>
+                <div style="color: white; font-family: 'Gabarito'; font-size: clamp(0.8rem, 1.2vw, 1em);">Physical</div>
             </div>
             <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
                 <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2.2vw, 2em); font-weight: bold; margin-bottom: clamp(4px, 0.8vh, 10px);">E</div>
-                <div style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.8rem, 1.2vw, 1em);">Environment</div>
+                <div style="color: white; font-family: 'Gabarito'; font-size: clamp(0.8rem, 1.2vw, 1em);">Environment</div>
             </div>
             <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
                 <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2.2vw, 2em); font-weight: bold; margin-bottom: clamp(4px, 0.8vh, 10px);">T</div>
-                <div style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.8rem, 1.2vw, 1em);">Task</div>
+                <div style="color: white; font-family: 'Gabarito'; font-size: clamp(0.8rem, 1.2vw, 1em);">Task</div>
             </div>
             <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
                 <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2.2vw, 2em); font-weight: bold; margin-bottom: clamp(4px, 0.8vh, 10px);">T</div>
-                <div style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.8rem, 1.2vw, 1em);">Timing</div>
+                <div style="color: white; font-family: 'Gabarito'; font-size: clamp(0.8rem, 1.2vw, 1em);">Timing</div>
             </div>
             <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
                 <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2.2vw, 2em); font-weight: bold; margin-bottom: clamp(4px, 0.8vh, 10px);">L</div>
-                <div style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.8rem, 1.2vw, 1em);">Learning</div>
+                <div style="color: white; font-family: 'Gabarito'; font-size: clamp(0.8rem, 1.2vw, 1em);">Learning</div>
             </div>
             <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
                 <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2.2vw, 2em); font-weight: bold; margin-bottom: clamp(4px, 0.8vh, 10px);">E</div>
-                <div style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.8rem, 1.2vw, 1em);">Emotion</div>
+                <div style="color: white; font-family: 'Gabarito'; font-size: clamp(0.8rem, 1.2vw, 1em);">Emotion</div>
             </div>
             <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
                 <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2.2vw, 2em); font-weight: bold; margin-bottom: clamp(4px, 0.8vh, 10px);">P</div>
-                <div style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.8rem, 1.2vw, 1em);">Perspective</div>
+                <div style="color: white; font-family: 'Gabarito'; font-size: clamp(0.8rem, 1.2vw, 1em);">Perspective</div>
             </div>
         </div>
     </div>

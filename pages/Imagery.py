@@ -520,7 +520,7 @@ def get_movie_styles():
         .movie-text {
             font-family: 'Gabarito', sans-serif;
             color: rgba(255, 255, 255, 0.9);
-            font-size: clamp(0.9rem, 1.3vw, 1.3em);
+            font-size: clamp(0.9rem, 1.3vw, 1.2em);
             line-height: 1.1;
             margin-bottom: clamp(4px, 0.6vh, 5px);
             font-weight: 300;

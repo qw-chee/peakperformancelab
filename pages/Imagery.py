@@ -548,7 +548,7 @@ def get_movie_styles():
             padding: clamp(8px, 1.2vw, 10px);
             border-left: clamp(2px, 0.3vw, 3px) solid #FFD700;
             border-radius: clamp(4px, 0.6vw, 5px);
-            margin: clamp(8px, 1.5vh, 15px) 0;
+            margin: clamp(5px, 1.2vh, 15px) 0;
         }
           
         .challenge-title {

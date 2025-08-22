@@ -233,7 +233,7 @@ def get_pettlep_elements(scenario):
             "name": "🏃 Physical",
             "letter": "P",
             "lesson": "The Physical element refers to the physical sensations and movements involved in the actual performance. It includes things like posture, muscle activation, breathing patterns, facial expressions, and clothing or equipment. The idea is to replicate the physical conditions as closely as possible, making the imagery more lifelike and connected to real execution.",
-            "example": "Example: 'I'm holding my tennis racket with both hands and bouncing on the balls of my feet.'",
+            "example": "E.g.: 'I'm holding my tennis racket with both hands and bouncing on the balls of my feet.'",
             "elaboration_questions": [
                 "How is your body positioned?",
                 "What physical sensations do you feel (weight, texture, temperature)?"
@@ -243,7 +243,7 @@ def get_pettlep_elements(scenario):
             "name": "🌟 Environment",
             "letter": "E",
             "lesson": "The Environment element describes the surrounding context where the performance takes place. It involves imagining the setting's layout, colors, lighting, temperature, sounds, and even smells. The environment could include specific objects, people, or landmarks that are usually present. Recreating the environment in detail helps your brain anchor the imagery in a familiar setting.",
-            "example": "Example: 'I hear the whistle blow, smell the grass, and see the sun glare off the lines of the field.'",
+            "example": "E.g.: 'I hear the whistle blow, smell the grass, and see the sun glare off the lines of the field.'",
             "elaboration_questions": [
                 "What do you see around you in detail?",
                 "What sounds do you hear?",
@@ -255,7 +255,7 @@ def get_pettlep_elements(scenario):
             "name": "⚡ Task",
             "letter": "T",
             "lesson": "The Task element refers to the exact activity being mentally rehearsed. It involves the technical components of the skill, such as movement sequences, decisions, and required focus. The task should match what you actually needs to perform, whether it's simple or complex. This includes both the motor and cognitive demands of the action.",
-            "example": "Example: 'I bounce the ball twice, bend my knees, and release the shot smoothly.'",
+            "example": "E.g.: 'I bounce the ball twice, bend my knees, and release the shot smoothly.'",
             "elaboration_questions": [
                 "What specific actions are you performing step by step?",
                 "What is the sequence of your movements?",
@@ -266,7 +266,7 @@ def get_pettlep_elements(scenario):
             "name": "⏱️ Timing",
             "letter": "T",
             "lesson": "The Timing element describes the need to match the real duration and pace of the performance. It involves imagining the action in real time, with accurate rhythm, tempo, and transition speeds. Timing also includes pauses, reaction times, or sequences that are part of the performance flow. The mental timing should reflect how the task unfolds naturally.",
-            "example": "Example: 'I take a slow, deliberate approach, then accelerate quickly through the swing.'",
+            "example": "E.g.: 'I take a slow, deliberate approach, then accelerate quickly through the swing.'",
             "elaboration_questions": [
                 "How fast or slow are you moving?",
                 "Is there a specific rhythm or pace to follow?",
@@ -277,7 +277,7 @@ def get_pettlep_elements(scenario):
             "name": "📚 Learning",
             "letter": "L",
             "lesson": "The Learning element refers to your current level of skill or stage of development. It involves adjusting the imagery content to reflect what you can actually do or are currently working on. For beginners, the focus might be on fundamental steps, while advanced individuals might include automatic or refined techniques. The imagery should evolve as you progress.",
-            "example": "Example: 'I focus on keeping my follow-through consistent, which I've been working on in practice.'",
+            "example": "E.g.: 'I focus on keeping my follow-through consistent, which I've been working on in practice.'",
             "elaboration_questions": [
                 "What specific aspect are you trying to improve?",
                 "What corrections or refinements are you making?"
@@ -287,7 +287,7 @@ def get_pettlep_elements(scenario):
             "name": "💝 Emotion",
             "letter": "E",
             "lesson": "The Emotion element describes the emotional states typically experienced during the activity. It involves mentally recreating feelings like excitement, anxiety, frustration, determination, or confidence. The intensity and type of emotion should reflect what's usually felt during real performance. This also includes how the body physically responds to those emotions.",
-            "example": "Example: 'I feel calm and focused, with a surge of excitement as I prepare to perform.'",
+            "example": "E.g.: 'I feel calm and focused, with a surge of excitement as I prepare to perform.'",
             "elaboration_questions": [
                 "How are you feeling during this performance?",
                 "What positive emotions do you experience?",
@@ -298,7 +298,7 @@ def get_pettlep_elements(scenario):
             "name": "👁️ Perspective",
             "letter": "P",
             "lesson": "The Perspective element refers to the viewpoint from which the imagery is experienced. It involves choosing between a first-person perspective (seeing through your own eyes) or a third-person perspective (watching yourself as if from the outside). The choice affects what details are included, such as visual angles, body awareness, or spatial relationships. It is possible to switch between perspectives depending on the focus of your imagery.",
-            "example": "Example: 'I see through my own eyes as I grip the bat and watch the ball approach.'",
+            "example": "E.g.: 'I see through my own eyes as I grip the bat and watch the ball approach.'",
             "elaboration_questions": [
                 "Why does this viewpoint help you?",
                 "What can you see from this perspective that helps your performance?"

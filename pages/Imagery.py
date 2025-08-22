@@ -977,16 +977,7 @@ if 1 <= st.session_state.current_step <= 7:
     element_index = st.session_state.current_step - 1
     PETTLEP_ELEMENTS = get_pettlep_elements(st.session_state.selected_scenario)
     element = PETTLEP_ELEMENTS[element_index]
-    
-    # Display selected scenario at the top
-    st.markdown(f"""
-    <div>
-        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.3vw, 2em); text-align: center; margin-bottom: clamp(-25px, -3vh, -20px); letter-spacing: clamp(1px, 0.15vw, 1px);">
-            {SCENARIOS[st.session_state.selected_scenario]['icon']} Scenario: {st.session_state.selected_scenario}
-        </h3>
-    </div>
-    """, unsafe_allow_html=True)
-    
+      
     # Check if we're in elaboration mode for this element
     if not st.session_state.elaboration_mode.get(element['name'], False):
         # MINI CHALLENGE MODE

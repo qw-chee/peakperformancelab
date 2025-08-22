@@ -1123,77 +1123,76 @@ elif st.session_state.current_step == 8:
         st.session_state.script_generated = True
         st.session_state.generating_script = False
         st.rerun()
-    
-        else:
-            # SHOW RESULTS PAGE
-            complete_script = st.session_state.complete_script
+
+    else:
+        # SHOW RESULTS PAGE
+        complete_script = st.session_state.complete_script
             
-            st.markdown("""
-            <div class="movie-container">
-                <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
-                    🎉 That's A Wrap!
-                </h3>
-                <div class="movie-description">
-                    Congratulations! You've created a complete PETTLEP imagery script. This is your personal 
-                    mental rehearsal tool - use it regularly to train your mind for peak performance.
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            # Handle case where script generation failed
-            if complete_script is None:
-                complete_script = f"Unable to generate complete script at this time. Please use your individual responses for mental rehearsal.\n\nScenario: {st.session_state.selected_scenario}\n\nYour responses:\n" + "\n".join([f"{k}: {v}" for k, v in st.session_state.responses.items()])
-            
-            # Download button for the script
-            st.download_button(
-                label="📜 Download Your Complete Imagery Script",
-                data=complete_script,
-                file_name=f"PETTLEP_Script_{st.session_state.selected_scenario.replace(' ', '_')}.txt",
-                mime="text/plain",
-                use_container_width=True
-            )
-        
-        # Usage instructions
         st.markdown("""
         <div class="movie-container">
-            <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.6rem, 2.3vw, 1.8em); text-align: center; margin-bottom: clamp(12px, 1.8vh, 15px);">
-                🎯 How to Use Your Script
+            <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
+                🎉 That's A Wrap!
             </h3>
-            <div class="movie-text">
-                <strong>🕐 Practice regularly:</strong> Use this script 3-5 times per week, spending 5-10 minutes each session.
-            </div>
-            <div class="movie-text">
-                <strong>🧘 Find a quiet space:</strong> Choose a comfortable, distraction-free environment for your mental rehearsal.
-            </div>
-            <div class="movie-text">
-                <strong>🎬 Engage all senses:</strong> Make each element as vivid as possible - see, hear, feel, and experience every detail.
-            </div>
-            <div class="movie-text">
-                <strong>🔄 Update as needed:</strong> Modify your script as your skills improve or circumstances change.
+            <div class="movie-description">
+                Congratulations! You've created a complete PETTLEP imagery script. This is your personal 
+                mental rehearsal tool - use it regularly to train your mind for peak performance.
             </div>
         </div>
         """, unsafe_allow_html=True)
+            
+        # Handle case where script generation failed
+        if complete_script is None:
+            complete_script = f"Unable to generate complete script at this time. Please use your individual responses for mental rehearsal.\n\nScenario: {st.session_state.selected_scenario}\n\nYour responses:\n" + "\n".join([f"{k}: {v}" for k, v in st.session_state.responses.items()])
+            
+        # Download button for the script
+        st.download_button(
+            label="📜 Download Your Complete Imagery Script",
+            data=complete_script,
+            file_name=f"PETTLEP_Script_{st.session_state.selected_scenario.replace(' ', '_')}.txt",
+            mime="text/plain",
+            use_container_width=True
+        )
         
-        # Download button and reset options
-        col1, col2 = st.columns([1, 1])
+    # Usage instructions
+    st.markdown("""
+    <div class="movie-container">
+        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.6rem, 2.3vw, 1.8em); text-align: center; margin-bottom: clamp(12px, 1.8vh, 15px);">
+            🎯 How to Use Your Script
+        </h3>
+        <div class="movie-text">
+            <strong>🕐 Practice regularly:</strong> Use this script 3-5 times per week, spending 5-10 minutes each session.
+        </div>
+        <div class="movie-text">
+            <strong>🧘 Find a quiet space:</strong> Choose a comfortable, distraction-free environment for your mental rehearsal.
+        </div>
+        <div class="movie-text">
+            <strong>🎬 Engage all senses:</strong> Make each element as vivid as possible - see, hear, feel, and experience every detail.
+        </div>
+        <div class="movie-text">
+            <strong>🔄 Update as needed:</strong> Modify your script as your skills improve or circumstances change.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
         
-        with col1:
-            if st.button("🔄 Try Another Scenario", use_container_width=True):
-                # Reset everything
-                for key in ['current_step', 'selected_scenario', 'responses', 'gpt_feedback', 'gpt_approved', 'challenge_passed', 'selected_option', 'elaboration_mode', 'script_generated', 'complete_script', 'generating_script']:
-                    if key == 'current_step':
-                        st.session_state[key] = 0
-                    elif key == 'selected_scenario':
-                        st.session_state[key] = None
-                    elif key in ['script_generated', 'generating_script']:
-                        st.session_state[key] = False
-                    elif key in ['complete_script']:
-                        st.session_state[key] = ""
-                    else:
-                        st.session_state[key] = {}
-                st.rerun()
-        with col2:
-            if st.button("🏠 RETURN TO HOME", use_container_width=True):
-                st.session_state.clear()
-                st.switch_page("pages/Modules.py")
-                st.stop()
+    col1, col2 = st.columns([1, 1])
+        
+    with col1:
+        if st.button("🔄 Try Another Scenario", use_container_width=True):
+            # Reset everything
+            for key in ['current_step', 'selected_scenario', 'responses', 'gpt_feedback', 'gpt_approved', 'challenge_passed', 'selected_option', 'elaboration_mode', 'script_generated', 'complete_script', 'generating_script']:
+                if key == 'current_step':
+                    st.session_state[key] = 0
+                elif key == 'selected_scenario':
+                    st.session_state[key] = None
+                elif key in ['script_generated', 'generating_script']:
+                    st.session_state[key] = False
+                elif key in ['complete_script']:
+                    st.session_state[key] = ""
+                else:
+                    st.session_state[key] = {}
+            st.rerun()
+    with col2:
+        if st.button("🏠 RETURN TO HOME", use_container_width=True):
+            st.session_state.clear()
+            st.switch_page("pages/Modules.py")
+            st.stop()

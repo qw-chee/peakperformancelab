@@ -242,7 +242,7 @@ def get_pettlep_elements(scenario):
         {
             "name": "🌟 Environment",
             "letter": "E",
-            "lesson": "This element describes the surrounding context where the performance takes place. It involves imagining the setting’s layout, colors, lighting, temperature, sounds, and even smells. The environment could include specific objects, people, or landmarks that are usually present. Recreating the environment in detail helps your brain anchor the imagery in a familiar setting.",
+            "lesson": "This element describes the surrounding context where the performance takes place. It involves imagining the setting's layout, colors, lighting, temperature, sounds, and even smells. The environment could include specific objects, people, or landmarks that are usually present. Recreating the environment in detail helps your brain anchor the imagery in a familiar setting.",
             "example": "Example: 'I hear the whistle blow, smell the grass, and see the sun glare off the white lines of the field.'",
             "elaboration_questions": [
                 "What do you see around you in detail?",
@@ -286,7 +286,7 @@ def get_pettlep_elements(scenario):
         {
             "name": "💝 Emotion",
             "letter": "E",
-            "lesson": "This element describes the emotional states typically experienced during the activity. It involves mentally recreating feelings like excitement, anxiety, frustration, determination, or confidence. The intensity and type of emotion should reflect what’s usually felt during real performance. This also includes how the body physically responds to those emotions.",
+            "lesson": "This element describes the emotional states typically experienced during the activity. It involves mentally recreating feelings like excitement, anxiety, frustration, determination, or confidence. The intensity and type of emotion should reflect what's usually felt during real performance. This also includes how the body physically responds to those emotions.",
             "example": "Example: 'I feel calm and focused, with a surge of excitement as I prepare to perform.'",
             "elaboration_questions": [
                 "How are you feeling during this performance?",
@@ -445,238 +445,303 @@ def get_movie_styles():
     @import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
-    /* Hide Streamlit default elements */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    
-    /* Hide sidebar permanently */
-    section[data-testid="stSidebar"] {
-        display: none !important;
-    }
-    
-    /* Hide sidebar toggle button */
-    button[kind="header"][data-testid="baseButton-header"] {
-        display: none !important;
-    }
-    
-    /* Expand main content to full width */
-    .main .block-container {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-        max-width: none !important;
-    }
-    /* Remove padding from main container */
-    .main .block-container {
-        padding: 0 !important;
-        max-width: none !important;
-    }
-    
-    /* Full screen background */
-    .stApp {
-        background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/imagery.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        min-height: 100vh;
-        position: relative;
-    }
-      
-    .movie-container {
-        background: rgba(0, 0, 0, 0.85);
-        border: 3px solid #FFD700;
-        border-radius: 15px;
-        padding: 20px;
-        margin: 10px 0;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 0 30px rgba(255, 215, 0, 0.3), inset 0 0 30px rgba(255, 215, 0, 0.1);
-    }
-      
-    .movie-text {
-        font-family: 'Lato', sans-serif;
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1.1em;
-        line-height: 1.4;
-        margin-bottom: 5px;
-        font-weight: 300;
-    }
-    
-    .element-title {
-        font-family: 'Sigmar', cursive;
-        font-size: 2.5em;
-        color: #FFD700 !important;
-        text-align: center;
-        margin-bottom: 20px;
-        letter-spacing: 2px;
-        text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-    }
-    
-    .example-text {
-        font-style: italic;
-        font-size: 1.1em;
-        color: rgba(255, 255, 255, 0.8);
-        background: rgba(255, 215, 0, 0.1);
-        padding: 10px;
-        border-left: 3px solid #FFD700;
-        border-radius: 5px;
-        margin: 15px 0;
-    }
-      
-    .challenge-title {
-        font-family: 'Sigmar', cursive;
-        color: white !important;
-        font-size: 1.5em;
-        margin-top: 5px;
-        margin-bottom: 10px;
-        text-align: center;
-    }
-    
-    .elaboration-container {
-        background: black;
-        border: 3px solid #32CD32;
-        border-radius: 10px;
-        padding: 20px;
-        margin-top: 20px;
-        margin-bottom: -20px;
-    }
-    
-    .elaboration-title {
-        font-family: 'Sigmar', cursive;
-        color: #32CD32;
-        font-size: 1.3em;
-        margin-bottom: 5px;
-    }
-    
-    .feedback-container {
-        background: rgba(255, 215, 0, 0.1);
-        border: 2px solid #FFD700;
-        border-radius: 12px;
-        padding: 20px;
-        margin: 5px 0;
-        backdrop-filter: blur(5px);
-    }
-    
-    .feedback-approved {
-        border-color: #32CD32;
-        background: rgba(50, 205, 50, 0.1);
-    }
-    
-    .feedback-needs-work {
-        border-color: #FF6347;
-        background: rgba(255, 99, 71, 0.1);
-    }
-    
-    .script-container {
-        background: rgba(0, 0, 0, 0.9);
-        border: 3px solid #FFD700;
-        border-radius: 15px;
-        padding: 25px;
-        margin: 20px 0;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
-    }
-    
+    /* Desktop/Laptop Only Styles */
+    @media screen and (min-width: 1024px) {
+        /* Hide Streamlit default elements */
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        header {visibility: hidden;}
+        
+        /* Hide sidebar permanently */
+        section[data-testid="stSidebar"] {
+            display: none !important;
+        }
+        
+        /* Hide sidebar toggle button */
+        button[kind="header"][data-testid="baseButton-header"] {
+            display: none !important;
+        }
 
-    .script-text {
-        font-family: 'Lato', sans-serif;
-        color: rgba(255, 255, 255, 0.9);
-        line-height: 1.2;
-        font-size: 1.2em;
-        text-align: justify;
-    }
+        .stApp > div:first-child {
+            padding-top: 0 !important;
+            margin-top: -3rem !important;
+        }
 
-    /* Text area styling */
-    div[data-testid="stTextArea"] textarea {
-        background: white !important;
-        border: 2px solid #FFD700 !important;
-        border-radius: 10px !important;
-        color: #000000 !important;
-        font-family: 'Lato', sans-serif !important;
-        font-size: 1.1em !important;
-    }
-    
-    div[data-testid="stTextArea"] textarea:focus {
-        border-color: #FF6347 !important;
-        box-shadow: 0 0 15px rgba(255, 215, 0, 0.4) !important;
-    }
-    
-    /* Radio button styling */
-    .stRadio * {
-        color: rgba(255, 255, 255, 0.9) !important;
-        font-family: 'Lato', sans-serif !important;
-        font-size: 1em !important;
-    }
+        .block-container {
+            padding-top: 0 !important;
+            margin-top: -2rem !important;
+        }
 
-    /* Button styling */
-    div[data-testid="stButton"] > button[kind="primary"] {
-        background: linear-gradient(135deg, #FFD700 0%, #FF6347 50%, #FFD700 100%) !important;
-        border: 2px solid #FFD700 !important;
-        color: #000000 !important;
-        font-weight: 700 !important;
-        font-size: 1.2em !important;
-        font-family: 'Sigmar', cursive !important;
-        padding: 15px 30px !important;
-        border-radius: 25px !important;
-        box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4) !important;
-        transition: all 0.3s ease !important;
-        text-transform: uppercase !important;
-        letter-spacing: 2px !important;
-    }
+        /* Responsive container - scales based on 2033x983 reference */
+        .main .block-container {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            max-width: none !important;
+            position: relative !important;
+            z-index: 100 !important;
+            transform: scale(clamp(0.6, calc(100vw / 2033), 1.4));
+            transform-origin: top center;
+        }
+        
+        /* Remove padding from main container */
+        .main .block-container {
+            padding: 0 !important;
+            max-width: none !important;
+        }
+        
+        /* Full screen background */
+        .stApp {
+            background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/imagery.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            position: relative;
+        }
+          
+        .movie-container {
+            background: rgba(0, 0, 0, 0.85);
+            border: clamp(2px, 0.3vw, 3px) solid #FFD700;
+            border-radius: clamp(10px, 1.5vw, 15px);
+            padding: clamp(15px, 2vw, 20px);
+            margin: clamp(8px, 1.2vh, 10px) 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3), inset 0 0 30px rgba(255, 215, 0, 0.1);
+        }
+          
+        .movie-text {
+            font-family: 'Lato', sans-serif;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: clamp(1rem, 1.4vw, 1.1em);
+            line-height: 1.4;
+            margin-bottom: clamp(4px, 0.6vh, 5px);
+            font-weight: 300;
+        }
+        
+        .element-title {
+            font-family: 'Sigmar', cursive;
+            font-size: clamp(2rem, 3.2vw, 2.5em);
+            color: #FFD700 !important;
+            text-align: center;
+            margin-bottom: clamp(15px, 2vh, 20px);
+            letter-spacing: clamp(1px, 0.2vw, 2px);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        
+        .example-text {
+            font-style: italic;
+            font-size: clamp(1rem, 1.4vw, 1.1em);
+            color: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 215, 0, 0.1);
+            padding: clamp(8px, 1.2vw, 10px);
+            border-left: clamp(2px, 0.3vw, 3px) solid #FFD700;
+            border-radius: clamp(4px, 0.6vw, 5px);
+            margin: clamp(12px, 1.8vh, 15px) 0;
+        }
+          
+        .challenge-title {
+            font-family: 'Sigmar', cursive;
+            color: white !important;
+            font-size: clamp(1.2rem, 1.9vw, 1.5em);
+            margin-top: clamp(4px, 0.6vh, 5px);
+            margin-bottom: clamp(8px, 1.2vh, 10px);
+            text-align: center;
+        }
+        
+        .elaboration-container {
+            background: black;
+            border: clamp(2px, 0.3vw, 3px) solid #32CD32;
+            border-radius: clamp(8px, 1.2vw, 10px);
+            padding: clamp(15px, 2vw, 20px);
+            margin-top: clamp(15px, 2.4vh, 20px);
+            margin-bottom: clamp(-15px, -2.4vh, -20px);
+        }
+        
+        .elaboration-title {
+            font-family: 'Sigmar', cursive;
+            color: #32CD32;
+            font-size: clamp(1rem, 1.6vw, 1.3em);
+            margin-bottom: clamp(4px, 0.6vh, 5px);
+        }
+        
+        .feedback-container {
+            background: rgba(255, 215, 0, 0.1);
+            border: clamp(1.5px, 0.25vw, 2px) solid #FFD700;
+            border-radius: clamp(10px, 1.5vw, 12px);
+            padding: clamp(15px, 2vw, 20px);
+            margin: clamp(4px, 0.6vh, 5px) 0;
+            backdrop-filter: blur(5px);
+        }
+        
+        .feedback-approved {
+            border-color: #32CD32;
+            background: rgba(50, 205, 50, 0.1);
+        }
+        
+        .feedback-needs-work {
+            border-color: #FF6347;
+            background: rgba(255, 99, 71, 0.1);
+        }
+        
+        .script-container {
+            background: rgba(0, 0, 0, 0.9);
+            border: clamp(2px, 0.3vw, 3px) solid #FFD700;
+            border-radius: clamp(12px, 1.8vw, 15px);
+            padding: clamp(20px, 3vw, 25px);
+            margin: clamp(15px, 2.4vh, 20px) 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+        }
+        
 
-    div[data-testid="stButton"] > button[kind="primary"]:hover {
-        background: linear-gradient(135deg, #FF6347 0%, #FFD700 50%, #FF6347 100%) !important;
-        transform: translateY(-3px) scale(1.05) !important;
-        box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6) !important;
-        border-color: #FF6347 !important;
-    }
+        .script-text {
+            font-family: 'Lato', sans-serif;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.2;
+            font-size: clamp(1.1rem, 1.5vw, 1.2em);
+            text-align: justify;
+        }
 
-    div[data-testid="stButton"] > button {
-        background: black !important;
-        border: 3px solid rgba(255, 215, 0) !important;
-        color: white !important;
-        font-weight: 1000 !important;
-        font-family: 'Lato', sans-serif !important;
-        border-radius: 15px !important;
-        backdrop-filter: blur(10px) !important;
-        transition: all 0.3s ease !important;
-    }
+        /* Text area styling */
+        div[data-testid="stTextArea"] textarea {
+            background: white !important;
+            border: clamp(1.5px, 0.25vw, 2px) solid #FFD700 !important;
+            border-radius: clamp(8px, 1.2vw, 10px) !important;
+            color: #000000 !important;
+            font-family: 'Lato', sans-serif !important;
+            font-size: clamp(1rem, 1.4vw, 1.1em) !important;
+        }
+        
+        div[data-testid="stTextArea"] textarea:focus {
+            border-color: #FF6347 !important;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4) !important;
+        }
+        
+        /* Radio button styling */
+        .stRadio * {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-family: 'Lato', sans-serif !important;
+            font-size: clamp(0.9rem, 1.3vw, 1em) !important;
+        }
 
-    div[data-testid="stButton"] > button:hover {
-        background: black !important;
-        border-color: #FFD700 !important;
-        transform: translateY(-2px) !important;
-        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3) !important;
-    }
+        /* Button styling */
+        div[data-testid="stButton"] > button[kind="primary"] {
+            background: linear-gradient(135deg, #FFD700 0%, #FF6347 50%, #FFD700 100%) !important;
+            border: clamp(1.5px, 0.25vw, 2px) solid #FFD700 !important;
+            color: #000000 !important;
+            font-weight: 700 !important;
+            font-size: clamp(1.1rem, 1.5vw, 1.2em) !important;
+            font-family: 'Sigmar', cursive !important;
+            padding: clamp(12px, 1.8vw, 15px) clamp(24px, 3.6vw, 30px) !important;
+            border-radius: clamp(20px, 3vw, 25px) !important;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4) !important;
+            transition: all 0.3s ease !important;
+            text-transform: uppercase !important;
+            letter-spacing: clamp(1px, 0.2vw, 2px) !important;
+        }
 
-    /* Download button specific styling */
-    div[data-testid="stDownloadButton"] > button {
-        background: linear-gradient(135deg, #32CD32 0%, #228B22 100%) !important;
-        border: 2px solid #32CD32 !important;
-        color: white !important;
-        font-weight: 700 !important;
-        font-size: 1.2em !important;
-        font-family: 'Sigmar', cursive !important;
-    }
+        div[data-testid="stButton"] > button[kind="primary"]:hover {
+            background: linear-gradient(135deg, #FF6347 0%, #FFD700 50%, #FF6347 100%) !important;
+            transform: translateY(-3px) scale(1.05) !important;
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6) !important;
+            border-color: #FF6347 !important;
+        }
 
-    div[data-testid="stDownloadButton"] > button:hover {
-        background: linear-gradient(135deg, #228B22 0%, #32CD32 100%) !important;
-        transform: translateY(-2px) scale(1.02) !important;
-        box-shadow: 0 5px 20px rgba(50, 205, 50, 0.4) !important;
-    }
+        div[data-testid="stButton"] > button {
+            background: black !important;
+            border: clamp(2px, 0.3vw, 3px) solid rgba(255, 215, 0) !important;
+            color: white !important;
+            font-weight: 1000 !important;
+            font-family: 'Lato', sans-serif !important;
+            font-size: clamp(0.9rem, 1.3vw, 1em) !important;
+            border-radius: clamp(12px, 1.8vw, 15px) !important;
+            padding: clamp(8px, 1.2vw, 10px) clamp(16px, 2.4vw, 20px) !important;
+            backdrop-filter: blur(10px) !important;
+            transition: all 0.3s ease !important;
+        }
 
-    .stSpinner > div {
-        color: white !important;
-    }
+        div[data-testid="stButton"] > button:hover {
+            background: black !important;
+            border-color: #FFD700 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3) !important;
+        }
 
-    .stAlert {
-        background-color: white !important;
-        color: black !important; /* Optional: ensure text stays readable */
+        /* Download button specific styling */
+        div[data-testid="stDownloadButton"] > button {
+            background: linear-gradient(135deg, #32CD32 0%, #228B22 100%) !important;
+            border: clamp(1.5px, 0.25vw, 2px) solid #32CD32 !important;
+            color: white !important;
+            font-weight: 700 !important;
+            font-size: clamp(1.1rem, 1.5vw, 1.2em) !important;
+            font-family: 'Sigmar', cursive !important;
+        }
+
+        div[data-testid="stDownloadButton"] > button:hover {
+            background: linear-gradient(135deg, #228B22 0%, #32CD32 100%) !important;
+            transform: translateY(-2px) scale(1.02) !important;
+            box-shadow: 0 5px 20px rgba(50, 205, 50, 0.4) !important;
+        }
+
+        .stSpinner > div {
+            color: white !important;
+        }
+
+        .stAlert {
+            background-color: white !important;
+            color: black !important;
+        }
+
+        /* Specific breakpoint adjustments for optimal scaling */
+        
+        /* Standard Desktop (1024-1439px) */
+        @media screen and (min-width: 1024px) and (max-width: 1439px) {
+            .main .block-container {
+                transform: scale(0.75);
+            }
+        }
+
+        /* Large Desktop (1440-1919px) */
+        @media screen and (min-width: 1440px) and (max-width: 1919px) {
+            .main .block-container {
+                transform: scale(0.85);
+            }
+        }
+
+        /* Reference size (1920-2200px) - Perfect scaling maintained */
+        @media screen and (min-width: 1920px) and (max-width: 2200px) {
+            .main .block-container {
+                transform: scale(1.0);
+            }
+        }
+
+        /* Ultra-wide (2200px+) */
+        @media screen and (min-width: 2200px) {
+            .main .block-container {
+                transform: scale(1.15);
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: clamp(8px, 1vw, 12px);
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 6px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #FFD700, #FF6347);
+            border-radius: 6px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #FF6347, #FFD700);
+        }
     }
-    
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
     </style>
     """
 
@@ -695,81 +760,113 @@ st.markdown("""
     </div>
 
     <style>
-    #loading-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #000000 0%, #8B4513 50%, #000000 100%);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        animation: loading-sequence 4s ease-in-out forwards;
-    }
+    @media screen and (min-width: 1024px) {
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #000000 0%, #8B4513 50%, #000000 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: loading-sequence 4s ease-in-out forwards;
+        }
 
-    .loading-content {
-        text-align: center;
-    }
+        .loading-content {
+            text-align: center;
+        }
 
-    .loading-title {
-        font-family: 'Sigmar', cursive;
-        font-size: 3.5em;
-        color: #FFD700;
-        margin-bottom: 20px;
-        text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-        letter-spacing: 3px;
-        animation: title-glow 2s ease-in-out infinite alternate;
-    }
+        .loading-title {
+            font-family: 'Sigmar', cursive;
+            font-size: clamp(2.5rem, 4.5vw, 3.5em);
+            color: #FFD700;
+            margin-bottom: clamp(15px, 2.4vh, 20px);
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            letter-spacing: clamp(2px, 0.3vw, 3px);
+            animation: title-glow 2s ease-in-out infinite alternate;
+        }
 
-    .loading-bar-container {
-        width: 300px;
-        height: 8px;
-        background: rgba(255, 215, 0, 0.3);
-        border-radius: 4px;
-        overflow: hidden;
-        position: relative;
-        margin: 0 auto;
-        border: 1px solid #FFD700;
-    }
+        .loading-bar-container {
+            width: clamp(200px, 25vw, 300px);
+            height: clamp(6px, 1vh, 8px);
+            background: rgba(255, 215, 0, 0.3);
+            border-radius: clamp(3px, 0.5vw, 4px);
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+            border: clamp(1px, 0.15vw, 1px) solid #FFD700;
+        }
 
-    .loading-bar {
-        width: 40%;
-        height: 100%;
-        background: linear-gradient(90deg, #FFD700, #FF6347);
-        border-radius: 4px;
-        animation: loading-bar 2s ease-in-out infinite;
-        box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-    }
+        .loading-bar {
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(90deg, #FFD700, #FF6347);
+            border-radius: clamp(3px, 0.5vw, 4px);
+            animation: loading-bar 2s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        }
 
-    .loading-subtitle {
-        font-family: 'Lato', sans-serif;
-        color: rgba(255, 255, 255, 0.9);
-        margin-top: 15px;
-        font-size: 1.3em;
-        font-weight: 300;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    }
+        .loading-subtitle {
+            font-family: 'Lato', sans-serif;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: clamp(12px, 1.8vh, 15px);
+            font-size: clamp(1.1rem, 1.7vw, 1.3em);
+            font-weight: 300;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
 
-    @keyframes title-glow {
-        0% { text-shadow: 0 0 30px rgba(255, 215, 0, 0.5); }
-        100% { text-shadow: 0 0 50px rgba(255, 215, 0, 0.8); }
-    }
+        @keyframes title-glow {
+            0% { text-shadow: 0 0 30px rgba(255, 215, 0, 0.5); }
+            100% { text-shadow: 0 0 50px rgba(255, 215, 0, 0.8); }
+        }
 
-    @keyframes loading-bar {
-        0% { transform: translateX(-100%); }
-        50% { transform: translateX(0%); }
-        100% { transform: translateX(300%); }
-    }
+        @keyframes loading-bar {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(0%); }
+            100% { transform: translateX(300%); }
+        }
 
-    @keyframes loading-sequence {
-        0% { opacity: 1; }
-        85% { opacity: 1; }
-        100% { opacity: 0; pointer-events: none; }
+        @keyframes loading-sequence {
+            0% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { opacity: 0; pointer-events: none; }
+        }
     }
     </style>
 """, unsafe_allow_html=True)    
+
+# Handle window resize and mobile blocking with JavaScript
+st.markdown("""
+<script>
+// Block mobile and tablet, handle responsive scaling
+if (window.innerWidth >= 1024) {
+    // Handle window resize for responsive scaling
+    window.addEventListener('resize', function() {
+        if (window.innerWidth < 1024) {
+            document.body.style.display = 'none';
+            document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, #000000 0%, #8B4513 50%, #000000 100%); color: white; font-size: 1.5rem; text-align: center; font-family: Sigmar, cursive;">This application is designed for desktop and laptop screens only.</div>';
+        }
+    });
+}
+</script>
+""", unsafe_allow_html=True)
+
+st.markdown(
+    """
+    <style>
+    @media (min-width: 1300px) {
+        .custom-spacer {
+            height: 10vh;
+        }
+    }
+    </style>
+    <div class="custom-spacer"></div>
+    """,
+    unsafe_allow_html=True
+)
 
 # ---------------------------- NAVIGATION FUNCTIONS ----------------------------
 def next_step():
@@ -782,7 +879,7 @@ def next_step():
 if st.session_state.current_step == 0:
     st.markdown("""
     <div class="movie-container">
-        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: 2em; text-align: center; margin-bottom: 0px; letter-spacing: 1px;">
+        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.8rem, 2.6vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
             🎬 Lights, Camera, Mental Action!
         </h3>
         <div class="movie-text">
@@ -799,7 +896,7 @@ if st.session_state.current_step == 0:
 
     st.markdown("""
     <div class="movie-container">
-        <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: 2em; text-align: center; margin-bottom: 0px; letter-spacing: 1px;">
+        <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: clamp(1.8rem, 2.6vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
             🎪 The PETTLEP Method
         </h3>
         <div class="movie-text">
@@ -807,41 +904,41 @@ if st.session_state.current_step == 0:
             mental imagery incredibly effective. Think of each element as a different camera angle or lighting 
             setup that makes your mental movie more realistic and powerful.
         </div>
-        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; margin: 10px 0; max-width: 800px; margin: 15px auto;">
-            <div style="background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 8px; padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
-                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: 2em; font-weight: bold; margin-bottom: 10px;">P</div>
-                <div style="color: rgba(255, 255, 255, 0.9); font-size: 1em;">Physical</div>
+        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: clamp(2px, 0.3vw, 3px); margin: clamp(12px, 1.8vh, 15px) auto; max-width: clamp(600px, 80vw, 800px);">
+            <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
+                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.5vw, 2em); font-weight: bold; margin-bottom: clamp(8px, 1.2vh, 10px);">P</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.8rem, 1.2vw, 1em);">Physical</div>
             </div>
-            <div style="background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 8px; padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
-                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: 2em; font-weight: bold; margin-bottom: 10px;">E</div>
-                <div style="color: rgba(255, 255, 255, 0.9); font-size: 1em;">Environment</div>
+            <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
+                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.5vw, 2em); font-weight: bold; margin-bottom: clamp(8px, 1.2vh, 10px);">E</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.8rem, 1.2vw, 1em);">Environment</div>
             </div>
-            <div style="background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 8px; padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
-                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: 2em; font-weight: bold; margin-bottom: 10px;">T</div>
-                <div style="color: rgba(255, 255, 255, 0.9); font-size: 1em;">Task</div>
+            <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
+                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.5vw, 2em); font-weight: bold; margin-bottom: clamp(8px, 1.2vh, 10px);">T</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.8rem, 1.2vw, 1em);">Task</div>
             </div>
-            <div style="background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 8px; padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
-                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: 2em; font-weight: bold; margin-bottom: 10px;">T</div>
-                <div style="color: rgba(255, 255, 255, 0.9); font-size: 1em;">Timing</div>
+            <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
+                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.5vw, 2em); font-weight: bold; margin-bottom: clamp(8px, 1.2vh, 10px);">T</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.8rem, 1.2vw, 1em);">Timing</div>
             </div>
-            <div style="background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 8px; padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
-                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: 2em; font-weight: bold; margin-bottom: 10px;">L</div>
-                <div style="color: rgba(255, 255, 255, 0.9); font-size: 1em;">Learning</div>
+            <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
+                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.5vw, 2em); font-weight: bold; margin-bottom: clamp(8px, 1.2vh, 10px);">L</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.8rem, 1.2vw, 1em);">Learning</div>
             </div>
-            <div style="background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 8px; padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
-                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: 2em; font-weight: bold; margin-bottom: 10px;">E</div>
-                <div style="color: rgba(255, 255, 255, 0.9); font-size: 1em;">Emotion</div>
+            <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
+                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.5vw, 2em); font-weight: bold; margin-bottom: clamp(8px, 1.2vh, 10px);">E</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.8rem, 1.2vw, 1em);">Emotion</div>
             </div>
-            <div style="background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 8px; padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
-                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: 2em; font-weight: bold; margin-bottom: 10px;">P</div>
-                <div style="color: rgba(255, 255, 255, 0.9); font-size: 1em;">Perspective</div>
+            <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
+                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.5vw, 2em); font-weight: bold; margin-bottom: clamp(8px, 1.2vh, 10px);">P</div>
+                <div style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.8rem, 1.2vw, 1em);">Perspective</div>
             </div>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
     st.markdown("""
-        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: 2em; text-align: center; margin-top: 10px; letter-spacing: 1px;">
+        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.8rem, 2.6vw, 2em); text-align: center; margin-top: clamp(8px, 1.2vh, 10px); letter-spacing: clamp(1px, 0.15vw, 1px);">
             🎬 Choose Your Scenario
         </h3>
         """, unsafe_allow_html=True)
@@ -875,7 +972,7 @@ if 1 <= st.session_state.current_step <= 7:
     # Display selected scenario at the top
     st.markdown(f"""
     <div>
-        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: 2em; text-align: center; margin-bottom: -20px; margin-top: 10px; letter-spacing: 1px;">
+        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.8rem, 2.6vw, 2em); text-align: center; margin-bottom: clamp(-15px, -2.4vh, -20px); margin-top: clamp(8px, 1.2vh, 10px); letter-spacing: clamp(1px, 0.15vw, 1px);">
             {SCENARIOS[st.session_state.selected_scenario]['icon']} Scenario: {st.session_state.selected_scenario}
         </h3>
     </div>
@@ -927,7 +1024,7 @@ if 1 <= st.session_state.current_step <= 7:
             <div class="elaboration-title">✨ Now Elaborate Further</div>
             <div class="movie-text">Great! You correctly identified the key aspects of this element.</div>
             <div class="movie-text">You chose: <strong>"{st.session_state.selected_option.get(element['name'], '')}"</strong> Please elaborate on your answer by addressing these questions:</div>
-            <div style="margin-top: 10px; margin-bottom: -15px;">
+            <div style="margin-top: clamp(8px, 1.2vh, 10px); margin-bottom: clamp(-12px, -1.8vh, -15px);">
                 <ul style="color: rgba(255, 255, 255, 0.9); font-family: 'Lato', sans-serif;">
                     {questions_html}
                 </ul>
@@ -974,7 +1071,7 @@ if 1 <= st.session_state.current_step <= 7:
             
             st.markdown(f"""
             <div class="feedback-container {feedback_class}">
-                <h4 style="color: {'#32CD32' if is_approved else '#FF6347'}; font-family: 'Sigmar', cursive; margin-bottom: -10px;">
+                <h4 style="color: {'#32CD32' if is_approved else '#FF6347'}; font-family: 'Sigmar', cursive; margin-bottom: clamp(-8px, -1.2vh, -10px); font-size: clamp(1rem, 1.4vw, 1.1em);">
                     {feedback_icon} {feedback_title}
                 </h4>
                 <div class="movie-text">{feedback_text}</div>
@@ -982,7 +1079,7 @@ if 1 <= st.session_state.current_step <= 7:
             """, unsafe_allow_html=True)
             
             if is_approved:
-                st.markdown("<div style='text-align: center; margin-top: -5px;'>", unsafe_allow_html=True)
+                st.markdown(f"<div style='text-align: center; margin-top: clamp(-4px, -0.6vh, -5px);'>", unsafe_allow_html=True)
                 # Check if this is the last element (step 7)
                 button_text = "🎬 Generate Script" if st.session_state.current_step == 7 else "➡️ Next Element"
                 if st.button(button_text, key=f"next_{element['name']}", type="primary"):
@@ -1001,12 +1098,12 @@ elif st.session_state.current_step == 8:
         # Show loading overlay
         st.markdown("""
         <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.95); z-index: 1000; display: flex; align-items: center; justify-content: center;">
-            <div class="movie-container" style="margin: 0; padding: 40px; text-align: center;">
-                <div style="font-family: 'Sigmar', cursive; font-size: 2.5em; color: #FFD700; margin-bottom: 20px;">
+            <div class="movie-container" style="margin: 0; padding: clamp(30px, 4.8vw, 40px); text-align: center;">
+                <div style="font-family: 'Sigmar', cursive; font-size: clamp(2rem, 3.2vw, 2.5em); color: #FFD700; margin-bottom: clamp(15px, 2.4vh, 20px);">
                     🎬 Generating Your Complete Script...
                 </div>
-                <div class="spinner" style="border: 4px solid #f3f3f3; border-top: 4px solid #FFD700; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px auto;"></div>
-                <div style="font-family: 'Lato', sans-serif; color: rgba(255, 255, 255, 0.9); font-size: 1.1em;">
+                <div class="spinner" style="border: clamp(3px, 0.5vw, 4px) solid #f3f3f3; border-top: clamp(3px, 0.5vw, 4px) solid #FFD700; border-radius: 50%; width: clamp(30px, 4vw, 40px); height: clamp(30px, 4vw, 40px); animation: spin 1s linear infinite; margin: 0 auto clamp(12px, 1.8vh, 15px) auto;"></div>
+                <div style="font-family: 'Lato', sans-serif; color: rgba(255, 255, 255, 0.9); font-size: clamp(1rem, 1.4vw, 1.1em);">
                     Creating your personalized imagery rehearsal experience...
                 </div>
             </div>
@@ -1038,7 +1135,7 @@ elif st.session_state.current_step == 8:
         
         st.markdown("""
         <div class="movie-container">
-            <h2 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: 2em; text-align: center; margin-bottom: 0px; letter-spacing: 1px;">
+            <h2 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.8rem, 2.6vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
                 🎉 That's A Wrap!
             </h2>
             <div class="movie-text">
@@ -1054,10 +1151,10 @@ elif st.session_state.current_step == 8:
         
         st.markdown(f"""
         <div class="script-container">
-            <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: 2em; text-align: center; margin-bottom: 0px; letter-spacing: 1px;">
+            <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: clamp(1.8rem, 2.6vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
                 📜 Your Complete Imagery Script
             </h3>
-            <div style="text-align: center; margin-bottom: 20px; color: #FF6347; font-family: 'Lato', sans-serif; font-size: 1.2em;">
+            <div style="text-align: center; margin-bottom: clamp(15px, 2.4vh, 20px); color: #FF6347; font-family: 'Lato', sans-serif; font-size: clamp(1.1rem, 1.5vw, 1.2em);">
                 Scenario: {st.session_state.selected_scenario}
             </div>
             <div class="script-text">
@@ -1069,7 +1166,7 @@ elif st.session_state.current_step == 8:
         # Usage instructions
         st.markdown("""
         <div class="movie-container">
-            <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: 1.8em; text-align: center; margin-bottom: 15px;">
+            <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.6rem, 2.3vw, 1.8em); text-align: center; margin-bottom: clamp(12px, 1.8vh, 15px);">
                 🎯 How to Use Your Script
             </h3>
             <div class="movie-text">
@@ -1093,7 +1190,7 @@ elif st.session_state.current_step == 8:
         with col1:
             if st.button("🔄 Create Another Script", use_container_width=True):
                 # Reset everything
-                for key in ['current_step', 'selected_scenario', 'responses', 'gpt_feedback', 'challenge_passed', 'selected_option', 'elaboration_mode', 'script_generated', 'complete_script', 'generating_script']:
+                for key in ['current_step', 'selected_scenario', 'responses', 'gpt_feedback', 'gpt_approved', 'challenge_passed', 'selected_option', 'elaboration_mode', 'script_generated', 'complete_script', 'generating_script']:
                     if key == 'current_step':
                         st.session_state[key] = 0
                     elif key == 'selected_scenario':
@@ -1109,7 +1206,7 @@ elif st.session_state.current_step == 8:
         with col2:
             if st.button("🎭 Different Scenario", use_container_width=True):
                 # Keep some progress but change scenario
-                for key in ['current_step', 'selected_scenario', 'responses', 'gpt_feedback', 'challenge_passed', 'selected_option', 'elaboration_mode', 'script_generated', 'complete_script', 'generating_script']:
+                for key in ['current_step', 'selected_scenario', 'responses', 'gpt_feedback', 'gpt_approved', 'challenge_passed', 'selected_option', 'elaboration_mode', 'script_generated', 'complete_script', 'generating_script']:
                     if key == 'current_step':
                         st.session_state[key] = 0
                     elif key == 'selected_scenario':

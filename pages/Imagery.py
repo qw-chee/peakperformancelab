@@ -646,6 +646,7 @@ def get_movie_styles():
             transition: all 0.3s ease !important;
             text-transform: uppercase !important;
             letter-spacing: clamp(1px, 0.2vw, 2px) !important;
+            margin-top: 10px !important;
         }
 
         div[data-testid="stButton"] > button[kind="primary"]:hover {
@@ -683,6 +684,7 @@ def get_movie_styles():
             font-weight: 700 !important;
             font-size: clamp(1.1rem, 1.5vw, 1.2em) !important;
             font-family: 'Sigmar', cursive !important;
+            margin-top: 10px;
         }
 
         div[data-testid="stDownloadButton"] > button:hover {

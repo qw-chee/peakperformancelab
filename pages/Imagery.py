@@ -564,7 +564,7 @@ def get_movie_styles():
             background: black;
             border: clamp(2px, 0.3vw, 3px) solid #32CD32;
             border-radius: clamp(8px, 1.2vw, 10px);
-            padding: clamp(15px, 2vw, 20px);
+            padding: clamp(5px, 1vw, 20px);
             margin-top: clamp(15px, 2.4vh, 20px);
             margin-bottom: clamp(-15px, -2.4vh, -20px);
         }

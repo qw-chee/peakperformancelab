@@ -243,7 +243,7 @@ def get_futuristic_styles():
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-align: center;
-            margin-bottom: clamp(1.5px, 0.4vw, 10px);
+            margin-bottom: clamp(0.5px, 0.4vw, 10px);
             text-shadow: 0 0 clamp(20px, 3vw, 30px) rgba(0, 255, 255, 0.5);
             animation: title-pulse 2s ease-in-out infinite alternate;
         }

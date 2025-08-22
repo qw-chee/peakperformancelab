@@ -883,7 +883,7 @@ if st.session_state.current_step == 0:
             🎬 Lights, Camera, Mental Action!
         </h3>
         <div class="movie-text">
-            Welcome to your personal theatre stage!
+            Welcome to your personal theatre!
             Mental imagery is like filming the perfect performance in your mind - you get to rehearse and replay your success before it happens in real life.
         </div>
         <div class="movie-text">

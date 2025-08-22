@@ -919,7 +919,7 @@ if not st.session_state.game_completed:
         title_color = "#00ff7f" if user_correct else "#ff5050"
         
         st.markdown(f"""
-        <div class="{feedback_class}" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 5px;">
+        <div class="{feedback_class}" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px;">
             <span class="feedback-icon">{feedback_icon}</span>
             <h3 class="feedback-title" style="color: {title_color}; margin: 0;">{feedback_title}</h3>
         </div>

@@ -245,10 +245,8 @@ def get_pettlep_elements(scenario):
             "lesson": "The Environment element describes the surrounding context where the performance takes place. It involves imagining the setting's layout, colors, lighting, temperature, sounds, and even smells. The environment could include specific objects, people, or landmarks that are usually present. Recreating the environment in detail helps your brain anchor the imagery in a familiar setting.",
             "example": "E.g.: 'I hear the whistle blow, smell the grass, and see the sun glare off the lines of the field.'",
             "elaboration_questions": [
-                "What do you see around you in detail?",
-                "What sounds do you hear?",
-                "Are there any smells or temperature sensations?",
-                "Who else is present in your environment?"
+                "What do you see around you in detail? What sounds do you hear?",
+                "Are there any smells or temperature sensations? Who else is present in your environment?"
             ]
         },
         {
@@ -258,8 +256,7 @@ def get_pettlep_elements(scenario):
             "example": "E.g.: 'I bounce the ball twice, bend my knees, and release the shot smoothly.'",
             "elaboration_questions": [
                 "What specific actions are you performing step by step?",
-                "What is the sequence of your movements?",
-                "How are you executing each part of the skill?"
+                "What is the sequence of your movements? How are you executing each part of the skill?"
             ]
         },
         {
@@ -268,9 +265,8 @@ def get_pettlep_elements(scenario):
             "lesson": "The Timing element describes the need to match the real duration and pace of the performance. It involves imagining the action in real time, with accurate rhythm, tempo, and transition speeds. Timing also includes pauses, reaction times, or sequences that are part of the performance flow. The mental timing should reflect how the task unfolds naturally.",
             "example": "E.g.: 'I take a slow, deliberate approach, then accelerate quickly through the swing.'",
             "elaboration_questions": [
-                "How fast or slow are you moving?",
-                "Is there a specific rhythm or pace to follow?",
-                "Are there moments where you pause or accelerate?"
+                "How fast or slow are you moving? Are there moments where you pause or accelerate?",
+                "Is there a specific rhythm or pace to follow?"
             ]
         },
         {
@@ -290,8 +286,7 @@ def get_pettlep_elements(scenario):
             "example": "E.g.: 'I feel calm and focused, with a surge of excitement as I prepare to perform.'",
             "elaboration_questions": [
                 "How are you feeling during this performance?",
-                "What positive emotions do you experience?",
-                "How do you handle any nervousness or pressure?"
+                "What positive emotions do you experience? How do you handle any nervousness or pressure?"
             ]
         },
         {

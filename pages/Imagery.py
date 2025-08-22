@@ -1130,7 +1130,7 @@ elif st.session_state.current_step == 8:
         
         st.markdown("""
         <div class="movie-container">
-            <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.8rem, 2.6vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
+            <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
                 🎉 That's A Wrap!
             </h3>
             <div class="movie-description">
@@ -1146,7 +1146,7 @@ elif st.session_state.current_step == 8:
         
         st.markdown(f"""
         <div class="script-container">
-            <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.2vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
+            <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px); margin-top: -5px;">
                 📜 Your Complete Imagery Script
             </h3>
             <div class="script-text">

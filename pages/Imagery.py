@@ -1194,7 +1194,7 @@ elif st.session_state.current_step == 8:
                     st.session_state[key] = {}
             st.rerun()
     with col2:
-        if st.button("🏠 RETURN TO HOME", use_container_width=True):
+        if st.button("🏠 Return to Home", use_container_width=True):
             st.session_state.clear()
             st.switch_page("pages/Modules.py")
             st.stop()

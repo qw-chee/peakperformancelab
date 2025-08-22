@@ -517,6 +517,7 @@ def get_movie_styles():
             line-height: 1.2;
             margin-bottom: clamp(4px, 0.6vh, 5px);
             font-weight: 300;
+            text-align: center;
         }
     
         .movie-text {

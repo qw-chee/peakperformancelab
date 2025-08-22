@@ -900,9 +900,8 @@ if st.session_state.current_step == 0:
             🎪 The PETTLEP Method
         </h3>
         <div class="movie-text">
-            You will be using the <strong>PETTLEP</strong> framework - seven essential elements that make 
-            mental imagery incredibly effective. Think of each element as a different camera angle or lighting 
-            setup that makes your mental movie more realistic and powerful.
+            You will be using the <strong>PETTLEP</strong> framework - 7  elements that make 
+            imagery incredibly effective. Think of each element as a different camera angle that makes your mental movie more realistic and powerful.
         </div>
         <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: clamp(2px, 0.3vw, 3px); margin: clamp(8px, 1.4vh, 15px) auto; max-width: clamp(600px, 80vw, 800px);">
             <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">

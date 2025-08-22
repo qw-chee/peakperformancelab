@@ -273,7 +273,7 @@ def get_pettlep_elements(scenario):
             "name": "📚 Learning",
             "letter": "L",
             "lesson": "The Learning element refers to your current level of skill or stage of development. It involves adjusting the imagery content to reflect what you can actually do or are currently working on. For beginners, the focus might be on fundamental steps, while advanced individuals might include automatic or refined techniques. The imagery should evolve as you progress.",
-            "example": "E.g.: 'I focus on keeping my follow-through consistent, which I've been working on in practice.'",
+            "example": "E.g.: 'I focus on keeping my follow-through consistent, which I've been working on.'",
             "elaboration_questions": [
                 "What specific aspect are you trying to improve?",
                 "What corrections or refinements are you making?"

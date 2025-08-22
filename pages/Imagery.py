@@ -904,7 +904,7 @@ if st.session_state.current_step == 0:
             mental imagery incredibly effective. Think of each element as a different camera angle or lighting 
             setup that makes your mental movie more realistic and powerful.
         </div>
-        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: clamp(2px, 0.3vw, 3px); margin: clamp(12px, 1.8vh, 15px) auto; max-width: clamp(600px, 80vw, 800px);">
+        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: clamp(2px, 0.3vw, 3px); margin: clamp(8px, 1.4vh, 15px) auto; max-width: clamp(600px, 80vw, 800px);">
             <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
                 <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2.2vw, 2em); font-weight: bold; margin-bottom: clamp(4px, 0.8vh, 10px);">P</div>
                 <div style="color: rgba(255, 255, 255, 0.9); font-size: clamp(0.8rem, 1.2vw, 1em);">Physical</div>

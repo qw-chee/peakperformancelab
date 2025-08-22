@@ -682,10 +682,9 @@ def get_movie_styles():
             border: clamp(1.5px, 0.25vw, 2px) solid #32CD32 !important;
             color: white !important;
             font-weight: 700 !important;
-            font-size: clamp(1.1rem, 1.5vw, 1.2em) !important;
+            font-size: clamp(1.2rem, 1.6vw, 1.2em) !important;
             font-family: 'Sigmar', cursive !important;
             margin-top: 10px;
-            margin-bottom: -5px !important;
             width: fit-content !important;
             margin: 10px auto !important;
             display: block !important;

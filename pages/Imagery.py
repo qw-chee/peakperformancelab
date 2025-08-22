@@ -19,7 +19,7 @@ SCENARIOS = {
         "icon": "🎤",
         "description": "Master your presentation skills through vivid mental practice"
     },
-    "Exam Hall": {
+    "Taking an Exam": {
         "icon": "📝",
         "description": "Prepare for exam success through mental rehearsal"
     }
@@ -161,7 +161,7 @@ def get_pettlep_elements(scenario):
                 "correct": 1
             }
         },
-        "Exam Hall": {
+        "Taking an Exam": {
             "🏃 Physical": {
                 "question": "Which best describes the Physical element for an exam?",
                 "options": [
@@ -175,7 +175,7 @@ def get_pettlep_elements(scenario):
                 "question": "Which is most Environment-focused for an exam?",
                 "options": [
                     "I'm writing my answers clearly and checking my work carefully.",
-                    "I see the quiet exam hall, hear pencils scratching, and feel the cool air.",
+                    "I see the quiet Taking an Exam, hear pencils scratching, and feel the cool air.",
                     "I'm holding my lucky pen and wearing my comfortable exam outfit."
                 ],
                 "correct": 1
@@ -966,8 +966,8 @@ if st.session_state.current_step == 0:
             next_step()
     
     with col3:
-        if st.button(f"{SCENARIOS['Exam Hall']['icon']} Exam Hall", key="scenario_Exam Hall", use_container_width=True):
-            st.session_state.selected_scenario = "Exam Hall"
+        if st.button(f"{SCENARIOS['Taking an Exam']['icon']} Taking an Exam", key="scenario_Taking an Exam", use_container_width=True):
+            st.session_state.selected_scenario = "Taking an Exam"
             next_step()
     
     st.stop()

@@ -535,7 +535,7 @@ def get_movie_styles():
             font-size: clamp(2rem, 3.2vw, 2.5em);
             color: #FFD700 !important;
             text-align: center;
-            margin-bottom: clamp(15px, 2vh, 20px);
+            margin-bottom: clamp(10px, 1.6vh, 20px);
             letter-spacing: clamp(1px, 0.2vw, 2px);
             text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
@@ -548,7 +548,7 @@ def get_movie_styles():
             padding: clamp(8px, 1.2vw, 10px);
             border-left: clamp(2px, 0.3vw, 3px) solid #FFD700;
             border-radius: clamp(4px, 0.6vw, 5px);
-            margin: clamp(12px, 1.8vh, 15px) 0;
+            margin: clamp(8px, 1.5vh, 15px) 0;
         }
           
         .challenge-title {
@@ -981,7 +981,7 @@ if 1 <= st.session_state.current_step <= 7:
     # Display selected scenario at the top
     st.markdown(f"""
     <div>
-        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.3vw, 2em); text-align: center; margin-bottom: clamp(-20px, -2.7vh, -20px); letter-spacing: clamp(1px, 0.15vw, 1px);">
+        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.3vw, 2em); text-align: center; margin-bottom: clamp(-25px, -3vh, -20px); letter-spacing: clamp(1px, 0.15vw, 1px);">
             {SCENARIOS[st.session_state.selected_scenario]['icon']} Scenario: {st.session_state.selected_scenario}
         </h3>
     </div>

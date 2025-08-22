@@ -1178,7 +1178,7 @@ elif st.session_state.current_step == 8:
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown('<div style="height: 5vh;"></div>', unsafe_allow_html=True)
+    st.markdown('<div style="height: 5px;"></div>', unsafe_allow_html=True)
         
     col1, col2 = st.columns([1, 1])
     with col1:

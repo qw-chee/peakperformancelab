@@ -513,8 +513,8 @@ def get_movie_styles():
         .movie-text {
             font-family: 'Lato', sans-serif;
             color: rgba(255, 255, 255, 0.9);
-            font-size: clamp(1rem, 1.4vw, 1.1em);
-            line-height: 1.4;
+            font-size: clamp(0.8rem, 1.2vw, 1.1em);
+            line-height: 1.2;
             margin-bottom: clamp(4px, 0.6vh, 5px);
             font-weight: 300;
         }

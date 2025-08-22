@@ -364,7 +364,7 @@ Scoring criteria:
 
 Format your response **strictly** as:
 Verdict: [Strong and positive / Weak or Generic / Irrelevant]
-Comment: [Feedback must match the verdict. Be encouraging only for "Strong and positive" and "Weak or Generic". If "Irrelevant", the comment must highlight the problem directly or express concern. Write in laymen terms, be direct, not fluffy. Write in 30 words or less. Use natural, conversational language always.]"""
+Comment: [Feedback must match the verdict. Be encouraging only for "Strong and positive" and "Weak or Generic". If "Irrelevant", the comment must highlight the problem directly or express concern. Write in laymen terms. Write in 30 words or less. Use natural, conversational language always, like you're talking to a friend.]"""
         
         response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}], max_tokens=300,temperature=0.9,timeout=30)
         content = response.choices[0].message.content.strip()
@@ -654,6 +654,7 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

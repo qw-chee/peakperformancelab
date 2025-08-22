@@ -580,7 +580,7 @@ def get_movie_styles():
             background: rgba(255, 215, 0, 0.1);
             border: clamp(1.5px, 0.25vw, 2px) solid #FFD700;
             border-radius: clamp(10px, 1.5vw, 12px);
-            padding: clamp(15px, 2vw, 20px);
+            padding: clamp(5px, 0.5vw, 20px);
             margin: clamp(4px, 0.6vh, 5px) 0;
             backdrop-filter: blur(5px);
         }

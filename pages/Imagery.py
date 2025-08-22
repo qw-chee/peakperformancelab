@@ -1033,7 +1033,7 @@ if 1 <= st.session_state.current_step <= 7:
             <div class="elaboration-title">✨ Now Elaborate Further</div>
             <div class="movie-text">Great! You correctly identified the key aspects of this element.</div>
             <div class="movie-text">You chose: <strong>"{st.session_state.selected_option.get(element['name'], '')}"</strong> Please elaborate on your answer by addressing these questions:</div>
-            <div style="margin-top: clamp(8px, 1.2vh, 10px); margin-bottom: clamp(-12px, -1.8vh, -15px);">
+            <div style="margin-top: clamp(4px, 0.8vh, 10px); margin-bottom: clamp(-15px, -2vh, -15px);">
                 <ul style="color: rgba(255, 255, 255, 0.9); font-family: 'Gabarito', sans-serif;">
                     {questions_html}
                 </ul>

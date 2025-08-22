@@ -646,7 +646,6 @@ def get_movie_styles():
             transition: all 0.3s ease !important;
             text-transform: uppercase !important;
             letter-spacing: clamp(1px, 0.2vw, 2px) !important;
-            margin-top: 30px !important;
         }
 
         div[data-testid="stButton"] > button[kind="primary"]:hover {
@@ -1178,6 +1177,8 @@ elif st.session_state.current_step == 8:
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+    <div style="height: 5vh;"></div>
         
     col1, col2 = st.columns([1, 1])
         

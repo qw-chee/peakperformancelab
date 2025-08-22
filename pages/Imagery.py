@@ -1178,10 +1178,9 @@ elif st.session_state.current_step == 8:
     </div>
     """, unsafe_allow_html=True)
 
-    <div style="height: 5vh;"></div>
+    st.markdown('<div style="height: 5vh;"></div>', unsafe_allow_html=True)
         
     col1, col2 = st.columns([1, 1])
-        
     with col1:
         if st.button("🔄 Try Another Scenario", use_container_width=True):
             # Reset everything

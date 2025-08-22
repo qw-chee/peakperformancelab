@@ -946,7 +946,7 @@ if st.session_state.current_step == 0:
     """, unsafe_allow_html=True)
 
     st.markdown("""
-        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.8rem, 2.6vw, 2em); text-align: center; margin-top: clamp(2px, 0.6vh, 10px); letter-spacing: clamp(1px, 0.15vw, 1px);">
+        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.8rem, 2.6vw, 2em); text-align: center; letter-spacing: clamp(1px, 0.15vw, 1px);">
             🎬 Choose Your Scenario
         </h3>
         """, unsafe_allow_html=True)

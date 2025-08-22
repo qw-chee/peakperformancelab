@@ -604,8 +604,8 @@ def get_movie_styles():
         .script-text {
             font-family: 'Gabarito', sans-serif;
             color: rgba(255, 255, 255, 0.9);
-            line-height: 1.2;
-            font-size: clamp(1.1rem, 1.5vw, 1.2em);
+            line-height: 1.1;
+            font-size: clamp(0.9rem, 1.3vw, 1.2em);
             text-align: justify;
         }
 
@@ -1093,7 +1093,7 @@ elif st.session_state.current_step == 8:
         st.markdown("""
         <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.95); z-index: 1000; display: flex; align-items: center; justify-content: center;">
             <div class="movie-container" style="margin: 0; padding: clamp(30px, 4.8vw, 40px); text-align: center;">
-                <div style="font-family: 'Sigmar', cursive; font-size: clamp(2rem, 3.2vw, 2.5em); color: #FFD700; margin-bottom: clamp(15px, 2.4vh, 20px);">
+                <div style="font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.5vw, 2.5em); color: #FFD700; margin-bottom: clamp(15px, 2.4vh, 20px);">
                     🎬 Generating Your Complete Script...
                 </div>
                 <div class="spinner" style="border: clamp(3px, 0.5vw, 4px) solid #f3f3f3; border-top: clamp(3px, 0.5vw, 4px) solid #FFD700; border-radius: 50%; width: clamp(30px, 4vw, 40px); height: clamp(30px, 4vw, 40px); animation: spin 1s linear infinite; margin: 0 auto clamp(12px, 1.8vh, 15px) auto;"></div>
@@ -1129,10 +1129,10 @@ elif st.session_state.current_step == 8:
         
         st.markdown("""
         <div class="movie-container">
-            <h2 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.8rem, 2.6vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
+            <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.8rem, 2.6vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
                 🎉 That's A Wrap!
-            </h2>
-            <div class="movie-text">
+            </h3>
+            <div class="movie-description">
                 Congratulations! You've created a complete PETTLEP imagery script. This is your personal 
                 mental rehearsal tool - use it regularly to train your mind for peak performance.
             </div>
@@ -1145,12 +1145,9 @@ elif st.session_state.current_step == 8:
         
         st.markdown(f"""
         <div class="script-container">
-            <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: clamp(1.8rem, 2.6vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
+            <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.2vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
                 📜 Your Complete Imagery Script
             </h3>
-            <div style="text-align: center; margin-bottom: clamp(15px, 2.4vh, 20px); color: #FF6347; font-family: 'Gabarito', sans-serif; font-size: clamp(1.1rem, 1.5vw, 1.2em);">
-                Scenario: {st.session_state.selected_scenario}
-            </div>
             <div class="script-text">
             {complete_script.replace(chr(10), '<br>') if complete_script else 'Error loading script.'}
             </div>

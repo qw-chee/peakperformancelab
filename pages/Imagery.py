@@ -1188,7 +1188,7 @@ elif st.session_state.current_step == 8:
         col1, col2 = st.columns([1, 1])
         
         with col1:
-            if st.button("🔄 Create Another Script", use_container_width=True):
+            if st.button("🔄 Try Another Scenario", use_container_width=True):
                 # Reset everything
                 for key in ['current_step', 'selected_scenario', 'responses', 'gpt_feedback', 'gpt_approved', 'challenge_passed', 'selected_option', 'elaboration_mode', 'script_generated', 'complete_script', 'generating_script']:
                     if key == 'current_step':
@@ -1202,19 +1202,8 @@ elif st.session_state.current_step == 8:
                     else:
                         st.session_state[key] = {}
                 st.rerun()
-        
         with col2:
-            if st.button("🎭 Different Scenario", use_container_width=True):
-                # Keep some progress but change scenario
-                for key in ['current_step', 'selected_scenario', 'responses', 'gpt_feedback', 'gpt_approved', 'challenge_passed', 'selected_option', 'elaboration_mode', 'script_generated', 'complete_script', 'generating_script']:
-                    if key == 'current_step':
-                        st.session_state[key] = 0
-                    elif key == 'selected_scenario':
-                        st.session_state[key] = None
-                    elif key in ['script_generated', 'generating_script']:
-                        st.session_state[key] = False
-                    elif key in ['complete_script']:
-                        st.session_state[key] = ""
-                    else:
-                        st.session_state[key] = {}
-                st.rerun()
+            if st.button("🏠 RETURN TO HOME", use_container_width=True):
+                st.session_state.clear()
+                st.switch_page("pages/Modules.py")
+                st.stop()

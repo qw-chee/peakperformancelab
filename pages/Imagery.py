@@ -443,7 +443,7 @@ def get_movie_styles():
     return """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Gabarito&display=swap');
 
     /* Desktop/Laptop Only Styles */
     @media screen and (min-width: 1024px) {
@@ -511,7 +511,7 @@ def get_movie_styles():
         }
         
         .movie-description {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Gabarito', sans-serif;
             color: rgba(255, 255, 255, 0.9);
             font-size: clamp(0.9rem, 1.3vw, 1.1em);
             line-height: 1.2;
@@ -521,7 +521,7 @@ def get_movie_styles():
         }
     
         .movie-text {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Gabarito', sans-serif;
             color: rgba(255, 255, 255, 0.9);
             font-size: clamp(0.9rem, 1.3vw, 1.1em);
             line-height: 1.2;
@@ -606,7 +606,7 @@ def get_movie_styles():
         
 
         .script-text {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Gabarito', sans-serif;
             color: rgba(255, 255, 255, 0.9);
             line-height: 1.2;
             font-size: clamp(1.1rem, 1.5vw, 1.2em);
@@ -619,7 +619,7 @@ def get_movie_styles():
             border: clamp(1.5px, 0.25vw, 2px) solid #FFD700 !important;
             border-radius: clamp(8px, 1.2vw, 10px) !important;
             color: #000000 !important;
-            font-family: 'Lato', sans-serif !important;
+            font-family: 'Gabarito', sans-serif !important;
             font-size: clamp(1rem, 1.4vw, 1.1em) !important;
         }
         
@@ -631,7 +631,7 @@ def get_movie_styles():
         /* Radio button styling */
         .stRadio * {
             color: rgba(255, 255, 255, 0.9) !important;
-            font-family: 'Lato', sans-serif !important;
+            font-family: 'Gabarito', sans-serif !important;
             font-size: clamp(0.9rem, 1.3vw, 1em) !important;
         }
 
@@ -663,7 +663,7 @@ def get_movie_styles():
             border: clamp(2px, 0.3vw, 3px) solid rgba(255, 215, 0) !important;
             color: white !important;
             font-weight: 1000 !important;
-            font-family: 'Lato', sans-serif !important;
+            font-family: 'Gabarito', sans-serif !important;
             font-size: clamp(0.9rem, 1.3vw, 1em) !important;
             border-radius: clamp(12px, 1.8vw, 15px) !important;
             padding: clamp(8px, 1.2vw, 10px) clamp(16px, 2.4vw, 20px) !important;
@@ -820,7 +820,7 @@ st.markdown("""
         }
 
         .loading-subtitle {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Gabarito', sans-serif;
             color: rgba(255, 255, 255, 0.9);
             margin-top: clamp(12px, 1.8vh, 15px);
             font-size: clamp(1.1rem, 1.7vw, 1.3em);
@@ -1033,7 +1033,7 @@ if 1 <= st.session_state.current_step <= 7:
             <div class="movie-text">Great! You correctly identified the key aspects of this element.</div>
             <div class="movie-text">You chose: <strong>"{st.session_state.selected_option.get(element['name'], '')}"</strong> Please elaborate on your answer by addressing these questions:</div>
             <div style="margin-top: clamp(8px, 1.2vh, 10px); margin-bottom: clamp(-12px, -1.8vh, -15px);">
-                <ul style="color: rgba(255, 255, 255, 0.9); font-family: 'Lato', sans-serif;">
+                <ul style="color: rgba(255, 255, 255, 0.9); font-family: 'Gabarito', sans-serif;">
                     {questions_html}
                 </ul>
             </div>
@@ -1111,7 +1111,7 @@ elif st.session_state.current_step == 8:
                     🎬 Generating Your Complete Script...
                 </div>
                 <div class="spinner" style="border: clamp(3px, 0.5vw, 4px) solid #f3f3f3; border-top: clamp(3px, 0.5vw, 4px) solid #FFD700; border-radius: 50%; width: clamp(30px, 4vw, 40px); height: clamp(30px, 4vw, 40px); animation: spin 1s linear infinite; margin: 0 auto clamp(12px, 1.8vh, 15px) auto;"></div>
-                <div style="font-family: 'Lato', sans-serif; color: rgba(255, 255, 255, 0.9); font-size: clamp(1rem, 1.4vw, 1.1em);">
+                <div style="font-family: 'Gabarito', sans-serif; color: rgba(255, 255, 255, 0.9); font-size: clamp(1rem, 1.4vw, 1.1em);">
                     Creating your personalized imagery rehearsal experience...
                 </div>
             </div>
@@ -1162,7 +1162,7 @@ elif st.session_state.current_step == 8:
             <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: clamp(1.8rem, 2.6vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
                 📜 Your Complete Imagery Script
             </h3>
-            <div style="text-align: center; margin-bottom: clamp(15px, 2.4vh, 20px); color: #FF6347; font-family: 'Lato', sans-serif; font-size: clamp(1.1rem, 1.5vw, 1.2em);">
+            <div style="text-align: center; margin-bottom: clamp(15px, 2.4vh, 20px); color: #FF6347; font-family: 'Gabarito', sans-serif; font-size: clamp(1.1rem, 1.5vw, 1.2em);">
                 Scenario: {st.session_state.selected_scenario}
             </div>
             <div class="script-text">

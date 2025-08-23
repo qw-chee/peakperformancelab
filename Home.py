@@ -162,6 +162,8 @@ page_styles = """
         min-width: fit-content !important;
         white-space: nowrap !important;
         max-width: clamp(300px, 50vw, 600px) !important;
+        margin: 10px auto !important;
+        display: block !important;
     }
 
     .stApp .main .block-container div[data-testid="stButton"] > button:hover,

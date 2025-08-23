@@ -480,24 +480,20 @@ def get_mindset_result(score):
 def render_custom_radio(options, question_num):
     """Render functional custom styled buttons using standard Streamlit buttons"""
     
-    # Create the grid layout
-    col1 = st.columns(4)
+    # Create 4 columns in one row
+    cols = st.columns(4)
     
-    with col1:
-        # First row, first column - Strongly Disagree
-        if st.button(options[0], key=f"response_{question_num}_0", use_container_width=True, type="primary"):
-            return options[0]
-        # Second row, first column - Disagree
-        if st.button(options[1], key=f"response_{question_num}_2", use_container_width=True, type="primary"):
-            return options[1]
-        # First row, second column - Agree
-        if st.button(options[2], key=f"response_{question_num}_1", use_container_width=True, type="primary"):
-            return options[2]
-        # Second row, second column - Strongly Agree
-        if st.button(options[3], key=f"response_{question_num}_3", use_container_width=True, type="primary"):
-            return options[3]
+    if cols[0].button(options[0], key=f"response_{question_num}_0", use_container_width=True, type="primary"):
+        return options[0]
     
-    return None
+    if cols[1].button(options[1], key=f"response_{question_num}_1", use_container_width=True, type="primary"):
+        return options[1]
+    
+    if cols[2].button(options[2], key=f"response_{question_num}_2", use_container_width=True, type="primary"):
+        return options[2]
+    
+    if cols[3].button(options[3], key=f"response_{question_num}_3", use_container_width=True, type="primary"):
+        return options[3]
     
 def check_javascript_selection(question_num):
     pass
@@ -792,6 +788,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

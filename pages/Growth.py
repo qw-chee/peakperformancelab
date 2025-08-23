@@ -251,7 +251,7 @@ def get_styles():
         .question-text {
             font-family: 'Comfortaa', cursive;
             font-size: clamp(1rem, 1.5vw, 1.3rem);
-            color: #74bd3c;
+            color: #569e20;
             line-height: 1.6;
             margin: 0;
             text-align: center;
@@ -794,6 +794,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

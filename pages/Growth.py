@@ -363,7 +363,7 @@ def get_styles():
         
         /* Main buttons (ALL buttons now use same style) */
         div[data-testid="stButton"] > button {
-            background: linear-gradient(135deg, #e6733c 0%, #f2a93b 50%, #f6d860 100%) !important;
+            background: linear-gradient(135deg, #ec407a 0%, #ff8a65 50%, #f9e79f 100%) !important;
             border: clamp(2px, 0.3vw, 3px) solid #FF6347 !important;
             color: white !important;
             font-weight: 600 !important;
@@ -380,14 +380,14 @@ def get_styles():
         }
 
         div[data-testid="stButton"] > button:hover {
-            background: linear-gradient(135deg, #FF8C00 0%, #FFD700 50%, #FFFF00 100%) !important;
+            background: linear-gradient(135deg, #f06292 0%, #ffb74d 50%, #fff176 100%) !important;
             transform: translateY(-3px) scale(1.05) !important;
             box-shadow: 0 8px 30px rgba(50, 205, 50, 0.4) !important;
             border-color: #FF8C00 !important;
         }
 
         div[data-testid="stButton"] > button[kind="primary"] {
-            background: linear-gradient(135deg, #e6733c 0%, #f2a93b 50%, #f6d860 100%) !important;
+            background: linear-gradient(135deg, #ec407a 0%, #ff8a65 50%, #f9e79f 100%) !important;
             border-color: #FF6347 !important;
             animation: sunny-glow 2s ease-in-out infinite alternate;
         }
@@ -398,7 +398,7 @@ def get_styles():
         }
 
         div[data-testid="stButton"] > button[kind="primary"]:hover {
-            background: linear-gradient(135deg, #FF8C00 0%, #FFD700 50%, #FFFF00 100%) !important;
+            background: linear-gradient(135deg, #f06292 0%, #ffb74d 50%, #fff176 100%) !important;
             border-color: #FF8C00 !important;
         }
 
@@ -814,6 +814,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

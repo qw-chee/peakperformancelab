@@ -184,14 +184,14 @@ def get_styles():
           
         .nature-container {
             background: rgba(255, 255, 255, 0.95);
-            border: clamp(2px, 0.3vw, 3px) solid #e08210;
+            border: clamp(2px, 0.3vw, 3px) solid #59250e;
             border-radius: clamp(15px, 2vw, 20px);
             padding: clamp(7px, 0.9vw, 9px);
             margin: clamp(9px, 1.4vh, 14px) 0;
             margin-bottom: -5px;
             position: relative;
             backdrop-filter: blur(8px);
-            box-shadow: 0 8px 32px rgba(255, 152, 0, 0.2), inset 0 0 20px rgba(255, 152, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(255, 161, 102, 0.2), inset 0 0 20px rgba(255, 161, 102, 0.1);
         }
         
         .nature-container::before {
@@ -211,27 +211,27 @@ def get_styles():
             font-family: 'Fredoka', cursive;
             font-weight: 700;
             font-size: clamp(2rem, 4vw, 5rem);
-            color: #2e7d32;;
+            color: #59250e;
             text-align: center;
             margin-bottom: clamp(5px, 1vh, 10px);
-            text-shadow: 2px 2px 4px rgba(233, 30, 99, 0.2);
+            text-shadow: 2px 2px 4px rgba(255, 161, 102, 0.2);
             line-height: 1.1;
         }
         
         .leaf-subtitle {
             font-family: 'Comfortaa', cursive;
             font-size: clamp(1rem, 1.8vw, 3rem);
-            color: #4caf50;
+            color: #32CD32;
             text-align: center;
             margin-bottom: clamp(15px, 2vh, 20px);
             font-weight: 500;
-            text-shadow: 1px 1px 2px rgba(76, 175, 80, 0.2);
+            text-shadow: 1px 1px 2px rgba(50, 205, 50, 0.2);
         }
         
         .nature-text {
             font-family: 'Comfortaa', cursive;
             display: block;
-            color: #c75a38;
+            color: #08692d;
             font-size: clamp(0.8rem, 1.1vw, 1.2rem);
             line-height: 1.1;
             text-align: center;
@@ -240,18 +240,18 @@ def get_styles():
         
         .question-container {
             background: rgba(255, 255, 255, 0.9);
-            border: clamp(2px, 0.3vw, 3px) solid #74bd3c;
+            border: clamp(2px, 0.3vw, 3px) solid #9ACD32;
             border-radius: clamp(15px, 2vw, 20px);
             padding: clamp(20px, 3vh, 30px);
             margin: clamp(20px, 2.5vh, 25px) 0;
             position: relative;
-            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.2);
+            box-shadow: 0 8px 25px rgba(154, 205, 50, 0.2);
         }
         
         .question-text {
             font-family: 'Comfortaa', cursive;
             font-size: clamp(1rem, 1.5vw, 1.3rem);
-            color: #569e20;
+            color: #2E8B57;
             line-height: 1.6;
             margin: 0;
             text-align: center;
@@ -268,7 +268,7 @@ def get_styles():
         
         .response-option {
             background: rgba(255, 255, 255, 0.8);
-            border: clamp(2px, 0.3vw, 3px) solid #4caf50;
+            border: clamp(2px, 0.3vw, 3px) solid #32CD32;
             border-radius: clamp(12px, 1.5vw, 15px);
             padding: clamp(15px, 2vh, 20px);
             text-align: center;
@@ -277,7 +277,7 @@ def get_styles():
             font-family: 'Fredoka', cursive;
             font-weight: 500;
             font-size: clamp(0.9rem, 1.2vw, 2rem);
-            color: #c2185b;
+            color: #59250e;
             position: relative;
             overflow: hidden;
         }
@@ -289,15 +289,15 @@ def get_styles():
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(124, 252, 0, 0.3), transparent);
             transition: left 0.5s ease;
         }
         
         .response-option:hover {
-            background: rgba(255, 193, 7, 0.2);
-            border-color: #ffc107;
+            background: rgba(124, 252, 0, 0.2);
+            border-color: #7CFC00;
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
+            box-shadow: 0 8px 25px rgba(124, 252, 0, 0.3);
         }
         
         .response-option:hover::before {
@@ -342,13 +342,13 @@ def get_styles():
             text-align: center;
             padding: clamp(15px, 2vh, 20px);
             font-family: 'Comfortaa', cursive;
-            color: #e91e63;
+            color: #2E8B57;
             font-size: clamp(0.9rem, 1.2vw, 2rem);
         }
         
         .spinner {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #ff9800;
+            border-top: 4px solid #32CD32;
             border-radius: 50%;
             width: clamp(30px, 4vw, 40px);
             height: clamp(30px, 4vw, 40px);
@@ -363,8 +363,8 @@ def get_styles():
         
         /* Main buttons (ALL buttons now use same style) */
         div[data-testid="stButton"] > button {
-            background: linear-gradient(135deg, #ec407a 0%, #ff8a65 50%, #f9e79f 100%) !important;
-            border: clamp(2px, 0.3vw, 3px) solid #e91e63 !important;
+            background: linear-gradient(135deg, #e6733c 0%, #f2a93b 50%, #f6d860 100%) !important;
+            border: clamp(2px, 0.3vw, 3px) solid #FF6347 !important;
             color: white !important;
             font-weight: 600 !important;
             font-size: clamp(1rem, 1.2vw, 1.4rem) !important;
@@ -372,7 +372,7 @@ def get_styles():
             padding: clamp(12px, 1.5vh, 15px) clamp(25px, 3vw, 30px) !important;
             border-radius: clamp(20px, 2.5vw, 25px) !important;
             margin-top: 10px !important;
-            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3) !important;
+            box-shadow: 0 6px 20px rgba(34, 139, 34, 0.3) !important;
             transition: all 0.3s ease !important;
             text-transform: none !important;
             letter-spacing: 0.5px !important;
@@ -380,26 +380,26 @@ def get_styles():
         }
 
         div[data-testid="stButton"] > button:hover {
-            background: linear-gradient(135deg, #f06292 0%, #ffb74d 50%, #fff176 100%) !important;
+            background: linear-gradient(135deg, #FF8C00 0%, #FFD700 50%, #FFFF00 100%) !important;
             transform: translateY(-3px) scale(1.05) !important;
-            box-shadow: 0 8px 30px rgba(233, 30, 99, 0.4) !important;
-            border-color: #f06292 !important;
+            box-shadow: 0 8px 30px rgba(50, 205, 50, 0.4) !important;
+            border-color: #FF8C00 !important;
         }
 
         div[data-testid="stButton"] > button[kind="primary"] {
-            background: linear-gradient(135deg, #ec407a 0%, #ff8a65 50%, #f9e79f 100%) !important;
-            border-color: #e91e63 !important;
-            animation: spring-glow 2s ease-in-out infinite alternate;
+            background: linear-gradient(135deg, #e6733c 0%, #f2a93b 50%, #f6d860 100%) !important;
+            border-color: #FF6347 !important;
+            animation: sunny-glow 2s ease-in-out infinite alternate;
         }
         
-        @keyframes spring-glow {
-            0% { box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3); }
-            100% { box-shadow: 0 8px 30px rgba(255, 152, 0, 0.5); }
+        @keyframes sunny-glow {
+            0% { box-shadow: 0 6px 20px rgba(255, 99, 71, 0.3); }
+            100% { box-shadow: 0 8px 30px rgba(255, 140, 0, 0.5); }
         }
 
         div[data-testid="stButton"] > button[kind="primary"]:hover {
-            background: linear-gradient(135deg, #f06292 0%, #ffb74d 50%, #fff176 100%) !important;
-            border-color: #f06292 !important;
+            background: linear-gradient(135deg, #FF8C00 0%, #FFD700 50%, #FFFF00 100%) !important;
+            border-color: #FF8C00 !important;
         }
 
         div[data-testid="stButton"] > button[type="secondary"] {
@@ -409,6 +409,26 @@ def get_styles():
             position: absolute !important;
             left: -9999px !important;
         }
+        
+        ::-webkit-scrollbar {
+            width: clamp(8px, 1vw, 12px);
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(34, 139, 34, 0.1);
+            border-radius: 6px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #59250e, #32CD32);
+            border-radius: 6px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #32CD32, #7CFC00);
+        }
+    }
         
         ::-webkit-scrollbar {
             width: clamp(8px, 1vw, 12px);
@@ -794,6 +814,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

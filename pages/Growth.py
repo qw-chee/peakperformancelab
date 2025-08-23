@@ -387,7 +387,7 @@ def get_styles():
         }
 
         div[data-testid="stButton"] > button[kind="primary"] {
-            background: linear-gradient(135deg, #e91e63 0%, #ff9800 50%, #e69100 100%) !important;
+            background: linear-gradient(135deg, #f48fb1 0%, #ffcc02 50%, #fff59d 100%) !important;
             border-color: #e91e63 !important;
             animation: spring-glow 2s ease-in-out infinite alternate;
         }
@@ -794,6 +794,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

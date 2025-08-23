@@ -240,7 +240,7 @@ def get_styles():
         
         .question-container {
             background: rgba(255, 255, 255, 0.9);
-            border: clamp(2px, 0.3vw, 3px) solid #4caf50;
+            border: clamp(2px, 0.3vw, 3px) solid #92bd3c;
             border-radius: clamp(15px, 2vw, 20px);
             padding: clamp(20px, 3vh, 30px);
             margin: clamp(20px, 2.5vh, 25px) 0;
@@ -251,7 +251,7 @@ def get_styles():
         .question-text {
             font-family: 'Comfortaa', cursive;
             font-size: clamp(1rem, 1.5vw, 1.3rem);
-            color: #388e3c;
+            color: #92bd3c;
             line-height: 1.6;
             margin: 0;
             text-align: center;
@@ -794,6 +794,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

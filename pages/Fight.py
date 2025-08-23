@@ -366,7 +366,7 @@ Format your response **strictly** as:
 Verdict: [Strong and positive / Weak or Generic / Irrelevant]
 Comment: [Feedback must match the verdict. Be encouraging only for "Strong and positive" and "Weak or Generic". If "Irrelevant", the comment must highlight the problem directly or express concern. Write in laymen terms, be direct, not fluffy. Write in 30 words or less.]"""
         
-        response = openai.ChatCompletion.create(model="gpt-4", messages=[{"role": "user", "content": prompt}], max_tokens=300,temperature=0.7,timeout=30)
+        response = openai.ChatCompletion.create(model="gpt-4", messages=[{"role": "user", "content": prompt}], max_tokens=50,temperature=0.7,timeout=30)
         content = response.choices[0].message.content.strip()
         
         verdict, comment = "Weak or Generic", "Try being more specific."
@@ -654,6 +654,7 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

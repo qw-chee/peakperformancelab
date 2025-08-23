@@ -769,7 +769,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
             <span class="result-icon">{result_data['icon']}</span>
             <h3 class="result-title" style="color: {result_data['color']}; margin-bottom: -15px;">{result_data['title']}</h2>
             <h4 class="result-title" style="color: {result_data['color']};">{result_data['subtitle']}</h3>
-            <div class="result-description" style="color: #59250e;">
+            <div class="result-description" style="color: #964a29;">
                 {result_data['description']}
             </div>
         </div>
@@ -778,7 +778,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     
     st.markdown(f"""
     <div class="nature-container">
-        <div class="result-description" style="color: #59250e; padding: 10px 15px 10px 10px;">
+        <div class="result-description" style="color: #964a29; padding: 10px 15px 10px 10px;">
             Based on your responses, here are some ways you can nurture your growth mindset:
         </div>
         <div class="result-description" style="color: #539127; padding: 0 15px 5px 10px;">
@@ -814,5 +814,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 

@@ -370,7 +370,7 @@ def get_gpt_feedback(element_name, user_response, scenario):
                 {"role": "system", "content": "You are a sports psychology expert specializing in PETTLEP imagery training. Provide constructive feedback to help users create vivid, detailed mental rehearsals."},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=300,
+            max_tokens=50,
             temperature=0.7
         )
         
@@ -424,7 +424,7 @@ Write the script as one continuous narrative without section headers. Make it fe
                 {"role": "system", "content": "You are a sports psychology expert who creates vivid, detailed PETTLEP imagery scripts for mental rehearsal training."},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=800,
+            max_tokens=500,
             temperature=0.7
         )
         

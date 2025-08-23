@@ -152,7 +152,6 @@ page_styles = """
         font-weight: 700 !important;
         font-size: clamp(1.5rem, 3vw, 3.5rem) !important;
         font-family: 'Fredoka', cursive !important;
-        padding: clamp(12px, 2vh, 25px) clamp(20px, 3vw, 40px) !important;
         border-radius: clamp(20px, 3vw, 35px) !important;
         box-shadow: 0 clamp(6px, 1vh, 12px) clamp(20px, 3vh, 35px) rgba(29, 160, 136, 0.4) !important;
         transition: all 0.3s ease !important;
@@ -160,7 +159,6 @@ page_styles = """
         letter-spacing: 0.5px !important;
         width: 100% !important;
         min-width: fit-content !important;
-        white-space: nowrap !important;
         max-width: clamp(300px, 50vw, 600px) !important;
         margin: 10px auto !important;
         display: block !important;

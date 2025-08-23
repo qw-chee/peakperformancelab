@@ -529,7 +529,35 @@ def get_mindset_result(score):
             return category, data
     return "Unknown", {}
 
-
+def render_custom_radio(options, question_num):
+    """Render response buttons using ID selector method for distinct styling"""
+    
+    # Create the grid layout
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        # Strongly Disagree - Red
+        st.markdown('<span id="strongly-disagree"></span>', unsafe_allow_html=True)
+        if st.button(options[0], key=f"response_{question_num}_0", use_container_width=True):
+            return options[0]
+        
+        # Agree - Light Green
+        st.markdown('<span id="agree"></span>', unsafe_allow_html=True)
+        if st.button(options[2], key=f"response_{question_num}_2", use_container_width=True):
+            return options[2]
+    
+    with col2:
+        # Disagree - Orange
+        st.markdown('<span id="disagree"></span>', unsafe_allow_html=True)
+        if st.button(options[1], key=f"response_{question_num}_1", use_container_width=True):
+            return options[1]
+        
+        # Strongly Agree - Dark Green
+        st.markdown('<span id="strongly-agree"></span>', unsafe_allow_html=True)
+        if st.button(options[3], key=f"response_{question_num}_3", use_container_width=True):
+            return options[3]
+    
+    return None
 
 def reset_quiz(to_start=False):
     keys_to_reset = ['current_question', 'responses', 'quiz_completed', 'show_results', 'gpt_feedback', 'generating_feedback']

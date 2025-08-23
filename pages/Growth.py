@@ -184,14 +184,14 @@ def get_styles():
           
         .nature-container {
             background: rgba(255, 255, 255, 0.95);
-            border: clamp(2px, 0.3vw, 3px) solid #4caf50;
+            border: clamp(2px, 0.3vw, 3px) solid #ff9800;
             border-radius: clamp(15px, 2vw, 20px);
             padding: clamp(7px, 0.9vw, 9px);
             margin: clamp(9px, 1.4vh, 14px) 0;
             margin-bottom: -5px;
             position: relative;
             backdrop-filter: blur(8px);
-            box-shadow: 0 8px 32px rgba(76, 175, 80, 0.2), inset 0 0 20px rgba(76, 175, 80, 0.1);
+            box-shadow: 0 8px 32px rgba(255, 152, 0, 0.2), inset 0 0 20px rgba(255, 152, 0, 0.1);
         }
         
         .nature-container::before {
@@ -231,7 +231,7 @@ def get_styles():
         .nature-text {
             font-family: 'Comfortaa', cursive;
             display: block;
-            color: #388e3c;
+            color: #ff5722;
             font-size: clamp(0.8rem, 1.1vw, 1.2rem);
             line-height: 1.1;
             text-align: center;
@@ -240,18 +240,18 @@ def get_styles():
         
         .question-container {
             background: rgba(255, 255, 255, 0.9);
-            border: clamp(2px, 0.3vw, 3px) solid #ff9800;
+            border: clamp(2px, 0.3vw, 3px) solid #4caf50;
             border-radius: clamp(15px, 2vw, 20px);
             padding: clamp(20px, 3vh, 30px);
             margin: clamp(20px, 2.5vh, 25px) 0;
             position: relative;
-            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.2);
         }
         
         .question-text {
             font-family: 'Comfortaa', cursive;
             font-size: clamp(1rem, 1.5vw, 1.3rem);
-            color: #ff5722;
+            color: #388e3c;
             line-height: 1.6;
             margin: 0;
             text-align: center;
@@ -794,6 +794,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

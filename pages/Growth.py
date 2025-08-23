@@ -536,7 +536,7 @@ st.markdown("""
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #e91e63 0%, #ff9800 50%, #ffc107 100%);
+            background: linear-gradient(135deg, #539429 0%, #3b7a12 50%, #265706 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -794,3 +794,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+

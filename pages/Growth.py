@@ -96,7 +96,7 @@ Format your response as a simple list with each recommendation on a new line, st
                 {"role": "system", "content": "You are an educational psychologist specializing in growth mindset development. Provide personalized, actionable advice based on assessment responses."},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=500,
+            max_tokens=70,
             temperature=0.7,
             timeout=30
         )
@@ -941,5 +941,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 

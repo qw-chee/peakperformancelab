@@ -369,7 +369,7 @@ def get_styles():
             font-weight: 600 !important;
             font-size: clamp(1rem, 1.2vw, 1.4rem) !important;
             font-family: 'Fredoka', cursive !important;
-            padding: clamp(3px, 0.5h, 15px) clamp(25px, 3vw, 30px) !important;
+            padding: clamp(12px, 1.5h, 15px) clamp(25px, 3vw, 30px) !important;
             border-radius: clamp(20px, 2.5vw, 25px) !important;
             margin-top: 10px !important;
             box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3) !important;
@@ -480,20 +480,23 @@ def get_mindset_result(score):
 def render_custom_radio(options, question_num):
     """Render functional custom styled buttons using standard Streamlit buttons"""
     
-    # Create 4 columns in one row
-    cols = st.columns(4)
-    
-    if cols[0].button(options[0], key=f"response_{question_num}_0", use_container_width=True, type="primary"):
-        return options[0]
-    
-    if cols[1].button(options[1], key=f"response_{question_num}_1", use_container_width=True, type="primary"):
-        return options[1]
-    
-    if cols[2].button(options[2], key=f"response_{question_num}_2", use_container_width=True, type="primary"):
-        return options[2]
-    
-    if cols[3].button(options[3], key=f"response_{question_num}_3", use_container_width=True, type="primary"):
-        return options[3]
+    col1, col2 = st.columns(2)
+        
+        with col1:
+            # First row, first column - Strongly Disagree
+            if st.button(options[0], key=f"response_{question_num}_0", use_container_width=True, type="primary"):
+                return options[0]
+            # Second row, first column - Agree
+            if st.button(options[2], key=f"response_{question_num}_2", use_container_width=True, type="primary"):
+                return options[2]
+        
+        with col2:
+            # First row, second column - Disagree
+            if st.button(options[1], key=f"response_{question_num}_1", use_container_width=True, type="primary"):
+                return options[1]
+            # Second row, second column - Strongly Agree
+            if st.button(options[3], key=f"response_{question_num}_3", use_container_width=True, type="primary"):
+                return options[3]
     
 def check_javascript_selection(question_num):
     pass
@@ -788,6 +791,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

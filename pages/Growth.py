@@ -369,7 +369,7 @@ def get_styles():
             font-weight: 600 !important;
             font-size: clamp(1rem, 1.2vw, 1.4rem) !important;
             font-family: 'Fredoka', cursive !important;
-            padding: clamp(12px, 1.5h, 15px) clamp(25px, 3vw, 30px) !important;
+            padding: clamp(12px, 1.5vh, 15px) clamp(25px, 3vw, 30px) !important;
             border-radius: clamp(20px, 2.5vw, 25px) !important;
             margin-top: 10px !important;
             box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3) !important;
@@ -794,6 +794,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

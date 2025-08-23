@@ -35,10 +35,10 @@ QUIZ_QUESTIONS = [
 ]
 
 MINDSET_RESULTS = {
-    "Strong Growth Mindset": {"range": (45, 60), "icon": "🌳", "title": "The Mighty Oak", "subtitle": "Strong Growth Mindset", "description": "Like a strong oak tree with reaching branches, you have embraced growth! You understand that abilities can flourish through effort.", "color": "#c2185b"},
-    "Growth Mindset with some Fixed Ideas": {"range": (34, 44), "icon": "🌿", "title": "The Growing Sapling", "subtitle": "Growth Mindset with some Fixed Ideas", "description": "Like a sapling reaching toward the sun, you have many growth-oriented beliefs but have some areas where you have a fixed view of ability.", "color": "#c2185b"},
-    "Fixed Mindset with some Growth Ideas": {"range": (21, 33), "icon": "🌱", "title": "The Sprouting Seed", "subtitle": "Fixed Mindset with some Growth Ideas", "description": "Like a sprouting seed, you currently lean toward a fixed view of ability, but you're starting to develop some growth-oriented beliefs!", "color": "#c2185b"},
-    "Strong Fixed Mindset": {"range": (0, 20), "icon": "🌰", "title": "The Dormant Seed", "subtitle": "Strong Fixed Mindset", "description": "Your current beliefs lean toward a fixed view of ability, but remember - growth is always possible when the conditions are right.", "color": "#c2185b"}
+    "Strong Growth Mindset": {"range": (45, 60), "icon": "🌳", "title": "The Mighty Oak", "subtitle": "Strong Growth Mindset", "description": "Like a strong oak tree with reaching branches, you have embraced growth! You understand that abilities can flourish through effort.", "color": "#59250e"},
+    "Growth Mindset with some Fixed Ideas": {"range": (34, 44), "icon": "🌿", "title": "The Growing Sapling", "subtitle": "Growth Mindset with some Fixed Ideas", "description": "Like a sapling reaching toward the sun, you have many growth-oriented beliefs but have some areas where you have a fixed view of ability.", "color": "#964a29"},
+    "Fixed Mindset with some Growth Ideas": {"range": (21, 33), "icon": "🌱", "title": "The Sprouting Seed", "subtitle": "Fixed Mindset with some Growth Ideas", "description": "Like a sprouting seed, you currently lean toward a fixed view of ability, but you're starting to develop some growth-oriented beliefs!", "color": "#569629"},
+    "Strong Fixed Mindset": {"range": (0, 20), "icon": "🌰", "title": "The Dormant Seed", "subtitle": "Strong Fixed Mindset", "description": "Your current beliefs lean toward a fixed view of ability, but remember - growth is always possible when the conditions are right.", "color": "#7fbd53"}
 }
 
 RESPONSE_OPTIONS = ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"]
@@ -740,7 +740,7 @@ elif 1 <= st.session_state.current_question <= st.session_state.total_questions 
 elif st.session_state.quiz_completed and not st.session_state.show_results:
     # Clear screen with full viewport container
     st.markdown("""
-    <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255, 255, 255, 0.98); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+    <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(215, 242, 194, 0.98); z-index: 1000; display: flex; align-items: center; justify-content: center;">
         <div class="nature-container" style="margin: 0; padding: 40px;">
             <div class="loading-feedback">
                 <div class="spinner"></div>
@@ -769,7 +769,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
             <span class="result-icon">{result_data['icon']}</span>
             <h3 class="result-title" style="color: {result_data['color']}; margin-bottom: -15px;">{result_data['title']}</h2>
             <h4 class="result-title" style="color: {result_data['color']};">{result_data['subtitle']}</h3>
-            <div class="result-description" style="color: #ad1457;">
+            <div class="result-description" style="color: #59250e;">
                 {result_data['description']}
             </div>
         </div>
@@ -778,10 +778,10 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     
     st.markdown(f"""
     <div class="nature-container">
-        <div class="result-description" style="color: #ad1457; padding: 10px 15px 10px 10px;">
+        <div class="result-description" style="color: #59250e; padding: 10px 15px 10px 10px;">
             Based on your responses, here are some ways you can nurture your growth mindset:
         </div>
-        <div class="result-description" style="color: #ff5722; padding: 0 15px 5px 10px;">
+        <div class="result-description" style="color: #539127; padding: 0 15px 5px 10px;">
             <ul style="padding-left: 10px; margin: 10px 0;">
                 {st.session_state.gpt_feedback}
             </ul>
@@ -814,28 +814,3 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

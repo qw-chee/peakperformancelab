@@ -362,7 +362,7 @@ def get_gpt_feedback(element_name, user_response, scenario):
         Provide feedback in this exact format:
         
         APPROVED: [YES/NO]
-        FEEDBACK: [If NO, explain what questions weren't addressed in around 25 words. If YES, provide brief positive reinforcement in around 25 words.]"""
+        FEEDBACK: [If NO, explain what questions weren't addressed in around 25 words. If YES, provide brief positive reinforcement in around 25 words. Use a warm, conversational tone.]"""
 
         response = openai.ChatCompletion.create(
             model="gpt-4o-mini",

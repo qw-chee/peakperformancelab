@@ -363,7 +363,7 @@ def get_styles():
         
         /* Main buttons (ALL buttons now use same style) */
         div[data-testid="stButton"] > button {
-            background: linear-gradient(135deg, #e91e63 0%, #ff9800 50%, #e69100 100%) !important;
+            background: linear-gradient(135deg, #f48fb1 0%, #ffcc02 50%, #fff59d 100%) !important;
             border: clamp(2px, 0.3vw, 3px) solid #e91e63 !important;
             color: white !important;
             font-weight: 600 !important;
@@ -794,6 +794,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

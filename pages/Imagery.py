@@ -365,7 +365,7 @@ def get_gpt_feedback(element_name, user_response, scenario):
         FEEDBACK: [If NO, explain what questions weren't addressed in around 20 words. If YES, provide brief positive reinforcement in around 20 words.]"""
 
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are a sports psychology expert specializing in PETTLEP imagery training. Provide constructive feedback to help users create vivid, detailed mental rehearsals."},
                 {"role": "user", "content": prompt}
@@ -419,7 +419,7 @@ The user has completed all 7 PETTLEP elements with the following information:
 Write the script as one continuous narrative without section headers. Make it feel like a mental rehearsal that the user can follow. Use simple words and language. Write in 200 words or less."""
 
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are a sports psychology expert who creates vivid, detailed PETTLEP imagery scripts for mental rehearsal training."},
                 {"role": "user", "content": prompt}

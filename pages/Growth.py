@@ -35,10 +35,10 @@ QUIZ_QUESTIONS = [
 ]
 
 MINDSET_RESULTS = {
-    "Strong Growth Mindset": {"range": (45, 60), "icon": "🌳", "title": "The Mighty Oak", "subtitle": "Strong Growth Mindset", "description": "Like a strong oak tree with reaching branches, you have embraced growth! You understand that abilities can flourish through effort.", "color": "#59250e"},
-    "Growth Mindset with some Fixed Ideas": {"range": (34, 44), "icon": "🌿", "title": "The Growing Sapling", "subtitle": "Growth Mindset with some Fixed Ideas", "description": "Like a sapling reaching toward the sun, you have many growth-oriented beliefs but have some areas where you have a fixed view of ability.", "color": "#59250e"},
-    "Fixed Mindset with some Growth Ideas": {"range": (21, 33), "icon": "🌱", "title": "The Sprouting Seed", "subtitle": "Fixed Mindset with some Growth Ideas", "description": "Like a sprouting seed, you currently lean toward a fixed view of ability, but you're starting to develop some growth-oriented beliefs!", "color": "#59250e"},
-    "Strong Fixed Mindset": {"range": (0, 20), "icon": "🌰", "title": "The Dormant Seed", "subtitle": "Strong Fixed Mindset", "description": "Your current beliefs lean toward a fixed view of ability, but remember - growth is always possible when the conditions are right.", "color": "#59250e"}
+    "Strong Growth Mindset": {"range": (45, 60), "icon": "🌳", "title": "The Mighty Oak", "subtitle": "Strong Growth Mindset", "description": "Like a strong oak tree with reaching branches, you have embraced growth! You understand that abilities can flourish through effort.", "color": "#c2185b"},
+    "Growth Mindset with some Fixed Ideas": {"range": (34, 44), "icon": "🌿", "title": "The Growing Sapling", "subtitle": "Growth Mindset with some Fixed Ideas", "description": "Like a sapling reaching toward the sun, you have many growth-oriented beliefs but have some areas where you have a fixed view of ability.", "color": "#c2185b"},
+    "Fixed Mindset with some Growth Ideas": {"range": (21, 33), "icon": "🌱", "title": "The Sprouting Seed", "subtitle": "Fixed Mindset with some Growth Ideas", "description": "Like a sprouting seed, you currently lean toward a fixed view of ability, but you're starting to develop some growth-oriented beliefs!", "color": "#c2185b"},
+    "Strong Fixed Mindset": {"range": (0, 20), "icon": "🌰", "title": "The Dormant Seed", "subtitle": "Strong Fixed Mindset", "description": "Your current beliefs lean toward a fixed view of ability, but remember - growth is always possible when the conditions are right.", "color": "#c2185b"}
 }
 
 RESPONSE_OPTIONS = ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"]
@@ -91,7 +91,7 @@ Format your response as a simple list with each recommendation on a new line, st
 """
 
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are an educational psychologist specializing in growth mindset development. Provide personalized, actionable advice based on assessment responses."},
                 {"role": "user", "content": prompt}
@@ -184,14 +184,14 @@ def get_styles():
           
         .nature-container {
             background: rgba(255, 255, 255, 0.95);
-            border: clamp(2px, 0.3vw, 3px) solid #59250e;
+            border: clamp(2px, 0.3vw, 3px) solid #e91e63;
             border-radius: clamp(15px, 2vw, 20px);
             padding: clamp(7px, 0.9vw, 9px);
             margin: clamp(9px, 1.4vh, 14px) 0;
             margin-bottom: -5px;
             position: relative;
             backdrop-filter: blur(8px);
-            box-shadow: 0 8px 32px rgba(255, 161, 102, 0.2), inset 0 0 20px rgba(255, 161, 102, 0.1);
+            box-shadow: 0 8px 32px rgba(233, 30, 99, 0.2), inset 0 0 20px rgba(255, 192, 203, 0.1);
         }
         
         .nature-container::before {
@@ -211,27 +211,27 @@ def get_styles():
             font-family: 'Fredoka', cursive;
             font-weight: 700;
             font-size: clamp(2rem, 4vw, 5rem);
-            color: #59250e;
+            color: #c2185b;
             text-align: center;
             margin-bottom: clamp(5px, 1vh, 10px);
-            text-shadow: 2px 2px 4px rgba(255, 161, 102, 0.2);
+            text-shadow: 2px 2px 4px rgba(233, 30, 99, 0.2);
             line-height: 1.1;
         }
         
         .leaf-subtitle {
             font-family: 'Comfortaa', cursive;
             font-size: clamp(1rem, 1.8vw, 3rem);
-            color: #32CD32;
+            color: #4caf50;
             text-align: center;
             margin-bottom: clamp(15px, 2vh, 20px);
             font-weight: 500;
-            text-shadow: 1px 1px 2px rgba(50, 205, 50, 0.2);
+            text-shadow: 1px 1px 2px rgba(76, 175, 80, 0.2);
         }
         
         .nature-text {
             font-family: 'Comfortaa', cursive;
             display: block;
-            color: #08692d;
+            color: #ad1457;
             font-size: clamp(0.8rem, 1.1vw, 1.2rem);
             line-height: 1.1;
             text-align: center;
@@ -240,18 +240,18 @@ def get_styles():
         
         .question-container {
             background: rgba(255, 255, 255, 0.9);
-            border: clamp(2px, 0.3vw, 3px) solid #9ACD32;
+            border: clamp(2px, 0.3vw, 3px) solid #ff9800;
             border-radius: clamp(15px, 2vw, 20px);
             padding: clamp(20px, 3vh, 30px);
             margin: clamp(20px, 2.5vh, 25px) 0;
             position: relative;
-            box-shadow: 0 8px 25px rgba(154, 205, 50, 0.2);
+            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.2);
         }
         
         .question-text {
             font-family: 'Comfortaa', cursive;
             font-size: clamp(1rem, 1.5vw, 1.3rem);
-            color: #2E8B57;
+            color: #ff5722;
             line-height: 1.6;
             margin: 0;
             text-align: center;
@@ -268,7 +268,7 @@ def get_styles():
         
         .response-option {
             background: rgba(255, 255, 255, 0.8);
-            border: clamp(2px, 0.3vw, 3px) solid #32CD32;
+            border: clamp(2px, 0.3vw, 3px) solid #4caf50;
             border-radius: clamp(12px, 1.5vw, 15px);
             padding: clamp(15px, 2vh, 20px);
             text-align: center;
@@ -277,7 +277,7 @@ def get_styles():
             font-family: 'Fredoka', cursive;
             font-weight: 500;
             font-size: clamp(0.9rem, 1.2vw, 2rem);
-            color: #59250e;
+            color: #c2185b;
             position: relative;
             overflow: hidden;
         }
@@ -289,15 +289,15 @@ def get_styles():
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(124, 252, 0, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.3), transparent);
             transition: left 0.5s ease;
         }
         
         .response-option:hover {
-            background: rgba(124, 252, 0, 0.2);
-            border-color: #7CFC00;
+            background: rgba(255, 193, 7, 0.2);
+            border-color: #ffc107;
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(124, 252, 0, 0.3);
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
         }
         
         .response-option:hover::before {
@@ -342,13 +342,13 @@ def get_styles():
             text-align: center;
             padding: clamp(15px, 2vh, 20px);
             font-family: 'Comfortaa', cursive;
-            color: #2E8B57;
+            color: #e91e63;
             font-size: clamp(0.9rem, 1.2vw, 2rem);
         }
         
         .spinner {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #32CD32;
+            border-top: 4px solid #ff9800;
             border-radius: 50%;
             width: clamp(30px, 4vw, 40px);
             height: clamp(30px, 4vw, 40px);
@@ -361,10 +361,10 @@ def get_styles():
             100% { transform: rotate(360deg); }
         }
         
-        /* Main buttons (EXCLUDE response buttons) - Modified to exclude response buttons */
-        div[data-testid="stButton"]:not(:has(button[aria-label*="Strongly Disagree"])):not(:has(button[aria-label*="Disagree"])):not(:has(button[aria-label*="Agree"])) > button {
-            background: linear-gradient(135deg, #e6733c 0%, #f2a93b 50%, #f6d860 100%) !important;
-            border: clamp(2px, 0.3vw, 3px) solid #FF6347 !important;
+        /* Main buttons (ALL buttons now use same style) */
+        div[data-testid="stButton"] > button {
+            background: linear-gradient(135deg, #e91e63 0%, #ff9800 50%, #ffc107 100%) !important;
+            border: clamp(2px, 0.3vw, 3px) solid #e91e63 !important;
             color: white !important;
             font-weight: 600 !important;
             font-size: clamp(1rem, 1.2vw, 1.4rem) !important;
@@ -372,34 +372,34 @@ def get_styles():
             padding: clamp(12px, 1.5vh, 15px) clamp(25px, 3vw, 30px) !important;
             border-radius: clamp(20px, 2.5vw, 25px) !important;
             margin-top: 10px !important;
-            box-shadow: 0 6px 20px rgba(34, 139, 34, 0.3) !important;
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3) !important;
             transition: all 0.3s ease !important;
             text-transform: none !important;
             letter-spacing: 0.5px !important;
             width: 100% !important;
         }
 
-        div[data-testid="stButton"]:not(:has(button[aria-label*="Strongly Disagree"])):not(:has(button[aria-label*="Disagree"])):not(:has(button[aria-label*="Agree"])) > button:hover {
-            background: linear-gradient(135deg, #FF8C00 0%, #FFD700 50%, #FFFF00 100%) !important;
+        div[data-testid="stButton"] > button:hover {
+            background: linear-gradient(135deg, #f06292 0%, #ffb74d 50%, #fff176 100%) !important;
             transform: translateY(-3px) scale(1.05) !important;
-            box-shadow: 0 8px 30px rgba(50, 205, 50, 0.4) !important;
-            border-color: #FF8C00 !important;
+            box-shadow: 0 8px 30px rgba(233, 30, 99, 0.4) !important;
+            border-color: #f06292 !important;
         }
 
         div[data-testid="stButton"] > button[kind="primary"] {
-            background: linear-gradient(135deg, #e6733c 0%, #f2a93b 50%, #f6d860 100%) !important;
-            border-color: #FF6347 !important;
-            animation: sunny-glow 2s ease-in-out infinite alternate;
+            background: linear-gradient(135deg, #e91e63 0%, #ff9800 50%, #ffc107 100%) !important;
+            border-color: #e91e63 !important;
+            animation: spring-glow 2s ease-in-out infinite alternate;
         }
         
-        @keyframes sunny-glow {
-            0% { box-shadow: 0 6px 20px rgba(255, 99, 71, 0.3); }
-            100% { box-shadow: 0 8px 30px rgba(255, 140, 0, 0.5); }
+        @keyframes spring-glow {
+            0% { box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3); }
+            100% { box-shadow: 0 8px 30px rgba(255, 152, 0, 0.5); }
         }
 
         div[data-testid="stButton"] > button[kind="primary"]:hover {
-            background: linear-gradient(135deg, #FF8C00 0%, #FFD700 50%, #FFFF00 100%) !important;
-            border-color: #FF8C00 !important;
+            background: linear-gradient(135deg, #f06292 0%, #ffb74d 50%, #fff176 100%) !important;
+            border-color: #f06292 !important;
         }
 
         div[data-testid="stButton"] > button[type="secondary"] {
@@ -415,18 +415,18 @@ def get_styles():
         }
         
         ::-webkit-scrollbar-track {
-            background: rgba(34, 139, 34, 0.1);
+            background: rgba(233, 30, 99, 0.1);
             border-radius: 6px;
         }
         
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(45deg, #59250e, #32CD32);
+            background: linear-gradient(45deg, #e91e63, #ff9800);
             border-radius: 6px;
             border: 2px solid rgba(255, 255, 255, 0.2);
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(45deg, #32CD32, #7CFC00);
+            background: linear-gradient(45deg, #f06292, #ffb74d);
         }
     }
 
@@ -478,173 +478,26 @@ def get_mindset_result(score):
     return "Unknown", {}
 
 def render_custom_radio(options, question_num):
-    """Render functional custom styled buttons with JavaScript CSS injection"""
+    """Render functional custom styled buttons using standard Streamlit buttons"""
     
-    # Create the grid layout first
+    # Create the grid layout
     col1, col2 = st.columns(2)
     
     with col1:
         # First row, first column - Strongly Disagree
-        if st.button(options[0], key=f"response_{question_num}_0", use_container_width=True):
+        if st.button(options[0], key=f"response_{question_num}_0", use_container_width=True, type="primary"):
             return options[0]
         # Second row, first column - Agree
-        if st.button(options[2], key=f"response_{question_num}_2", use_container_width=True):
+        if st.button(options[2], key=f"response_{question_num}_2", use_container_width=True, type="primary"):
             return options[2]
     
     with col2:
         # First row, second column - Disagree
-        if st.button(options[1], key=f"response_{question_num}_1", use_container_width=True):
+        if st.button(options[1], key=f"response_{question_num}_1", use_container_width=True, type="primary"):
             return options[1]
         # Second row, second column - Strongly Agree
-        if st.button(options[3], key=f"response_{question_num}_3", use_container_width=True):
+        if st.button(options[3], key=f"response_{question_num}_3", use_container_width=True, type="primary"):
             return options[3]
-    
-    # Inject CSS via JavaScript AFTER the buttons are rendered
-    st.markdown(f"""
-    <script>
-    (function() {{
-        // Wait for DOM to be ready
-        setTimeout(function() {{
-            // Remove any existing response button styles
-            var existingStyle = document.getElementById('response-button-styles-{question_num}');
-            if (existingStyle) {{
-                existingStyle.remove();
-            }}
-            
-            // Create new style element
-            var style = document.createElement('style');
-            style.id = 'response-button-styles-{question_num}';
-            style.type = 'text/css';
-            
-            var css = `
-                /* Response buttons with maximum specificity */
-                button[data-testid="baseButton-secondary"][aria-label="response_{question_num}_0"] {{
-                    all: unset !important;
-                    display: inline-flex !important;
-                    align-items: center !important;
-                    justify-content: center !important;
-                    border-radius: 15px !important;
-                    padding: 15px 10px !important;
-                    text-align: center !important;
-                    font-family: 'Fredoka', cursive !important;
-                    font-weight: 600 !important;
-                    font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-                    color: white !important;
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-                    min-height: 60px !important;
-                    transition: all 0.3s ease !important;
-                    width: 100% !important;
-                    cursor: pointer !important;
-                    background: rgba(153, 21, 21, 0.9) !important;
-                    border: 2px solid #FF6347 !important;
-                    box-sizing: border-box !important;
-                }}
-                
-                button[data-testid="baseButton-secondary"][aria-label="response_{question_num}_1"] {{
-                    all: unset !important;
-                    display: inline-flex !important;
-                    align-items: center !important;
-                    justify-content: center !important;
-                    border-radius: 15px !important;
-                    padding: 15px 10px !important;
-                    text-align: center !important;
-                    font-family: 'Fredoka', cursive !important;
-                    font-weight: 600 !important;
-                    font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-                    color: white !important;
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-                    min-height: 60px !important;
-                    transition: all 0.3s ease !important;
-                    width: 100% !important;
-                    cursor: pointer !important;
-                    background: rgba(255, 157, 0, 0.9) !important;
-                    border: 2px solid #FFA500 !important;
-                    box-sizing: border-box !important;
-                }}
-                
-                button[data-testid="baseButton-secondary"][aria-label="response_{question_num}_2"] {{
-                    all: unset !important;
-                    display: inline-flex !important;
-                    align-items: center !important;
-                    justify-content: center !important;
-                    border-radius: 15px !important;
-                    padding: 15px 10px !important;
-                    text-align: center !important;
-                    font-family: 'Fredoka', cursive !important;
-                    font-weight: 600 !important;
-                    font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-                    color: white !important;
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-                    min-height: 60px !important;
-                    transition: all 0.3s ease !important;
-                    width: 100% !important;
-                    cursor: pointer !important;
-                    background: rgba(11, 176, 90, 0.9) !important;
-                    border: 2px solid #1bf282 !important;
-                    box-sizing: border-box !important;
-                }}
-                
-                button[data-testid="baseButton-secondary"][aria-label="response_{question_num}_3"] {{
-                    all: unset !important;
-                    display: inline-flex !important;
-                    align-items: center !important;
-                    justify-content: center !important;
-                    border-radius: 15px !important;
-                    padding: 15px 10px !important;
-                    text-align: center !important;
-                    font-family: 'Fredoka', cursive !important;
-                    font-weight: 600 !important;
-                    font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
-                    color: white !important;
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-                    min-height: 60px !important;
-                    transition: all 0.3s ease !important;
-                    width: 100% !important;
-                    cursor: pointer !important;
-                    background: rgba(7, 135, 61, 0.9) !important;
-                    border: 2px solid #0bb05a !important;
-                    box-sizing: border-box !important;
-                }}
-                
-                /* Hover effects */
-                button[data-testid="baseButton-secondary"][aria-label="response_{question_num}_0"]:hover {{
-                    transform: translateY(-2px) scale(1.02) !important;
-                    background: rgba(153, 21, 21, 1.0) !important;
-                    border-color: #FF4500 !important;
-                    box-shadow: 0 6px 20px rgba(153, 21, 21, 0.4) !important;
-                }}
-                
-                button[data-testid="baseButton-secondary"][aria-label="response_{question_num}_1"]:hover {{
-                    transform: translateY(-2px) scale(1.02) !important;
-                    background: rgba(255, 157, 0, 1.0) !important;
-                    border-color: #FF8C00 !important;
-                    box-shadow: 0 6px 20px rgba(255, 157, 0, 0.4) !important;
-                }}
-                
-                button[data-testid="baseButton-secondary"][aria-label="response_{question_num}_2"]:hover {{
-                    transform: translateY(-2px) scale(1.02) !important;
-                    background: rgba(11, 176, 90, 1.0) !important;
-                    border-color: #00FF7F !important;
-                    box-shadow: 0 6px 20px rgba(11, 176, 90, 0.4) !important;
-                }}
-                
-                button[data-testid="baseButton-secondary"][aria-label="response_{question_num}_3"]:hover {{
-                    transform: translateY(-2px) scale(1.02) !important;
-                    background: rgba(7, 135, 61, 1.0) !important;
-                    border-color: #32CD32 !important;
-                    box-shadow: 0 6px 20px rgba(7, 135, 61, 0.4) !important;
-                }}
-            `;
-            
-            style.innerHTML = css;
-            document.head.appendChild(style);
-            
-            console.log('Response button styles injected for question {question_num}');
-            
-        }}, 100); // Small delay to ensure buttons are rendered
-    }})();
-    </script>
-    """, unsafe_allow_html=True)
     
     return None
     
@@ -683,7 +536,7 @@ st.markdown("""
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #539429 0%, #3b7a12 50%, #265706 100%);
+            background: linear-gradient(135deg, #e91e63 0%, #ff9800 50%, #ffc107 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -763,7 +616,7 @@ if (window.innerWidth >= 1024) {
     window.addEventListener('resize', function() {
         if (window.innerWidth < 1024) {
             document.body.style.display = 'none';
-            document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, #539429 0%, #3b7a12 50%, #265706 100%); color: white; font-size: 1.5rem; text-align: center; font-family: Fredoka, cursive;">This application is designed for desktop and laptop screens only.</div>';
+            document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, #e91e63 0%, #ff9800 50%, #ffc107 100%); color: white; font-size: 1.5rem; text-align: center; font-family: Fredoka, cursive;">This application is designed for desktop and laptop screens only.</div>';
         }
     });
 }
@@ -789,7 +642,7 @@ st.markdown(
 if st.session_state.current_question == 0 and not st.session_state.quiz_completed:
     st.markdown("""
     <div class="nature-container">
-        <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: 1.5em; margin-bottom: -5px; text-align: center;">
+        <h3 style="color: #c2185b; font-family: 'Fredoka', cursive; font-size: 1.5em; margin-bottom: -5px; text-align: center;">
             🌱 Mindset Growth Garden
         </h3>
         <div class="nature-text">
@@ -807,7 +660,7 @@ if st.session_state.current_question == 0 and not st.session_state.quiz_complete
         
     st.markdown("""
     <div class="nature-container">
-        <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: 1.5em; margin-bottom: -5px; text-align: center;">
+        <h3 style="color: #c2185b; font-family: 'Fredoka', cursive; font-size: 1.5em; margin-bottom: -5px; text-align: center;">
             ✨ How to Respond
         </h3>
         <div class="nature-text">
@@ -815,16 +668,16 @@ if st.session_state.current_question == 0 and not st.session_state.quiz_complete
         </div>
         <div style="margin: -10px 0 -20px 0;">
             <div class="response-grid">
-                <div style="background: rgba(153, 21, 21, 0.8); border: 2px solid #FF6347; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
+                <div style="background: linear-gradient(135deg, #e91e63 0%, #ff9800 50%, #ffc107 100%); border: 2px solid #e91e63; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
                     Strongly Disagree
                 </div>
-                <div style="background: rgba(255, 157, 0, 0.8); border: 2px solid #FFA500; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
+                <div style="background: linear-gradient(135deg, #e91e63 0%, #ff9800 50%, #ffc107 100%); border: 2px solid #e91e63; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
                     Disagree
                 </div>
-                <div style="background: rgba(11, 176, 90, 0.8); border: 2px solid #1bf282; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;">
+                <div style="background: linear-gradient(135deg, #e91e63 0%, #ff9800 50%, #ffc107 100%); border: 2px solid #e91e63; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;">
                     Agree
                 </div>
-                <div style="background: rgba(7, 135, 61, 0.8); border: 2px solid #0bb05a; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;">
+                <div style="background: linear-gradient(135deg, #e91e63 0%, #ff9800 50%, #ffc107 100%); border: 2px solid #e91e63; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;">
                     Strongly Agree
                 </div>
             </div>
@@ -896,7 +749,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
             <span class="result-icon">{result_data['icon']}</span>
             <h3 class="result-title" style="color: {result_data['color']}; margin-bottom: -15px;">{result_data['title']}</h2>
             <h4 class="result-title" style="color: {result_data['color']};">{result_data['subtitle']}</h3>
-            <div class="result-description" style="color: #6e3f09;">
+            <div class="result-description" style="color: #ad1457;">
                 {result_data['description']}
             </div>
         </div>
@@ -905,10 +758,10 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     
     st.markdown(f"""
     <div class="nature-container">
-        <div class="result-description" style="color: #6e3f09; padding: 10px 15px 10px 10px;">
+        <div class="result-description" style="color: #ad1457; padding: 10px 15px 10px 10px;">
             Based on your responses, here are some ways you can nurture your growth mindset:
         </div>
-        <div class="result-description" style="color: #2E8B57; padding: 0 15px 5px 10px;">
+        <div class="result-description" style="color: #ff5722; padding: 0 15px 5px 10px;">
             <ul style="padding-left: 10px; margin: 10px 0;">
                 {st.session_state.gpt_feedback}
             </ul>
@@ -941,4 +794,3 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-

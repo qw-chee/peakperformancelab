@@ -184,14 +184,14 @@ def get_styles():
           
         .nature-container {
             background: rgba(255, 255, 255, 0.95);
-            border: clamp(2px, 0.3vw, 3px) solid #e91e63;
+            border: clamp(2px, 0.3vw, 3px) solid #4caf50;
             border-radius: clamp(15px, 2vw, 20px);
             padding: clamp(7px, 0.9vw, 9px);
             margin: clamp(9px, 1.4vh, 14px) 0;
             margin-bottom: -5px;
             position: relative;
             backdrop-filter: blur(8px);
-            box-shadow: 0 8px 32px rgba(233, 30, 99, 0.2), inset 0 0 20px rgba(255, 192, 203, 0.1);
+            box-shadow: 0 8px 32px rgba(76, 175, 80, 0.2), inset 0 0 20px rgba(76, 175, 80, 0.1);
         }
         
         .nature-container::before {
@@ -211,7 +211,7 @@ def get_styles():
             font-family: 'Fredoka', cursive;
             font-weight: 700;
             font-size: clamp(2rem, 4vw, 5rem);
-            color: #c2185b;
+            color: #2e7d32;;
             text-align: center;
             margin-bottom: clamp(5px, 1vh, 10px);
             text-shadow: 2px 2px 4px rgba(233, 30, 99, 0.2);
@@ -231,7 +231,7 @@ def get_styles():
         .nature-text {
             font-family: 'Comfortaa', cursive;
             display: block;
-            color: #ad1457;
+            color: #388e3c;
             font-size: clamp(0.8rem, 1.1vw, 1.2rem);
             line-height: 1.1;
             text-align: center;
@@ -642,7 +642,7 @@ st.markdown(
 if st.session_state.current_question == 0 and not st.session_state.quiz_completed:
     st.markdown("""
     <div class="nature-container">
-        <h3 style="color: #c2185b; font-family: 'Fredoka', cursive; font-size: 1.5em; margin-bottom: -5px; text-align: center;">
+        <h3 style="color: #2e7d32; font-family: 'Fredoka', cursive; font-size: 1.5em; margin-bottom: -5px; text-align: center;">
             🌱 Mindset Growth Garden
         </h3>
         <div class="nature-text">
@@ -660,7 +660,7 @@ if st.session_state.current_question == 0 and not st.session_state.quiz_complete
         
     st.markdown("""
     <div class="nature-container">
-        <h3 style="color: #c2185b; font-family: 'Fredoka', cursive; font-size: 1.5em; margin-bottom: -5px; text-align: center;">
+        <h3 style="color: #2e7d32; font-family: 'Fredoka', cursive; font-size: 1.5em; margin-bottom: -5px; text-align: center;">
             ✨ How to Respond
         </h3>
         <div class="nature-text">
@@ -794,4 +794,5 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 

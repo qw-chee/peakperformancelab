@@ -231,7 +231,7 @@ def get_styles():
         .nature-text {
             font-family: 'Comfortaa', cursive;
             display: block;
-            color: #ff5722;
+            color: #c75a38;
             font-size: clamp(0.8rem, 1.1vw, 1.2rem);
             line-height: 1.1;
             text-align: center;
@@ -794,6 +794,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

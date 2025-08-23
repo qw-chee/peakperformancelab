@@ -364,10 +364,10 @@ def get_styles():
             border-color: #FF8C00 !important;
         }
 
-        /* Response button styling using different types */
+        /* Response button styling using ID selector method */
         
-        /* Strongly Disagree - Red (using data-baseweb-tooltip) */
-        div[data-testid="stButton"] > button[data-baseweb-tooltip="strongly-disagree"] {
+        /* Strongly Disagree - Red */
+        .element-container:has(#strongly-disagree) + div button {
             background: rgba(153, 21, 21, 0.9) !important;
             border: clamp(2px, 0.3vw, 3px) solid #FF6347 !important;
             color: white !important;
@@ -383,15 +383,15 @@ def get_styles():
             margin-top: 0 !important;
         }
         
-        div[data-testid="stButton"] > button[data-baseweb-tooltip="strongly-disagree"]:hover {
+        .element-container:has(#strongly-disagree) + div button:hover {
             background: rgba(153, 21, 21, 1.0) !important;
             border-color: #FF4500 !important;
             transform: translateY(-2px) scale(1.02) !important;
             box-shadow: 0 6px 20px rgba(153, 21, 21, 0.4) !important;
         }
         
-        /* Disagree - Orange (using help text) */
-        div[data-testid="stButton"] > button[title="disagree"] {
+        /* Disagree - Orange */
+        .element-container:has(#disagree) + div button {
             background: rgba(255, 157, 0, 0.9) !important;
             border: clamp(2px, 0.3vw, 3px) solid #FFA500 !important;
             color: white !important;
@@ -407,15 +407,15 @@ def get_styles():
             margin-top: 0 !important;
         }
         
-        div[data-testid="stButton"] > button[title="disagree"]:hover {
+        .element-container:has(#disagree) + div button:hover {
             background: rgba(255, 157, 0, 1.0) !important;
             border-color: #FF8C00 !important;
             transform: translateY(-2px) scale(1.02) !important;
             box-shadow: 0 6px 20px rgba(255, 157, 0, 0.4) !important;
         }
         
-        /* Agree - Light Green (using title attribute) */
-        div[data-testid="stButton"] > button[title="agree"] {
+        /* Agree - Light Green */
+        .element-container:has(#agree) + div button {
             background: rgba(11, 176, 90, 0.9) !important;
             border: clamp(2px, 0.3vw, 3px) solid #1bf282 !important;
             color: white !important;
@@ -431,15 +431,15 @@ def get_styles():
             margin-top: 0 !important;
         }
         
-        div[data-testid="stButton"] > button[title="agree"]:hover {
+        .element-container:has(#agree) + div button:hover {
             background: rgba(11, 176, 90, 1.0) !important;
             border-color: #00FF7F !important;
             transform: translateY(-2px) scale(1.02) !important;
             box-shadow: 0 6px 20px rgba(11, 176, 90, 0.4) !important;
         }
         
-        /* Strongly Agree - Dark Green (using secondary type) */
-        div[data-testid="stButton"] > button[kind="secondary"] {
+        /* Strongly Agree - Dark Green */
+        .element-container:has(#strongly-agree) + div button {
             background: rgba(7, 135, 61, 0.9) !important;
             border: clamp(2px, 0.3vw, 3px) solid #0bb05a !important;
             color: white !important;
@@ -455,7 +455,7 @@ def get_styles():
             margin-top: 0 !important;
         }
         
-        div[data-testid="stButton"] > button[kind="secondary"]:hover {
+        .element-container:has(#strongly-agree) + div button:hover {
             background: rgba(7, 135, 61, 1.0) !important;
             border-color: #32CD32 !important;
             transform: translateY(-2px) scale(1.02) !important;

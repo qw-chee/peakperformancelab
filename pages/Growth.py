@@ -173,7 +173,7 @@ def get_styles():
         
         /* Full screen background */
         .stApp {
-            background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Growth.gif');
+            background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/growth.gif');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -941,6 +941,3 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-
-

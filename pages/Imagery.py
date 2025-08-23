@@ -2,331 +2,58 @@ import streamlit as st
 import openai
 
 st.set_page_config(
-    page_title="Imagery Rehearsal Stage", 
+    page_title="Mindset Growth Garden", 
     layout="centered",
-    page_icon="🎬"
+    page_icon="🌱"
 )
 
+# Set OpenAI API key
 openai.api_key = st.secrets.get("openai_api_key")
 
-# ---------------------------- SCENARIOS ----------------------------
-SCENARIOS = {
-    "Soccer Penalty Kick": {
-        "icon": "⚽",
-        "description": "Perfect your soccer performance through mental rehearsal"
-    },
-    "Public Speaking": {
-        "icon": "🎤",
-        "description": "Master your presentation skills through vivid mental practice"
-    },
-    "Taking an Exam": {
-        "icon": "📝",
-        "description": "Prepare for exam success through mental rehearsal"
-    }
+# ---------------------------- DATA ----------------------------
+QUIZ_QUESTIONS = [
+    {"text": "1. Math is much easier to learn if you are male or maybe come from a culture that values math.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
+    {"text": "2. You can always substantially change how intelligent you are.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
+    {"text": "3. All human beings without a brain injury or birth defect are capable of the same amount of learning.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
+    {"text": "4. You are a certain kind of person, and there is not much that can be done to really change that.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
+    {"text": "5. Music talent can be learned by anyone.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
+    {"text": "6. Truly smart people don't need to try hard.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
+    {"text": "7. No matter what kind of person you are, you can always change substantially.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
+    {"text": "8. I often get angry when I get feedback about my performance.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
+    {"text": "9. The harder you work at something, the better you will be at it.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
+    {"text": "10. Your intelligence is something very basic about you that you can't change very much.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
+    {"text": "11. You can always change basic things about the kind of person you are.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
+    {"text": "12. Trying new things is stressful for me and I avoid it.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
+    {"text": "13. Some people are good and kind, some are not – it is not often that people change.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
+    {"text": "14. I appreciate when parents, coaches, teachers give me feedback about my performance.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
+    {"text": "15. No matter how much intelligence you have, you can always change it quite a bit.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
+    {"text": "16. You can do things differently, but the important part of who you are can't really be changed.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
+    {"text": "17. Only a few people will be truly good at sports – you have to be \"born with it.\"", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
+    {"text": "18. Human beings are basically good, but sometimes make terrible decisions.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
+    {"text": "19. You can learn new things, but you can't really change how intelligent you are.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
+    {"text": "20. An important reason why I do my schoolwork is that I like to learn new things.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}}
+]
+
+MINDSET_RESULTS = {
+    "Strong Growth Mindset": {"range": (45, 60), "icon": "🌳", "title": "The Mighty Oak", "subtitle": "Strong Growth Mindset", "description": "Like a strong oak tree with reaching branches, you have embraced growth! You understand that abilities can flourish through effort.", "color": "#59250e"},
+    "Growth Mindset with some Fixed Ideas": {"range": (34, 44), "icon": "🌿", "title": "The Growing Sapling", "subtitle": "Growth Mindset with some Fixed Ideas", "description": "Like a sapling reaching toward the sun, you have many growth-oriented beliefs but have some areas where you have a fixed view of ability.", "color": "#59250e"},
+    "Fixed Mindset with some Growth Ideas": {"range": (21, 33), "icon": "🌱", "title": "The Sprouting Seed", "subtitle": "Fixed Mindset with some Growth Ideas", "description": "Like a sprouting seed, you currently lean toward a fixed view of ability, but you're starting to develop some growth-oriented beliefs!", "color": "#59250e"},
+    "Strong Fixed Mindset": {"range": (0, 20), "icon": "🌰", "title": "The Dormant Seed", "subtitle": "Strong Fixed Mindset", "description": "Your current beliefs lean toward a fixed view of ability, but remember - growth is always possible when the conditions are right.", "color": "#59250e"}
 }
 
-# ---------------------------- PETTLEP ELEMENTS ----------------------------
-def get_pettlep_elements(scenario):
-    """Get PETTLEP elements with scenario-specific challenges"""
-    
-    # Define scenario-specific challenges
-    challenges = {
-        "Soccer Penalty Kick": {
-            "🏃 Physical": {
-                "question": "Which best describes the Physical element for a penalty kick?",
-                "options": [
-                    "I'm wearing my team jersey, soccer cleats, and shin guards, with the ball at my feet.",
-                    "I hear the crowd cheering and the referee's whistle blowing.",
-                    "I feel confident and focused on scoring the winning goal."
-                ],
-                "correct": 0
-            },
-            "🌟 Environment": {
-                "question": "Which is most Environment-focused for a penalty kick?",
-                "options": [
-                    "I'm dribbling the ball past defenders with quick footwork.",
-                    "I can see the green field, hear fans chanting, and smell the fresh grass.",
-                    "I'm wearing my lucky cleats and team captain's armband."
-                ],
-                "correct": 1
-            },
-            "⚡ Task": {
-                "question": "Which best describes the Task element in a penalty kick?",
-                "options": [
-                    "I'm standing on the penalty spot in my team uniform.",
-                    "The stadium lights are bright and I can hear my teammates.",
-                    "I take three steps back, run up, and strike the ball into the top corner."
-                ],
-                "correct": 2
-            },
-            "⏱️ Timing": {
-                "question": "Which represents Timing in a penalty kick?",
-                "options": [
-                    "I feel pumped up and ready to dominate the game.",
-                    "I control my run-up pace, then accelerate smoothly through the kick.",
-                    "I'm wearing my favorite cleats on the perfectly marked field."
-                ],
-                "correct": 1
-            },
-            "📚 Learning": {
-                "question": "Which shows the Learning element in a penalty kick?",
-                "options": [
-                    "I hear the crowd roaring as I approach the goal.",
-                    "I'm sprinting at full speed down the sideline.",
-                    "I focus on keeping my head up while dribbling, as coach taught me."
-                ],
-                "correct": 2
-            },
-            "💝 Emotion": {
-                "question": "Which best represents Emotion in a penalty kick?",
-                "options": [
-                    "I'm executing a perfect through-pass to my teammate.",
-                    "I feel the adrenaline and excitement, staying calm under pressure.",
-                    "I'm wearing my team colors on the home field."
-                ],
-                "correct": 1
-            },
-            "👁️ Perspective": {
-                "question": "Which shows the Perspective element in a penalty kick?",
-                "options": [
-                    "I feel nervous but channel it into focused energy.",
-                    "I see through my own eyes as I line up the penalty shot.",
-                    "I hear my coach shouting tactical instructions."
-                ],
-                "correct": 1
-            }
-        },
-        "Public Speaking": {
-            "🏃 Physical": {
-                "question": "Which best describes the Physical element for public speaking?",
-                "options": [
-                    "I'm standing confidently at the podium, wearing my best suit, holding my notes.",
-                    "I can see the audience's attentive faces and hear the microphone feedback.",
-                    "I feel nervous but excited to share my important message."
-                ],
-                "correct": 0
-            },
-            "🌟 Environment": {
-                "question": "Which is most Environment-focused for public speaking?",
-                "options": [
-                    "I'm gesturing naturally while making eye contact with the audience.",
-                    "I see the conference room, hear the projector humming, and smell coffee.",
-                    "I'm holding my presentation clicker and wearing professional attire."
-                ],
-                "correct": 1
-            },
-            "⚡ Task": {
-                "question": "Which describes the Task element in public speaking?",
-                "options": [
-                    "I'm standing behind the lectern in my professional outfit.",
-                    "I can see friendly faces in the audience nodding along.",
-                    "I click to the next slide, pause for emphasis, and deliver my key point clearly."
-                ],
-                "correct": 2
-            },
-            "⏱️ Timing": {
-                "question": "Which represents Timing in public speaking?",
-                "options": [
-                    "I feel confident and prepared to engage my audience.",
-                    "I speak at a measured pace, pausing strategically for impact.",
-                    "I'm holding my presentation remote in the well-lit room."
-                ],
-                "correct": 1
-            },
-            "📚 Learning": {
-                "question": "Which shows the Learning element in public speaking?",
-                "options": [
-                    "I focus on maintaining eye contact, something I've been practicing.",
-                    "I hear the audience laughing at my opening joke.",
-                    "I'm delivering my conclusion with perfect timing."
-                ],
-                "correct": 0
-            },
-            "💝 Emotion": {
-                "question": "Which best represents Emotion in public speaking?",
-                "options": [
-                    "I'm advancing through my slides with smooth transitions.",
-                    "I'm standing tall at the podium with good posture.",
-                    "I feel excited to share my ideas, managing any nerves with deep breathing."
-                ],
-                "correct": 2
-            },
-            "👁️ Perspective": {
-                "question": "Which shows the Perspective element in public speaking?",
-                "options": [
-                    "I feel the spotlight warming my face as I speak.",
-                    "I see myself from the audience's view, looking confident and engaging.",
-                    "I hear applause echoing through the auditorium."
-                ],
-                "correct": 1
-            }
-        },
-        "Taking an Exam": {
-            "🏃 Physical": {
-                "question": "Which best describes the Physical element for an exam?",
-                "options": [
-                    "I'm sitting upright in my chair, holding my favorite pen, wearing comfortable clothes.",
-                    "I can see rows of desks and hear the clock ticking on the wall.",
-                    "I feel calm and confident about my preparation."
-                ],
-                "correct": 0
-            },
-            "🌟 Environment": {
-                "question": "Which is most Environment-focused for an exam?",
-                "options": [
-                    "I'm writing my answers clearly and checking my work carefully.",
-                    "I see the quiet Taking an Exam, hear pencils scratching, and feel the cool air.",
-                    "I'm holding my lucky pen and wearing my comfortable exam outfit."
-                ],
-                "correct": 1
-            },
-            "⚡ Task": {
-                "question": "Which describes the Task element in an exam?",
-                "options": [
-                    "I'm sitting at my assigned desk with my student ID displayed.",
-                    "I can see the supervising teacher walking quietly between rows.",
-                    "I read each question carefully, plan my answer, then write clearly and concisely."
-                ],
-                "correct": 2
-            },
-            "⏱️ Timing": {
-                "question": "Which represents Timing in an exam?",
-                "options": [
-                    "I feel prepared and ready to demonstrate my knowledge.",
-                    "I pace myself steadily, spending appropriate time on each question.",
-                    "I'm writing with my favorite pen in the silent exam room."
-                ],
-                "correct": 1
-            },
-            "📚 Learning": {
-                "question": "Which shows the Learning element in exams?",
-                "options": [
-                    "I apply the study techniques I've been practicing all semester.",
-                    "I hear the invigilator announcing time remaining.",
-                    "I'm working through the multiple choice section systematically."
-                ],
-                "correct": 0
-            },
-            "💝 Emotion": {
-                "question": "Which best represents Emotion in exams?",
-                "options": [
-                    "I'm writing my final answer and reviewing my work.",
-                    "I'm sitting in the middle row of the examination hall.",
-                    "I feel focused and calm, breathing deeply to stay relaxed."
-                ],
-                "correct": 2
-            },
-            "👁️ Perspective": {
-                "question": "Which shows the Perspective element in exams?",
-                "options": [
-                    "I feel the smooth pen gliding across the paper.",
-                    "I see through my own eyes as I read the questions and formulate answers.",
-                    "I hear other students turning pages around me."
-                ],
-                "correct": 1
-            }
-        }
-    }
-    
-    base_elements = [
-        {
-            "name": "🏃 Physical",
-            "letter": "P",
-            "lesson": "The Physical element refers to the physical sensations and movements involved in the actual performance. It includes things like posture, muscle activation, breathing patterns, facial expressions, and clothing or equipment. The idea is to replicate the physical conditions as closely as possible, making the imagery more lifelike and connected to real execution.",
-            "example": "E.g.: 'I'm holding my tennis racket with both hands and bouncing on the balls of my feet.'",
-            "elaboration_questions": [
-                "How is your body positioned?",
-                "What physical sensations do you feel (weight, texture, temperature)?"
-            ]
-        },
-        {
-            "name": "🌟 Environment",
-            "letter": "E",
-            "lesson": "The Environment element describes the surrounding context where the performance takes place. It involves imagining the setting's layout, colors, lighting, temperature, sounds, and even smells. The environment could include specific objects, people, or landmarks that are usually present. Recreating the environment in detail helps your brain anchor the imagery in a familiar setting.",
-            "example": "E.g.: 'I hear the whistle blow, smell the grass, and see the sun glare off the lines of the field.'",
-            "elaboration_questions": [
-                "What do you see around you in detail? What sounds do you hear?",
-                "Are there any smells or temperature sensations? Who else is present in your environment?"
-            ]
-        },
-        {
-            "name": "⚡ Task",
-            "letter": "T",
-            "lesson": "The Task element refers to the exact activity being mentally rehearsed. It involves the technical components of the skill, such as movement sequences, decisions, and required focus. The task should match what you actually needs to perform, whether it's simple or complex. This includes both the motor and cognitive demands of the action.",
-            "example": "E.g.: 'I bounce the ball twice, bend my knees, and release the shot smoothly.'",
-            "elaboration_questions": [
-                "What specific actions are you performing step by step?",
-                "What is the sequence of your movements? How are you executing each part of the skill?"
-            ]
-        },
-        {
-            "name": "⏱️ Timing",
-            "letter": "T",
-            "lesson": "The Timing element describes the need to match the real duration and pace of the performance. It involves imagining the action in real time, with accurate rhythm, tempo, and transition speeds. Timing also includes pauses, reaction times, or sequences that are part of the performance flow. The mental timing should reflect how the task unfolds naturally.",
-            "example": "E.g.: 'I take a slow, deliberate approach, then accelerate quickly through the swing.'",
-            "elaboration_questions": [
-                "How fast or slow are you moving? Are there moments where you pause or accelerate?",
-                "Is there a specific rhythm or pace to follow?"
-            ]
-        },
-        {
-            "name": "📚 Learning",
-            "letter": "L",
-            "lesson": "The Learning element refers to your current level of skill or stage of development. It involves adjusting the imagery content to reflect what you can actually do or are currently working on. For beginners, the focus might be on fundamental steps, while advanced individuals might include automatic or refined techniques. The imagery should evolve as you progress.",
-            "example": "E.g.: 'I focus on keeping my follow-through consistent, which I've been working on.'",
-            "elaboration_questions": [
-                "What specific aspect are you trying to improve?",
-                "What corrections or refinements are you making?"
-            ]
-        },
-        {
-            "name": "💝 Emotion",
-            "letter": "E",
-            "lesson": "The Emotion element describes the emotional states typically experienced during the activity. It involves mentally recreating feelings like excitement, anxiety, frustration, determination, or confidence. The intensity and type of emotion should reflect what's usually felt during real performance. This also includes how the body physically responds to those emotions.",
-            "example": "E.g.: 'I feel calm and focused, with a surge of excitement as I prepare to perform.'",
-            "elaboration_questions": [
-                "How are you feeling during this performance?",
-                "What positive emotions do you experience? How do you handle any nervousness?"
-            ]
-        },
-        {
-            "name": "👁️ Perspective",
-            "letter": "P",
-            "lesson": "The Perspective element refers to the viewpoint from which the imagery is experienced. It involves choosing between a first-person perspective (seeing through your own eyes) or a third-person perspective (watching yourself as if from the outside). The choice affects what details are included, such as visual angles, body awareness, or spatial relationships. It is possible to switch between perspectives depending on the focus of your imagery.",
-            "example": "E.g.: 'I see through my own eyes as I grip the bat and watch the ball approach.'",
-            "elaboration_questions": [
-                "Why does this viewpoint help you?",
-                "What can you see from this perspective that helps your performance?"
-            ]
-        }
-    ]
-    
-    # Add scenario-specific challenge data to each element
-    for element in base_elements:
-        element_name = element["name"]
-        if scenario in challenges and element_name in challenges[scenario]:
-            challenge = challenges[scenario][element_name]
-            element["challenge_question"] = challenge["question"]
-            element["options"] = challenge["options"]
-            element["correct_index"] = challenge["correct"]
-    
-    return base_elements
+RESPONSE_OPTIONS = ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"]
 
-# ---------------------------- SESSION STATE INIT ----------------------------
+# ---------------------------- SESSION STATE ----------------------------
 def init_session_state():
     defaults = {
-        'current_step': 0,  # 0 = overview, 1-7 = PETTLEP elements, 8 = final script
-        'selected_scenario': None,
+        'current_question': 0,
+        'total_questions': len(QUIZ_QUESTIONS),
         'responses': {},
-        'gpt_approved': {},
-        'gpt_feedback': {},
-        'challenge_passed': {},
-        'selected_option': {},
-        'elaboration_mode': {},  # New: track if in elaboration mode
+        'quiz_completed': False,
         'background_loaded': False,
-        'script_generated': False,
-        'complete_script': "",
-        'generating_script': False
+        'show_results': False,
+        'gpt_feedback': None,
+        'generating_feedback': False
     }
     for key, value in defaults.items():
         if key not in st.session_state:
@@ -334,112 +61,77 @@ def init_session_state():
 
 init_session_state()
 
-# ---------------------------- GPT FUNCTIONS ----------------------------
-def get_gpt_feedback(element_name, user_response, scenario):
-    """Get GPT feedback on user's imagery description"""
+# ---------------------------- GPT-4 FEEDBACK FUNCTION ----------------------------
+def generate_personalized_feedback(responses, mindset_category, total_score):
+    """Generate personalized feedback using GPT-4 based on user responses"""
     try:
-        # Get the elaboration questions for this element
-        element_data = None
-        for elem in get_pettlep_elements(scenario):
-            if elem['name'] == element_name:
-                element_data = elem
-                break
+        # Create a summary of responses for GPT-4
+        response_summary = []
+        for q_num, response in responses.items():
+            question_text = QUIZ_QUESTIONS[q_num - 1]["text"]
+            response_summary.append(f"Q{q_num}: {question_text}\nResponse: {response}")
         
-        questions_text = ""
-        if element_data and 'elaboration_questions' in element_data:
-            questions_text = "\n".join([f"- {q}" for q in element_data['elaboration_questions']])
+        responses_text = "\n\n".join(response_summary)
         
-        prompt = f"""You are a sports psychology expert evaluating a user's mental imagery description for the {element_name} element of PETTLEP imagery.
-        
-        Scenario: {scenario}
-        Element Questions to Address:
-        {questions_text}
-        
-        User's Response: "{user_response}"
-        
-        APPROVE the response if it addresses the key questions above with specific details, even if brief. ONLY reject if the response is too vague, doesn't address the questions, or lacks vivid imagery details.
-        
-        Provide feedback in this exact format:
-        
-        APPROVED: [YES/NO]
-        FEEDBACK: [If NO, explain what questions weren't addressed in around 25 words and give suggestions. If YES, provide brief positive reinforcement in around 25 words. Use a warm, conversational tone.]"""
+        prompt = f"""
+Based on the following growth mindset assessment responses, provide a maximum of 5 specific, actionable recommendations to help nurture a growth mindset. The user scored {total_score}/60 and falls into the category: {mindset_category}.
+
+Assessment Responses:
+{responses_text}
+
+Please provide recommendations in the following format:
+- Each recommendation should be a complete sentence starting with an action verb, in less than 12 words
+- Focus on specific behaviors and mindset shifts
+- Make recommendations relevant to their specific responses but don't mention question numbers
+- Keep each point concise but actionable
+- Use encouraging and supportive language
+- Use simple and understandable laymen language
+
+Format your response as a simple list with each recommendation on a new line, starting with a dash (-). Give a maximum of 4 recommendations with a maximum of 9 words each.
+"""
 
         response = openai.ChatCompletion.create(
-            model="gpt-4o-mini",
+            model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "You are a sports psychology expert specializing in PETTLEP imagery training. Provide constructive feedback to help users create vivid, detailed mental rehearsals."},
+                {"role": "system", "content": "You are an educational psychologist specializing in growth mindset development. Provide personalized, actionable advice based on assessment responses."},
                 {"role": "user", "content": prompt}
             ],
             max_tokens=70,
-            temperature=0.7
+            temperature=0.7,
+            timeout=30
         )
         
-        content = response.choices[0].message.content.strip()
+        feedback = response.choices[0].message.content.strip()
         
-        # Parse response
-        approved = "YES" in content.split("APPROVED:")[1].split("FEEDBACK:")[0].strip()
-        feedback_text = content.split("FEEDBACK:")[1].strip()
+        # Convert GPT response to HTML list items
+        lines = feedback.split('\n')
+        html_items = []
+        for line in lines:
+            line = line.strip()
+            if line.startswith('- '):
+                html_items.append(f"<li><strong>{line[2:]}</strong></li>")
+            elif line and not line.startswith('-'):
+                html_items.append(f"<li><strong>{line}</strong></li>")
         
-        return approved, feedback_text
-        
-    except Exception as e:
-        st.error(f"Error getting feedback: {str(e)}")
-        return False, "Unable to provide feedback at this time. Please continue with your description."
-
-def generate_complete_script(scenario, selected_options, user_responses):
-    """Generate a complete PETTLEP imagery script using GPT"""
-    try:
-        # Build the prompt with all user data
-        prompt = f"""You are a sports psychology expert creating a complete PETTLEP imagery script for mental rehearsal.
-
-Scenario: {scenario}
-
-The user has completed all 7 PETTLEP elements with the following information:
-
-"""
-        
-        PETTLEP_ELEMENTS = get_pettlep_elements(scenario)
-        for element in PETTLEP_ELEMENTS:
-            element_name = element['name']
-            selected_option = selected_options.get(element_name, "")
-            user_elaboration = user_responses.get(element_name, "")
-            
-            prompt += f"{element_name}:\n"
-            prompt += f"- Base answer: {selected_option}\n"
-            prompt += f"- User elaboration: {user_elaboration}\n\n"
-
-        prompt += """Create a complete, flowing imagery script that integrates all these elements into one cohesive mental rehearsal. The script should:
-
-1. Be written in first person ("I")
-2. Be vivid and detailed
-3. Include all PETTLEP elements seamlessly woven together
-4. Be specific to the scenario
-5. Not be too fluffy
-
-Write the script as one continuous narrative without section headers. Make it feel like a mental rehearsal that the user can follow. Use simple words and language. Write in 200 words or less."""
-
-        response = openai.ChatCompletion.create(
-            model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": "You are a sports psychology expert who creates vivid, detailed PETTLEP imagery scripts for mental rehearsal training."},
-                {"role": "user", "content": prompt}
-            ],
-            max_tokens=500,
-            temperature=0.7
-        )
-        
-        return response.choices[0].message.content.strip()
+        return "\n".join(html_items)
         
     except Exception as e:
-        st.error(f"Error generating script: {str(e)}")
-        return f"Unable to generate complete script at this time. Please use your individual responses for mental rehearsal.\n\nScenario: {scenario}\n\nYour responses:\n" + "\n".join([f"{k}: {v}" for k, v in user_responses.items()])
+        st.error(f"Error generating personalized feedback: {str(e)}")
+        # Fallback to generic recommendations
+        return """
+        <li><strong>View mistakes as learning opportunities rather than failures</strong></li>
+        <li><strong>Focus on the process of learning rather than just the outcome</strong></li>
+        <li><strong>Embrace challenges as chances to grow and improve</strong></li>
+        <li><strong>Seek feedback actively and use it constructively</strong></li>
+        <li><strong>Practice positive self-talk that emphasizes effort and progress</strong></li>
+        <li><strong>Celebrate small wins and incremental improvements</strong></li>
+        """
 
 # ---------------------------- STYLES ----------------------------
-def get_movie_styles():
+def get_styles():
     return """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Gabarito&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap');
 
     /* Desktop/Laptop Only Styles */
     @media screen and (min-width: 1024px) {
@@ -479,15 +171,9 @@ def get_movie_styles():
             transform-origin: top center;
         }
         
-        /* Remove padding from main container */
-        .main .block-container {
-            padding: 0 !important;
-            max-width: none !important;
-        }
-        
         /* Full screen background */
         .stApp {
-            background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/imagery.jpg');
+            background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Growth.gif');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -496,277 +182,376 @@ def get_movie_styles():
             position: relative;
         }
           
-        .movie-container {
-            background: rgba(0, 0, 0, 0.85);
-            border: clamp(2px, 0.3vw, 3px) solid #FFD700;
-            border-radius: clamp(10px, 1.5vw, 15px);
-            padding: clamp(4px, 0.5vw, 20px);
-            margin: clamp(8px, 1.2vh, 10px) 0;
+        .nature-container {
+            background: rgba(255, 255, 255, 0.95);
+            border: clamp(2px, 0.3vw, 3px) solid #59250e;
+            border-radius: clamp(15px, 2vw, 20px);
+            padding: clamp(7px, 0.9vw, 9px);
+            margin: clamp(9px, 1.4vh, 14px) 0;
             margin-bottom: -5px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3), inset 0 0 30px rgba(255, 215, 0, 0.1);
+            position: relative;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 32px rgba(255, 161, 102, 0.2), inset 0 0 20px rgba(255, 161, 102, 0.1);
         }
         
-        .movie-description {
-            font-family: 'Gabarito', sans-serif;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: clamp(0.9rem, 1.3vw, 1.3em);
+        .nature-container::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: white;
+            border-radius: clamp(18px, 2.3vw, 23px);
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        .growth-title {
+            font-family: 'Fredoka', cursive;
+            font-weight: 700;
+            font-size: clamp(2rem, 4vw, 5rem);
+            color: #59250e;
+            text-align: center;
+            margin-bottom: clamp(5px, 1vh, 10px);
+            text-shadow: 2px 2px 4px rgba(255, 161, 102, 0.2);
             line-height: 1.1;
-            margin-bottom: clamp(4px, 0.6vh, 5px);
-            font-weight: 300;
-            text-align: center;
-        }
-    
-        .movie-text {
-            font-family: 'Gabarito', sans-serif;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: clamp(0.9rem, 1.3vw, 1.2em);
-            line-height: 1.1;
-            margin-bottom: clamp(4px, 0.6vh, 5px);
-            font-weight: 300;
         }
         
-        .element-title {
-            font-family: 'Sigmar', cursive;
-            font-size: clamp(2rem, 3.2vw, 2.5em);
-            color: #FFD700 !important;
-            text-align: center;
-            margin-bottom: clamp(10px, 1.6vh, 20px);
-            letter-spacing: clamp(1px, 0.2vw, 2px);
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-        }
-        
-        .example-text {
-            font-style: italic;
-            font-size: clamp(1rem, 1.4vw, 1.1em);
-            color: rgba(255, 255, 255, 0.8);
-            background: rgba(255, 215, 0, 0.1);
-            padding: clamp(8px, 1.2vw, 10px);
-            border-left: clamp(2px, 0.3vw, 3px) solid #FFD700;
-            border-radius: clamp(4px, 0.6vw, 5px);
-            margin: clamp(5px, 1.2vh, 15px) 0;
-        }
-          
-        .challenge-title {
-            font-family: 'Sigmar', cursive;
-            color: white !important;
-            font-size: clamp(1.2rem, 1.9vw, 1.5em);
-            margin-top: clamp(6px, 0.8vh, 5px);
-            margin-bottom: clamp(8px, 1.2vh, 10px);
-            text-align: center;
-        }
-        
-        .elaboration-container {
-            background: black;
-            border: clamp(2px, 0.3vw, 3px) solid #32CD32;
-            border-radius: clamp(8px, 1.2vw, 10px);
-            padding: clamp(5px, 1vw, 20px);
-            margin-top: clamp(15px, 2.4vh, 20px);
-            margin-bottom: clamp(-40px, -3.5vh, -20px);
-        }
-        
-        .elaboration-title {
-            font-family: 'Sigmar', cursive;
+        .leaf-subtitle {
+            font-family: 'Comfortaa', cursive;
+            font-size: clamp(1rem, 1.8vw, 3rem);
             color: #32CD32;
-            font-size: clamp(1rem, 1.6vw, 1.3em);
-            margin-bottom: clamp(4px, 0.6vh, 5px);
+            text-align: center;
+            margin-bottom: clamp(15px, 2vh, 20px);
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(50, 205, 50, 0.2);
         }
         
-        .feedback-container {
-            background: rgba(255, 215, 0, 0.1);
-            border: clamp(1.5px, 0.25vw, 2px) solid #FFD700;
-            border-radius: clamp(10px, 1.5vw, 12px);
-            padding: clamp(5px, 0.5vw, 20px);
-            margin: clamp(4px, 0.6vh, 5px) 0;
-            backdrop-filter: blur(5px);
-        }
-        
-        .feedback-approved {
-            border-color: #32CD32;
-            background: rgba(50, 205, 50, 0.1);
-        }
-        
-        .feedback-needs-work {
-            border-color: #FF6347;
-            background: rgba(255, 99, 71, 0.1);
-        }
-        
-        .script-container {
-            background: rgba(0, 0, 0, 0.9);
-            border: clamp(2px, 0.3vw, 3px) solid #FFD700;
-            border-radius: clamp(12px, 1.8vw, 15px);
-            padding: clamp(20px, 3vw, 25px);
-            margin: clamp(15px, 2.4vh, 20px) 0;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
-        }
-        
-
-        .script-text {
-            font-family: 'Gabarito', sans-serif;
-            color: rgba(255, 255, 255, 0.9);
+        .nature-text {
+            font-family: 'Comfortaa', cursive;
+            display: block;
+            color: #08692d;
+            font-size: clamp(0.8rem, 1.1vw, 1.2rem);
             line-height: 1.1;
-            font-size: clamp(0.9rem, 1.3vw, 1.2em);
-            text-align: justify;
-        }
-
-        /* Text area styling */
-        div[data-testid="stTextArea"] textarea {
-            background: white !important;
-            border: clamp(1.5px, 0.25vw, 2px) solid #FFD700 !important;
-            border-radius: clamp(8px, 1.2vw, 10px) !important;
-            color: #000000 !important;
-            font-family: 'Gabarito', sans-serif !important;
-            font-size: clamp(1rem, 1.4vw, 1.1em) !important;
+            text-align: center;
+            margin-bottom: 0.8em;
         }
         
-        div[data-testid="stTextArea"] textarea:focus {
-            border-color: #FF6347 !important;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4) !important;
+        .question-container {
+            background: rgba(255, 255, 255, 0.9);
+            border: clamp(2px, 0.3vw, 3px) solid #9ACD32;
+            border-radius: clamp(15px, 2vw, 20px);
+            padding: clamp(20px, 3vh, 30px);
+            margin: clamp(20px, 2.5vh, 25px) 0;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(154, 205, 50, 0.2);
         }
         
-        /* Radio button styling */
-        .stRadio * {
-            color: rgba(255, 255, 255, 0.9) !important;
-            font-family: 'Gabarito', sans-serif !important;
-            font-size: clamp(0.9rem, 1.3vw, 1em) !important;
+        .question-text {
+            font-family: 'Comfortaa', cursive;
+            font-size: clamp(1rem, 1.5vw, 1.3rem);
+            color: #2E8B57;
+            line-height: 1.6;
+            margin: 0;
+            text-align: center;
+            font-weight: 500;
         }
-
-        /* Button styling */
-        div[data-testid="stButton"] > button[kind="primary"] {
-            background: linear-gradient(135deg, #FFD700 0%, #FF6347 50%, #FFD700 100%) !important;
-            border: clamp(1.5px, 0.25vw, 2px) solid #FFD700 !important;
-            color: #000000 !important;
-            font-weight: 700 !important;
-            font-size: clamp(1.1rem, 1.5vw, 1.2em) !important;
-            font-family: 'Sigmar', cursive !important;
-            padding: clamp(5px, 0.5vw, 15px) clamp(10px, 1.5vw, 30px) !important;
-            border-radius: clamp(20px, 3vw, 25px) !important;
-            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4) !important;
-            transition: all 0.3s ease !important;
-            text-transform: uppercase !important;
-            letter-spacing: clamp(1px, 0.2vw, 2px) !important;
+        
+        .response-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: clamp(10px, 1.5vw, 15px) !important;
+            margin: clamp(20px, 2.5vh, 25px) 0 !important;
+            width: 100% !important;
         }
-
-        div[data-testid="stButton"] > button[kind="primary"]:hover {
-            background: linear-gradient(135deg, #FF6347 0%, #FFD700 50%, #FF6347 100%) !important;
-            transform: translateY(-3px) scale(1.05) !important;
-            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6) !important;
-            border-color: #FF6347 !important;
+        
+        .results-container {
+            text-align: center;
+            padding: clamp(8px, 1vw, 10px);
         }
-
+        
+        .result-icon {
+            font-size: clamp(0.8rem, 2.5vw, 4rem);
+            margin-bottom: clamp(-8px, -1vh, -10px);
+            display: block;
+            animation: bounce-grow 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce-grow {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+        
+        .result-title {
+            font-family: 'Fredoka' !important;
+            font-weight: 700;
+            font-size: clamp(0.6rem, 1.5vw, 4rem);
+            margin-bottom: clamp(-40px, -2.5vh, -20px);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .result-description {
+            font-family: 'Comfortaa', cursive;
+            font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+            line-height: 1.2;
+            margin-bottom: 0px;
+            text-align: left;
+            font-weight: 400;
+        }
+        
+        .loading-feedback {
+            text-align: center;
+            padding: clamp(15px, 2vh, 20px);
+            font-family: 'Comfortaa', cursive;
+            color: #2E8B57;
+            font-size: clamp(0.9rem, 1.2vw, 2rem);
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #32CD32;
+            border-radius: 50%;
+            width: clamp(30px, 4vw, 40px);
+            height: clamp(30px, 4vw, 40px);
+            animation: spin 1s linear infinite;
+            margin: 0 auto clamp(12px, 1.5vh, 15px) auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Main buttons (for start/restart/home buttons) */
         div[data-testid="stButton"] > button {
-            background: black !important;
-            border: clamp(2px, 0.3vw, 3px) solid rgba(255, 215, 0) !important;
+            background: linear-gradient(135deg, #e6733c 0%, #f2a93b 50%, #f6d860 100%) !important;
+            border: clamp(2px, 0.3vw, 3px) solid #FF6347 !important;
             color: white !important;
-            font-weight: 1000 !important;
-            font-family: 'Gabarito', sans-serif !important;
-            font-size: clamp(0.9rem, 1.3vw, 1em) !important;
-            border-radius: clamp(12px, 1.8vw, 15px) !important;
-            padding: clamp(8px, 1.2vw, 10px) clamp(16px, 2.4vw, 20px) !important;
-            backdrop-filter: blur(10px) !important;
+            font-weight: 600 !important;
+            font-size: clamp(1rem, 1.2vw, 1.4rem) !important;
+            font-family: 'Fredoka', cursive !important;
+            padding: clamp(12px, 1.5vh, 15px) clamp(25px, 3vw, 30px) !important;
+            border-radius: clamp(20px, 2.5vw, 25px) !important;
+            margin-top: 10px !important;
+            box-shadow: 0 6px 20px rgba(34, 139, 34, 0.3) !important;
             transition: all 0.3s ease !important;
+            text-transform: none !important;
+            letter-spacing: 0.5px !important;
+            width: 100% !important;
         }
 
         div[data-testid="stButton"] > button:hover {
-            background: black !important;
-            border-color: #FFD700 !important;
-            transform: translateY(-2px) !important;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3) !important;
+            background: linear-gradient(135deg, #FF8C00 0%, #FFD700 50%, #FFFF00 100%) !important;
+            transform: translateY(-3px) scale(1.05) !important;
+            box-shadow: 0 8px 30px rgba(50, 205, 50, 0.4) !important;
+            border-color: #FF8C00 !important;
         }
 
-        /* Download button specific styling */
-        div[data-testid="stDownloadButton"] > button {
-            background: linear-gradient(135deg, #32CD32 0%, #228B22 100%) !important;
-            border: clamp(1.5px, 0.25vw, 2px) solid #32CD32 !important;
-            color: white !important;
-            font-weight: 700 !important;
-            font-size: clamp(1.2rem, 1.6vw, 1.2em) !important;
-            font-family: 'Sigmar', cursive !important;
-            margin-top: 10px;
-            width: fit-content !important;
-            margin: 10px auto !important;
-            display: block !important;
+        div[data-testid="stButton"] > button[kind="primary"] {
+            background: linear-gradient(135deg, #e6733c 0%, #f2a93b 50%, #f6d860 100%) !important;
+            border-color: #FF6347 !important;
+            animation: sunny-glow 2s ease-in-out infinite alternate;
         }
-
-        div[data-testid="stDownloadButton"] > button:hover {
-            background: linear-gradient(135deg, #228B22 0%, #32CD32 100%) !important;
-            transform: translateY(-2px) scale(1.02) !important;
-            box-shadow: 0 5px 20px rgba(50, 205, 50, 0.4) !important;
-        }
-
-        .stSpinner > div {
-            color: white !important;
-        }
-
-        .stAlert {
-            background-color: white !important;
-            color: black !important;
-        }
-
-        /* Specific breakpoint adjustments for optimal scaling */
         
-        /* Standard Desktop (1024-1439px) */
-        @media screen and (min-width: 1024px) and (max-width: 1439px) {
-            .main .block-container {
-                transform: scale(0.75);
-            }
+        @keyframes sunny-glow {
+            0% { box-shadow: 0 6px 20px rgba(255, 99, 71, 0.3); }
+            100% { box-shadow: 0 8px 30px rgba(255, 140, 0, 0.5); }
         }
 
-        /* Large Desktop (1440-1919px) */
-        @media screen and (min-width: 1440px) and (max-width: 1919px) {
-            .main .block-container {
-                transform: scale(0.85);
-            }
+        div[data-testid="stButton"] > button[kind="primary"]:hover {
+            background: linear-gradient(135deg, #FF8C00 0%, #FFD700 50%, #FFFF00 100%) !important;
+            border-color: #FF8C00 !important;
         }
 
-        /* Reference size (1920-2200px) - Perfect scaling maintained */
-        @media screen and (min-width: 1920px) and (max-width: 2200px) {
-            .main .block-container {
-                transform: scale(1.0);
-            }
+        /* Response button styling using different types */
+        
+        /* Strongly Disagree - Red (using data-baseweb-tooltip) */
+        div[data-testid="stButton"] > button[data-baseweb-tooltip="strongly-disagree"] {
+            background: rgba(153, 21, 21, 0.9) !important;
+            border: clamp(2px, 0.3vw, 3px) solid #FF6347 !important;
+            color: white !important;
+            font-family: 'Fredoka', cursive !important;
+            font-weight: 600 !important;
+            font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
+            padding: clamp(15px, 2vh, 20px) clamp(10px, 1.5vw, 15px) !important;
+            border-radius: clamp(15px, 2vw, 20px) !important;
+            min-height: clamp(50px, 8vh, 60px) !important;
+            box-shadow: 0 4px 15px rgba(153, 21, 21, 0.3) !important;
+            transition: all 0.3s ease !important;
+            width: 100% !important;
+            margin-top: 0 !important;
         }
-
-        /* Ultra-wide (2200px+) */
-        @media screen and (min-width: 2200px) {
-            .main .block-container {
-                transform: scale(1.15);
-            }
+        
+        div[data-testid="stButton"] > button[data-baseweb-tooltip="strongly-disagree"]:hover {
+            background: rgba(153, 21, 21, 1.0) !important;
+            border-color: #FF4500 !important;
+            transform: translateY(-2px) scale(1.02) !important;
+            box-shadow: 0 6px 20px rgba(153, 21, 21, 0.4) !important;
         }
-
+        
+        /* Disagree - Orange (using help text) */
+        div[data-testid="stButton"] > button[title="disagree"] {
+            background: rgba(255, 157, 0, 0.9) !important;
+            border: clamp(2px, 0.3vw, 3px) solid #FFA500 !important;
+            color: white !important;
+            font-family: 'Fredoka', cursive !important;
+            font-weight: 600 !important;
+            font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
+            padding: clamp(15px, 2vh, 20px) clamp(10px, 1.5vw, 15px) !important;
+            border-radius: clamp(15px, 2vw, 20px) !important;
+            min-height: clamp(50px, 8vh, 60px) !important;
+            box-shadow: 0 4px 15px rgba(255, 157, 0, 0.3) !important;
+            transition: all 0.3s ease !important;
+            width: 100% !important;
+            margin-top: 0 !important;
+        }
+        
+        div[data-testid="stButton"] > button[title="disagree"]:hover {
+            background: rgba(255, 157, 0, 1.0) !important;
+            border-color: #FF8C00 !important;
+            transform: translateY(-2px) scale(1.02) !important;
+            box-shadow: 0 6px 20px rgba(255, 157, 0, 0.4) !important;
+        }
+        
+        /* Agree - Light Green (using title attribute) */
+        div[data-testid="stButton"] > button[title="agree"] {
+            background: rgba(11, 176, 90, 0.9) !important;
+            border: clamp(2px, 0.3vw, 3px) solid #1bf282 !important;
+            color: white !important;
+            font-family: 'Fredoka', cursive !important;
+            font-weight: 600 !important;
+            font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
+            padding: clamp(15px, 2vh, 20px) clamp(10px, 1.5vw, 15px) !important;
+            border-radius: clamp(15px, 2vw, 20px) !important;
+            min-height: clamp(50px, 8vh, 60px) !important;
+            box-shadow: 0 4px 15px rgba(11, 176, 90, 0.3) !important;
+            transition: all 0.3s ease !important;
+            width: 100% !important;
+            margin-top: 0 !important;
+        }
+        
+        div[data-testid="stButton"] > button[title="agree"]:hover {
+            background: rgba(11, 176, 90, 1.0) !important;
+            border-color: #00FF7F !important;
+            transform: translateY(-2px) scale(1.02) !important;
+            box-shadow: 0 6px 20px rgba(11, 176, 90, 0.4) !important;
+        }
+        
+        /* Strongly Agree - Dark Green (using secondary type) */
+        div[data-testid="stButton"] > button[kind="secondary"] {
+            background: rgba(7, 135, 61, 0.9) !important;
+            border: clamp(2px, 0.3vw, 3px) solid #0bb05a !important;
+            color: white !important;
+            font-family: 'Fredoka', cursive !important;
+            font-weight: 600 !important;
+            font-size: clamp(0.9rem, 1.2vw, 1.4rem) !important;
+            padding: clamp(15px, 2vh, 20px) clamp(10px, 1.5vw, 15px) !important;
+            border-radius: clamp(15px, 2vw, 20px) !important;
+            min-height: clamp(50px, 8vh, 60px) !important;
+            box-shadow: 0 4px 15px rgba(7, 135, 61, 0.3) !important;
+            transition: all 0.3s ease !important;
+            width: 100% !important;
+            margin-top: 0 !important;
+        }
+        
+        div[data-testid="stButton"] > button[kind="secondary"]:hover {
+            background: rgba(7, 135, 61, 1.0) !important;
+            border-color: #32CD32 !important;
+            transform: translateY(-2px) scale(1.02) !important;
+            box-shadow: 0 6px 20px rgba(7, 135, 61, 0.4) !important;
+        }
+        
         ::-webkit-scrollbar {
             width: clamp(8px, 1vw, 12px);
         }
         
         ::-webkit-scrollbar-track {
-            background: rgba(255, 215, 0, 0.1);
+            background: rgba(34, 139, 34, 0.1);
             border-radius: 6px;
         }
         
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(45deg, #FFD700, #FF6347);
+            background: linear-gradient(45deg, #59250e, #32CD32);
             border-radius: 6px;
-            border: 2px solid rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(45deg, #FF6347, #FFD700);
+            background: linear-gradient(45deg, #32CD32, #7CFC00);
+        }
+    }
+
+    /* Specific breakpoint adjustments for optimal scaling */
+    
+    /* Standard Desktop (1024-1439px) */
+    @media screen and (min-width: 1024px) and (max-width: 1439px) {
+        .main .block-container {
+            transform: scale(0.75);
+        }
+    }
+
+    /* Large Desktop (1440-1919px) */
+    @media screen and (min-width: 1440px) and (max-width: 1919px) {
+        .main .block-container {
+            transform: scale(0.85);
+        }
+    }
+
+    /* Reference size (1920-2200px) - Perfect scaling maintained */
+    @media screen and (min-width: 1920px) and (max-width: 2200px) {
+        .main .block-container {
+            transform: scale(1.0);
+        }
+    }
+
+    /* Ultra-wide (2200px+) */
+    @media screen and (min-width: 2200px) {
+        .main .block-container {
+            transform: scale(1.15);
         }
     }
     </style>
     """
 
-st.markdown(get_movie_styles(), unsafe_allow_html=True)
+st.markdown(get_styles(), unsafe_allow_html=True)
+
+# ---------------------------- HELPER FUNCTIONS ----------------------------
+def calculate_total_score():
+    total = 0
+    for q_num, response in st.session_state.responses.items():
+        total += QUIZ_QUESTIONS[q_num - 1]["scores"][response]
+    return total
+
+def get_mindset_result(score):
+    for category, data in MINDSET_RESULTS.items():
+        if data["range"][0] <= score <= data["range"][1]:
+            return category, data
+    return "Unknown", {}
+
+
+
+def reset_quiz(to_start=False):
+    keys_to_reset = ['current_question', 'responses', 'quiz_completed', 'show_results', 'gpt_feedback', 'generating_feedback']
+    for key in keys_to_reset:
+        if key in st.session_state:
+            del st.session_state[key]
+    st.session_state.current_question = 1 if to_start else 0
+    st.session_state.responses = {}
+    st.session_state.quiz_completed = False
+    st.session_state.show_results = False
+    st.session_state.gpt_feedback = None
+    st.session_state.generating_feedback = False
 
 # ---------------------------- LOADING OVERLAY ----------------------------
 st.markdown("""
     <div id="loading-overlay">
         <div class="loading-content">
-            <div class="loading-title">🎬 Setting Up Stage...</div>
+            <div class="loading-title">🌱 Planting Your Garden...</div>
             <div class="loading-bar-container">
                 <div class="loading-bar"></div>
             </div>
-            <div class="loading-subtitle">Preparing your imagery rehearsal experience</div>
+            <div class="loading-subtitle">Growing your mindset discovery experience</div>
         </div>
     </div>
 
@@ -778,7 +563,7 @@ st.markdown("""
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #000000 0%, #8B4513 50%, #000000 100%);
+            background: linear-gradient(135deg, #539429 0%, #3b7a12 50%, #265706 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -791,47 +576,47 @@ st.markdown("""
         }
 
         .loading-title {
-            font-family: 'Sigmar', cursive;
-            font-size: clamp(2rem, 4vw, 3.5em);
-            color: #FFD700;
-            margin-bottom: clamp(15px, 2.4vh, 20px);
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-            letter-spacing: clamp(2px, 0.3vw, 3px);
-            animation: title-glow 2s ease-in-out infinite alternate;
+            font-family: 'Fredoka', cursive;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            color: white;
+            margin-bottom: clamp(15px, 2vh, 20px);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: grow-bounce 2s ease-in-out infinite;
         }
 
         .loading-bar-container {
-            width: clamp(200px, 25vw, 300px);
+            width: clamp(250px, 30vw, 300px);
             height: clamp(6px, 1vh, 8px);
-            background: rgba(255, 215, 0, 0.3);
-            border-radius: clamp(3px, 0.5vw, 4px);
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
             overflow: hidden;
             position: relative;
             margin: 0 auto;
-            border: clamp(1px, 0.15vw, 1px) solid #FFD700;
+            border: 1px solid white;
         }
 
         .loading-bar {
             width: 40%;
             height: 100%;
-            background: linear-gradient(90deg, #FFD700, #FF6347);
-            border-radius: clamp(3px, 0.5vw, 4px);
+            background: linear-gradient(90deg, white, #FFFF00);
+            border-radius: 4px;
             animation: loading-bar 2s ease-in-out infinite;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
         }
 
         .loading-subtitle {
-            font-family: 'Gabarito', sans-serif;
+            font-family: 'Comfortaa', cursive;
             color: rgba(255, 255, 255, 0.9);
-            margin-top: clamp(12px, 1.8vh, 15px);
-            font-size: clamp(1.1rem, 1.7vw, 1.3em);
-            font-weight: 300;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            margin-top: clamp(12px, 1.5vh, 15px);
+            font-size: clamp(1rem, 1.5vw, 1.3rem);
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
 
-        @keyframes title-glow {
-            0% { text-shadow: 0 0 30px rgba(255, 215, 0, 0.5); }
-            100% { text-shadow: 0 0 50px rgba(255, 215, 0, 0.8); }
+        @keyframes grow-bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         @keyframes loading-bar {
@@ -847,7 +632,7 @@ st.markdown("""
         }
     }
     </style>
-""", unsafe_allow_html=True)    
+    """, unsafe_allow_html=True)
 
 # Handle window resize and mobile blocking with JavaScript
 st.markdown("""
@@ -858,7 +643,7 @@ if (window.innerWidth >= 1024) {
     window.addEventListener('resize', function() {
         if (window.innerWidth < 1024) {
             document.body.style.display = 'none';
-            document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, #000000 0%, #8B4513 50%, #000000 100%); color: white; font-size: 1.5rem; text-align: center; font-family: Sigmar, cursive;">This application is designed for desktop and laptop screens only.</div>';
+            document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, #539429 0%, #3b7a12 50%, #265706 100%); color: white; font-size: 1.5rem; text-align: center; font-family: Fredoka, cursive;">This application is designed for desktop and laptop screens only.</div>';
         }
     });
 }
@@ -879,325 +664,160 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ---------------------------- NAVIGATION FUNCTIONS ----------------------------
-def next_step():
-    """Move to next step"""
-    if st.session_state.current_step < 8:
-        st.session_state.current_step += 1
-        st.rerun()
-
-# ---------------------------- OVERVIEW PAGE ----------------------------
-if st.session_state.current_step == 0:
+# ---------------------------- MAIN APP LOGIC ----------------------------
+# OVERVIEW PAGE
+if st.session_state.current_question == 0 and not st.session_state.quiz_completed:
     st.markdown("""
-    <div class="movie-container">
-        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.2vw, 2em); text-align: center; margin-bottom: -5px; letter-spacing: clamp(1px, 0.15vw, 1px);">
-            🎬 Lights, Camera, Mental Action!
+    <div class="nature-container">
+        <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: 1.5em; margin-bottom: -5px; text-align: center;">
+            🌱 Mindset Growth Garden
         </h3>
-        <div class="movie-description">
-            Welcome to your personal theatre!
-            Mental imagery is like filming the perfect performance in your mind - you get to rehearse and replay your success before it happens in real life.
+        <div class="nature-text">
+            A <strong>growth mindset</strong> is the belief that your abilities and talents can bloom and flourish through dedication, hard work, and learning from mistakes. 
         </div>
-        <div class="movie-description">
-           This activity will guide you through the creation of a detailed mental script for your chosen scenario, 
-            with feedback to ensure that every scene is vivid and impactful.
+        <div class="nature-text">
+            In contrast, a <strong>fixed mindset</strong> is like believing a seed can never become a flower - that our intelligence, creativity, and character cannot change. 
+            <br>
+        </div>
+        <div class="nature-text">
+            This questionnaire will help you explore your current beliefs about ability, learning, and personal development. Your responses will help reveal your current mindset and show you the path toward even more growth.
         </div>
     </div>
     """, unsafe_allow_html=True)
-
+        
     st.markdown("""
-    <div class="movie-container">
-        <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.2vw, 2em); text-align: center; margin-bottom: -5px; letter-spacing: clamp(1px, 0.15vw, 1px);">
-            🎪 The PETTLEP Method
+    <div class="nature-container">
+        <h3 style="color: #59250e; font-family: 'Fredoka', cursive; font-size: 1.5em; margin-bottom: -5px; text-align: center;">
+            ✨ How to Respond
         </h3>
-        <div class="movie-text">
-            You will be using the 7 <strong>PETTLEP</strong> elements that make imagery incredibly effective. 
-            Think of them as different camera angles that make your mental movie more realistic and powerful.
+        <div class="nature-text">
+            You'll read 20 statements about learning and ability. Take your time for each statement, then click on the option that best matches how you truly feel:
         </div>
-        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: clamp(2px, 0.3vw, 3px); margin: clamp(8px, 1.4vh, 15px) auto; max-width: clamp(600px, 80vw, 800px);">
-            <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
-                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2.2vw, 2em); font-weight: bold; margin-bottom: clamp(4px, 0.8vh, 10px);">P</div>
-                <div style="color: white; font-family: 'Gabarito'; font-size: clamp(0.8rem, 1.2vw, 1em);">Physical</div>
-            </div>
-            <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
-                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2.2vw, 2em); font-weight: bold; margin-bottom: clamp(4px, 0.8vh, 10px);">E</div>
-                <div style="color: white; font-family: 'Gabarito'; font-size: clamp(0.8rem, 1.2vw, 1em);">Environment</div>
-            </div>
-            <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
-                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2.2vw, 2em); font-weight: bold; margin-bottom: clamp(4px, 0.8vh, 10px);">T</div>
-                <div style="color: white; font-family: 'Gabarito'; font-size: clamp(0.8rem, 1.2vw, 1em);">Task</div>
-            </div>
-            <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
-                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2.2vw, 2em); font-weight: bold; margin-bottom: clamp(4px, 0.8vh, 10px);">T</div>
-                <div style="color: white; font-family: 'Gabarito'; font-size: clamp(0.8rem, 1.2vw, 1em);">Timing</div>
-            </div>
-            <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
-                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2.2vw, 2em); font-weight: bold; margin-bottom: clamp(4px, 0.8vh, 10px);">L</div>
-                <div style="color: white; font-family: 'Gabarito'; font-size: clamp(0.8rem, 1.2vw, 1em);">Learning</div>
-            </div>
-            <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
-                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2.2vw, 2em); font-weight: bold; margin-bottom: clamp(4px, 0.8vh, 10px);">E</div>
-                <div style="color: white; font-family: 'Gabarito'; font-size: clamp(0.8rem, 1.2vw, 1em);">Emotion</div>
-            </div>
-            <div style="background: rgba(255, 215, 0, 0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(255, 215, 0, 0.3); border-radius: clamp(6px, 1vw, 8px); padding: 0px; text-align: center; display: flex; flex-direction: column; justify-content: center; aspect-ratio: 1;">
-                <div style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2.2vw, 2em); font-weight: bold; margin-bottom: clamp(4px, 0.8vh, 10px);">P</div>
-                <div style="color: white; font-family: 'Gabarito'; font-size: clamp(0.8rem, 1.2vw, 1em);">Perspective</div>
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown("""
-        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.2vw, 2em); text-align: center; letter-spacing: clamp(1px, 0.15vw, 1px); margin-bottom: -20px;">
-            🎬 Choose Your Scenario
-        </h3>
-        """, unsafe_allow_html=True)
-    
-    # Put the actual buttons here
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        if st.button(f"{SCENARIOS['Soccer Penalty Kick']['icon']} Soccer Penalty Kick", key="scenario_Soccer Penalty Kick", use_container_width=True):
-            st.session_state.selected_scenario = "Soccer Penalty Kick"
-            next_step()
-    
-    with col2:
-        if st.button(f"{SCENARIOS['Public Speaking']['icon']} Public Speaking", key="scenario_Public Speaking", use_container_width=True):
-            st.session_state.selected_scenario = "Public Speaking"
-            next_step()
-    
-    with col3:
-        if st.button(f"{SCENARIOS['Taking an Exam']['icon']} Taking an Exam", key="scenario_Taking an Exam", use_container_width=True):
-            st.session_state.selected_scenario = "Taking an Exam"
-            next_step()
-    
-    st.stop()
-
-# ---------------------------- PETTLEP ELEMENTS (STEPS 1-7) ----------------------------
-if 1 <= st.session_state.current_step <= 7:
-    element_index = st.session_state.current_step - 1
-    PETTLEP_ELEMENTS = get_pettlep_elements(st.session_state.selected_scenario)
-    element = PETTLEP_ELEMENTS[element_index]
-      
-    # Check if we're in elaboration mode for this element
-    if not st.session_state.elaboration_mode.get(element['name'], False):
-        # MINI CHALLENGE MODE
-        st.markdown(f"""
-        <div class="movie-container">
-            <h3 class="element-title">{element['name']}</h3>
-            <div class="movie-text">{element['lesson']}</div>
-            <div class="example-text">{element['example']}</div>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        st.markdown(f"""
-        <div>
-            <div class="challenge-title">🧩 Mini Challenge</div>
-        """, unsafe_allow_html=True)
-        
-        user_answer = st.radio(
-            element['challenge_question'], 
-            element['options'], 
-            key=f"challenge_{element['name']}"
-        )
-
-        if st.button("Check Answer", key=f"check_{element['name']}"):
-            if element['options'].index(user_answer) == element['correct_index']:
-                st.success("✅ Correct! Moving to elaboration...")
-                st.session_state.challenge_passed[element['name']] = True
-                st.session_state.selected_option[element['name']] = user_answer
-                st.session_state.elaboration_mode[element['name']] = True
-                st.rerun()
-            else:
-                st.error("❌ That's not quite right. Try again!")
-        
-        st.markdown("</div>", unsafe_allow_html=True)
-    
-    else:
-        # ELABORATION MODE (NEW PAGE AFTER CORRECT ANSWER)        
-        # Build the questions list as a single string
-        questions_html = ""
-        for question in element['elaboration_questions']:
-            questions_html += f"<li>{question}</li>"
-    
-        st.markdown(f"""
-        <div class="elaboration-container">
-            <div class="elaboration-title">✨ Now Elaborate Further</div>
-            <div class="movie-text">Great! You chose: <strong>"{st.session_state.selected_option.get(element['name'], '')}"</strong> Please elaborate on your answer by addressing these questions:</div>
-            <div style="margin-top: clamp(4px, 0.8vh, 10px); margin-bottom: clamp(-15px, -2vh, -15px);">
-                <ul style="color: rgba(255, 255, 255, 0.9); font-family: 'Gabarito', sans-serif; font-size: clamp(0.5rem, 0.8vw, 1.2em); line-height: 1.1;">
-                    {questions_html}
-                </ul>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Text area for elaboration
-        current_response = st.session_state.responses.get(element['name'], "")
-        user_input = st.text_area(
-            label="",
-            value=current_response,
-            height=100,
-            key=f"input_{element['name']}",
-            placeholder=f"Based on your answer, elaborate with specific details."
-        )
-        
-        # Submit button - trigger feedback immediately
-        if st.button("📝 Submit for Feedback", key=f"submit_{element['name']}", type="primary"):
-            if user_input.strip():
-                st.session_state.responses[element['name']] = user_input
-                
-                # Get feedback immediately
-                with st.spinner("🎬 Getting feedback..."):
-                    approved, feedback = get_gpt_feedback(
-                        element['name'], 
-                        user_input, 
-                        st.session_state.selected_scenario
-                    )
-                    
-                    st.session_state.gpt_feedback[element['name']] = feedback
-                    st.session_state.gpt_approved[element['name']] = approved  # Add this line
-                    st.rerun()  # Refresh to show feedback
-        
-        # Display existing feedback if available
-        if element['name'] in st.session_state.gpt_feedback:
-            feedback_text = st.session_state.gpt_feedback[element['name']]
-            # Determine if it was approved
-            is_approved = st.session_state.gpt_approved.get(element['name'], False)
-            
-            feedback_class = "feedback-approved" if is_approved else "feedback-needs-work"
-            feedback_icon = "✅" if is_approved else "🎬"
-            feedback_title = "Great work!" if is_approved else "Needs more detail"
-            
-            st.markdown(f"""
-            <div class="feedback-container {feedback_class}">
-                <h4 style="color: {'#32CD32' if is_approved else '#FF6347'}; font-family: 'Sigmar', cursive; margin-bottom: clamp(-8px, -1.2vh, -10px); font-size: clamp(1rem, 1.4vw, 1.1em);">
-                    {feedback_icon} {feedback_title}
-                </h4>
-                <div class="movie-text">{feedback_text}</div>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            if is_approved:
-                st.markdown(f"<div style='text-align: center; margin-top: clamp(-4px, -0.6vh, -5px);'>", unsafe_allow_html=True)
-                # Check if this is the last element (step 7)
-                button_text = "🎬 Generate Script" if st.session_state.current_step == 7 else "➡️ Next Element"
-                if st.button(button_text, key=f"next_{element['name']}", type="primary"):
-                    next_step()
-                st.markdown("</div>", unsafe_allow_html=True)
-
-# ---------------------------- FINAL SCRIPT (STEP 8) ----------------------------
-elif st.session_state.current_step == 8:
-    # LOADING SCRIPT PAGE
-    if not st.session_state.script_generated and not st.session_state.generating_script:
-        # Start generating
-        st.session_state.generating_script = True
-        st.rerun()
-    
-    elif st.session_state.generating_script and not st.session_state.script_generated:
-        # Show loading overlay
-        st.markdown("""
-        <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.95); z-index: 1000; display: flex; align-items: center; justify-content: center;">
-            <div class="movie-container" style="margin: 0; padding: clamp(30px, 4.8vw, 40px); text-align: center;">
-                <div style="font-family: 'Sigmar', cursive; font-size: clamp(1.5rem, 2.5vw, 2.5em); color: #FFD700; margin-bottom: clamp(15px, 2.4vh, 20px);">
-                    🎬 Generating Your Complete Script...
+        <div style="margin: -10px 0 -20px 0;">
+            <div class="response-grid">
+                <div style="background: rgba(153, 21, 21, 0.8); border: 2px solid #FF6347; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
+                    Strongly Disagree
                 </div>
-                <div class="spinner" style="border: clamp(3px, 0.5vw, 4px) solid #f3f3f3; border-top: clamp(3px, 0.5vw, 4px) solid #FFD700; border-radius: 50%; width: clamp(30px, 4vw, 40px); height: clamp(30px, 4vw, 40px); animation: spin 1s linear infinite; margin: 0 auto clamp(12px, 1.8vh, 15px) auto;"></div>
-                <div style="font-family: 'Gabarito', sans-serif; color: rgba(255, 255, 255, 0.9); font-size: clamp(1rem, 1.4vw, 1.1em);">
-                    Creating your personalized imagery rehearsal experience...
+                <div style="background: rgba(255, 157, 0, 0.8); border: 2px solid #FFA500; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
+                    Disagree
+                </div>
+                <div style="background: rgba(11, 176, 90, 0.8); border: 2px solid #1bf282; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;">
+                    Agree
+                </div>
+                <div style="background: rgba(7, 135, 61, 0.8); border: 2px solid #0bb05a; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;">
+                    Strongly Agree
                 </div>
             </div>
         </div>
-        
-        <style>
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        </style>
-        """, unsafe_allow_html=True)
-        
-        # Generate the script
-        complete_script = generate_complete_script(
-            st.session_state.selected_scenario,
-            st.session_state.selected_option,
-            st.session_state.responses
-        )
-        
-        st.session_state.complete_script = complete_script
-        st.session_state.script_generated = True
-        st.session_state.generating_script = False
-        st.rerun()
-
-    else:
-        # SHOW RESULTS PAGE
-        complete_script = st.session_state.complete_script
-            
-        st.markdown("""
-        <div class="movie-container">
-            <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
-                🎉 That's A Wrap!
-            </h3>
-            <div class="movie-description">
-                Congratulations! You've created a complete PETTLEP imagery script. This is your personal 
-                mental rehearsal tool - use it regularly to train your mind for peak performance.
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-            
-        # Handle case where script generation failed
-        if complete_script is None:
-            complete_script = f"Unable to generate complete script at this time. Please use your individual responses for mental rehearsal.\n\nScenario: {st.session_state.selected_scenario}\n\nYour responses:\n" + "\n".join([f"{k}: {v}" for k, v in st.session_state.responses.items()])
-            
-        # Download button for the script
-        st.download_button(
-            label="📜 Download Your Complete Imagery Script",
-            data=complete_script,
-            file_name=f"PETTLEP_Script_{st.session_state.selected_scenario.replace(' ', '_')}.txt",
-            mime="text/plain",
-            use_container_width=True
-        )
-        
-    # Usage instructions
-    st.markdown("""
-    <div class="movie-container">
-        <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2vw, 2em); text-align: center; margin-bottom: 0px;">
-            🎯 How to Use Your Script
-        </h3>
-        <div class="movie-text">
-            <strong>🕐 Practice regularly:</strong> Use this script 3-5 times per week, spending 5-10 minutes each session.
-        </div>
-        <div class="movie-text">
-            <strong>🧘 Find a quiet space:</strong> Choose a comfortable, distraction-free environment for your mental rehearsal.
-        </div>
-        <div class="movie-text">
-            <strong>🎬 Engage all senses:</strong> Make each element as vivid as possible - see, hear, feel, and experience every detail.
-        </div>
-        <div class="movie-text">
-            <strong>🔄 Update as needed:</strong> Modify your script as your skills improve or circumstances change.
-        </div>
     </div>
     """, unsafe_allow_html=True)
+    
+    if st.button("🌱 Start Growing Your Garden!", use_container_width=True, type="primary"):
+        st.session_state.current_question = 1
+        st.rerun()
 
-    st.markdown('<div style="height: 5px;"></div>', unsafe_allow_html=True)
-        
-    col1, col2 = st.columns([1, 1])
-    with col1:
-        if st.button("🔄 Try Another Scenario", use_container_width=True):
-            # Reset everything
-            for key in ['current_step', 'selected_scenario', 'responses', 'gpt_feedback', 'gpt_approved', 'challenge_passed', 'selected_option', 'elaboration_mode', 'script_generated', 'complete_script', 'generating_script']:
-                if key == 'current_step':
-                    st.session_state[key] = 0
-                elif key == 'selected_scenario':
-                    st.session_state[key] = None
-                elif key in ['script_generated', 'generating_script']:
-                    st.session_state[key] = False
-                elif key in ['complete_script']:
-                    st.session_state[key] = ""
-                else:
-                    st.session_state[key] = {}
+# QUIZ QUESTIONS
+elif 1 <= st.session_state.current_question <= st.session_state.total_questions and not st.session_state.quiz_completed:
+    st.markdown("<div style='height: 10vh;'></div>", unsafe_allow_html=True)
+    
+    current_question = QUIZ_QUESTIONS[st.session_state.current_question - 1]
+    
+    st.markdown(f"""
+    <div class="question-container">
+        <div class="question-text">{current_question['text']}</div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Use the simplified custom radio function
+    selected_option = render_custom_radio(RESPONSE_OPTIONS, st.session_state.current_question)
+    
+    # Handle the selection
+    if selected_option:
+        st.session_state.responses[st.session_state.current_question] = selected_option
+        if st.session_state.current_question < st.session_state.total_questions:
+            st.session_state.current_question += 1
             st.rerun()
+        else:
+            st.session_state.quiz_completed = True
+            st.session_state.show_results = False
+            st.session_state.current_question = 999
+            st.rerun()
+            
+# LOADING FEEDBACK PAGE
+elif st.session_state.quiz_completed and not st.session_state.show_results:
+    # Clear screen with full viewport container
+    st.markdown("""
+    <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255, 255, 255, 0.98); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+        <div class="nature-container" style="margin: 0; padding: 40px;">
+            <div class="loading-feedback">
+                <div class="spinner"></div>
+                Generating your personalized growth recommendations...
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Generate feedback
+    total_score = calculate_total_score()
+    mindset_category, result_data = get_mindset_result(total_score)
+    feedback = generate_personalized_feedback(st.session_state.responses, mindset_category, total_score)
+    st.session_state.gpt_feedback = feedback
+    st.session_state.show_results = True
+    st.rerun()
+    
+# RESULTS PAGE
+elif st.session_state.quiz_completed and st.session_state.show_results:
+    total_score = calculate_total_score()
+    mindset_category, result_data = get_mindset_result(total_score)
+    
+    st.markdown(f"""
+    <div class="nature-container">
+        <div class="results-container">
+            <span class="result-icon">{result_data['icon']}</span>
+            <h3 class="result-title" style="color: {result_data['color']}; margin-bottom: -15px;">{result_data['title']}</h2>
+            <h4 class="result-title" style="color: {result_data['color']};">{result_data['subtitle']}</h3>
+            <div class="result-description" style="color: #6e3f09;">
+                {result_data['description']}
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown(f"""
+    <div class="nature-container">
+        <div class="result-description" style="color: #6e3f09; padding: 10px 15px 10px 10px;">
+            Based on your responses, here are some ways you can nurture your growth mindset:
+        </div>
+        <div class="result-description" style="color: #2E8B57; padding: 0 15px 5px 10px;">
+            <ul style="padding-left: 10px; margin: 10px 0;">
+                {st.session_state.gpt_feedback}
+            </ul>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("🔄 Try Again", use_container_width=True):
+            st.session_state.clear()
+            reset_quiz(to_start=True)
+            st.rerun()
+    
     with col2:
-        if st.button("🏠 Return to Home", use_container_width=True):
+        if st.button("🏡 Return to Home", use_container_width=True):
             st.session_state.clear()
             st.switch_page("pages/Modules.py")
-            st.stop()
+
+st.markdown(
+    """
+    <style>
+    @media (min-width: 1300px) {
+        .custom-spacer {
+            height: 10vh;
+        }
+    }
+    </style>
+    <div class="custom-spacer"></div>
+    """,
+    unsafe_allow_html=True
+)

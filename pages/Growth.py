@@ -497,7 +497,9 @@ def render_custom_radio(options, question_num):
             # Second row, second column - Strongly Agree
             if st.button(options[3], key=f"response_{question_num}_3", use_container_width=True, type="primary"):
                 return options[3]
-    
+
+    return none
+
 def check_javascript_selection(question_num):
     pass
 
@@ -791,6 +793,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

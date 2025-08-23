@@ -358,7 +358,7 @@ Inner Critic: "{st.session_state.current_line}"
 Response: "{st.session_state.user_response_submitted}"
 
 Scoring criteria:
-- "Strong and positive": Constructive, specific, positive, and realistic reframe that directly addresses the critic's statement.
+- "Strong and positive": Constructive, positive, and realistic reframe that directly addresses the critic's statement.
 - "Weak or Generic": On-topic but vague, shallow, hopeful, or general.
 - "Irrelevant": Agrees with the critic, defeatist, off-topic, overly passive (e.g., "whatever", "ok"), or completely fails to address the critic.
 
@@ -654,6 +654,7 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

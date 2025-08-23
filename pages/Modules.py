@@ -448,21 +448,11 @@ st.markdown("""
             box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
         }
         
-        .growth-btn button:hover {
-            background: linear-gradient(135deg, #2ECC71, #27AE60) !important;
-            box-shadow: 0 15px 35px rgba(39, 174, 96, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
-        }
-        
         .fight-btn button {
             background: linear-gradient(135deg, #E74C3C, #C0392B) !important;
             color: white !important;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
             box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
-        }
-        
-        .fight-btn button:hover {
-            background: linear-gradient(135deg, #C0392B, #E74C3C) !important;
-            box-shadow: 0 15px 35px rgba(231, 76, 60, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
         }
         
         .smart-btn button {
@@ -472,21 +462,11 @@ st.markdown("""
             box-shadow: 0 8px 25px rgba(243, 156, 18, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
         }
         
-        .smart-btn button:hover {
-            background: linear-gradient(135deg, #E67E22, #F39C12) !important;
-            box-shadow: 0 15px 35px rgba(243, 156, 18, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
-        }
-        
         .imagery-btn button {
             background: linear-gradient(135deg, #9B59B6, #8E44AD) !important;
             color: white !important;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
             box-shadow: 0 8px 25px rgba(155, 89, 182, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
-        }
-        
-        .imagery-btn button:hover {
-            background: linear-gradient(135deg, #8E44AD, #9B59B6) !important;
-            box-shadow: 0 15px 35px rgba(155, 89, 182, 0.4), inset 0 1px 0 rgba(255,255,255,0.4) !important;
         }
     }
 

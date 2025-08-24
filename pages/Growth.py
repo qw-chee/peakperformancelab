@@ -327,8 +327,6 @@ def get_styles():
             font-size: clamp(0.6rem, 1.5vw, 4rem);
             margin-bottom: clamp(-40px, -2.5vh, -20px);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            text-align: center !important;
-            padding: 0 !important;
         }
         
         .result-description {
@@ -777,8 +775,8 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     <div class="nature-container">
         <div class="results-container">
             <span class="result-icon">{result_data['icon']}</span>
-            <h3 class="result-title" style="color: {result_data['color']}; margin-bottom: -15px; text-align: center; margin-left: 0; margin-right: 0;">{result_data['title']}</h3>
-            <h4 class="result-title" style="color: {result_data['color']}; text-align: center; margin-left: 0; margin-right: 0;">{result_data['subtitle']}</h4>
+            <h3 class="result-title" style="color: {result_data['color']}; margin-bottom: -15px;">{result_data['title']}</h3>
+            <h4 class="result-title" style="color: {result_data['color']};">{result_data['subtitle']}</h4>
             <div class="result-description" style="color: #964a29;">
                 {result_data['description']}
             </div>
@@ -824,6 +822,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

@@ -380,7 +380,7 @@ def get_styles():
         }
 
         div[data-testid="stButton"] > button:hover {
-            background: linear-gradient(135deg, #f06292 0%, #ffb74d 50%, #fff176 100%) !important;
+            background: linear-gradient(135deg, #d1572e 0%, #ffb74d 50%, #fff176 100%) !important;
             transform: translateY(-3px) scale(1.05) !important;
             box-shadow: 0 8px 30px rgba(50, 205, 50, 0.4) !important;
             border-color: #FF8C00 !important;
@@ -398,7 +398,7 @@ def get_styles():
         }
 
         div[data-testid="stButton"] > button[kind="primary"]:hover {
-            background: linear-gradient(135deg, #f06292 0%, #ffb74d 50%, #fff176 100%) !important;
+            background: linear-gradient(135deg, #d1572e 0%, #ffb74d 50%, #fff176 100%) !important;
             border-color: #FF8C00 !important;
         }
 
@@ -822,6 +822,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

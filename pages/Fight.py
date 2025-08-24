@@ -138,6 +138,8 @@ def get_styles():
             color: #0052a3;
             text-align: center;
             text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+            margin-top: -5px;
+            margin-bottom: -5px;
         }
         
         .pixel-text { 
@@ -661,6 +663,7 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

@@ -787,7 +787,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
     st.markdown(f"""
     <div class="nature-container">
         <div class="result-description" style="color: #964a29; padding: 10px 15px 10px 10px;">
-            Based on your responses, here are some ways you can nurture your growth mindset:
+            Based on your responses, here are ways you can nurture your growth mindset:
         </div>
         <div class="result-description" style="color: #539127; padding: 0 15px 5px 10px;">
             <ul style="padding-left: 10px; margin: 10px 0;">
@@ -822,6 +822,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

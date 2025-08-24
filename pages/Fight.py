@@ -132,10 +132,10 @@ def get_styles():
         }
         
         .pixel-title {
-            font-family: 'Quantico', monospace;
+            font-family: 'Audiowide'; 
             font-weight: 900;
-            font-size: clamp(0.8rem, 1.2vw, 2em);
-            color: #029316;
+            font-size: clamp(1rem, 1.8vw, 2em);
+            color: #0052a3;
             text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
         
@@ -564,7 +564,7 @@ if st.session_state.game_over:
 if st.session_state.scenario is None:
     st.markdown("""
     <div class='pixel-card' style='text-align: center;'>
-        <h3 class='pixel-title 'style='color: #0052a3; margin-top: -5px; margin-bottom: -5px; font-family: 'Audiowide'; font-size: clamp(1rem, 1.8vw, 2em);'>⚔️ Inner Critic Boss Fight</h3>
+        <h3 class='pixel-title'>⚔️ Inner Critic Boss Fight</h3>
         <p class='pixel-text' style='font-size: clamp(0.8rem, 1.2vw, 1.2em); margin: 0; line-height: 1.1;'>
             Self-talk is a powerful tool that can help you think more positively about yourself and situations, boost your confidence, and cope with uncertainty 
             to achieve peak performance. Positive self-talk should remind you of your qualities and your ability to perservere. <br><br> 
@@ -572,7 +572,7 @@ if st.session_state.scenario is None:
         </p>
     </div>
     <div class='pixel-card'>
-        <h3 class='pixel-title 'style='color: #0052a3; margin-top: -5px; margin-bottom: -5px; font-family: 'Audiowide'; font-size: clamp(1rem, 1.8vw, 2em); text-align: center;'>🎮 How to Play</h3>
+        <h3 class='pixel-title'>🎮 How to Play</h3>
         <div class='pixel-text' style='font-size: clamp(0.8rem, 1.2vw, 1.2em);'>
             <p style='margin-bottom: clamp(4px, 0.6vh, 8px);'><strong>Mission:</strong> Counter your inner critic with positive self-talk to defeat the Boss!</p>
             <p style='margin-bottom: clamp(4px, 0.6vh, 8px);'><strong>Scoring System:</strong></p>
@@ -590,7 +590,7 @@ if st.session_state.scenario is None:
         </div>
     </div>
     <div style='text-align: center; margin-bottom: -25px;'>
-        <h3 class='pixel-title' style='margin: 0; font-family: 'Audiowide'; font-size: clamp(1.2rem, 2vw, 1.5em); margin-top: -5px;'>🎯 Choose Your Battle</h3>
+        <h3 class='pixel-title'>🎯 Choose Your Battle</h3>
     </div>
     """, unsafe_allow_html=True)
     
@@ -660,5 +660,6 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 

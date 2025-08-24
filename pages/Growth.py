@@ -327,6 +327,9 @@ def get_styles():
             font-size: clamp(0.6rem, 1.5vw, 4rem);
             margin-bottom: clamp(-40px, -2.5vh, -20px);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-align: center !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
         }
         
         .result-description {
@@ -822,6 +825,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

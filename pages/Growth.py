@@ -364,7 +364,7 @@ def get_styles():
         /* Main buttons (ALL buttons now use same style) */
         div[data-testid="stButton"] > button {
             background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%) !important;
-            border: clamp(2px, 0.3vw, 3px) solid #FF6347 !important;
+            border: clamp(2px, 0.3vw, 3px) solid #EC407A !important;
             color: white !important;
             font-weight: 600 !important;
             font-size: clamp(1rem, 1.2vw, 1.4rem) !important;
@@ -388,7 +388,7 @@ def get_styles():
 
         div[data-testid="stButton"] > button[kind="primary"] {
             background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%) !important;
-            border-color: #FF6347 !important;
+            border-color: #EC407A !important;
             animation: sunny-glow 2s ease-in-out infinite alternate;
         }
         
@@ -688,16 +688,16 @@ if st.session_state.current_question == 0 and not st.session_state.quiz_complete
         </div>
         <div style="margin: -10px 0 -20px 0;">
             <div class="response-grid">
-                <div style="background: linear-gradient(135deg, #ec407a 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #e91e63; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
+                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #EC407A; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
                     Strongly Disagree
                 </div>
-                <div style="background: linear-gradient(135deg, #ec407a 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #e91e63; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
+                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #EC407A; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
                     Disagree
                 </div>
-                <div style="background: linear-gradient(135deg, #ec407a 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #e91e63; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;">
+                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #EC407A; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;">
                     Agree
                 </div>
-                <div style="background: linear-gradient(135deg, #ec407a 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #e91e63; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;">
+                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #EC407A; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;">
                     Strongly Agree
                 </div>
             </div>
@@ -814,6 +814,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

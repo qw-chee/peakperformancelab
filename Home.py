@@ -154,9 +154,7 @@ page_styles = """
         transition: all 0.3s ease !important;
         text-transform: none !important;
         letter-spacing: 0.5px !important;
-        width: 100% !important;
-        min-width: fit-content !important;
-        max-width: clamp(300px, 50vw, 600px) !important;
+        width: fit-content
     }
 
     .stApp .main .block-container div[data-testid="stButton"] > button:hover,

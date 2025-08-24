@@ -415,6 +415,7 @@ def get_styles():
             font-family: 'Fredoka', cursive !important;
             font-weight: 600;
             font-size: clamp(1rem, 1.2vw, 1.2rem) !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
         }
 
         ::-webkit-scrollbar {
@@ -821,6 +822,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

@@ -149,19 +149,15 @@ page_styles = """
         background: #f05151 !important;
         border: clamp(4px, 0.5vw, 8px) solid #353535 !important;
         color: white !important;
-        font-weight: 700 !important;
-        font-size: clamp(1.5rem, 3vw, 3.5rem) !important;
-        font-family: 'Poetsen One', cursive !important;
-        padding: clamp(12px, 2vh, 25px) clamp(20px, 3vw, 40px) !important;
         border-radius: clamp(20px, 3vw, 35px) !important;
         box-shadow: 0 clamp(6px, 1vh, 12px) clamp(20px, 3vh, 35px) rgba(29, 160, 136, 0.4) !important;
         transition: all 0.3s ease !important;
         text-transform: none !important;
         letter-spacing: 0.5px !important;
-        width: 100% !important;
-        min-width: fit-content !important;
-        white-space: nowrap !important;
-        max-width: clamp(300px, 50vw, 600px) !important;
+        width: fit-content;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block !important;
     }
 
     .stApp .main .block-container div[data-testid="stButton"] > button:hover,
@@ -170,6 +166,24 @@ page_styles = """
         background: #f05151 !important;
         transform: translateY(-3px) scale(1.05) !important;
         box-shadow: 0 clamp(8px, 1.5vh, 16px) clamp(25px, 4vh, 45px) rgba(29, 160, 136, 0.5) !important;
+    }
+        
+    /* Force font on all text elements within buttons */
+    div[data-testid="stButton"] * {
+        font-weight: 500 !important;
+        font-size: clamp(0.5rem, 1vw, 3.5rem) !important;
+        font-family: 'Poetsen One', cursive !important;
+    }
+        
+
+    /* Responsive spacing for button positioning */
+    .button-spacing {
+        height: clamp(48vh, 60vh, 67vh) !important;
+    }
+
+    /* Force font loading for desktop only */
+    .desktop-font {
+        font-family: 'Poetsen One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     /* Responsive spacing for button positioning */

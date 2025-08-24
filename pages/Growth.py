@@ -184,7 +184,7 @@ def get_styles():
           
         .nature-container {
             background: rgba(255, 255, 255, 0.95);
-            border: clamp(2px, 0.3vw, 3px) solid #22870e;
+            border: clamp(2px, 0.3vw, 3px) solid #e09214;
             border-radius: clamp(15px, 2vw, 20px);
             padding: clamp(7px, 0.9vw, 9px);
             margin: clamp(9px, 1.4vh, 14px) 0;
@@ -231,7 +231,7 @@ def get_styles():
         .nature-text {
             font-family: 'Comfortaa', cursive;
             display: block;
-            color: #238f0d;
+            color: #22870e;
             font-size: clamp(0.8rem, 1.1vw, 1.2rem);
             line-height: 1.1;
             text-align: center;
@@ -814,6 +814,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

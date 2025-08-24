@@ -382,7 +382,7 @@ def get_styles():
             padding: clamp(12px, 1.5vh, 15px) clamp(25px, 3vw, 30px) !important;
             border-radius: clamp(20px, 2.5vw, 25px) !important;
             margin-top: 10px !important;
-            box-shadow: 0 6px 20px rgba(34, 139, 34, 0.3) !important;
+            box-shadow: 0 6px 20px rgba(222, 159, 13, 0.3) !important;
             transition: all 0.3s ease !important;
             text-transform: none !important;
             letter-spacing: 0.5px !important;
@@ -392,7 +392,7 @@ def get_styles():
         div[data-testid="stButton"] > button:hover {
             background: linear-gradient(135deg, #d12e59 0%, #ffb74d 50%, #fff176 100%) !important;
             transform: translateY(-3px) scale(1.05) !important;
-            box-shadow: 0 8px 30px rgba(50, 205, 50, 0.4) !important;
+            box-shadow: 0 8px 30px rgba(222, 159, 13, 0.4) !important;
             border-color: #FF8C00 !important;
         }
 
@@ -832,6 +832,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

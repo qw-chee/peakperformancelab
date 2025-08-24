@@ -236,7 +236,7 @@ def get_pettlep_elements(scenario):
             "example": "E.g.: 'I'm holding my tennis racket with both hands and bouncing on the balls of my feet.'",
             "elaboration_questions": [
                 "How is your body positioned?",
-                "What physical sensations do you feel (weight, texture, temperature)?"
+                "What physical sensations do you feel (weight, texture)?"
             ]
         },
         {

@@ -589,7 +589,7 @@ def get_futuristic_styles():
         /* Force font on all text elements within buttons */
         div[data-testid="stButton"] * {
             font-weight: 600;
-            font-family: 'Orbitron' !important;
+            font-family: 'Rajdhani' !important;
         }
 
         div[data-testid="stForm"] div[data-testid="stButton"] > button[kind="primary"] {

@@ -146,7 +146,6 @@ page_styles = """
     .stApp .main .block-container div[data-testid="stButton"] > button,
     .stApp div[data-testid="stButton"] > button[kind="primary"],
     div[data-testid="stButton"] button {
-        justify-content: center !important;
         background: #f05151 !important;
         border: clamp(4px, 0.5vw, 8px) solid #353535 !important;
         color: white !important;
@@ -155,7 +154,10 @@ page_styles = """
         transition: all 0.3s ease !important;
         text-transform: none !important;
         letter-spacing: 0.5px !important;
-        width: fit-content
+        width: fit-content;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block !important;
     }
 
     .stApp .main .block-container div[data-testid="stButton"] > button:hover,
@@ -168,7 +170,6 @@ page_styles = """
         
     /* Force font on all text elements within buttons */
     div[data-testid="stButton"] * {
-        justify-content: center !important;
         font-weight: 500 !important;
         font-size: clamp(0.5rem, 1vw, 3.5rem) !important;
         font-family: 'Poetsen One', cursive !important;

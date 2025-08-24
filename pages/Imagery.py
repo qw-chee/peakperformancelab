@@ -1024,7 +1024,7 @@ if 1 <= st.session_state.current_step <= 7:
             <div class="elaboration-title">✨ Now Elaborate Further</div>
             <div class="movie-text">Great! You chose: <strong>"{st.session_state.selected_option.get(element['name'], '')}"</strong> Please elaborate on your answer by addressing these questions:</div>
             <div style="margin-top: clamp(4px, 0.8vh, 10px); margin-bottom: clamp(-15px, -2vh, -15px);">
-                <ul style="color: rgba(255, 255, 255, 0.9); font-family: 'Gabarito', sans-serif; font-size: clamp(0.9rem, 0.7vw, 1.2em); line-height: 1.1;">
+                <ul style="color: rgba(255, 255, 255, 0.9); font-family: 'Gabarito', sans-serif; font-size: clamp(1rem, 0.8vw, 1.2em); line-height: 1.1;">
                     {questions_html}
                 </ul>
             </div>

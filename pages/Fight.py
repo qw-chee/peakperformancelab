@@ -13,18 +13,18 @@ openai.api_key = st.secrets.get("openai_api_key")
 # ---------------------------- SCENARIOS ----------------------------
 SCENARIO_LINES = {
     "Studying for Exam": [
-        "You're never going to remember all this.", "You can't cover everything with so little time.", "You're not smart enough to get this.",
-        "Others are way ahead of you.", "You always mess up exams.", "This topic is too hard for you.",
-        "You don’t remember things like you used to.", "You don't have what it takes.", "You're so behind—what's the point?",
-        "You're a terrible student.", "You'll never catch up.", "Everyone else gets it but you.",
-        "You'll only get a B grade anyway.", "Everyone else has more time to study; you’re at a disadvantage.", "You always procrastinate and never change."
+        "I'm never going to remember all of this.", "I can't cover everything with so little time.", "I'm not smart enough to get this.",
+        "Others are way ahead of me.", "I always mess up exams.", "This topic is too hard for me.",
+        "I don’t remember things like I used to.", "I don't have what it takes.", "I'm so behind—what's the point?",
+        "I'm a terrible student.", "I'll never catch up.", "Everyone else gets it but me.",
+        "I'll only get a B grade anyway.", "Everyone else has more time to study; I'm at a disadvantage.", "I always procrastinate and never change."
     ],
     "Job Interview Preparation": [
-        "You're not qualified enough.", "If I make one mistake, it’s over.", "Why would they hire you?",
-        "You're going to mess this up.", "Others are way more impressive.", "You always panic during interviews.",
-        "You don't deserve this opportunity.", "They'll ask something you can't answer.", "You're going to look so nervous.",
-        "You're wasting the interviewer's time.", "You're not a good communicator.", "You don't have real experience.",
-        "You won't make a good impression.", "You're too awkward.", "They'll never take you seriously."
+        "I'm not qualified enough.", "If I make one mistake, it’s over.", "Why would they hire me?",
+        "I'm going to mess this up.", "Others are way more impressive.", "I always panic during interviews.",
+        "I don't deserve this opportunity.", "They'll ask something I can't answer.", "I'm going to look so nervous.",
+        "I'm wasting the interviewer's time.", "I'm not a good communicator.", "I don't have real experience.",
+        "I won't make a good impression.", "I'm too awkward.", "They'll never take me seriously."
     ],
     "Work-life Balance": [
         "If I take a break, I'm just being lazy.", "It doesn't matter what I eat. I just need a quick meal.",
@@ -654,23 +654,3 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -364,7 +364,7 @@ def get_styles():
         /* Main buttons (ALL buttons now use same style) */
         div[data-testid="stButton"] > button {
             background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%) !important;
-            border: clamp(2px, 0.3vw, 3px) solid #ff8cbc !important;
+            border: clamp(2px, 0.3vw, 3px) solid #fc6f97 !important;
             color: white !important;
             font-weight: 600 !important;
             font-size: clamp(1rem, 1.2vw, 1.2rem) !important;
@@ -388,7 +388,7 @@ def get_styles():
 
         div[data-testid="stButton"] > button[kind="primary"] {
             background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%) !important;
-            border-color: #ff8cbc !important;
+            border-color: #fc6f97 !important;
             animation: sunny-glow 2s ease-in-out infinite alternate;
         }
         
@@ -821,6 +821,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

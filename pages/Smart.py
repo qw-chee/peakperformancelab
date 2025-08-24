@@ -265,7 +265,7 @@ def get_futuristic_styles():
             color: rgba(255, 255, 255, 0.9);
             font-size: clamp(1.1rem, 1.3vw, 1.3em);
             line-height: 0.9;
-            margin-bottom: -5px;
+            margin-bottom: -3px;
         }
         
         .smart-grid {

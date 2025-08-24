@@ -357,7 +357,7 @@ def get_gpt_feedback(element_name, user_response, scenario):
         
         User's Response: "{user_response}"
         
-        APPROVE the response if it addresses the key questions above with specific details, even if brief. ONLY reject if the response is too vague, doesn't address the questions, or lacks vivid imagery details.
+        APPROVE the response if it addresses the key questions above with specific details, even if brief. ONLY reject if the response is too vague, doesn't address the questions, or lacks vivid imagery details. Make sure you are evaluating that element only (not imagery in general).
         
         Provide feedback in this exact format:
         

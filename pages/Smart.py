@@ -566,8 +566,8 @@ def get_futuristic_styles():
         }
 
         div[data-testid="stButton"] > button {
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.8) 0%, rgba(255, 0, 255, 0.8) 100%) !important;
-            border: clamp(1px, 0.15vw, 1px) solid #00ffee !important;
+            background: linear-gradient(135deg, #5000fc 0%, #ff00ff 50%, #00ff7f 100%) !important;
+            border: clamp(1px, 0.2vw, 2px) solid #00ffee !important;
             color: #00ffff !important;
             font-weight: 600 !important;
             font-family: 'Rajdhani', sans-serif !important;
@@ -577,8 +577,8 @@ def get_futuristic_styles():
         }
 
         div[data-testid="stButton"] > button:hover {
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.8) 0%, rgba(255, 0, 255, 0.8) 100%) !important;
-            border-color: rgba(0, 255, 255, 0.6) !important;
+            background: linear-gradient(135deg, #ff00ff 0%, #00ff7f 50%, #00ffff 100%) !important;
+            border: clamp(1px, 0.2vw, 2px) solid #00ffee !important;
             transform: translateY(clamp(-1px, -0.2vw, -2px)) !important;
             box-shadow: 0 clamp(3px, 0.5vw, 5px) clamp(10px, 1.5vw, 15px) rgba(0, 255, 255, 0.3) !important;
         }

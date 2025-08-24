@@ -538,7 +538,7 @@ def get_futuristic_styles():
         }
         
         div[data-testid="stButton"] > button[kind="primary"] {
-            background: linear-gradient(135deg, #00ffff 0%, #ff00ff 50%, #00ff7f 100%) !important;
+            background: linear-gradient(135deg, #5000fc 0%, #ff00ff 50%, #00ff7f 100%) !important;
             border: clamp(1px, 0.2vw, 2px) solid rgba(0, 255, 255, 0.5) !important;
             color: #000000 !important;
             font-weight: 900 !important;

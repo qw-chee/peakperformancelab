@@ -696,16 +696,16 @@ if st.session_state.current_question == 0 and not st.session_state.quiz_complete
         </div>
         <div style="margin: -10px 0 -20px 0;">
             <div class="response-grid">
-                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #ff8cbc; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
+                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
                     Strongly Disagree
                 </div>
-                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #ff8cbc; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
+                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;">
                     Disagree
                 </div>
-                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #ff8cbc; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;">
+                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;">
                     Agree
                 </div>
-                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #ff8cbc; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;">
+                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;">
                     Strongly Agree
                 </div>
             </div>
@@ -822,6 +822,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

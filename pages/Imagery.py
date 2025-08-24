@@ -352,12 +352,13 @@ def get_gpt_feedback(element_name, user_response, scenario):
         prompt = f"""You are a sports psychology expert evaluating a user's mental imagery description for the {element_name} element of PETTLEP imagery.
         
         Scenario: {scenario}
+        Element: {element_name}
         Element Questions to Address:
         {questions_text}
         
         User's Response: "{user_response}"
         
-        APPROVE the response if it addresses the key questions above with specific details, even if brief. ONLY reject if the response is too vague, doesn't address the questions, or lacks vivid imagery details. Make sure you are evaluating that element only (not imagery in general).
+        APPROVE the response if it addresses the key questions above with specific details, even if brief. ONLY reject if the response is too vague, doesn't address the questions, or lacks vivid imagery details. Make sure you are evaluating the response with respect to that element only and not imagery in general.
         
         Provide feedback in this exact format:
         

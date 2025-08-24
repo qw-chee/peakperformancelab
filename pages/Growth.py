@@ -184,7 +184,7 @@ def get_styles():
           
         .nature-container {
             background: rgba(255, 255, 255, 0.95);
-            border: clamp(2px, 0.3vw, 3px) solid #cf8600;
+            border: clamp(2px, 0.3vw, 3px) solid #22870e;
             border-radius: clamp(15px, 2vw, 20px);
             padding: clamp(7px, 0.9vw, 9px);
             margin: clamp(9px, 1.4vh, 14px) 0;
@@ -814,6 +814,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

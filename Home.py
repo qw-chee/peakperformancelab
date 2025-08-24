@@ -169,6 +169,14 @@ page_styles = """
         transform: translateY(-3px) scale(1.05) !important;
         box-shadow: 0 clamp(8px, 1.5vh, 16px) clamp(25px, 4vh, 45px) rgba(29, 160, 136, 0.5) !important;
     }
+        
+    /* Force font on all text elements within buttons */
+    div[data-testid="stButton"] * {
+        font-weight: 700 !important;
+        font-size: clamp(1.5rem, 3vw, 3.5rem) !important;
+        font-family: 'Poetsen One', cursive !important;
+    }
+        
 
     /* Responsive spacing for button positioning */
     .button-spacing {

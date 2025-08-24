@@ -136,6 +136,7 @@ def get_styles():
             font-weight: 900;
             font-size: clamp(1rem, 1.8vw, 2em);
             color: #0052a3;
+            text-align: center;
             text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
         
@@ -660,6 +661,7 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

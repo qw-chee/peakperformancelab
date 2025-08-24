@@ -175,12 +175,6 @@ page_styles = """
         font-family: 'Poetsen One', cursive !important;
     }
         
-
-    /* Responsive spacing for button positioning */
-    .button-spacing {
-        height: clamp(48vh, 60vh, 67vh) !important;
-    }
-
     /* Force font loading for desktop only */
     .desktop-font {
         font-family: 'Poetsen One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -188,7 +182,7 @@ page_styles = """
 
     /* Responsive spacing for button positioning */
     .button-spacing {
-        height: clamp(45vh, 58vh, 65vh) !important;
+        height: clamp(43vh, 56vh, 66vh) !important;
     }
 
     /* Force font loading for desktop only - Remove conflicting universal selector */

@@ -792,7 +792,7 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
 
     st.markdown("""
     <div class="neon-container">
-        <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; text-align: center; font-size: clamp(1.2rem, 1.8vw, 1.6em); margin-bottom: -5px;">
+        <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; text-align: center; font-size: clamp(1.2rem, 1.8vw, 1.5em); margin-bottom: -5px;">
             📡 SMART PROTOCOL COMPONENTS
         </h3>
         <div class="smart-grid">
@@ -827,7 +827,7 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
     
     st.markdown("""
     <div class="neon-container">
-        <h3 style="color: #ff00ff; font-family: 'Orbitron', monospace; text-align: center; margin-bottom: -5px; font-size: clamp(1rem, 1.6vw, 1.6em);">
+        <h3 style="color: #ff00ff; font-family: 'Orbitron', monospace; text-align: center; margin-bottom: -5px; font-size: clamp(1rem, 1.6vw, 1.5em);">
             ⚡ MISSION PARAMETERS
         </h3>
         <div class="cyber-text" style="text-align: center; margin-bottom: 5px;">

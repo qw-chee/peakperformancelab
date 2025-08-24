@@ -564,6 +564,7 @@ def get_futuristic_styles():
                 0 0 clamp(20px, 3vw, 30px) rgba(255, 0, 255, 0.4),
                 inset 0 0 clamp(15px, 2.5vw, 25px) rgba(255, 255, 255, 0.3) !important;
             border-color: rgba(255, 0, 255, 0.8) !important;
+            color: #c4108b !important;
         }
 
         div[data-testid="stButton"] > button {
@@ -582,6 +583,7 @@ def get_futuristic_styles():
             border: clamp(1px, 0.2vw, 2px) solid #00ffee !important;
             transform: translateY(clamp(-1px, -0.2vw, -2px)) !important;
             box-shadow: 0 clamp(3px, 0.5vw, 5px) clamp(10px, 1.5vw, 15px) rgba(0, 255, 255, 0.3) !important;
+            color: #c4108b !important;
         }
 
         div[data-testid="stForm"] div[data-testid="stButton"] > button[kind="primary"] {

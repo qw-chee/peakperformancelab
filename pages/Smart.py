@@ -445,7 +445,7 @@ def get_futuristic_styles():
             flex-wrap: wrap;
             gap: clamp(6px, 1vw, 10px);
             justify-content: center;
-            margin-top: 0px;
+            margin-top: 5px;
             margin-bottom: 0px;
         }
         

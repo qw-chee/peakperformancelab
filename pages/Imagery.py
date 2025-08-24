@@ -696,6 +696,11 @@ def get_movie_styles():
             box-shadow: 0 5px 20px rgba(50, 205, 50, 0.4) !important;
         }
 
+        /* Force font on all text elements within buttons */
+        div[data-testid="stButton"] * {
+            font-family: 'Sigmar' !important;
+        }
+    
         .stSpinner > div {
             color: white !important;
         }

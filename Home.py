@@ -173,7 +173,7 @@ page_styles = """
     /* Force font on all text elements within buttons */
     div[data-testid="stButton"] * {
         font-weight: 700 !important;
-        font-size: clamp(1.5rem, 3vw, 3.5rem) !important;
+        font-size: clamp(0.5rem, 1vw, 3.5rem) !important;
         font-family: 'Poetsen One', cursive !important;
     }
         

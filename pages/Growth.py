@@ -390,6 +390,9 @@ def get_styles():
             background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%) !important;
             border-color: #EC407A !important;
             animation: sunny-glow 2s ease-in-out infinite alternate;
+            font-weight: 600 !important;
+            font-size: clamp(1rem, 1.2vw, 1.4rem) !important;
+            font-family: 'Fredoka', cursive !important;
         }
         
         @keyframes sunny-glow {
@@ -814,6 +817,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

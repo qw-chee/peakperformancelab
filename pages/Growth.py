@@ -186,7 +186,7 @@ def get_styles():
             background: rgba(255, 255, 255, 0.95);
             border: clamp(2px, 0.3vw, 3px) solid #e09214;
             border-radius: clamp(15px, 2vw, 20px);
-            padding: clamp(7px, 0.9vw, 9px);
+            padding: clamp(5px, 0.7vw, 9px);
             margin: clamp(9px, 1.4vh, 14px) 0;
             margin-bottom: -5px;
             position: relative;
@@ -822,6 +822,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

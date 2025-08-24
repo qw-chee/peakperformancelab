@@ -1170,16 +1170,16 @@ elif st.session_state.current_step == 8:
             🎯 How to Use Your Script
         </h3>
         <div class="movie-text">
-            <strong>🕐 Practice regularly:</strong> Use this script 3-5 times per week, spending 5-10 minutes each session.
+            🕐 Practice regularly: Use this script 3-5 times per week, spending 5-10 minutes each session.
         </div>
         <div class="movie-text">
-            <strong>🧘 Find a quiet space:</strong> Choose a comfortable, distraction-free environment for your mental rehearsal.
+            🧘 Find a quiet space: Choose a comfortable, distraction-free environment for your mental rehearsal.
         </div>
         <div class="movie-text">
-            <strong>🎬 Engage all senses:</strong> Make each element as vivid as possible - see, hear, feel, and experience every detail.
+            🎬 Engage all senses: Make each element as vivid as possible - see, hear, feel, and experience every detail.
         </div>
         <div class="movie-text">
-            <strong>🔄 Update as needed:</strong> Modify your script as your skills improve or circumstances change.
+            🔄 Update as needed: Modify your script as your skills improve or circumstances change.
         </div>
     </div>
     """, unsafe_allow_html=True)

@@ -541,7 +541,7 @@ def get_futuristic_styles():
         div[data-testid="stButton"] > button[kind="primary"] {
             background: linear-gradient(135deg, #5000fc 0%, #ff00ff 50%, #00ff7f 100%) !important;
             border: clamp(1px, 0.2vw, 2px) solid #00ffee !important;
-            color: #000000 !important;
+            color: #00ffff !important;
             font-weight: 900 !important;
             font-size: clamp(0.9rem, 1.1vw, 1.1em) !important;
             font-family: 'Orbitron', monospace !important;

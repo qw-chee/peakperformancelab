@@ -792,7 +792,7 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
 
     st.markdown("""
     <div class="neon-container">
-        <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; text-align: center; font-size: clamp(1.2rem, 1.8vw, 1.8em); margin-bottom: -5px;">
+        <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; text-align: center; font-size: clamp(1.2rem, 1.8vw, 1.6em); margin-bottom: -5px;">
             📡 SMART PROTOCOL COMPONENTS
         </h3>
         <div class="smart-grid">

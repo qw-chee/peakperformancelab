@@ -305,8 +305,13 @@ def get_styles():
         }
         
         .results-container {
-            text-align: center;
+            text-align: center !important;
             padding: clamp(8px, 1vw, 10px);
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100% !important;
         }
         
         .result-icon {
@@ -827,6 +832,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

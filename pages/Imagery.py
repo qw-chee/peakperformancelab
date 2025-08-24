@@ -698,7 +698,7 @@ def get_movie_styles():
 
         /* Force font on all text elements within buttons */
         div[data-testid="stButton"] * {
-            font-family: 'Sigmar' !important;
+            font-family: 'Gabarito' !important;
         }
     
         .stSpinner > div {

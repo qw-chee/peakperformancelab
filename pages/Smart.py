@@ -586,6 +586,11 @@ def get_futuristic_styles():
             color: #c4108b !important;
         }
 
+        /* Force font on all text elements within buttons */
+        div[data-testid="stButton"] * {
+            font-family: 'Rajdhani' !important;
+        }
+
         div[data-testid="stForm"] div[data-testid="stButton"] > button[kind="primary"] {
             width: 100% !important;
             margin-top: clamp(12px, 2vw, 20px) !important;

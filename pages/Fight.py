@@ -228,6 +228,11 @@ def get_styles():
             box-shadow: 0 6px 20px rgba(126,190,254,0.4) !important; 
         }
 
+        /* Force font on all text elements within buttons */
+        div[data-testid="stButton"] * {
+            font-family: 'Quantico' !important;
+        }
+
         /* Specific breakpoint adjustments for optimal scaling */
         
         /* Standard Desktop (1024-1439px) */
@@ -654,3 +659,4 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+

@@ -414,6 +414,7 @@ def get_styles():
         div[data-testid="stButton"] * {
             font-family: 'Fredoka', cursive !important;
             font-weight: 600;
+            font-size: clamp(1rem, 1.2vw, 1.4rem) !important;
         }
 
         ::-webkit-scrollbar {
@@ -820,6 +821,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

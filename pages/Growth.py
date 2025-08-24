@@ -367,7 +367,7 @@ def get_styles():
             border: clamp(2px, 0.3vw, 3px) solid #EC407A !important;
             color: white !important;
             font-weight: 600 !important;
-            font-size: clamp(1rem, 1.2vw, 1.4rem) !important;
+            font-size: clamp(1rem, 1.2vw, 1.2rem) !important;
             font-family: 'Fredoka', cursive !important;
             padding: clamp(12px, 1.5vh, 15px) clamp(25px, 3vw, 30px) !important;
             border-radius: clamp(20px, 2.5vw, 25px) !important;
@@ -414,7 +414,7 @@ def get_styles():
         div[data-testid="stButton"] * {
             font-family: 'Fredoka', cursive !important;
             font-weight: 600;
-            font-size: clamp(1rem, 1.2vw, 1.4rem) !important;
+            font-size: clamp(1rem, 1.2vw, 1.2rem) !important;
         }
 
         ::-webkit-scrollbar {
@@ -821,6 +821,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

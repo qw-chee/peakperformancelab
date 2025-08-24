@@ -575,7 +575,7 @@ if st.session_state.scenario is None:
         </p>
     </div>
     <div class='pixel-card'>
-        <h3 class='pixel-title' style='margin-top: -5px; margin-bottom: -5px;'>🎮 How to Play</h3>
+        <h3 class='pixel-title' style='margin-top: -10px; margin-bottom: -10px;'>🎮 How to Play</h3>
         <div class='pixel-text' style='font-size: clamp(0.8rem, 1.2vw, 1.2em);'>
             <p style='margin-bottom: clamp(4px, 0.6vh, 8px);'><strong>Mission:</strong> Counter your inner critic with positive self-talk to defeat the Boss!</p>
             <p style='margin-bottom: clamp(4px, 0.6vh, 8px);'><strong>Scoring System:</strong></p>
@@ -663,6 +663,7 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

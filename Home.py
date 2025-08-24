@@ -149,9 +149,6 @@ page_styles = """
         background: #f05151 !important;
         border: clamp(4px, 0.5vw, 8px) solid #353535 !important;
         color: white !important;
-        font-weight: 700 !important;
-        font-size: clamp(1.5rem, 3vw, 3.5rem) !important;
-        font-family: 'Fredoka', cursive !important;
         border-radius: clamp(20px, 3vw, 35px) !important;
         box-shadow: 0 clamp(6px, 1vh, 12px) clamp(20px, 3vh, 35px) rgba(29, 160, 136, 0.4) !important;
         transition: all 0.3s ease !important;
@@ -172,7 +169,7 @@ page_styles = """
         
     /* Force font on all text elements within buttons */
     div[data-testid="stButton"] * {
-        font-weight: 700 !important;
+        font-weight: 500 !important;
         font-size: clamp(0.5rem, 1vw, 3.5rem) !important;
         font-family: 'Poetsen One', cursive !important;
     }

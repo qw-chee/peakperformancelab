@@ -175,7 +175,7 @@ def get_pettlep_elements(scenario):
                 "question": "Which is most Environment-focused for an exam?",
                 "options": [
                     "I'm writing my answers clearly and checking my work carefully.",
-                    "I see the quiet Taking an Exam, hear pencils scratching, and feel the cool air.",
+                    "I see the 'Quiet, Exam in Progress' sign, hear pens scratching, and feel the cool air.",
                     "I'm holding my lucky pen and wearing my comfortable exam outfit."
                 ],
                 "correct": 1

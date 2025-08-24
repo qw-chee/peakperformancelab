@@ -468,6 +468,12 @@ st.markdown("""
             text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
             box-shadow: 0 8px 25px rgba(155, 89, 182, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
         }
+
+        /* Force font on all text elements within buttons */
+        div[data-testid="stButton"] * {
+            font-weight: 600;
+            font-family: 'Baloo 2' !important;
+        }
     }
 
     /* Specific breakpoint adjustments for optimal scaling */

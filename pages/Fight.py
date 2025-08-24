@@ -20,7 +20,7 @@ SCENARIO_LINES = {
         "You'll only get a B grade anyway.", "Everyone else has more time to study; you’re at a disadvantage.", "You always procrastinate and never change."
     ],
     "Job Interview Preparation": [
-        "You're not qualified enough.", "They'll see right through you.", "Why would they hire you?",
+        "You're not qualified enough.", "If I make one mistake, it’s over.", "Why would they hire you?",
         "You're going to mess this up.", "Others are way more impressive.", "You always panic during interviews.",
         "You don't deserve this opportunity.", "They'll ask something you can't answer.", "You're going to look so nervous.",
         "You're wasting the interviewer's time.", "You're not a good communicator.", "You don't have real experience.",
@@ -654,6 +654,7 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

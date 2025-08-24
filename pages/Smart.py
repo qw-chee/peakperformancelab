@@ -474,8 +474,8 @@ def get_futuristic_styles():
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-top: -5px;
-            margin-bottom: -5px;
+            margin-top: -3px;
+            margin-bottom: -3px;
             text-shadow: 0 0 clamp(20px, 3vw, 30px) rgba(0, 255, 255, 0.5);
         }
         

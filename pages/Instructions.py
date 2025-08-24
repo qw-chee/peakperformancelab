@@ -207,7 +207,7 @@ page_styles = """
     }
     
     .button-spacing {
-        height: 50vh !important;
+        height: 48vh !important;
     }
 }
 
@@ -220,7 +220,7 @@ page_styles = """
     }
     
     .button-spacing {
-        height: 56vh !important;
+        height: 57vh !important;
     }
 }
 

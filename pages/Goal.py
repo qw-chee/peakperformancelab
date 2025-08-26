@@ -354,7 +354,7 @@ def get_futuristic_styles():
             background: rgba(0, 255, 127, 0.1);
             border: clamp(1px, 0.15vw, 1px) solid rgba(0, 255, 127, 0.4);
             border-radius: clamp(6px, 1vw, 10px);
-            padding: clamp(6px, 1vw, 10px);
+            padding: clamp(4px, 0.8vw, 10px);
             margin: clamp(6px, 1vw, 10px) 0;
             backdrop-filter: blur(5px);
         }

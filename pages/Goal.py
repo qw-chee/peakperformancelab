@@ -878,7 +878,7 @@ if not st.session_state.game_completed:
         missing_count = len(goal["missing"])
               
         st.markdown(f"""
-        <div class="neon-container">
+        <div class="goal-statement">
             <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1rem, 1.4vw, 1.4em);">
                 🔍 WHICH SMART COMPONENTS ARE MISSING?
             </h3>
@@ -889,7 +889,7 @@ if not st.session_state.game_completed:
         """, unsafe_allow_html=True)
 
         st.markdown(f"""
-        <div class="goal-statement" style="text-align: center;">
+        <div class="neon-container" style="text-align: center;">
             <div class="goal-text">{goal['text']}</div>
         </div>
         """, unsafe_allow_html=True)

@@ -893,8 +893,6 @@ if not st.session_state.game_completed:
             <div class="goal-text">{goal['text']}</div>
         </div>
         """, unsafe_allow_html=True)
-      
-        st.markdown('<div style="margin-top: 5px;">', unsafe_allow_html=True)
         
         with st.form("smart_form", clear_on_submit=False):
             st.markdown('<div class="cyber-text" style="margin: 0 0 0 0">Select all missing components:</div>', unsafe_allow_html=True)

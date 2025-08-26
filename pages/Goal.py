@@ -66,6 +66,24 @@ GOALS_DATABASE = [
     }
 ]
 
+TEST_DATABASE = [
+    {
+        "text": "I will launch a successful global online business by next week.",
+        "missing": ["Specific", "Measurable", "Achievable", "Relevant"],
+        "feedback": "This goal isn't <strong>Specific</strong> (what type of business?), isn't <strong>Measurable</strong> (what defines success?), isn't <strong>Achievable</strong> (one week is unrealistic), and lacks <strong>Relevance</strong> (why this business?)."
+    },
+    {
+        "text": "I want to build better habits.",
+        "missing": ["Specific", "Measurable", "Relevant", "Timebound"],
+        "feedback": "This goal lacks <strong>Specificity</strong> (which habits?), isn't <strong>Measurable</strong> (how will you track progress?), lacks <strong>Relevance</strong> (why these habits?), and has no <strong>Timebound</strong> deadline."
+    },
+    {
+        "text": "I want to eat healthier.",
+        "missing": ["Specific", "Measurable", "Relevant", "Timebound"],
+        "feedback": "This goal lacks <strong>Specificity</strong> (what does healthier mean?), isn't <strong>Measurable</strong> (how will you track it?), lacks <strong>Relevance</strong> (why is this important to you?), and has no <strong>Timebound</strong> deadline."
+    }
+]
+
 # ---------------------------- SESSION STATE INIT ----------------------------
 def init_game_state():
     defaults = {

@@ -865,7 +865,7 @@ if not st.session_state.game_completed:
         """, unsafe_allow_html=True)
 
         st.markdown(f"""
-        <div class="neon-container" style="text-align: center;">
+        <div class="goal-statement" style="text-align: center;">
             <div class="goal-text">{goal['text']}</div>
         </div>
         """, unsafe_allow_html=True)

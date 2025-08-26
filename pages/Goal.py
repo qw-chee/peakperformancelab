@@ -11,88 +11,58 @@ st.set_page_config(
 GOALS_DATABASE = [
     # Missing 1 element
     {
-        "text": "I will apply to 10 jobs to increase my chances of employment.",
+        "text": "I will apply to 5 jobs to increase my chances of employment.",
         "missing": ["Timebound"],
-        "feedback": "This goal isn't <strong>Timebound</strong> - there's no deadline specified. There should be a timeframe like 'within the next 2 months' or 'by the end of this quarter'.<br><br><strong>SMART Version:</strong> 'I will apply to 10 jobs within the next 6 weeks to increase my chances of employment in my field.'"
+        "feedback": "This goal isn't <strong>Timebound</strong> (there's no deadline specified)."
     },
     {
         "text": "To manage time, I will write some of my TMA every evening.",
         "missing": ["Measurable"],
-        "feedback": "This goal isn't <strong>Measurable</strong> - 'some' is vague. How much work should be specified, like '2 pages' or '500 words' or '1 hour of writing'.<br><br><strong>SMART Version:</strong> 'To manage time effectively, I will write 300 words of my TMA every evening until completion.'"
+        "feedback": "This goal isn't <strong>Measurable</strong> ('some' is vague; how much work should be specified)."
     },
     {
         "text": "I will finish reading 10 books to improve my writing by tomorrow.",
         "missing": ["Achievable"],
-        "feedback": "This goal isn't <strong>Achievable</strong> - reading 10 books in one day is unrealistic. A more achievable timeline would be several months.<br><br><strong>SMART Version:</strong> 'I will finish reading 10 books over the next 6 months to improve my writing skills by expanding my vocabulary and understanding different writing styles.'"
+        "feedback": "This goal isn't <strong>Achievable</strong> (reading 10 books in one day is unrealistic)."
     },
     {
         "text": "I will exercise more for better health each day.",
         "missing": ["Measurable"],
-        "feedback": "This goal isn't <strong>Measurable</strong> - 'more' is vague. How much exercise should be specified, like '30 minutes of cardio' or 'attend 3 gym sessions per week'.<br><br><strong>SMART Version:</strong> 'I will exercise for 30 minutes each day for the next 3 months to improve my cardiovascular health and energy levels.'"
+        "feedback": "This goal isn't <strong>Measurable</strong> ('more' is vague; how much exercise should be specified)."
     },
     {
         "text": "I will aim to improve my GPA by 0.5 for better career prospects.",
         "missing": ["Timebound"],
-        "feedback": "This goal isn't <strong>Timebound</strong> - there's no deadline specified. There should be a timeframe like 'by the end of this semester' or 'within one academic year'.<br><br><strong>SMART Version:</strong> 'I will improve my GPA by 0.5 points by the end of this academic year through consistent study habits to enhance my career prospects.'"
+        "feedback": "This goal isn't <strong>Timebound</strong> (there's no deadline specified)."
     },
     {
         "text": "I will volunteer twice at the foodbank each month.",
         "missing": ["Relevant"],
-        "feedback": "This goal lacks clear <strong>Relevance</strong> - it doesn't explain how volunteering connects to any goals.<br><br><strong>SMART Version:</strong> 'I will volunteer twice at the foodbank each month for 6 months to develop my leadership skills and give back to my community.'"
+        "feedback": "This goal lacks clear <strong>Relevance</strong> (it doesn't explain how volunteering connects to any goals)."
     },
     
     # Missing 2 elements
     {
         "text": "I want to save 10 million dollars by the end of this year.",
         "missing": ["Achievable", "Relevant"],
-        "feedback": "This goal isn't <strong>Achievable</strong> (10 million in one year is unrealistic for most people) and lacks <strong>Relevance</strong> (why this specific amount? What's the purpose?).<br><br><strong>SMART Version:</strong> 'I will save $5,000 by the end of this year to build an emergency fund for my family's financial security.'"
-    },
-    {
-        "text": "I plan to improve my lane-changing skills to be a better driver.",
-        "missing": ["Measurable", "Timebound"],
-        "feedback": "This goal isn't <strong>Measurable</strong> (how will you gauge improvement?) and isn't <strong>Timebound</strong> (by when?).<br><br><strong>SMART Version:</strong> 'I will practice lane-changing in a safe environment for 30 minutes twice per week for the next month to improve my driving confidence and safety.'"
+        "feedback": "This goal isn't <strong>Achievable</strong> (10 million in one year is unrealistic for most people) and lacks <strong>Relevance</strong> (why this specific amount? What's the purpose?)."
     },
     {
         "text": "I want to contribute to household bills to help my parents.",
         "missing": ["Measurable", "Timebound"],
-        "feedback": "This goal isn't <strong>Measurable</strong> (how much will you contribute?) and isn't <strong>Timebound</strong> (when will you start and for how long?).<br><br><strong>SMART Version:</strong> 'I will contribute $200 monthly to household bills starting next month to help reduce my parents' financial burden.'"
-    },
-    {
-        "text": "I will aim to attend professional development courses each year.",
-        "missing": ["Measurable", "Relevant"],
-        "feedback": "This goal isn't <strong>Measurable</strong> (how many courses?) and lacks <strong>Relevance</strong> (which specific skills or career goals will this support?).<br><br><strong>SMART Version:</strong> 'I will attend 3 professional development courses this year focused on project management to advance my career in operations.'"
+        "feedback": "This goal isn't <strong>Measurable</strong> (how much will you contribute?) and isn't <strong>Timebound</strong> (when will you start and for how long?)."
     },
     {
         "text": "I will arrive earlier for class starting next week.",
         "missing": ["Measurable", "Relevant"],
-        "feedback": "This goal isn't <strong>Measurable</strong> (how much earlier?) and lacks <strong>Relevance</strong> (why is arriving earlier important for your academic success?).<br><br><strong>SMART Version:</strong> 'I will arrive 15 minutes earlier for each class starting next week to review notes and improve my academic performance.'"
+        "feedback": "This goal isn't <strong>Measurable</strong> (how much earlier?) and lacks <strong>Relevance</strong> (why is arriving earlier important for your academic success?)."
     },
     
     # Missing 3 elements
     {
-        "text": "I will contribute to GBA group discussions more actively.",
-        "missing": ["Measurable", "Relevant", "Timebound"],
-        "feedback": "This goal isn't <strong>Measurable</strong> (what does 'more actively' mean?), lacks <strong>Relevance</strong> (why is this important to your goals?), and isn't <strong>Timebound</strong> (no deadline specified).<br><br><strong>SMART Version:</strong> 'I will contribute at least 2 meaningful comments per GBA discussion session over the next 8 weeks to improve my participation grade and deepen my understanding.'"
-    },
-    {
         "text": "I will start exploring other types of exercise next week.",
         "missing": ["Specific", "Measurable", "Relevant"],
-        "feedback": "This goal isn't <strong>Specific</strong> (which types of exercise?), isn't <strong>Measurable</strong> (how much exploration?), and lacks <strong>Relevance</strong> (why explore new exercises?).<br><br><strong>SMART Version:</strong> 'I will try 3 new types of exercise (yoga, swimming, and cycling) for 30 minutes each next week to find enjoyable activities that will help me maintain long-term fitness.'"
-    },
-    {
-        "text": "I will become fluent in Japanese and Arabic to better connect with people.",
-        "missing": ["Measurable", "Achievable", "Timebound"],
-        "feedback": "This goal isn't <strong>Measurable</strong> (what defines fluency?), isn't <strong>Achievable</strong> (two languages simultaneously is unrealistic), and isn't <strong>Timebound</strong> (no deadline specified).<br><br><strong>SMART Version:</strong> 'I will achieve conversational level in Japanese (able to hold 10-minute conversations) within 18 months by studying 1 hour daily to connect with Japanese colleagues at work.'"
-    },
-    {
-        "text": "I will ask for more feedback during the next meeting.",
-        "missing": ["Specific", "Measurable", "Relevant"],
-        "feedback": "This goal isn't <strong>Specific</strong> (feedback about what?), isn't <strong>Measurable</strong> (how much is 'more'?), and lacks <strong>Relevance</strong> (why do you need this feedback?).<br><br><strong>SMART Version:</strong> 'I will ask my supervisor for specific feedback on 3 key areas of my project performance during next Tuesday's meeting to improve my work quality and meet project deadlines.'"
-    },
-    {
-        "text": "I will be more confident in meetings to improve my public-speaking skills.",
-        "missing": ["Specific", "Measurable", "Timebound"],
-        "feedback": "This goal lacks <strong>Specificity</strong> (what specific actions will build confidence?), isn't <strong>Measurable</strong> (how will you track confidence?), and has no <strong>Timebound</strong> deadline.<br><br><strong>SMART Version:</strong> 'I will speak up at least twice during each weekly team meeting for the next 2 months to build confidence and improve my public-speaking skills.'"
+        "feedback": "This goal isn't <strong>Specific</strong> (which types of exercise?), isn't <strong>Measurable</strong> (how much exploration?), and lacks <strong>Relevance</strong> (why explore new exercises?)."
     }
 ]
 

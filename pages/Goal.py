@@ -73,11 +73,6 @@ TEST_DATABASE = [
         "feedback": "This goal isn't <strong>Specific</strong> (what type of business?), isn't <strong>Measurable</strong> (what defines success?), isn't <strong>Achievable</strong> (one week is unrealistic), and lacks <strong>Relevance</strong> (why this business?)."
     },
     {
-        "text": "I want to build better habits.",
-        "missing": ["Specific", "Measurable", "Relevant", "Timebound"],
-        "feedback": "This goal lacks <strong>Specificity</strong> (which habits?), isn't <strong>Measurable</strong> (how will you track progress?), lacks <strong>Relevance</strong> (why these habits?), and has no <strong>Timebound</strong> deadline."
-    },
-    {
         "text": "I want to eat healthier.",
         "missing": ["Specific", "Measurable", "Relevant", "Timebound"],
         "feedback": "This goal lacks <strong>Specificity</strong> (what does healthier mean?), isn't <strong>Measurable</strong> (how will you track it?), lacks <strong>Relevance</strong> (why is this important to you?), and has no <strong>Timebound</strong> deadline."
@@ -812,7 +807,7 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
             ⚡ MISSION PARAMETERS
         </h3>
         <div class="cyber-text" style="text-align: center; margin-bottom: 5px;">
-            Analyze each goal. Identify missing component(s). Complete all 8 challenges to succeed!
+            Analyze each goal. Identify missing component(s). Complete all 12 challenges to succeed!
         </div>
     </div>
     """, unsafe_allow_html=True)

@@ -385,7 +385,7 @@ def get_futuristic_styles():
             font-size: clamp(1.2rem, 1.4vw, 1.3em);
             color: rgba(255, 255, 255, 0.95);
             font-style: italic;
-            font-weight: 600;
+            font-weight: 700;
             line-height: 1.5;
             margin: 0;
             text-shadow: 0 0 clamp(3px, 0.5vw, 5px) rgba(255, 255, 255, 0.7);
@@ -878,7 +878,7 @@ if not st.session_state.game_completed:
         missing_count = len(goal["missing"])
               
         st.markdown(f"""
-        <div class="goal-statement">
+        <div class="neon-container">
             <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1rem, 1.4vw, 1.4em);">
                 🔍 WHICH SMART COMPONENTS ARE MISSING?
             </h3>

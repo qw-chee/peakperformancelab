@@ -93,30 +93,6 @@ GOALS_DATABASE = [
         "text": "I will be more confident in meetings to improve my public-speaking skills.",
         "missing": ["Specific", "Measurable", "Timebound"],
         "feedback": "This goal lacks <strong>Specificity</strong> (what specific actions will build confidence?), isn't <strong>Measurable</strong> (how will you track confidence?), and has no <strong>Timebound</strong> deadline.<br><br><strong>SMART Version:</strong> 'I will speak up at least twice during each weekly team meeting for the next 2 months to build confidence and improve my public-speaking skills.'"
-    },
-  
-    # Missing 4 elements
-    {
-        "text": "I will launch a successful online business by next week.",
-        "missing": ["Specific", "Measurable", "Achievable", "Relevant"],
-        "feedback": "This goal isn't <strong>Specific</strong> (what type of business?), isn't <strong>Measurable</strong> (what defines success?), isn't <strong>Achievable</strong> (one week is unrealistic), and lacks <strong>Relevance</strong> (why this business?).<br><br><strong>SMART Version:</strong> 'I will launch a graphic design website with 5 portfolio pieces within 6 months to generate $1,000 monthly income.'"
-    },
-    {
-        "text": "I want to build better habits.",
-        "missing": ["Specific", "Measurable", "Relevant", "Timebound"],
-        "feedback": "This goal lacks <strong>Specificity</strong> (which habits?), isn't <strong>Measurable</strong> (how will you track progress?), lacks <strong>Relevance</strong> (why these habits?), and has no <strong>Timebound</strong> deadline.<br><br><strong>SMART Version:</strong> 'I will establish a morning routine of 30 minutes of reading and 10 minutes of meditation daily for the next 30 days to improve my focus and productivity at work.'"
-    },
-    {
-        "text": "I want to eat healthier.",
-        "missing": ["Specific", "Measurable", "Relevant", "Timebound"],
-        "feedback": "This goal lacks <strong>Specificity</strong> (what does healthier mean?), isn't <strong>Measurable</strong> (how will you track it?), lacks <strong>Relevance</strong> (why is this important to you?), and has no <strong>Timebound</strong> deadline.<br><br><strong>SMART Version:</strong> 'I will eat 5 servings of fruits and vegetables daily for the next 3 months to improve my energy levels and overall health.'"
-    },
-    
-    # Missing 5 elements
-    {
-        "text": "I will do better.",
-        "missing": ["Specific", "Measurable", "Achievable", "Relevant", "Timebound"],
-        "feedback": "This goal is missing all SMART elements: it's not <strong>Specific</strong> (better at what?), not <strong>Measurable</strong> (how to track progress?), not <strong>Achievable</strong> (too vague to assess), not <strong>Relevant</strong> (to what purpose?), and not <strong>Timebound</strong> (no deadline).<br><br><strong>SMART Version:</strong> 'I will improve my math test scores by 15% by the next semester to boost my GPA.'"
     }
 ]
 

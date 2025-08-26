@@ -354,6 +354,11 @@ def get_futuristic_styles():
             margin: clamp(8px, 1.5vw, 15px) 0;
             position: relative;
             backdrop-filter: blur(5px);
+        
+            /* Halo effect */
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.6),
+                        0 0 30px rgba(255, 0, 255, 0.4),
+                        0 0 45px rgba(255, 0, 255, 0.2);
         }
         
         .goal-statement::before, .goal-statement::after {
@@ -380,10 +385,10 @@ def get_futuristic_styles():
             font-size: clamp(1.2rem, 1.4vw, 1.3em);
             color: rgba(255, 255, 255, 0.95);
             font-style: italic;
-            font-weight: 500;
+            font-weight: 600;
             line-height: 1.5;
             margin: 0;
-            text-shadow: 0 0 clamp(3px, 0.5vw, 5px) rgba(255, 255, 255, 0.5);
+            text-shadow: 0 0 clamp(3px, 0.5vw, 5px) rgba(255, 255, 255, 0.7);
         }
         
         .cyber-hint {

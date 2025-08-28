@@ -757,7 +757,7 @@ st.markdown( """ <style> @media (min-width: 1300px) { .custom-spacer { height: 1
 if st.session_state.current_question == 0 and not st.session_state.game_completed:
     st.markdown("""
     <div class="neon-container">
-        <h2 class="cyber-title" style="margin-bottom: -5px;">Mission</h1>
+        <h2 class="cyber-title" style="margin-bottom: -5px;">Mission: SMART Possible</h1>
         <div class="cyber-text" style="text-align: center;">
             SMART goals are the blueprint for peak performance. 
             They turn wishful thinking into clear action steps, reduce procrastination, and keep your focus locked on progress. 

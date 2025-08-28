@@ -26,16 +26,6 @@ GOALS_DATABASE = [
         "feedback": "This goal isn't <strong>Achievable</strong> (reading 10 books in one day is unrealistic)."
     },
     {
-        "text": "I will exercise more for better health each day.",
-        "missing": ["Measurable"],
-        "feedback": "This goal isn't <strong>Measurable</strong> ('more' is vague; how much exercise should be specified)."
-    },
-    {
-        "text": "I will aim to improve my GPA by 0.5 for better career prospects.",
-        "missing": ["Timebound"],
-        "feedback": "This goal isn't <strong>Timebound</strong> (there's no deadline specified)."
-    },
-    {
         "text": "I will volunteer twice at the foodbank each month.",
         "missing": ["Relevant"],
         "feedback": "This goal lacks clear <strong>Relevance</strong> (it doesn't explain how volunteering connects to any goals)."
@@ -52,30 +42,30 @@ GOALS_DATABASE = [
         "missing": ["Measurable", "Timebound"],
         "feedback": "This goal isn't <strong>Measurable</strong> (how much will you contribute?) and isn't <strong>Timebound</strong> (when will you start and for how long?)."
     },
-    {
-        "text": "I will arrive earlier for class starting next week.",
-        "missing": ["Measurable", "Relevant"],
-        "feedback": "This goal isn't <strong>Measurable</strong> (how much earlier?) and lacks <strong>Relevance</strong> (why is arriving earlier important for your academic success?)."
-    },
     
     # Missing 3 elements
     {
         "text": "I will start exploring other types of exercise next week.",
         "missing": ["Specific", "Measurable", "Relevant"],
-        "feedback": "This goal isn't <strong>Specific</strong> (which types of exercise?), isn't <strong>Measurable</strong> (how much exploration?), and lacks <strong>Relevance</strong> (why explore new exercises?)."
+        "feedback": "This goal isn't <strong>Specific</strong> (which types of exercise?), isn't <strong>Measurable</strong> (how much exercises?), and lacks <strong>Relevance</strong> (why explore new exercises?)."
     }
 ]
 
 TEST_DATABASE = [
     {
-        "text": "I will launch a successful global online business by next week.",
-        "missing": ["Specific", "Measurable", "Achievable", "Relevant"],
-        "feedback": "This goal isn't <strong>Specific</strong> (what type of business?), isn't <strong>Measurable</strong> (what defines success?), isn't <strong>Achievable</strong> (one week is unrealistic), and lacks <strong>Relevance</strong> (why this business?)."
+        "text": "I will try to arrive earlier for class.",
+        "missing": ["Measurable", "Relevant", "Timebound"],
+        "feedback": "This goal isn't <strong>Measurable</strong> (how early?), lacks <strong>Relevance</strong> (why arrive earlier for class?), and isn't <strong>Timebound</strong> (when will you start arriving earlier for class?)."
     },
     {
         "text": "I want to eat healthier.",
         "missing": ["Specific", "Measurable", "Relevant", "Timebound"],
         "feedback": "This goal lacks <strong>Specificity</strong> (what does healthier mean?), isn't <strong>Measurable</strong> (how will you track it?), lacks <strong>Relevance</strong> (why is this important to you?), and has no <strong>Timebound</strong> deadline."
+    },
+    {
+        "text": "I want to improve my grades.",
+        "missing": ["Specific", "Measurable", "Relevant", "Timebound"],
+        "feedback": "This goal lacks <strong>Specificity</strong> (which grades?), isn't <strong>Measurable</strong> (how will you track it?), lacks <strong>Relevance</strong> (why is this important?), and has no <strong>Timebound</strong> deadline."
     }
 ]
 
@@ -807,7 +797,7 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
             ⚡ MISSION PARAMETERS
         </h3>
         <div class="cyber-text" style="text-align: center; margin-bottom: 5px;">
-            Analyze each goal. Identify missing component(s). Complete all 12 challenges to succeed!
+            Analyze each goal. Identify missing component(s). Complete all 10 challenges to succeed!
         </div>
     </div>
     """, unsafe_allow_html=True)

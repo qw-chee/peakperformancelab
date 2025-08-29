@@ -830,6 +830,9 @@ if not st.session_state.game_completed:
             <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1rem, 1.4vw, 1.4em);">
                 🔍 WHICH SMART COMPONENTS ARE MISSING?
             </h3>
+            <div class="goal-statement" style="text-align: center;">
+                <span class="goal-text">{goal['text']}</div>
+            </div>
             <div class="cyber-hint">
                 <span class="hint-icon">💡</span>
                 <span class="hint-text">Hint: This goal is missing <strong>{missing_count}</strong> SMART component{"s" if missing_count != 1 else ""}.</span>

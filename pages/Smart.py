@@ -827,7 +827,7 @@ if not st.session_state.game_completed:
             <div class="goal-statement" style="text-align: center;">
                 <span class="goal-text">{goal['text']}</span>
             </div>
-            <div class="hint-text">💡 Hint: This goal is missing <strong>{missing_count}</strong> SMART component{"s" if missing_count != 1 else ""}.</div>
+            <div class="hint-text">💡 Hint: This goal is missing <u><strong>{missing_count}</strong></u> SMART component{"s" if missing_count != 1 else ""}.</div>
             </div>
         """, unsafe_allow_html=True)
         

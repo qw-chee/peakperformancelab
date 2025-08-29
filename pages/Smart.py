@@ -874,7 +874,7 @@ if not st.session_state.game_completed:
         
         st.markdown(f"""
         <div class="neon-container">
-            <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1rem, 1.3vw, 1.3em);">
+            <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1rem, 1.2vw, 1.2em);">
                 🔍 WHICH SMART COMPONENTS ARE MISSING?
             </h3>
             <div class="goal-statement" style="text-align: center;">

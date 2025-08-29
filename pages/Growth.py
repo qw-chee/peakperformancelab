@@ -424,7 +424,7 @@ def get_styles():
         div[data-testid="stButton"] * {
             font-family: 'Fredoka', cursive !important;
             font-weight: 600;
-            font-size: clamp(0.6rem, 1.2vw, 0.8rem) !important;
+            font-size: clamp(0.6rem, 1.2vw, 1rem) !important;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
         }
 
@@ -835,6 +835,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

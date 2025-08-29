@@ -822,6 +822,8 @@ if not st.session_state.game_completed:
             <div class="hint-text">💡 Hint: This goal is missing <strong>{missing_count}</strong> SMART component{"s" if missing_count != 1 else ""}.</div>
             </div>
         """, unsafe_allow_html=True)
+
+        st.markdown('<div style="margin-top: 5px;">', unsafe_allow_html=True)
         
         with st.form("smart_form", clear_on_submit=False):
             st.markdown('<div class="cyber-text" style="margin: 0 0 0 0">Select all missing components:</div>', unsafe_allow_html=True)

@@ -339,21 +339,6 @@ def get_futuristic_styles():
             text-shadow: 0 0 clamp(3px, 0.5vw, 5px) rgba(255, 255, 255, 0.7);
         }
         
-        .cyber-hint {
-            background: rgba(0, 255, 127, 0.1);
-            border: clamp(1px, 0.15vw, 1px) solid rgba(0, 255, 127, 0.4);
-            border-radius: clamp(6px, 1vw, 10px);
-            padding: clamp(4px, 0.8vw, 10px);
-            margin: clamp(6px, 1vw, 10px) 0;
-            backdrop-filter: blur(5px);
-        }
-        
-        .hint-icon {
-            color: #00ff7f;
-            font-size: clamp(1rem, 1.2vw, 1.2em);
-            margin-right: clamp(5px, 0.8vw, 8px);
-        }
-        
         .hint-text {
             color: rgba(0, 255, 127, 0.9);
             font-family: 'Rajdhani', sans-serif;
@@ -835,12 +820,6 @@ if not st.session_state.game_completed:
             </div>
             <div class="hint-text">💡 Hint: This goal is missing <strong>{missing_count}</strong> SMART component{"s" if missing_count != 1 else ""}.</div>
             </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown(f"""
-        <div class="goal-statement" style="text-align: center;">
-            <div class="goal-text">{goal['text']}</div>
-        </div>
         """, unsafe_allow_html=True)
         
         with st.form("smart_form", clear_on_submit=False):

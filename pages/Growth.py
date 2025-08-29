@@ -260,7 +260,7 @@ def get_styles():
         
         .response-grid {
             display: grid !important;
-            grid-template-columns: 1fr 1fr !important;
+            grid-template-columns: repeat(4, 1fr) !important; /* 4 equal columns */
             gap: clamp(10px, 1.5vw, 15px) !important;
             margin: clamp(20px, 2.5vh, 25px) 0 !important;
             width: 100% !important;
@@ -715,10 +715,10 @@ if st.session_state.current_question == 0 and not st.session_state.quiz_complete
                 <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;">
                     Disagree
                 </div>
-                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;">
+                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;">
                     Agree
                 </div>
-                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white; margin-top: -5px;text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;">
+                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: 15px; padding: 5px; text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;">
                     Strongly Agree
                 </div>
             </div>
@@ -835,6 +835,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

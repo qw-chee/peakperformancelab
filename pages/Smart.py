@@ -50,9 +50,9 @@ GOALS_DATABASE = [
         "feedback": "This goal isn't <strong>Specific</strong> (which types of exercise?), isn't <strong>Measurable</strong> (how much exploration?), and lacks <strong>Relevance</strong> (why explore new exercises?).<br><br><strong>SMART Version:</strong> 'I will try 3 new types of exercise (yoga, swimming, and cycling) for 30 minutes each next week to find enjoyable activities that will help me maintain long-term fitness.'"
     },
     {
-        "text": "I will become fluent in Japanese and Arabic to better connect with people.",
+        "text": "I will become fluent in Korean and Arabic to better connect with people.",
         "missing": ["Measurable", "Achievable", "Timebound"],
-        "feedback": "This goal isn't <strong>Measurable</strong> (what defines fluency?), isn't <strong>Achievable</strong> (two languages simultaneously is unrealistic), and isn't <strong>Timebound</strong> (no deadline specified).<br><br><strong>SMART Version:</strong> 'I will achieve conversational level in Japanese (able to hold 10-minute conversations) within 18 months by studying 1 hour daily to connect with Japanese colleagues at work.'"
+        "feedback": "This goal isn't <strong>Measurable</strong> (what defines fluency?), isn't <strong>Achievable</strong> (two languages simultaneously is unrealistic), and isn't <strong>Timebound</strong> (no deadline specified).<br><br><strong>SMART Version:</strong> 'I will achieve conversational level in Korean (able to hold 10-minute conversations) within 18 months by studying 1 hour daily to connect with Korean colleagues at work.'"
     },  
     # Missing 4 elements
     {

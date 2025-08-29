@@ -715,7 +715,7 @@ def reset_to_question(question_num):
 
 def get_result_config(score_percentage):
     """Get result configuration based on score"""
-    if score_percentage >= 80:
+    if score_percentage >= 70:
         return {
             "style": "feedback-success", "title": "🏆 PROTOCOL MASTERED",
             "message": "EXCEPTIONAL PERFORMANCE: Neural pathways optimized for SMART goal identification.",
@@ -883,7 +883,7 @@ if not st.session_state.game_completed:
         st.markdown(f"""
         <div class="neon-container">
             <h3 style="color: #ffff00; font-family: 'Orbitron', monospace; margin-bottom: -20px; font-size: clamp(1rem, 1.3vw, 1.3em); text-align: center;">
-                📊 MISSING COMPONENTS DETECTED
+                📊 MISSING COMPONENTS
             </h3>
             <div class="missing-components">
                 {' '.join([f'<span class="component-tag">{comp}</span>' for comp in goal["missing"]])}

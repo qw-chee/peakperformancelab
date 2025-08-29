@@ -516,24 +516,27 @@ def get_mindset_result(score):
     return "Unknown", {}
 
 def render_custom_radio(options, question_num):
-    """Render functional custom styled buttons using standard Streamlit buttons"""
     
-    # Create the grid layout
-    col1, col2 = st.columns(2)
+    # Create 4 columns for one row layout
+    col1, col2, col3, col4 = st.columns(4)
     
     with col1:
-        # First row, first column - Strongly Disagree
+        # Strongly Disagree
         if st.button(options[0], key=f"response_{question_num}_0", use_container_width=True, type="primary"):
             return options[0]
-        # Second row, first column - Agree
+    
+    with col2:
+        # Disagree
+        if st.button(options[1], key=f"response_{question_num}_1", use_container_width=True, type="primary"):
+            return options[1]
+    
+    with col3:
+        # Agree
         if st.button(options[2], key=f"response_{question_num}_2", use_container_width=True, type="primary"):
             return options[2]
     
-    with col2:
-        # First row, second column - Disagree
-        if st.button(options[1], key=f"response_{question_num}_1", use_container_width=True, type="primary"):
-            return options[1]
-        # Second row, second column - Strongly Agree
+    with col4:
+        # Strongly Agree
         if st.button(options[3], key=f"response_{question_num}_3", use_container_width=True, type="primary"):
             return options[3]
     
@@ -832,6 +835,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

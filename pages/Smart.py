@@ -803,8 +803,10 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
 
 # ---------------------------- MAIN GAME ----------------------------
 if not st.session_state.game_completed:
-    # Progress Bar
-    progress_percentage = ((st.session_state.current_question - 1) / st.session_state.total_questions) * 100
+    if st.session_state.show_feedback:
+        progress_percentage = (st.session_state.current_question / st.session_state.total_questions) * 100
+    else:
+        progress_percentage = ((st.session_state.current_question - 1) / st.session_state.total_questions) * 100
     
     st.markdown(f"""
     <div class="cyber-progress">

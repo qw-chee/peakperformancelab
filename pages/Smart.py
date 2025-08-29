@@ -842,7 +842,7 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
             ⚡ MISSION PARAMETERS
         </h3>
         <div class="cyber-text" style="text-align: center; margin-bottom: 5px;">
-            Analyze each goal. Identify missing component(s). Complete all 20 challenges to succeed!
+            Analyze each goal. Identify missing component(s). Complete all 10 challenges to succeed!
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -871,23 +871,18 @@ if not st.session_state.game_completed:
         goal = st.session_state.current_goal
         missing_count = len(goal["missing"])
         
-        st.markdown(f"""
-        <div class="goal-statement" style="text-align: center;">
-            <div class="goal-text">{goal['text']}</div>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        st.markdown(f"""
+         st.markdown(f"""
         <div class="neon-container">
-            <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1rem, 1.4vw, 1.4em);">
+            <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1rem, 1.3vw, 1.3em);">
                 🔍 WHICH SMART COMPONENTS ARE MISSING?
             </h3>
-            <div class="cyber-hint">
-                <span class="hint-icon">💡</span>
-                <span class="hint-text">Hint: This goal is missing <strong>{missing_count}</strong> SMART component{"s" if missing_count != 1 else ""}.</span>
+            <div class="goal-statement" style="text-align: center;">
+                <span class="goal-text">{goal['text']}</span>
+            </div>
+            <div class="hint-text">💡 Hint: This goal is missing <strong>{missing_count}</strong> SMART component{"s" if missing_count != 1 else ""}.</div>
             </div>
         """, unsafe_allow_html=True)
-
+        
         st.markdown('<div style="margin-top: 5px;">', unsafe_allow_html=True)
         
         with st.form("smart_form", clear_on_submit=False):

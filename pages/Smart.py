@@ -329,7 +329,7 @@ def get_futuristic_styles():
         
         .goal-text {
             font-family: 'Rajdhani', sans-serif;
-            font-size: clamp(1.1rem, 1.3vw, 1.2em);
+            font-size: clamp(1.15rem, 1.35vw, 1.25em);
             color: rgba(255, 255, 255, 0.95);
             font-style: italic;
             font-weight: 700;

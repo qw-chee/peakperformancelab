@@ -831,7 +831,7 @@ if not st.session_state.game_completed:
                 🔍 WHICH SMART COMPONENTS ARE MISSING?
             </h3>
             <div class="goal-statement" style="text-align: center;">
-                <span class="goal-text">{goal['text']}</div>
+                <span class="goal-text">{goal['text']}</span>
             </div>
             <div class="cyber-hint">
                 <span class="hint-icon">💡</span>

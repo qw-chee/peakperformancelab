@@ -1,5 +1,265 @@
-import streamlit as st
+# ---------------------------- MAIN GAME ----------------------------
+if not st.session_state.game_completed:
+    # Progress Bar
+    progress_percentage = ((st.session_state.current_question - 1) / st.session_state.total_questions) * 100
+    
+    st.markdown(f"""
+    <div class="cyber-progress">
+        <div class="progress-text">CHALLENGE {st.session_state.current_question} OF {st.session_state.total_questions}</div>
+        <div class="progress-track">
+            <div class="progress-fill" style="width: {progress_percentage}%;"></div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    if st.session_state.awaiting_response:
+        goal = st.session_state.current_goal
+        goal_type = goal.get("type", "multiple_choice")
+        
+        if goal_type == "multiple_choice":
+            missing_count = len(goal["missing"])
+                  
+            st.markdown(f"""
+            <div class="neon-container">
+                <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1rem, 1.4vw, 1.4em);">
+                    🔍 WHICH SMART COMPONENTS ARE MISSING?
+                </h3>
+                <div class="goal-statement" style="text-align: center;">
+                    <span class="goal-text">{goal['text']}</span>
+                </div>
+                <div class="hint-text">💡 Hint: This goal is missing <strong>{missing_count}</strong> SMART component{"s" if missing_count != 1 else ""}.</div>
+                </div>
+            """, unsafe_allow_html=True)
+
+            st.markdown('<div style="margin-top: 5px;">', unsafe_allow_html=True)
+            
+            with st.form("smart_form", clear_on_submit=False):
+                st.markdown('<div class="cyber-text" style="margin: 0 0 0 0">Select all missing components:</div>', unsafe_allow_html=True)
+                
+                selected_missing = []
+                smart_components = ["Specific", "Measurable", "Achievable", "Relevant", "Timebound"]
+                
+                # Use equal columns for better fit
+                cols = st.columns(5)
+                
+                for i, component in enumerate(smart_components):
+                    with cols[i]:
+                        if st.checkbox(component, key=f"chk_{component}_{st.session_state.current_question}"):
+                            selected_missing.append(component)
+                
+                submitted = st.form_submit_button("⚡ EXECUTE ANALYSIS", use_container_width=True, type="primary")
+                
+                if submitted:
+                    st.session_state.user_selections = selected_missing
+                    st.session_state.awaiting_response = False
+                    st.session_state.show_feedback = True
+                    
+                    # Check if answer is correct
+                    if set(selected_missing) == set(goal["missing"]):
+                        st.session_state.score += 1
+                    
+                    st.rerun()
+            
+            st.markdown("</div>", unsafe_allow_html=True)
+            
+        else:  # GPT evaluation type
+            st.markdown(f"""
+            <div class="neon-container">
+                <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1rem, 1.4vw, 1.4em);">
+                    ✍️ REWRITE THIS GOAL TO BE SMART
+                </h3>
+                <div class="goal-statement" style="text-align: center;">
+                    <span class="goal-text">{goal['text']}</span>
+                </div>
+                <div class="hint-text">💡 Rewrite this goal to include all SMART components: Specific, Measurable, Achievable, Relevant, and Timebound.</div>
+                </div>
+            """, unsafe_allow_html=True)
+
+            st.markdown('<div style="margin-top: 5px;">', unsafe_allow_html=True)
+            
+            with st.form("smart_rewrite_form", clear_on_submit=False):
+                user_rewrite = st.text_input(
+                    "Your SMART Goal:",
+                    value=st.session_state.user_rewrite,
+                    placeholder="Rewrite the goal to make it SMART...",
+                    help="Make sure your goal is Specific, Measurable, Achievable, Relevant, and Timebound"
+                )
+                
+                submitted = st.form_submit_button("🤖 ANALYZE WITH AI", use_container_width=True, type="primary")
+                
+                if submitted and user_rewrite.strip():
+                    st.session_state.user_rewrite = user_rewrite
+                    st.session_state.awaiting_response = False
+                    st.session_state.evaluating = True
+                    st.rerun()
+                elif submitted and not user_rewrite.strip():
+                    st.error("Please enter a rewritten goal before submitting.")
+            
+            st.markdown("</div>", unsafe_allow_html=True)
+    
+    elif st.session_state.evaluating:
+        # Show loading state while GPT evaluates
+        st.markdown(f"""
+        <div class="neon-container">
+            <div style="text-align: center; padding: clamp(15px, 2.5vw, 25px);">
+                <div class="loading-spinner"></div>
+                <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-size: clamp(1.2rem, 1.6vw, 1.6em); font-weight: 600;">
+                    AI ANALYZING YOUR GOAL...
+                </div>
+                <div style="color: rgba(255,255,255,0.7); font-family: 'Rajdhani', sans-serif; margin-top: clamp(5px, 0.8vw, 8px);">
+                    Evaluating SMART components...
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Perform GPT evaluation
+        goal = st.session_state.current_goal
+        evaluation_result = evaluate_goal_with_gpt(
+            goal['text'], 
+            st.session_state.user_rewrite, 
+            goal['feedback']
+        )
+        
+        st.session_state.gpt_evaluation = evaluation_result
+        st.session_state.evaluating = False
+        st.session_state.show_feedback = True
+        
+        # Award score based on GPT evaluation
+        parsed_eval = parse_gpt_evaluation(evaluation_result)
+        if parsed_eval['score'] >= 70:  # Threshold for success
+            st.session_state.score += 1
+            
+        st.rerun()
+    
+    elif st.session_state.show_feedback:
+        goal = st.session_state.current_goal
+        goal_type = goal.get("type", "multiple_choice")
+        
+        if goal_type == "multiple_choice":
+            # Original multiple choice feedback
+            user_correct = set(st.session_state.user_selections) == set(goal["missing"])
+            
+            # Feedback styling
+            feedback_class = "feedback-success" if user_correct else "feedback-learning"
+            feedback_icon = "✅" if user_correct else "❌"
+            feedback_title = "SUCCESS!" if user_correct else "INCORRECT!"
+            title_color = "#00ff7f" if user_correct else "#ff5050"
+            
+            st.markdown(f"""
+            <div class="{feedback_class}" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px;">
+                <span class="feedback-icon">{feedback_icon}</span>
+                <h3 class="feedback-title" style="color: {title_color}; margin: 0;">{feedback_title}</h3>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Show correct answer
+            st.markdown(f"""
+            <div class="neon-container">
+                <h3 style="color: #ffff00; font-family: 'Orbitron', monospace; margin-bottom: -20px; font-size: clamp(1rem, 1.3vw, 1.3em); text-align: center;">
+                    📊 MISSING COMPONENTS DETECTED
+                </h3>
+                <div class="missing-components">
+                    {' '.join([f'<span class="component-tag">{comp}</span>' for comp in goal["missing"]])}
+                </div>
+                <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(2px, 0.5vw, 20px); margin-top: clamp(4px, 1vw, 20px);">
+                    <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-weight: 600; margin-bottom: clamp(6px, 1vw, 10px); font-size: clamp(0.9rem, 1.1vw, 1.1em);">
+                        📝 SYSTEM ANALYSIS:
+                    </div>
+                    <div style="color: rgba(255,255,255,0.9); font-family: 'Rajdhani', sans-serif; line-height: 1.2; font-size: clamp(1rem, 1.2vw, 1.2em);">
+                        {goal["feedback"]}
+                    </div>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        else:  # GPT evaluation feedback
+            parsed_eval = parse_gpt_evaluation(st.session_state.gpt_evaluation)
+            score = parsed_eval['score']
+            
+            # Determine score class and feedback
+            if score >= 80:
+                score_class = "score-excellent"
+                feedback_class = "feedback-success"
+                feedback_icon = "🏆"
+                feedback_title = "EXCELLENT!"
+            elif score >= 60:
+                score_class = "score-good"
+                feedback_class = "feedback-success"
+                feedback_icon = "✅"
+                feedback_title = "GOOD WORK!"
+            elif score >= 40:
+                score_class = "score-needs-work"
+                feedback_class = "neon-container"
+                feedback_icon = "⚠️"
+                feedback_title = "NEEDS IMPROVEMENT"
+            else:
+                score_class = "score-poor"
+                feedback_class = "feedback-learning"
+                feedback_icon = "❌"
+                feedback_title = "NEEDS WORK"
+            
+            st.markdown(f"""
+            <div class="{feedback_class}" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px;">
+                <span class="feedback-icon">{feedback_icon}</span>
+                <h3 class="feedback-title" style="margin: 0;">{feedback_title}</h3>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Show GPT evaluation
+            st.markdown(f"""
+            <div class="gpt-evaluation">
+                <div class="evaluation-score {score_class}">
+                    AI SCORE: {score}/100
+                </div>
+                
+                <div style="margin-bottom: clamp(8px, 1.2vw, 15px);">
+                    <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-weight: 600; margin-bottom: clamp(4px, 0.6vw, 6px); font-size: clamp(0.9rem, 1.1vw, 1.1em);">
+                        🎯 YOUR REWRITTEN GOAL:
+                    </div>
+                    <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(6px, 1vw, 10px); padding: clamp(8px, 1.2vw, 12px); color: rgba(255,255,255,0.95); font-family: 'Rajdhani', sans-serif; font-style: italic;">
+                        "{st.session_state.user_rewrite}"
+                    </div>
+                </div>
+                
+                {f'''
+                <div style="margin-bottom: clamp(8px, 1.2vw, 15px);">
+                    <div style="color: #00ff7f; font-family: 'Orbitron', monospace; font-weight: 600; margin-bottom: clamp(4px, 0.6vw, 6px); font-size: clamp(0.9rem, 1.1vw, 1.1em);">
+                        ✅ SMART COMPONENTS PRESENT:
+                    </div>
+                    <div class="missing-components" style="justify-content: flex-start;">
+                        {' '.join([f'<span class="component-tag" style="background: rgba(0,255,127,0.2); color: #00ff7f; border-color: rgba(0,255,127,0.5);">{comp}</span>' for comp in parsed_eval['present']]) if parsed_eval['present'] else '<span style="color: rgba(255,255,255,0.6);">None identified</span>'}
+                    </div>
+                </div>
+                ''' if parsed_eval['present'] else ''}
+                
+                {f'''
+                <div style="margin-bottom: clamp(8px, 1.2vw, 15px);">
+                    <div style="color: #ffff00; font-family: 'Orbitron', monospace; font-weight: 600; margin-bottom: clamp(4px, 0.6vw, 6px); font-size: clamp(0.9rem, 1.1vw, 1.1em);">
+                        ⚠️ COMPONENTS NEEDING WORK:
+                    </div>
+                    <div class="missing-components" style="justify-content: flex-start;">
+                        {' '.join([f'<span class="component-tag">{comp}</span>' for comp in parsed_eval['missing']]) if parsed_eval['missing'] else '<span style="color: rgba(255,255,255,0.6);">All components addressed!</span>'}
+                    </div>
+                </div>
+                ''' if parsed_eval['missing'] else ''}
+                
+                <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(8px, 1.2vw, 12px);">
+                    <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-weight: 600; margin-bottom: clamp(6px, 1vw, 10px); font-size: clamp(0.9rem, 1.1vw, 1.1em);">
+                        🤖 AI FEEDBACK:
+                    </div>
+                    <div style="color: rgba(255,255,255,0.9); font-family: 'Rajdhani', sans-serif; line-height: 1.4; font-size: clamp(1rem, 1.2vw, 1.2em);">
+                        {parsed_eval['feedback']}
+                    </div>
+                    
+                    {f'''
+                    <div style="margin-top: clamp(8px, 1.2vw, 15px); padding-top: clamp(8px, 1.2vw, 15px); border-top: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.2);">
+                        <div style="color: #ffff00; font-family: 'Orbitron', monospace; font-weight: 600; margin-bottom: clamp(4px, 0.6vw, 6px); font-size: clamp(0.9rem, 1.1vw, 1.1em);">
+                            💡 SUGGESTIONS FOR IMPROVEMENT:
+                        </div>
+                        <div style="color: rgba(255,255,255,0.9); font-family: 'Rajdhani', sans-serif; line-height: 1.4; font-size: clamp(1rem, 1.2vw, 1.2import streamlit as st
 import random
+import openai
 
 st.set_page_config(
     page_title="Mission: SMART Possible", 
@@ -7,64 +267,77 @@ st.set_page_config(
     page_icon="🎯"
 )
 
+# Set up OpenAI API
+openai.api_key = st.secrets.get("openai_api_key")
+
 # ---------------------------- GOALS DATABASE ----------------------------
 GOALS_DATABASE = [
     # Missing 1 element
     {
         "text": "I will aim to improve my GPA by 0.2 for better career prospects.",
         "missing": ["Timebound"],
-        "feedback": "This goal isn't <strong>Timebound</strong> - there's no deadline specified. There should be a timeframe like 'by the end of this semester' or 'within one academic year'.<br><br><strong>SMART Version:</strong> 'I will improve my GPA by 0.5 points by the end of this academic year through consistent study habits to enhance my career prospects.'"
+        "feedback": "This goal isn't <strong>Timebound</strong> - there's no deadline specified. There should be a timeframe like 'by the end of this semester' or 'within one academic year'.<br><br><strong>SMART Version:</strong> 'I will improve my GPA by 0.5 points by the end of this academic year through consistent study habits to enhance my career prospects.'",
+        "type": "multiple_choice"
     },
     {
         "text": "To manage time, I will write some of my TMA every evening.",
         "missing": ["Measurable"],
-        "feedback": "This goal isn't <strong>Measurable</strong> - 'some' is vague. How much work should be specified, like '2 pages' or '500 words' or '1 hour of writing'.<br><br><strong>SMART Version:</strong> 'To manage time effectively, I will write 300 words of my TMA every evening until completion.'"
+        "feedback": "This goal isn't <strong>Measurable</strong> - 'some' is vague. How much work should be specified, like '2 pages' or '500 words' or '1 hour of writing'.<br><br><strong>SMART Version:</strong> 'To manage time effectively, I will write 300 words of my TMA every evening until completion.'",
+        "type": "multiple_choice"
     },
     {
         "text": "I will finish reading 10 books to improve my writing by tomorrow.",
         "missing": ["Achievable"],
-        "feedback": "This goal isn't <strong>Achievable</strong> - reading 10 books in one day is unrealistic. A more achievable timeline would be several months.<br><br><strong>SMART Version:</strong> 'I will finish reading 10 books over the next 6 months to improve my writing skills by expanding my vocabulary and understanding different writing styles.'"
+        "feedback": "This goal isn't <strong>Achievable</strong> - reading 10 books in one day is unrealistic. A more achievable timeline would be several months.<br><br><strong>SMART Version:</strong> 'I will finish reading 10 books over the next 6 months to improve my writing skills by expanding my vocabulary and understanding different writing styles.'",
+        "type": "multiple_choice"
     },
     {
         "text": "I will volunteer twice at the foodbank each month.",
         "missing": ["Relevant"],
-        "feedback": "This goal lacks clear <strong>Relevance</strong> - it doesn't explain how volunteering connects to any goals.<br><br><strong>SMART Version:</strong> 'I will volunteer twice at the foodbank each month for 6 months to develop my leadership skills and give back to my community.'"
+        "feedback": "This goal lacks clear <strong>Relevance</strong> - it doesn't explain how volunteering connects to any goals.<br><br><strong>SMART Version:</strong> 'I will volunteer twice at the foodbank each month for 6 months to develop my leadership skills and give back to my community.'",
+        "type": "multiple_choice"
     },
     
     # Missing 2 elements
     {
         "text": "I want to save 10 million dollars by the end of this year.",
         "missing": ["Achievable", "Relevant"],
-        "feedback": "This goal isn't <strong>Achievable</strong> (10 million in one year is unrealistic for most people) and lacks <strong>Relevance</strong> (why this specific amount? What's the purpose?).<br><br><strong>SMART Version:</strong> 'I will save $5,000 by the end of this year to build an emergency fund for my family's financial security.'"
+        "feedback": "This goal isn't <strong>Achievable</strong> (10 million in one year is unrealistic for most people) and lacks <strong>Relevance</strong> (why this specific amount? What's the purpose?).<br><br><strong>SMART Version:</strong> 'I will save $5,000 by the end of this year to build an emergency fund for my family's financial security.'",
+        "type": "multiple_choice"
     },
     {
         "text": "I will arrive earlier for class starting next week.",
         "missing": ["Measurable", "Relevant"],
-        "feedback": "This goal isn't <strong>Measurable</strong> (how much earlier?) and lacks <strong>Relevance</strong> (why is arriving earlier important for your academic success?).<br><br><strong>SMART Version:</strong> 'I will arrive 15 minutes earlier for each class starting next week to review notes and improve my academic performance.'"
+        "feedback": "This goal isn't <strong>Measurable</strong> (how much earlier?) and lacks <strong>Relevance</strong> (why is arriving earlier important for your academic success?).<br><br><strong>SMART Version:</strong> 'I will arrive 15 minutes earlier for each class starting next week to review notes and improve my academic performance.'",
+        "type": "multiple_choice"
     },
     
     # Missing 3 elements
     {
         "text": "I will start exploring other types of exercise next week.",
         "missing": ["Specific", "Measurable", "Relevant"],
-        "feedback": "This goal isn't <strong>Specific</strong> (which types of exercise?), isn't <strong>Measurable</strong> (how much exploration?), and lacks <strong>Relevance</strong> (why explore new exercises?).<br><br><strong>SMART Version:</strong> 'I will try 3 new types of exercise (yoga, swimming, and cycling) for 30 minutes each next week to find enjoyable activities that will help me maintain long-term fitness.'"
+        "feedback": "This goal isn't <strong>Specific</strong> (which types of exercise?), isn't <strong>Measurable</strong> (how much exploration?), and lacks <strong>Relevance</strong> (why explore new exercises?).<br><br><strong>SMART Version:</strong> 'I will try 3 new types of exercise (yoga, swimming, and cycling) for 30 minutes each next week to find enjoyable activities that will help me maintain long-term fitness.'",
+        "type": "multiple_choice"
     },  
     # Missing 4 elements
     {
         "text": "I will launch a successful online business by next week.",
         "missing": ["Specific", "Measurable", "Achievable", "Relevant"],
-        "feedback": "This goal isn't <strong>Specific</strong> (what type of business?), isn't <strong>Measurable</strong> (what defines success?), isn't <strong>Achievable</strong> (one week is unrealistic), and lacks <strong>Relevance</strong> (why this business?).<br><br><strong>SMART Version:</strong> 'I will launch a graphic design website with 5 portfolio pieces within 6 months to generate $1,000 monthly income.'"
+        "feedback": "This goal isn't <strong>Specific</strong> (what type of business?), isn't <strong>Measurable</strong> (what defines success?), isn't <strong>Achievable</strong> (one week is unrealistic), and lacks <strong>Relevance</strong> (why this business?).<br><br><strong>SMART Version:</strong> 'I will launch a graphic design website with 5 portfolio pieces within 6 months to generate $1,000 monthly income.'",
+        "type": "multiple_choice"
     },
-    # Test
+    # Test - GPT Evaluated
     {
         "text": "I want to build better habits.",
         "missing": ["Specific", "Measurable", "Relevant", "Timebound"],
-        "feedback": "This goal lacks <strong>Specificity</strong> (which habits?), isn't <strong>Measurable</strong> (how will you track progress?), lacks <strong>Relevance</strong> (why these habits?), and has no <strong>Timebound</strong> deadline.<br><br><strong>SMART Version:</strong> 'I will establish a morning routine of 30 minutes of reading and 10 minutes of meditation daily for the next 30 days to improve my focus and productivity at work.'"
+        "feedback": "This goal lacks <strong>Specificity</strong> (which habits?), isn't <strong>Measurable</strong> (how will you track progress?), lacks <strong>Relevance</strong> (why these habits?), and has no <strong>Timebound</strong> deadline.<br><br><strong>SMART Version:</strong> 'I will establish a morning routine of 30 minutes of reading and 10 minutes of meditation daily for the next 30 days to improve my focus and productivity at work.'",
+        "type": "gpt_evaluation"
     },
     {
         "text": "I want to eat healthier.",
         "missing": ["Specific", "Measurable", "Relevant", "Timebound"],
-        "feedback": "This goal lacks <strong>Specificity</strong> (what does healthier mean?), isn't <strong>Measurable</strong> (how will you track it?), lacks <strong>Relevance</strong> (why is this important to you?), and has no <strong>Timebound</strong> deadline.<br><br><strong>SMART Version:</strong> 'I will eat 5 servings of fruits and vegetables daily for the next 3 months to improve my energy levels and overall health.'"
+        "feedback": "This goal lacks <strong>Specificity</strong> (what does healthier mean?), isn't <strong>Measurable</strong> (how will you track it?), lacks <strong>Relevance</strong> (why is this important to you?), and has no <strong>Timebound</strong> deadline.<br><br><strong>SMART Version:</strong> 'I will eat 5 servings of fruits and vegetables daily for the next 3 months to improve my energy levels and overall health.'",
+        "type": "gpt_evaluation"
     }
 ]
 
@@ -73,13 +346,63 @@ def init_game_state():
     defaults = {
         'current_question': 0, 'score': 0, 'total_questions': len(GOALS_DATABASE),
         'current_goal': None, 'awaiting_response': False, 'show_feedback': False,
-        'user_selections': [], 'game_completed': False
+        'user_selections': [], 'game_completed': False, 'user_rewrite': '',
+        'gpt_evaluation': None, 'evaluating': False
     }
     for key, value in defaults.items():
         if key not in st.session_state:
             st.session_state[key] = value
 
 init_game_state()
+
+# ---------------------------- GPT EVALUATION FUNCTION ----------------------------
+def evaluate_goal_with_gpt(original_goal, user_rewrite, expected_feedback):
+    """Evaluate user's rewritten goal using GPT"""
+    try:
+        prompt = f"""
+You are evaluating a student's rewritten SMART goal. 
+
+SMART Criteria:
+- Specific: Well-defined and clear
+- Measurable: Quantifiable with specific metrics
+- Achievable: Realistic and attainable
+- Relevant: Has a clear purpose and reason
+- Timebound: Has a specific deadline or timeframe
+
+Original Goal: "{original_goal}"
+Student's Rewritten Goal: "{user_rewrite}"
+
+Expected Issues in Original Goal: {expected_feedback}
+
+Evaluate the student's rewritten goal and provide:
+1. Score out of 100
+2. Which SMART components are now present (if any)
+3. Which SMART components are still missing (if any)
+4. Specific feedback on improvements made
+5. Suggestions for further improvement (if needed)
+
+Format your response as:
+SCORE: [0-100]
+PRESENT: [List components that are now adequate]
+MISSING: [List components still missing or inadequate]
+FEEDBACK: [Detailed feedback on what the student did well and what needs improvement]
+SUGGESTIONS: [Specific suggestions for improvement if score < 80]
+"""
+
+        response = openai.Completion.create(
+            engine="text-davinci-003",
+            prompt=prompt,
+            max_tokens=500,
+            temperature=0.3,
+            top_p=1.0,
+            frequency_penalty=0.0,
+            presence_penalty=0.0
+        )
+        
+        return response.choices[0].text.strip()
+    
+    except Exception as e:
+        return f"Error evaluating goal: {str(e)}"
 
 # ---------------------------- FUTURISTIC STYLES ----------------------------
 @st.cache_data
@@ -478,6 +801,29 @@ def get_futuristic_styles():
             margin: 0 !important;
         }
         
+        .stTextInput > div > div > input {
+            background: rgba(15, 15, 35, 0.9) !important;
+            border: clamp(1px, 0.15vw, 1px) solid rgba(0, 255, 255, 0.3) !important;
+            color: white !important;
+            font-family: 'Rajdhani', sans-serif !important;
+            font-size: clamp(1rem, 1.2vw, 1.2em) !important;
+            border-radius: clamp(5px, 0.8vw, 8px) !important;
+            padding: clamp(8px, 1.2vw, 12px) !important;
+            backdrop-filter: blur(10px) !important;
+        }
+        
+        .stTextInput > div > div > input:focus {
+            border-color: rgba(0, 255, 255, 0.6) !important;
+            box-shadow: 0 0 clamp(10px, 1.5vw, 15px) rgba(0, 255, 255, 0.3) !important;
+        }
+        
+        .stTextInput label {
+            color: rgba(0, 255, 255, 0.9) !important;
+            font-family: 'Orbitron', monospace !important;
+            font-weight: 600 !important;
+            font-size: clamp(0.9rem, 1.1vw, 1.1em) !important;
+        }
+        
         div[data-testid="stButton"] > button[kind="primary"] {
             background: linear-gradient(135deg, #5000fc 0%, #ff00ff 50%, #00ff7f 100%) !important;
             border: clamp(1px, 0.2vw, 2px) solid #00ffee !important;
@@ -583,368 +929,45 @@ def get_futuristic_styles():
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(45deg, #ff00ff, #00ff7f);
         }
+        
+        .loading-spinner {
+            border: clamp(2px, 0.3vw, 4px) solid rgba(0, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: clamp(2px, 0.3vw, 4px) solid #00ffff;
+            width: clamp(20px, 3vw, 40px);
+            height: clamp(20px, 3vw, 40px);
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: clamp(8px, 1.2vw, 15px);
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .gpt-evaluation {
+            background: rgba(15, 15, 35, 0.95);
+            border: clamp(1px, 0.2vw, 2px) solid rgba(0, 255, 127, 0.4);
+            border-radius: clamp(8px, 1.2vw, 12px);
+            padding: clamp(8px, 1.5vw, 15px);
+            margin: clamp(8px, 1.5vw, 15px) 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 clamp(15px, 2.5vw, 25px) rgba(0, 255, 127, 0.2);
+        }
+        
+        .evaluation-score {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1.5rem, 2.2vw, 2.5em);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: clamp(8px, 1.2vw, 15px);
+        }
+        
+        .score-excellent { color: #00ff7f; }
+        .score-good { color: #00ffff; }
+        .score-needs-work { color: #ffff00; }
+        .score-poor { color: #ff5050; }
     }
     </style>
     """
-
-st.markdown(get_futuristic_styles(), unsafe_allow_html=True)
-
-# ---------------------------- LOADING OVERLAY ----------------------------
-st.markdown("""
-<div id="loading-overlay">
-    <div class="loading-content">
-        <div class="loading-title">LAUNCHING MISSION...</div>
-        <div class="loading-bar-container">
-            <div class="loading-bar"></div>
-        </div>
-        <div class="loading-subtitle">Initializing SMART Protocol</div>
-    </div>
-</div>
-
-<style>
-@media screen and (min-width: 1024px) {
-    #loading-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #0a0a0a;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        animation: loading-sequence 4s ease-in-out forwards;
-    }
-
-    .loading-content {
-        text-align: center;
-    }
-
-    .loading-title {
-        font-family: 'Orbitron', monospace;
-        font-size: clamp(2rem, 3vw, 3em);
-        font-weight: 900;
-        background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff7f);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: clamp(12px, 2vw, 20px);
-        animation: pulse 2s ease-in-out infinite;
-    }
-
-    .loading-bar-container {
-        width: clamp(120px, 20vw, 200px);
-        height: clamp(3px, 0.4vw, 4px);
-        background: rgba(0, 255, 255, 0.2);
-        border-radius: clamp(1px, 0.2vw, 2px);
-        overflow: hidden;
-        position: relative;
-        margin: 0 auto;
-    }
-
-    .loading-bar {
-        width: 40%;
-        height: 100%;
-        background: linear-gradient(90deg, #00ffff, #00ff7f);
-        border-radius: clamp(1px, 0.2vw, 2px);
-        animation: loading-bar 2s ease-in-out infinite;
-        box-shadow: 0 0 clamp(10px, 1.5vw, 15px) rgba(0, 255, 255, 0.6);
-    }
-
-    .loading-subtitle {
-        font-family: 'Rajdhani', sans-serif;
-        color: rgba(255, 255, 255, 0.7);
-        margin-top: clamp(8px, 1.5vw, 15px);
-        font-size: clamp(1rem, 1.4vw, 1.4em);
-    }
-
-    @keyframes pulse {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.7; transform: scale(1.05); }
-    }
-
-    @keyframes loading-bar {
-        0% { transform: translateX(-100%); }
-        50% { transform: translateX(0%); }
-        100% { transform: translateX(300%); }
-    }
-
-    @keyframes loading-sequence {
-        0% { opacity: 1; }
-        85% { opacity: 1; }
-        100% { opacity: 0; pointer-events: none; }
-    }
-}
-</style>
-""", unsafe_allow_html=True)
-
-# Block mobile and tablet, handle responsive scaling with JavaScript
-st.markdown("""
-<script>
-// Block mobile and tablet, handle responsive scaling
-if (window.innerWidth >= 1024) {
-    // Handle window resize for responsive scaling
-    window.addEventListener('resize', function() {
-        if (window.innerWidth < 1024) {
-            document.body.style.display = 'none';
-            document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%); color: white; font-size: 1.5rem; text-align: center; font-family: Orbitron, monospace;">This application is designed for desktop and laptop screens only.</div>';
-        }
-    });
-}
-</script>
-""", unsafe_allow_html=True)
-
-# ---------------------------- HELPER FUNCTIONS ----------------------------
-def reset_to_question(question_num):
-    """Reset game state to a specific question"""
-    st.session_state.current_question = question_num
-    st.session_state.awaiting_response = True
-    st.session_state.show_feedback = False
-    st.session_state.user_selections = []
-    if question_num > 0:
-        st.session_state.current_goal = GOALS_DATABASE[question_num - 1]
-
-def get_result_config(score_percentage):
-    """Get result configuration based on score"""
-    if score_percentage >= 80:
-        return {
-            "style": "feedback-success", "title": "🏆 PROTOCOL MASTERED",
-            "message": "EXCEPTIONAL PERFORMANCE: Neural pathways optimized for SMART goal identification.",
-            "color": "#00ff7f"
-        }
-    elif score_percentage >= 50:
-        return {
-            "style": "neon-container", "title": "🎯 SYSTEM UPGRADED",
-            "message": "GOOD PROGRESS: Core algorithms functioning within acceptable parameters.",
-            "color": "#00ffff"
-        }
-    else:
-        return {
-            "style": "feedback-learning", "title": "🔄 RECALIBRATION REQUIRED",
-            "message": "LEARNING MODE: Additional training cycles recommended for optimization.",
-            "color": "#ff5050"
-        }
-
-# ---------------------------- OVERVIEW PAGE ----------------------------
-st.markdown( """ <style> @media (min-width: 1300px) { .custom-spacer { height: 10vh; } } </style> <div class="custom-spacer"></div> """, unsafe_allow_html=True )
-
-if st.session_state.current_question == 0 and not st.session_state.game_completed:
-    st.markdown("""
-    <div class="neon-container">
-        <h2 class="cyber-title" style="margin-bottom: -5px;">Mission: SMART Possible</h1>
-        <div class="cyber-text" style="text-align: center;">
-            SMART goals are the blueprint for peak performance. 
-            They turn wishful thinking into clear action steps, reduce procrastination, and keep your focus locked on progress. 
-            By identifying the missing SMART components in this challenge, you’ll sharpen your ability to set goals that actually drive results. Ready to power up your performance?
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown("""
-    <div class="neon-container">
-        <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; text-align: center; font-size: clamp(1rem, 1.6vw, 1.5em); margin-bottom: -5px;">
-            📡 SMART PROTOCOL COMPONENTS
-        </h3>
-        <div class="smart-grid">
-            <div class="smart-card">
-                <span class="smart-letter">S</span>
-                <strong style="color: #00ffff; font-size: clamp(0.9rem, 1.1vw, 1.1em);">SPECIFIC</strong><br>
-                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.8rem, 1vw, 1em);">Is it well-defined?</i>
-            </div>
-            <div class="smart-card">
-                <span class="smart-letter">M</span>
-                <strong style="color: #00ffff; font-size: clamp(0.9rem, 1.1vw, 1.1em);">MEASURABLE</strong><br>
-                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.8rem, 1vw, 1em);">Is it quantifiable?</i>
-            </div>
-            <div class="smart-card">
-                <span class="smart-letter">A</span>
-                <strong style="color: #00ffff; font-size: clamp(0.9rem, 1.1vw, 1.1em);">ACHIEVABLE</strong><br>
-                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.8rem, 1vw, 1em);">Is it realistic?</i>
-            </div>
-            <div class="smart-card">
-                <span class="smart-letter">R</span>
-                <strong style="color: #00ffff; font-size: clamp(0.9rem, 1.1vw, 1.1em);">RELEVANT</strong><br>
-                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.8rem, 1vw, 1em);">Is there a purpose?</i>
-            </div>
-            <div class="smart-card">
-                <span class="smart-letter">T</span>
-                <strong style="color: #00ffff; font-size: clamp(0.9rem, 1.1vw, 1.1em);">TIMEBOUND</strong><br>
-                <i style="color: rgba(255,255,255,0.7); font-size: clamp(0.8rem, 1vw, 1em);">Is there a time horizon?</i>
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    st.markdown("""
-    <div class="neon-container">
-        <h3 style="color: #ff00ff; font-family: 'Orbitron', monospace; text-align: center; margin-bottom: -5px; font-size: clamp(1rem, 1.6vw, 1.5em);">
-            ⚡ MISSION PARAMETERS
-        </h3>
-        <div class="cyber-text" style="text-align: center; margin-bottom: 5px;">
-            Analyze each goal. Identify missing component(s). Complete all 10 challenges to succeed!
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    if st.button("🚀 INITIALIZE PROTOCOL", use_container_width=True, type="primary"):
-        reset_to_question(1)
-        st.rerun()
-    
-    st.stop()
-
-# ---------------------------- MAIN GAME ----------------------------
-if not st.session_state.game_completed:
-    # Progress Bar
-    progress_percentage = ((st.session_state.current_question - 1) / st.session_state.total_questions) * 100
-    
-    st.markdown(f"""
-    <div class="cyber-progress">
-        <div class="progress-text">CHALLENGE {st.session_state.current_question} OF {st.session_state.total_questions}</div>
-        <div class="progress-track">
-            <div class="progress-fill" style="width: {progress_percentage}%;"></div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    if st.session_state.awaiting_response:
-        goal = st.session_state.current_goal
-        missing_count = len(goal["missing"])
-              
-        st.markdown(f"""
-        <div class="neon-container">
-            <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1rem, 1.4vw, 1.4em);">
-                🔍 WHICH SMART COMPONENTS ARE MISSING?
-            </h3>
-            <div class="goal-statement" style="text-align: center;">
-                <span class="goal-text">{goal['text']}</span>
-            </div>
-            <div class="hint-text">💡 Hint: This goal is missing <strong>{missing_count}</strong> SMART component{"s" if missing_count != 1 else ""}.</div>
-            </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown('<div style="margin-top: 5px;">', unsafe_allow_html=True)
-        
-        with st.form("smart_form", clear_on_submit=False):
-            st.markdown('<div class="cyber-text" style="margin: 0 0 0 0">Select all missing components:</div>', unsafe_allow_html=True)
-            
-            selected_missing = []
-            smart_components = ["Specific", "Measurable", "Achievable", "Relevant", "Timebound"]
-            
-            # Use equal columns for better fit
-            cols = st.columns(5)
-            
-            for i, component in enumerate(smart_components):
-                with cols[i]:
-                    if st.checkbox(component, key=f"chk_{component}_{st.session_state.current_question}"):
-                        selected_missing.append(component)
-            
-            submitted = st.form_submit_button("⚡ EXECUTE ANALYSIS", use_container_width=True, type="primary")
-            
-            if submitted:
-                st.session_state.user_selections = selected_missing
-                st.session_state.awaiting_response = False
-                st.session_state.show_feedback = True
-                
-                # Check if answer is correct
-                if set(selected_missing) == set(goal["missing"]):
-                    st.session_state.score += 1
-                
-                st.rerun()
-        
-        st.markdown("</div>", unsafe_allow_html=True)
-    
-    elif st.session_state.show_feedback:
-        goal = st.session_state.current_goal
-        user_correct = set(st.session_state.user_selections) == set(goal["missing"])
-        
-        # Feedback styling
-        feedback_class = "feedback-success" if user_correct else "feedback-learning"
-        feedback_icon = "✅" if user_correct else "❌"
-        feedback_title = "SUCCESS!" if user_correct else "INCORRECT!"
-        title_color = "#00ff7f" if user_correct else "#ff5050"
-        
-        st.markdown(f"""
-        <div class="{feedback_class}" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px;">
-            <span class="feedback-icon">{feedback_icon}</span>
-            <h3 class="feedback-title" style="color: {title_color}; margin: 0;">{feedback_title}</h3>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Show correct answer
-        st.markdown(f"""
-        <div class="neon-container">
-            <h3 style="color: #ffff00; font-family: 'Orbitron', monospace; margin-bottom: -20px; font-size: clamp(1rem, 1.3vw, 1.3em); text-align: center;">
-                📊 MISSING COMPONENTS DETECTED
-            </h3>
-            <div class="missing-components">
-                {' '.join([f'<span class="component-tag">{comp}</span>' for comp in goal["missing"]])}
-            </div>
-            <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(2px, 0.5vw, 20px); margin-top: clamp(4px, 1vw, 20px);">
-                <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-weight: 600; margin-bottom: clamp(6px, 1vw, 10px); font-size: clamp(0.9rem, 1.1vw, 1.1em);">
-                    📝 SYSTEM ANALYSIS:
-                </div>
-                <div style="color: rgba(255,255,255,0.9); font-family: 'Rajdhani', sans-serif; line-height: 1.2; font-size: clamp(1rem, 1.2vw, 1.2em);">
-                    {goal["feedback"]}
-                </div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        if st.session_state.current_question < st.session_state.total_questions:
-            if st.button("⚡ NEXT CHALLENGE", use_container_width=True, type="primary"):
-                reset_to_question(st.session_state.current_question + 1)
-                st.rerun()
-        else:
-            if st.button("🎉 VIEW RESULTS", use_container_width=True, type="primary"):
-                st.session_state.game_completed = True
-                st.rerun()
-
-# ---------------------------- END SCREEN ----------------------------
-if st.session_state.game_completed:
-    score_percentage = (st.session_state.score / st.session_state.total_questions) * 100
-    result_config = get_result_config(score_percentage)
-    
-    st.markdown(f"""
-    <div class="{result_config['style']}">
-        <div class="results-container">
-            <h2 class="feedback-title" style="color: {result_config['color']}; margin-bottom: 5px;">{result_config['title']}</h2>
-            <div style="color: rgba(255,255,255,0.8); font-family: 'Rajdhani', sans-serif; font-size: clamp(1.1rem, 1.3vw, 1.2em);">
-                {result_config['message']}
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    st.markdown(f"""
-    <div class="neon-container">
-        <div class="results-container">
-            <div class="score-display">
-                {st.session_state.score}/{st.session_state.total_questions}
-            </div>
-            <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-size: clamp(1.2rem, 1.6vw, 1.6em); font-weight: 600; margin-bottom: clamp(8px, 1.2vw, 10px);">
-                {score_percentage:.0f}% ACCURACY ACHIEVED
-            </div>
-            <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(6px, 1vw, 10px);">
-                <div style="color: rgba(255,255,255,0.9); font-family: 'Rajdhani', sans-serif; font-size: clamp(0.9rem, 1.1vw, 1.1em); line-height: 1.5;">
-                    SMART goals are important because they make goals clear, focused, and achievable. By being Specific, Measurable, Achievable, Relevant, and Time-bound, SMART goals help you stay organized, track progress, stay motivated, and make better decisions. Always practice SMART goals!
-                </div>
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown('<div style="margin-top: 5px;">', unsafe_allow_html=True)
-    
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("🔄 TRY AGAIN", use_container_width=True):
-            st.session_state.score = 0
-            st.session_state.game_completed = False
-            reset_to_question(1)
-            st.rerun()
-    with col2:
-        if st.button("🏠 RETURN TO HOME", use_container_width=True):
-            st.session_state.clear()
-            st.switch_page("pages/Modules.py")
-    st.stop()

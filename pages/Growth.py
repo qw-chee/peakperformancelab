@@ -130,15 +130,6 @@ def get_styles():
         footer {visibility: hidden;}
         header {visibility: hidden;}'
 
-        .custom-spacer {
-        height: 10vh !important;
-        }
-        @media screen and (min-width: 1300px) {
-            .custom-spacer {
-                height: 20vh !important;
-            }
-        }
-
         /* Hide sidebar permanently */
         section[data-testid="stSidebar"] {
             display: none !important;
@@ -806,5 +797,6 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.session_state.clear()
             st.switch_page("pages/Modules.py")
+
 
 

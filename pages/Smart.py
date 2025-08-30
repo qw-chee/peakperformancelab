@@ -596,6 +596,16 @@ def get_futuristic_styles():
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(45deg, #ff00ff, #00ff7f);
         }
+
+        * {
+            box-sizing: border-box !important;
+        }
+        
+        .stApp, .main, .block-container, body, html {
+            height: 100vh !important;
+            max-height: 100vh !important;
+            overflow: hidden !important;
+        }
     }
     </style>
     """

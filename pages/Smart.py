@@ -106,7 +106,7 @@ def get_futuristic_styles():
 
         .stApp > div:first-child {
             padding-top: 0 !important;
-            margin-top: -3rem;
+            margin-top: -8rem;
         }
 
         .block-container {
@@ -140,8 +140,6 @@ def get_futuristic_styles():
             background-attachment: fixed;
             min-height: 100vh;
             position: relative;
-            max-height: 100vh !important;
-            overflow: hidden !important;
         }
          
         .neon-container {

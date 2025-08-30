@@ -141,11 +141,13 @@ def get_futuristic_styles():
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            min-height: 100vh;
-            position: relative;
             height: 100vh !important;
             max-height: 100vh !important;
+            min-height: 100vh !important;
+            box-sizing: border-box !important;
             overflow: hidden !important;
+            padding: 0 !important;
+            margin: 0 !important;
         }
          
         .neon-container {
@@ -595,16 +597,6 @@ def get_futuristic_styles():
 
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(45deg, #ff00ff, #00ff7f);
-        }
-
-        * {
-            box-sizing: border-box !important;
-        }
-        
-        .stApp, .main, .block-container, body, html {
-            height: 100vh !important;
-            max-height: 100vh !important;
-            overflow: hidden !important;
         }
     }
     </style>

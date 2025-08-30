@@ -530,23 +530,7 @@ if (window.innerWidth >= 1024) {
 </script>
 """, unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <style>
-    .custom-spacer {
-        padding: 20px;
-        margin: 15px 0;
-    }
-    @media (min-width: 1300px) {
-        .custom-spacer {
-            height: 10vh;
-        }
-    }
-    </style>
-    <div class="custom-spacer"></div>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown( """ <style> @media (min-width: 1300px) { .custom-spacer { height: 10vh; } } </style> <div class="custom-spacer"></div> """, unsafe_allow_html=True )
 
 # Check for game over first - if game is over, show end screen and stop
 if st.session_state.game_over:
@@ -667,6 +651,7 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

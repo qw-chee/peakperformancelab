@@ -695,7 +695,7 @@ if st.session_state.current_question == 0 and not st.session_state.quiz_complete
             ✨ How to Respond
         </h3>
         <div class="nature-text">
-            You'll read 20 statements about learning and ability. Take your time for each statement, then click on the option that best matches how you truly feel:
+            You'll read 10 statements about learning and ability. Take your time for each statement, then click on the option that best matches how you truly feel:
         </div>
         <div style="margin: -10px 0 -20px 0;">
             <div class="response-grid">
@@ -825,6 +825,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

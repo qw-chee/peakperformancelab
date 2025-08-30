@@ -699,16 +699,16 @@ if st.session_state.current_question == 0 and not st.session_state.quiz_complete
         </div>
         <div style="margin: -10px 0 -20px 0;">
             <div class="response-grid">
-                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: clamp(20px, 2.5vw, 25px); padding: clamp(8px, 0.8vh, 12px) clamp(5px, 0.4vw, 7px); text-align: center; font-family: 'Fredoka', cursive; margin-top: -5px; font-weight: 600; color: white;text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;">
+                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: clamp(20px, 2.5vw, 25px); padding: clamp(8px, 0.8vh, 12px) clamp(5px, 0.4vw, 7px); text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;">
                     Strongly Disagree
                 </div>
-                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: clamp(20px, 2.5vw, 25px); padding: clamp(8px, 0.8vh, 12px) clamp(5px, 0.4vw, 7px); text-align: center; font-family: 'Fredoka', cursive; margin-top: -5px; font-weight: 600; color: white;text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;">
+                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: clamp(20px, 2.5vw, 25px); padding: clamp(8px, 0.8vh, 12px) clamp(5px, 0.4vw, 7px); text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;">
                     Disagree
                 </div>
-                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: clamp(20px, 2.5vw, 25px); padding: clamp(8px, 0.8vh, 12px) clamp(5px, 0.4vw, 7px); text-align: center; font-family: 'Fredoka', cursive; margin-top: -5px; font-weight: 600; color: white;text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;">
+                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: clamp(20px, 2.5vw, 25px); padding: clamp(8px, 0.8vh, 12px) clamp(5px, 0.4vw, 7px); text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;">
                     Agree
                 </div>
-                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: clamp(20px, 2.5vw, 25px); padding: clamp(8px, 0.8vh, 12px) clamp(5px, 0.4vw, 7px); text-align: center; font-family: 'Fredoka', cursive; margin-top: -5px; font-weight: 600; color: white;text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;">
+                <div style="background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%); border: 2px solid #fc6f97; border-radius: clamp(20px, 2.5vw, 25px); padding: clamp(8px, 0.8vh, 12px) clamp(5px, 0.4vw, 7px); text-align: center; font-family: 'Fredoka', cursive; font-weight: 600; color: white;text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;">
                     Strongly Agree
                 </div>
             </div>
@@ -825,6 +825,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

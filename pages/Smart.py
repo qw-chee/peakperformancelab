@@ -106,7 +106,7 @@ def get_futuristic_styles():
 
         .stApp > div:first-child {
             padding-top: 0 !important;
-            margin-top: -8rem;
+            margin-top: -3rem;
         }
 
         .block-container {

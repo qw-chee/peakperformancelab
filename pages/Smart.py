@@ -129,6 +129,9 @@ def get_futuristic_styles():
         .main .block-container {
             padding: 0 !important;
             max-width: none !important;
+            height: 100% !important;
+            max-height: 100% !important;
+            overflow-y: auto !important;
         }
         
         /* Full screen background */
@@ -140,6 +143,9 @@ def get_futuristic_styles():
             background-attachment: fixed;
             min-height: 100vh;
             position: relative;
+            height: 100vh !important;
+            max-height: 100vh !important;
+            overflow: hidden !important;
         }
          
         .neon-container {

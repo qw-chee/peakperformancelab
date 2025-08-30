@@ -663,6 +663,11 @@ st.markdown(
             height: 10vh;
         }
     }
+    @media (max-width: 1299px) {
+        .custom-spacer {
+            height: 2vh;
+        }
+    }
     </style>
     <div class="custom-spacer"></div>
     """,
@@ -825,6 +830,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

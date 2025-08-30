@@ -12,33 +12,23 @@ openai.api_key = st.secrets.get("openai_api_key")
 
 # ---------------------------- DATA ----------------------------
 QUIZ_QUESTIONS = [
-    {"text": "1. Math is much easier to learn if you are male or maybe come from a culture that values math.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
-    {"text": "2. You can always substantially change how intelligent you are.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
-    {"text": "3. All human beings without a brain injury or birth defect are capable of the same amount of learning.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
-    {"text": "4. You are a certain kind of person, and there is not much that can be done to really change that.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
-    {"text": "5. Music talent can be learned by anyone.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
-    {"text": "6. Truly smart people don't need to try hard.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
-    {"text": "7. No matter what kind of person you are, you can always change substantially.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
+    {"text": "1. Your intelligence is something very basic about you that you can't change very much.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
+    {"text": "2. The harder you work at something, the better you will be at it.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
+    {"text": "3. I appreciate when people, parents, coaches or teachers give me feedback about my performance.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
+    {"text": "4. Only a few people will be truly good at sports, you have to be born with the ability.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
+    {"text": "5. You can always change how intelligent you are.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
+    {"text": "6. You are a certain kind of person and there is not much that can be done to really change that.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
+    {"text": "7. An important reason why I do my school work is that I enjoy learning new things.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
     {"text": "8. I often get angry when I get feedback about my performance.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
-    {"text": "9. The harder you work at something, the better you will be at it.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
-    {"text": "10. Your intelligence is something very basic about you that you can't change very much.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
-    {"text": "11. You can always change basic things about the kind of person you are.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
-    {"text": "12. Trying new things is stressful for me and I avoid it.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
-    {"text": "13. Some people are good and kind, some are not – it is not often that people change.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
-    {"text": "14. I appreciate when parents, coaches, teachers give me feedback about my performance.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
-    {"text": "15. No matter how much intelligence you have, you can always change it quite a bit.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
-    {"text": "16. You can do things differently, but the important part of who you are can't really be changed.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
-    {"text": "17. Only a few people will be truly good at sports – you have to be \"born with it.\"", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
-    {"text": "18. Human beings are basically good, but sometimes make terrible decisions.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
-    {"text": "19. You can learn new things, but you can't really change how intelligent you are.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
-    {"text": "20. An important reason why I do my schoolwork is that I like to learn new things.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}}
+    {"text": "9. No matter how much intelligence you have, you can always change it quite a bit.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
+    {"text": "10. Truly smart people do not need to try hard.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
 ]
 
 MINDSET_RESULTS = {
-    "Strong Growth Mindset": {"range": (45, 60), "icon": "🌳", "title": "The Mighty Oak", "subtitle": "Strong Growth Mindset", "description": "Like a strong oak tree with reaching branches, you have embraced growth! You understand that abilities can flourish through effort.", "color": "#59250e"},
-    "Growth Mindset with some Fixed Ideas": {"range": (34, 44), "icon": "🌿", "title": "The Growing Sapling", "subtitle": "Growth Mindset with some Fixed Ideas", "description": "Like a sapling reaching toward the sun, you have many growth-oriented beliefs but have some areas where you have a fixed view of ability.", "color": "#964a29"},
-    "Fixed Mindset with some Growth Ideas": {"range": (21, 33), "icon": "🌱", "title": "The Sprouting Seed", "subtitle": "Fixed Mindset with some Growth Ideas", "description": "Like a sprouting seed, you currently lean toward a fixed view of ability, but you're starting to develop some growth-oriented beliefs!", "color": "#69b533"},
-    "Strong Fixed Mindset": {"range": (0, 20), "icon": "🌰", "title": "The Dormant Seed", "subtitle": "Strong Fixed Mindset", "description": "Your current beliefs lean toward a fixed view of ability, but remember - growth is always possible when the conditions are right.", "color": "#7fbd53"}
+    "Strong Growth Mindset": {"range": (22, 30), "icon": "🌳", "title": "The Mighty Oak", "subtitle": "Strong Growth Mindset", "description": "Like a strong oak tree with reaching branches, you have embraced growth! You understand that abilities can flourish through effort.", "color": "#59250e"},
+    "Growth Mindset with some Fixed Ideas": {"range": (17, 21), "icon": "🌿", "title": "The Growing Sapling", "subtitle": "Growth Mindset with some Fixed Ideas", "description": "Like a sapling reaching toward the sun, you have many growth-oriented beliefs but have some areas where you have a fixed view of ability.", "color": "#964a29"},
+    "Fixed Mindset with some Growth Ideas": {"range": (11, 16), "icon": "🌱", "title": "The Sprouting Seed", "subtitle": "Fixed Mindset with some Growth Ideas", "description": "Like a sprouting seed, you currently lean toward a fixed view of ability, but you're starting to develop some growth-oriented beliefs!", "color": "#69b533"},
+    "Strong Fixed Mindset": {"range": (0, 10), "icon": "🌰", "title": "The Dormant Seed", "subtitle": "Strong Fixed Mindset", "description": "Your current beliefs lean toward a fixed view of ability, but remember - growth is always possible when the conditions are right.", "color": "#7fbd53"}
 }
 
 RESPONSE_OPTIONS = ["Strongly Disagree", "Disagree", "Agree", "Strongly Agree"]
@@ -835,6 +825,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

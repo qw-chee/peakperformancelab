@@ -129,7 +129,11 @@ def get_styles():
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
         header {visibility: hidden;}
-        
+
+        .custom-spacer {
+            height: 10vh !important;
+        }
+
         /* Hide sidebar permanently */
         section[data-testid="stSidebar"] {
             display: none !important;

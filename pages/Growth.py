@@ -658,14 +658,12 @@ if (window.innerWidth >= 1024) {
 st.markdown(
     """
     <style>
+    .custom-spacer {
+        height: 2vh;
+    }
     @media (min-width: 1300px) {
         .custom-spacer {
             height: 10vh;
-        }
-    }
-    @media (max-width: 1299px) {
-        .custom-spacer {
-            height: 2vh;
         }
     }
     </style>
@@ -830,6 +828,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

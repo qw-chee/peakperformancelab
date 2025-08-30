@@ -163,8 +163,8 @@ def get_futuristic_styles():
             left: 0;
             right: 0;
             bottom: 0;
-            border-radius: clamp(10px, 1.5vw, 15px);
-            padding: 0;
+            border-radius: clamp(10px, 1.5vw, 15px); /* Match the container's border-radius */
+            padding: clamp(1px, 0.2vw, 2px); /* Keep padding for border width */
             background: linear-gradient(45deg, 
                 rgba(0, 255, 255, 0.8), 
                 rgba(255, 0, 255, 0.8), 
@@ -173,7 +173,6 @@ def get_futuristic_styles():
             mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             mask-composite: subtract;
             z-index: -1;
-            animation: border-glow 3s ease-in-out infinite alternate;
         }
         
         @keyframes border-glow {

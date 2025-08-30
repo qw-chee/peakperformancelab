@@ -533,6 +533,10 @@ if (window.innerWidth >= 1024) {
 st.markdown(
     """
     <style>
+    .custom-spacer {
+        padding: 20px;
+        margin: 15px 0;
+    }
     @media (min-width: 1300px) {
         .custom-spacer {
             height: 10vh;
@@ -663,6 +667,7 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
+
 
 
 

@@ -112,7 +112,6 @@ def get_futuristic_styles():
 
         .stApp > div:first-child {
             padding-top: 0 !important;
-            margin-top: -3rem !important;
             margin-bottom: 0 !important;
             padding-bottom: 0 !important;
         }

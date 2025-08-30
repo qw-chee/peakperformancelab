@@ -146,6 +146,7 @@ def get_futuristic_styles():
             height: 100vh !important;
             max-height: 100vh !important;
             overflow: hidden !important;
+            border: 5px solid red !important;
         }
          
         .neon-container {

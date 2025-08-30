@@ -178,7 +178,6 @@ def get_styles():
             border-radius: clamp(15px, 2vw, 20px);
             padding: clamp(5px, 0.7vw, 9px);
             margin: clamp(9px, 1.4vh, 14px) 0;
-            margin-top: 5px;
             margin-bottom: -5px;
             position: relative;
             backdrop-filter: blur(8px);
@@ -800,6 +799,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.session_state.clear()
             st.switch_page("pages/Modules.py")
+
 
 
 

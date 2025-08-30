@@ -598,6 +598,17 @@ def get_futuristic_styles():
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(45deg, #ff00ff, #00ff7f);
         }
+
+        [data-testid="stBottomBlockContainer"],
+        [data-testid="stFloatingActionButton"],
+        .stFloatingButton,
+        button[data-testid*="deploy"],
+        button[data-testid*="floating"] {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            width: 0 !important;
+        }
     }
     </style>
     """

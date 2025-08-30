@@ -222,7 +222,7 @@ def get_styles():
             font-family: 'Comfortaa', cursive;
             display: block;
             color: #018023;
-            font-size: clamp(0.8rem, 1.1vw, 1.2rem);
+            font-size: clamp(0.9rem, 1.2vw, 1.2rem);
             line-height: 1.1;
             text-align: center;
             margin-bottom: 0.8em;
@@ -825,6 +825,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

@@ -654,6 +654,7 @@ if (window.innerWidth >= 1024) {
 </script>
 """, unsafe_allow_html=True)
 
+# ---------------------------- MAIN APP LOGIC ----------------------------
 st.markdown(
     """
     <style>
@@ -667,8 +668,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-# ---------------------------- MAIN APP LOGIC ----------------------------
 
 # OVERVIEW PAGE
 if st.session_state.current_question == 0 and not st.session_state.quiz_completed:
@@ -826,6 +825,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

@@ -163,8 +163,8 @@ def get_futuristic_styles():
             left: 0;
             right: 0;
             bottom: 0;
-            border-radius: clamp(12px, 1.8vw, 18px);
-            padding: clamp(1px, 0.2vw, 2px);
+            border-radius: clamp(10px, 1.5vw, 15px);
+            padding: clamp(1.5px, 0.5vw, 15px);
             background: linear-gradient(45deg, 
                 rgba(0, 255, 255, 0.8), 
                 rgba(255, 0, 255, 0.8), 

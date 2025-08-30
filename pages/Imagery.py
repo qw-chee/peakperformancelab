@@ -874,6 +874,10 @@ if (window.innerWidth >= 1024) {
 st.markdown(
     """
     <style>
+    .custom-spacer {
+        padding: 20px;
+        margin: 15px 0;
+    }
     @media (min-width: 1300px) {
         .custom-spacer {
             height: 10vh;

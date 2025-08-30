@@ -123,7 +123,6 @@ def get_futuristic_styles():
             z-index: 100 !important;
             transform: scale(clamp(0.6, calc(100vw / 2033), 1.4));
             transform-origin: top center;
-            border: 3px solid blue !important;
         }
         
         /* Remove padding from main container */
@@ -133,6 +132,7 @@ def get_futuristic_styles():
             height: 100% !important;
             max-height: 100% !important;
             overflow-y: auto !important;
+            border: 3px solid blue !important;
         }
         
         /* Full screen background */

@@ -657,9 +657,9 @@ if (window.innerWidth >= 1024) {
 st.markdown(
     """
     <style>
-    @media (max-width: 1300px) {
+    @media (min-width: 1300px) {
         .custom-spacer {
-            height: 1vh;
+            height: 5vh;
         }
     }
     </style>
@@ -669,19 +669,6 @@ st.markdown(
 )
 
 # ---------------------------- MAIN APP LOGIC ----------------------------
-st.markdown(
-    """
-    <style>
-    @media (min-width: 1300px) {
-        .custom-spacer {
-            height: 10vh;
-        }
-    }
-    </style>
-    <div class="custom-spacer"></div>
-    """,
-    unsafe_allow_html=True
-)
 
 # OVERVIEW PAGE
 if st.session_state.current_question == 0 and not st.session_state.quiz_completed:
@@ -839,6 +826,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

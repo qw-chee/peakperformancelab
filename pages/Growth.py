@@ -655,6 +655,8 @@ if (window.innerWidth >= 1024) {
 """, unsafe_allow_html=True)
 
 # ---------------------------- MAIN APP LOGIC ----------------------------
+st.markdown( """ <style> @media (min-width: 1300px) { .custom-spacer { height: 10vh; } } </style> <div class="custom-spacer"></div> """, unsafe_allow_html=True )
+
 # OVERVIEW PAGE
 if st.session_state.current_question == 0 and not st.session_state.quiz_completed:
     st.markdown("""
@@ -797,6 +799,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.session_state.clear()
             st.switch_page("pages/Modules.py")
+
 
 
 

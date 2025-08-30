@@ -871,23 +871,7 @@ if (window.innerWidth >= 1024) {
 </script>
 """, unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <style>
-    .custom-spacer {
-        padding: 20px;
-        margin: 15px 0;
-    }
-    @media (min-width: 1300px) {
-        .custom-spacer {
-            height: 10vh;
-        }
-    }
-    </style>
-    <div class="custom-spacer"></div>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown( """ <style> @media (min-width: 1300px) { .custom-spacer { height: 10vh; } } </style> <div class="custom-spacer"></div> """, unsafe_allow_html=True )
 
 # ---------------------------- NAVIGATION FUNCTIONS ----------------------------
 def next_step():

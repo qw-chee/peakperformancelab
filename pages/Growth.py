@@ -21,7 +21,7 @@ QUIZ_QUESTIONS = [
     {"text": "7. An important reason why I do my school work is that I enjoy learning new things.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
     {"text": "8. I often get angry when I get feedback about my performance.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
     {"text": "9. No matter how much intelligence you have, you can always change it quite a bit.", "scores": {"Strongly Agree": 3, "Agree": 2, "Disagree": 1, "Strongly Disagree": 0}},
-    {"text": "10. Truly smart people do not need to try hard.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}},
+    {"text": "10. Truly smart people do not need to try hard.", "scores": {"Strongly Agree": 0, "Agree": 1, "Disagree": 2, "Strongly Disagree": 3}}
 ]
 
 MINDSET_RESULTS = {
@@ -825,6 +825,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 

@@ -128,8 +128,8 @@ def get_styles():
         /* Hide Streamlit default elements */
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
-        header {visibility: hidden;}'
-
+        header {visibility: hidden;}
+        
         /* Hide sidebar permanently */
         section[data-testid="stSidebar"] {
             display: none !important;
@@ -797,6 +797,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.session_state.clear()
             st.switch_page("pages/Modules.py")
+
 
 
 

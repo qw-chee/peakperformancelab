@@ -94,12 +94,6 @@ def get_futuristic_styles():
         footer {visibility: hidden;}
         header {visibility: hidden;}
 
-        footer {
-            display: none !important;
-            visibility: hidden !important;
-            height: 0 !important;
-        }
-
         /* Hide sidebar permanently */
         section[data-testid="stSidebar"] {
             display: none !important;
@@ -135,8 +129,6 @@ def get_futuristic_styles():
         .main .block-container {
             padding: 0 !important;
             max-width: none !important;
-            padding-bottom: 0 !important;
-            margin-bottom: 0 !important;
         }
         
         /* Full screen background */
@@ -148,8 +140,6 @@ def get_futuristic_styles():
             background-attachment: fixed;
             min-height: 100vh;
             position: relative;
-            margin-bottom: 0 !important;
-            padding-bottom: 0 !important;
         }
          
         .neon-container {

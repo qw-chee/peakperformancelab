@@ -132,7 +132,6 @@ def get_futuristic_styles():
             height: 100% !important;
             max-height: 100% !important;
             overflow-y: auto !important;
-            border: 3px solid blue !important;
         }
         
         /* Full screen background */
@@ -147,7 +146,6 @@ def get_futuristic_styles():
             height: 100vh !important;
             max-height: 100vh !important;
             overflow: hidden !important;
-            border: 5px solid red !important;
         }
          
         .neon-container {

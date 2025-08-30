@@ -93,7 +93,13 @@ def get_futuristic_styles():
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
         header {visibility: hidden;}
-        
+
+        footer {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+        }
+
         /* Hide sidebar permanently */
         section[data-testid="stSidebar"] {
             display: none !important;

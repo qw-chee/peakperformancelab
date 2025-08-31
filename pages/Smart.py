@@ -21,7 +21,7 @@ GOALS_DATABASE = [
         "feedback": "This goal isn't <strong>Achievable</strong> - reading 10 books in one day is unrealistic. A more achievable timeline would be several months.<br><br><strong>SMART Version:</strong> 'I will finish reading 10 books over the next 6 months to improve my writing skills by expanding my vocabulary and understanding different writing styles.'"
     },
     {
-        "text": "I will aim to improve my GPA by 0.5 for better career prospects.",
+        "text": "I will aim to improve my GPA by 0.2 for better career prospects.",
         "missing": ["Timebound"],
         "feedback": "This goal isn't <strong>Timebound</strong> - there's no deadline specified. There should be a timeframe like 'by the end of this semester' or 'within one academic year'.<br><br><strong>SMART Version:</strong> 'I will improve my GPA by 0.5 points by the end of this academic year through consistent study habits to enhance my career prospects.'"
     },

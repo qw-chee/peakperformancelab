@@ -77,7 +77,7 @@ Please provide recommendations in the following format:
 - Use encouraging and supportive language
 - Use simple and understandable laymen language
 
-Format your response as a simple list with each recommendation on a new line, starting with a dash (-). Give a maximum of 5 recommendations with a maximum of 9 words each. Use a warm, conversational tone.
+Format your response as a simple list with each recommendation on a new line, starting with a dash (-). Give a maximum of 3 recommendations with 10-15 words each. Use a warm, conversational tone.
 """
 
         response = openai.ChatCompletion.create(
@@ -799,6 +799,7 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.session_state.clear()
             st.switch_page("pages/Modules.py")
+
 
 
 

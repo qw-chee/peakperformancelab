@@ -13,66 +13,66 @@ GOALS_DATABASE = [
     {
         "text": "To manage time, I will write some of my TMA every evening.",
         "missing": ["Measurable"],
-        "feedback": "This goal isn't <strong>Measurable</strong> - 'some' is vague. How much work should be specified, like '2 pages' or '500 words' or '1 hour of writing'.<br><br><strong>SMART Version:</strong> 'To manage time effectively, I will write 300 words of my TMA every evening until completion.'"
+        "feedback": "This goal isn't <strong>Measurable</strong> - "some" is vague. How much work should be specified, like "2 pages" or "500 words" or "1 hour of writing".<br><br><strong>SMART Version:</strong> "To manage time effectively, I will write 300 words of my TMA every evening until completion.""
     },
     {
         "text": "I will finish reading 10 books to improve my writing by tomorrow.",
         "missing": ["Achievable"],
-        "feedback": "This goal isn't <strong>Achievable</strong> - reading 10 books in one day is unrealistic. A more achievable timeline would be several months.<br><br><strong>SMART Version:</strong> 'I will finish reading 10 books over the next 6 months to improve my writing skills by expanding my vocabulary and understanding different writing styles.'"
+        "feedback": "This goal isn't <strong>Achievable</strong> - reading 10 books in one day is unrealistic. A more achievable timeline would be several months.<br><br><strong>SMART Version:</strong> "I will finish reading 10 books over the next 6 months to improve my writing skills by expanding my vocabulary and understanding different writing styles.""
     },
     {
         "text": "I will aim to improve my GPA by 0.5 for better career prospects.",
         "missing": ["Timebound"],
-        "feedback": "This goal isn't <strong>Timebound</strong> - there's no deadline specified. There should be a timeframe like 'by the end of this semester' or 'within one academic year'.<br><br><strong>SMART Version:</strong> 'I will improve my GPA by 0.5 points by the end of this academic year through consistent study habits to enhance my career prospects.'"
+        "feedback": "This goal isn't <strong>Timebound</strong> - there's no deadline specified. There should be a timeframe like "by the end of this semester" or "within one academic year".<br><br><strong>SMART Version:</strong> "I will improve my GPA by 0.5 points by the end of this academic year through consistent study habits to enhance my career prospects.""
     },
     {
         "text": "I will volunteer twice at the foodbank each month.",
         "missing": ["Relevant"],
-        "feedback": "This goal lacks clear <strong>Relevance</strong> - it doesn't explain how volunteering connects to any goals.<br><br><strong>SMART Version:</strong> 'I will volunteer twice at the foodbank each month for 6 months to develop my leadership skills and give back to my community.'"
+        "feedback": "This goal lacks clear <strong>Relevance</strong> - it doesn't explain how volunteering connects to any goals.<br><br><strong>SMART Version:</strong> "I will volunteer twice at the foodbank each month for 6 months to develop my leadership skills and give back to my community.""
     },
     
     # Missing 2 elements
     {
         "text": "I want to save 10 million dollars by the end of this year.",
         "missing": ["Achievable", "Relevant"],
-        "feedback": "This goal isn't <strong>Achievable</strong> (10 million in one year is unrealistic for most people) and lacks <strong>Relevance</strong> (why this specific amount? What's the purpose?).<br><br><strong>SMART Version:</strong> 'I will save $5,000 by the end of this year to build an emergency fund for my family's financial security.'"
+        "feedback": "This goal isn"t <strong>Achievable</strong> (10 million in one year is unrealistic for most people) and lacks <strong>Relevance</strong> (why this specific amount? What"s the purpose?).<br><br><strong>SMART Version:</strong> "I will save $5,000 by the end of this year to build an emergency fund for my family"s financial security.""
     },
     {
         "text": "I will arrive earlier for class starting next week.",
         "missing": ["Measurable", "Relevant"],
-        "feedback": "This goal isn't <strong>Measurable</strong> (how much earlier?) and lacks <strong>Relevance</strong> (why is arriving earlier important for your academic success?).<br><br><strong>SMART Version:</strong> 'I will arrive 15 minutes earlier for each class starting next week to review notes and improve my academic performance.'"
+        "feedback": "This goal isn"t <strong>Measurable</strong> (how much earlier?) and lacks <strong>Relevance</strong> (why is arriving earlier important for your academic success?).<br><br><strong>SMART Version:</strong> "I will arrive 15 minutes earlier for each class starting next week to review notes and improve my academic performance.""
     },
     
     # Missing 3 elements
     {
         "text": "I will start exploring other types of exercise next week.",
         "missing": ["Specific", "Measurable", "Relevant"],
-        "feedback": "This goal isn't <strong>Specific</strong> (which types of exercise?), isn't <strong>Measurable</strong> (how much exploration?), and lacks <strong>Relevance</strong> (why explore new exercises?).<br><br><strong>SMART Version:</strong> 'I will try 3 new types of exercise (yoga, swimming, and cycling) for 30 minutes each next week to find enjoyable activities that will help me maintain long-term fitness.'"
+        "feedback": "This goal isn"t <strong>Specific</strong> (which types of exercise?), isn"t <strong>Measurable</strong> (how much exploration?), and lacks <strong>Relevance</strong> (why explore new exercises?).<br><br><strong>SMART Version:</strong> "I will try 3 new types of exercise (yoga, swimming, and cycling) for 30 minutes each next week to find enjoyable activities that will help me maintain long-term fitness.""
     },
     {
         "text": "I will become fluent in Korean and Arabic to better connect with people.",
         "missing": ["Measurable", "Achievable", "Timebound"],
-        "feedback": "This goal isn't <strong>Measurable</strong> (what defines fluency?), isn't <strong>Achievable</strong> (two languages simultaneously is unrealistic), and isn't <strong>Timebound</strong> (no deadline specified).<br><br><strong>SMART Version:</strong> 'I will achieve conversational level in Korean (able to hold 10-minute conversations) within 18 months by studying 1 hour daily to connect with Korean colleagues at work.'"
+        "feedback": "This goal isn"t <strong>Measurable</strong> (what defines fluency?), isn"t <strong>Achievable</strong> (two languages simultaneously is unrealistic), and isn"t <strong>Timebound</strong> (no deadline specified).<br><br><strong>SMART Version:</strong> "I will achieve conversational level in Korean (able to hold 10-minute conversations) within 18 months by studying 1 hour daily to connect with Korean colleagues at work.""
     },  
     # Missing 4 elements
     {
         "text": "I will launch a successful online business by next week.",
         "missing": ["Specific", "Measurable", "Achievable", "Relevant"],
-        "feedback": "This goal isn't <strong>Specific</strong> (what type of business?), isn't <strong>Measurable</strong> (what defines success?), isn't <strong>Achievable</strong> (one week is unrealistic), and lacks <strong>Relevance</strong> (why this business?).<br><br><strong>SMART Version:</strong> 'I will launch a graphic design website with 5 portfolio pieces within 6 months to generate $1,000 monthly income.'"
+        "feedback": "This goal isn"t <strong>Specific</strong> (what type of business?), isn"t <strong>Measurable</strong> (what defines success?), isn"t <strong>Achievable</strong> (one week is unrealistic), and lacks <strong>Relevance</strong> (why this business?).<br><br><strong>SMART Version:</strong> "I will launch a graphic design website with 5 portfolio pieces within 6 months to generate $1,000 monthly income.""
     },
     {
         "text": "I want to build better habits.",
         "missing": ["Specific", "Measurable", "Relevant", "Timebound"],
-        "feedback": "This goal lacks <strong>Specificity</strong> (which habits?), isn't <strong>Measurable</strong> (how will you track progress?), lacks <strong>Relevance</strong> (why these habits?), and has no <strong>Timebound</strong> deadline.<br><br><strong>SMART Version:</strong> 'I will establish a morning routine of 30 minutes of reading and 10 minutes of meditation daily for the next 30 days to improve my focus and productivity at work.'"
+        "feedback": "This goal lacks <strong>Specificity</strong> (which habits?), isn"t <strong>Measurable</strong> (how will you track progress?), lacks <strong>Relevance</strong> (why these habits?), and has no <strong>Timebound</strong> deadline.<br><br><strong>SMART Version:</strong> "I will establish a morning routine of 30 minutes of reading and 10 minutes of meditation daily for the next 30 days to improve my focus and productivity at work.""
     }
 ]
 
 # ---------------------------- SESSION STATE INIT ----------------------------
 def init_game_state():
     defaults = {
-        'current_question': 0, 'score': 0, 'total_questions': len(GOALS_DATABASE),
-        'current_goal': None, 'awaiting_response': False, 'show_feedback': False,
-        'user_selections': [], 'game_completed': False
+        "current_question": 0, "score": 0, "total_questions": len(GOALS_DATABASE),
+        "current_goal": None, "awaiting_response": False, "show_feedback": False,
+        "user_selections": [], "game_completed": False
     }
     for key, value in defaults.items():
         if key not in st.session_state:
@@ -85,7 +85,7 @@ init_game_state()
 def get_futuristic_styles():
     return """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+    @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap");
 
     /* Desktop/Laptop Only Styles */
     @media screen and (min-width: 1024px) {
@@ -136,7 +136,7 @@ def get_futuristic_styles():
         
         /* Full screen background */
         .stApp {
-            background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/smart.jpg');
+            background-image: url("https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/smart.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -165,13 +165,13 @@ def get_futuristic_styles():
         }
         
         .neon-container::before {
-            content: '';
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            border-radius: clamp(10px, 1.5vw, 15px); /* Match the container's border-radius */
+            border-radius: clamp(10px, 1.5vw, 15px); /* Match the container"s border-radius */
             padding: clamp(1px, 0.2vw, 2px); /* Keep padding for border width */
             background: linear-gradient(45deg, 
                 rgba(0, 255, 255, 0.8), 
@@ -189,7 +189,7 @@ def get_futuristic_styles():
         }
         
         .cyber-title {
-            font-family: 'Orbitron', monospace;
+            font-family: "Orbitron", monospace;
             font-weight: 900;
             font-size: clamp(1.8rem, 2.8vw, 2.8em);
             background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff7f);
@@ -208,7 +208,7 @@ def get_futuristic_styles():
         }
 
         .cyber-subtitle, .cyber-text {
-            font-family: 'Rajdhani', sans-serif;
+            font-family: "Rajdhani", sans-serif;
             color: rgba(0, 255, 255, 0.8);
             text-align: center;
             margin-bottom: 15px;
@@ -247,7 +247,7 @@ def get_futuristic_styles():
         }
         
         .smart-letter {
-            font-family: 'Orbitron', monospace;
+            font-family: "Orbitron", monospace;
             font-weight: 700;
             font-size: clamp(1.3em, 1.8vw, 1.8em);
             background: linear-gradient(45deg, #00ffff, #00ff7f);
@@ -291,7 +291,7 @@ def get_futuristic_styles():
         }
         
         .progress-text {
-            font-family: 'Orbitron', monospace;
+            font-family: "Orbitron", monospace;
             color: #00ffff;
             font-weight: 700;
             text-align: center;
@@ -319,23 +319,23 @@ def get_futuristic_styles():
             position: absolute;
             font-size: clamp(2.5em, 4vw, 4em);
             color: rgba(255, 0, 255, 0.6);
-            font-family: 'Orbitron', monospace;
+            font-family: "Orbitron", monospace;
         }
         
         .goal-statement::before {
-            content: '"';
+            content: """;
             top: clamp(-6px, -1vw, -10px);
             left: clamp(12px, 2vw, 20px);
         }
         
         .goal-statement::after {
-            content: '"';
+            content: """;
             bottom: clamp(-20px, -3vw, -30px);
             right: clamp(12px, 2vw, 20px);
         }
         
         .goal-text {
-            font-family: 'Rajdhani', sans-serif;
+            font-family: "Rajdhani", sans-serif;
             font-size: clamp(1.15rem, 1.35vw, 1.25em);
             color: rgba(255, 255, 255, 0.95);
             font-style: italic;
@@ -356,7 +356,7 @@ def get_futuristic_styles():
         
         .hint-text {
             color: rgba(0, 255, 127, 0.9);
-            font-family: 'Rajdhani', sans-serif;
+            font-family: "Rajdhani", sans-serif;
             font-weight: 500;
             font-size: clamp(1rem, 1.2vw, 1.1em);
         }
@@ -382,7 +382,7 @@ def get_futuristic_styles():
         }
         
         .feedback-title {
-            font-family: 'Orbitron', monospace;
+            font-family: "Orbitron", monospace;
             font-weight: 700;
             font-size: clamp(1.2rem, 2vw, 2.2em);
             margin: 0;
@@ -410,7 +410,7 @@ def get_futuristic_styles():
             border: clamp(1px, 0.15vw, 1px) solid rgba(255, 255, 0, 0.5);
             padding: clamp(5px, 0.8vw, 8px) clamp(10px, 1.6vw, 16px);
             border-radius: clamp(12px, 2vw, 20px);
-            font-family: 'Orbitron', monospace;
+            font-family: "Orbitron", monospace;
             font-weight: 600;
             font-size: clamp(0.7rem, 0.9vw, 0.9em);
             text-shadow: 0 0 clamp(6px, 1vw, 10px) rgba(255, 255, 0, 0.5);
@@ -422,7 +422,7 @@ def get_futuristic_styles():
         }
         
         .score-display {
-            font-family: 'Orbitron', monospace;
+            font-family: "Orbitron", monospace;
             font-size: clamp(1.6rem, 2.8vw, 3.5em);
             font-weight: 900;
             background: linear-gradient(45deg, #00ffff, #ff00ff);
@@ -435,7 +435,7 @@ def get_futuristic_styles():
         }
         
         .stCheckbox > label {
-            font-family: 'Rajdhani', sans-serif !important;
+            font-family: "Rajdhani", sans-serif !important;
             color: white !important;
             font-size: clamp(0.8rem, 1vw, 1em) !important;
             font-weight: 600 !important;
@@ -499,7 +499,7 @@ def get_futuristic_styles():
             color: #00ffff !important;
             font-weight: 900 !important;
             font-size: clamp(0.9rem, 1.1vw, 1.1em) !important;
-            font-family: 'Orbitron', monospace !important;
+            font-family: "Orbitron", monospace !important;
             padding: clamp(10px, 1.5vw, 15px) clamp(15px, 2.5vw, 25px) !important;
             margin-top: 10px !important;
             border-radius: clamp(15px, 2.5vw, 25px) !important;
@@ -527,7 +527,7 @@ def get_futuristic_styles():
             border: clamp(1px, 0.2vw, 2px) solid #f277e6 !important;
             color: #00ffff !important;
             font-weight: 600 !important;
-            font-family: 'Rajdhani', sans-serif !important;
+            font-family: "Rajdhani", sans-serif !important;
             border-radius: clamp(10px, 1.5vw, 15px) !important;
             backdrop-filter: blur(10px) !important;
             transition: all 0.3s ease !important;
@@ -544,7 +544,7 @@ def get_futuristic_styles():
         /* Force font on all text elements within buttons */
         div[data-testid="stButton"] * {
             font-weight: 600;
-            font-family: 'Rajdhani' !important;
+            font-family: "Rajdhani" !important;
         }
 
         div[data-testid="stForm"] div[data-testid="stButton"] > button[kind="primary"] {
@@ -637,7 +637,7 @@ st.markdown("""
     }
 
     .loading-title {
-        font-family: 'Orbitron', monospace;
+        font-family: "Orbitron", monospace;
         font-size: clamp(2rem, 3vw, 3em);
         font-weight: 900;
         background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff7f);
@@ -668,7 +668,7 @@ st.markdown("""
     }
 
     .loading-subtitle {
-        font-family: 'Rajdhani', sans-serif;
+        font-family: "Rajdhani", sans-serif;
         color: rgba(255, 255, 255, 0.7);
         margin-top: clamp(8px, 1.5vw, 15px);
         font-size: clamp(1rem, 1.4vw, 1.4em);
@@ -700,10 +700,10 @@ st.markdown("""
 // Block mobile and tablet, handle responsive scaling
 if (window.innerWidth >= 1024) {
     // Handle window resize for responsive scaling
-    window.addEventListener('resize', function() {
+    window.addEventListener("resize", function() {
         if (window.innerWidth < 1024) {
-            document.body.style.display = 'none';
-            document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%); color: white; font-size: 1.5rem; text-align: center; font-family: Orbitron, monospace;">This application is designed for desktop and laptop screens only.</div>';
+            document.body.style.display = "none";
+            document.body.innerHTML = "<div style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%); color: white; font-size: 1.5rem; text-align: center; font-family: Orbitron, monospace;">This application is designed for desktop and laptop screens only.</div>";
         }
     });
 }
@@ -758,7 +758,7 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
 
     st.markdown("""
     <div class="neon-container">
-        <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; text-align: center; font-size: clamp(1rem, 1.6vw, 1.5em); margin-bottom: -5px;">
+        <h3 style="color: #00ffff; font-family: "Orbitron", monospace; text-align: center; font-size: clamp(1rem, 1.6vw, 1.5em); margin-bottom: -5px;">
             📡 SMART PROTOCOL COMPONENTS
         </h3>
         <div class="smart-grid">
@@ -793,7 +793,7 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
     
     st.markdown("""
     <div class="neon-container">
-        <h3 style="color: #ff00ff; font-family: 'Orbitron', monospace; text-align: center; margin-bottom: -5px; font-size: clamp(1rem, 1.6vw, 1.5em);">
+        <h3 style="color: #ff00ff; font-family: "Orbitron", monospace; text-align: center; margin-bottom: -5px; font-size: clamp(1rem, 1.6vw, 1.5em);">
             ⚡ MISSION PARAMETERS
         </h3>
         <div class="cyber-text" style="text-align: center; margin-bottom: 5px;">
@@ -830,20 +830,20 @@ if not st.session_state.game_completed:
         
         st.markdown(f"""
         <div class="neon-container">
-            <h3 style="color: #00ffff; font-family: 'Orbitron', monospace; margin-bottom: -10px; font-size: clamp(1rem, 1.2vw, 1.2em);">
+            <h3 style="color: #00ffff; font-family: "Orbitron", monospace; margin-bottom: -10px; font-size: clamp(1rem, 1.2vw, 1.2em);">
                 🔍 WHICH SMART COMPONENTS ARE MISSING?
             </h3>
             <div class="goal-statement" style="text-align: center;">
-                <span class="goal-text">{goal['text']}</span>
+                <span class="goal-text">{goal["text"]}</span>
             </div>
             <div class="hint-text">💡 Hint: This goal is missing <u><strong>{missing_count}</strong></u> SMART component{"s" if missing_count != 1 else ""}.</div>
             </div>
         """, unsafe_allow_html=True)
         
-        st.markdown('<div style="margin-top: 5px;">', unsafe_allow_html=True)
+        st.markdown("<div style="margin-top: 5px;">", unsafe_allow_html=True)
         
         with st.form("smart_form", clear_on_submit=False):
-            st.markdown('<div class="cyber-text" style="margin: 0 0 0 0">Select all missing components:</div>', unsafe_allow_html=True)
+            st.markdown("<div class="cyber-text" style="margin: 0 0 0 0">Select all missing components:</div>", unsafe_allow_html=True)
             
             selected_missing = []
             smart_components = ["Specific", "Measurable", "Achievable", "Relevant", "Timebound"]
@@ -891,17 +891,17 @@ if not st.session_state.game_completed:
         # Show correct answer
         st.markdown(f"""
         <div class="neon-container">
-            <h3 style="color: #ffff00; font-family: 'Orbitron', monospace; margin-bottom: -20px; font-size: clamp(1rem, 1.3vw, 1.3em); text-align: center;">
+            <h3 style="color: #ffff00; font-family: "Orbitron", monospace; margin-bottom: -20px; font-size: clamp(1.05rem, 1.35vw, 1.35em); text-align: center;">
                 📊 MISSING COMPONENTS
             </h3>
             <div class="missing-components">
-                {' '.join([f'<span class="component-tag">{comp}</span>' for comp in goal["missing"]])}
+                {" ".join([f"<span class="component-tag">{comp}</span>" for comp in goal["missing"]])}
             </div>
             <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(2px, 0.5vw, 20px); margin-top: clamp(4px, 1vw, 20px);">
-                <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-weight: 600; margin-bottom: clamp(6px, 1vw, 10px); font-size: clamp(0.9rem, 1.1vw, 1.1em);">
+                <div style="color: #00ffff; font-family: "Orbitron", monospace; font-weight: 600; margin-bottom: clamp(6px, 1vw, 10px); font-size: clamp(0.9rem, 1.1vw, 1.1em);">
                     📝 SYSTEM ANALYSIS:
                 </div>
-                <div style="color: rgba(255,255,255,0.9); font-family: 'Rajdhani', sans-serif; line-height: 1.2; font-size: clamp(1rem, 1.2vw, 1.2em);">
+                <div style="color: rgba(255,255,255,0.9); font-family: "Rajdhani", sans-serif; line-height: 1.2; font-size: clamp(1.05rem, 1.25vw, 1.25em);">
                     {goal["feedback"]}
                 </div>
             </div>
@@ -923,11 +923,11 @@ if st.session_state.game_completed:
     result_config = get_result_config(score_percentage)
     
     st.markdown(f"""
-    <div class="{result_config['style']}">
+    <div class="{result_config["style"]}">
         <div class="results-container">
-            <h2 class="feedback-title" style="color: {result_config['color']}; margin-bottom: 5px;">{result_config['title']}</h2>
-            <div style="color: rgba(255,255,255,0.8); font-family: 'Rajdhani', sans-serif; font-size: clamp(1.1rem, 1.3vw, 1.2em);">
-                {result_config['message']}
+            <h2 class="feedback-title" style="color: {result_config["color"]}; margin-bottom: 5px;">{result_config["title"]}</h2>
+            <div style="color: rgba(255,255,255,0.8); font-family: "Rajdhani", sans-serif; font-size: clamp(1.1rem, 1.3vw, 1.2em);">
+                {result_config["message"]}
             </div>
         </div>
     </div>
@@ -939,11 +939,11 @@ if st.session_state.game_completed:
             <div class="score-display">
                 {st.session_state.score}/{st.session_state.total_questions}
             </div>
-            <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-size: clamp(1.2rem, 1.6vw, 1.6em); font-weight: 600; margin-bottom: clamp(8px, 1.2vw, 10px);">
+            <div style="color: #00ffff; font-family: "Orbitron", monospace; font-size: clamp(1.2rem, 1.6vw, 1.6em); font-weight: 600; margin-bottom: clamp(8px, 1.2vw, 10px);">
                 {score_percentage:.0f}% ACCURACY ACHIEVED
             </div>
             <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(6px, 1vw, 10px);">
-                <div style="color: rgba(255,255,255,0.9); font-family: 'Rajdhani', sans-serif; font-size: clamp(0.9rem, 1.1vw, 1.1em); line-height: 1.5;">
+                <div style="color: rgba(255,255,255,0.9); font-family: "Rajdhani", sans-serif; font-size: clamp(0.9rem, 1.1vw, 1.1em); line-height: 1.5;">
                     SMART goals are important because they make goals clear, focused, and achievable. By being Specific, Measurable, Achievable, Relevant, and Time-bound, SMART goals help you stay organized, track progress, stay motivated, and make better decisions. Always practice SMART goals!
                 </div>
             </div>
@@ -951,7 +951,7 @@ if st.session_state.game_completed:
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown('<div style="margin-top: 5px;">', unsafe_allow_html=True)
+    st.markdown("<div style="margin-top: 5px;">", unsafe_allow_html=True)
     
     col1, col2 = st.columns(2)
     with col1:

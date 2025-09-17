@@ -11,7 +11,7 @@ st.set_page_config(
 GOALS_DATABASE = [
     # Missing 1 element
     {
-        "text": "To manage time, I will write some of my TMA every evening.",
+        "text": "To manage time, I will write some of my TMA every weekend.",
         "missing": ["Measurable"],
         "feedback": "This goal isn't <strong>Measurable</strong> - 'some' is vague. How much work should be specified, like '2 pages' or '500 words' or '1 hour of writing'.<br><br><strong>SMART Version:</strong> 'To manage time effectively, I will write 300 words of my TMA every evening until completion.'"
     },

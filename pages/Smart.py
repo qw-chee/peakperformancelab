@@ -16,7 +16,7 @@ GOALS_DATABASE = [
         "feedback": "This goal isn't <strong>Measurable</strong> - 'some' is vague. How much work should be specified, like '2 pages' or '500 words' or '1 hour of writing'.<br><br><strong>SMART Version:</strong> 'To manage time effectively, I will write 300 words of my TMA every evening until completion.'"
     },
     {
-        "text": "I will finish reading 10 books to improve my writing by tomorrow.",
+        "text": "I will finish reading 50 books to improve my writing by tomorrow.",
         "missing": ["Achievable"],
         "feedback": "This goal isn't <strong>Achievable</strong> - reading 10 books in one day is unrealistic. A more achievable timeline would be several months.<br><br><strong>SMART Version:</strong> 'I will finish reading 10 books over the next 6 months to improve my writing skills by expanding my vocabulary and understanding different writing styles.'"
     },
@@ -26,14 +26,14 @@ GOALS_DATABASE = [
         "feedback": "This goal isn't <strong>Timebound</strong> - there's no deadline specified. There should be a timeframe like 'by the end of this semester' or 'within one academic year'.<br><br><strong>SMART Version:</strong> 'I will improve my GPA by 0.2 points by the end of this academic year through consistent study habits to enhance my career prospects.'"
     },
     {
-        "text": "I will volunteer twice at the foodbank each month.",
+        "text": "I will volunteer once at the foodbank each month.",
         "missing": ["Relevant"],
         "feedback": "This goal lacks clear <strong>Relevance</strong> - it doesn't explain how volunteering connects to any goals.<br><br><strong>SMART Version:</strong> 'I will volunteer twice at the foodbank each month for 6 months to develop my leadership skills and give back to my community.'"
     },
     
     # Missing 2 elements
     {
-        "text": "I want to save 10 million dollars by the end of this year.",
+        "text": "I want to save 100 million dollars by the end of this year.",
         "missing": ["Achievable", "Relevant"],
         "feedback": "This goal isn't <strong>Achievable</strong> (10 million in one year is unrealistic for most people) and lacks <strong>Relevance</strong> (why this specific amount? What's the purpose?).<br><br><strong>SMART Version:</strong> 'I will save $5,000 by the end of this year to build an emergency fund for my family's financial security.'"
     },
@@ -50,9 +50,9 @@ GOALS_DATABASE = [
         "feedback": "This goal isn't <strong>Specific</strong> (which types of exercise?), isn't <strong>Measurable</strong> (how much exploration?), and lacks <strong>Relevance</strong> (why explore new exercises?).<br><br><strong>SMART Version:</strong> 'I will try 3 new types of exercise (yoga, swimming, and cycling) for 30 minutes each next week to find enjoyable activities that will help me maintain long-term fitness.'"
     },
     {
-        "text": "I will become fluent in Korean and Arabic to better connect with people.",
+        "text": "I will become fluent in every language to better connect with people.",
         "missing": ["Measurable", "Achievable", "Timebound"],
-        "feedback": "This goal isn't <strong>Measurable</strong> (what defines fluency?), isn't <strong>Achievable</strong> (two languages simultaneously is unrealistic), and isn't <strong>Timebound</strong> (no deadline specified).<br><br><strong>SMART Version:</strong> 'I will achieve conversational level in Korean (able to hold 10-minute conversations) within 18 months by studying 1 hour daily to connect with Korean colleagues at work.'"
+        "feedback": "This goal isn't <strong>Measurable</strong> (what defines fluency?), isn't <strong>Achievable</strong> (every language is unrealistic), and isn't <strong>Timebound</strong> (no deadline specified).<br><br><strong>SMART Version:</strong> 'I will achieve conversational level in Korean (able to hold 10-minute conversations) within 18 months by studying 1 hour daily to connect with Korean colleagues at work.'"
     },  
     # Missing 4 elements
     {

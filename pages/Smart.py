@@ -360,7 +360,13 @@ def get_futuristic_styles():
             font-weight: 500;
             font-size: clamp(1.2rem, 1.4vw, 1.3em);
         }
-        
+
+        .hint-text .missing-count {
+            font-size: clamp(1.3rem, 1.5vw, 1.4em);
+            color: #dc3545; /* Bootstrap danger red */
+            font-weight: 900;
+        }
+
         .feedback-success {
             background: rgba(15, 15, 35, 0.9);
             border: clamp(1px, 0.2vw, 2px) solid rgba(0, 255, 127, 0.6);
@@ -836,7 +842,7 @@ if not st.session_state.game_completed:
             <div class="goal-statement" style="text-align: center;">
                 <span class="goal-text">{goal['text']}</span>
             </div>
-            <div class="hint-text">💡 Hint: This goal is missing <u><strong>{missing_count}</strong></u> SMART component{"s" if missing_count != 1 else ""}.</div>
+            <div class="hint-text">💡 Hint: This goal is missing <u><strong class="missing-count">{missing_count}</strong></u> SMART component{"s" if missing_count != 1 else ""}.</div>
             </div>
         """, unsafe_allow_html=True)
         

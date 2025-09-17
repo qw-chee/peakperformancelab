@@ -970,7 +970,7 @@ if st.session_state.game_completed:
     st.markdown(f"""
     <div class="{result_config['style']}">
         <div class="results-container">
-            <h2 class="feedback-title" style="color: {result_config['color']}; margin-bottom: 5px;">{result_config['title']}</h2>
+            <h2 class="feedback-title" style="color: {result_config['color']};">{result_config['title']}</h2>
             <div class="score-display">
                 {st.session_state.score}/{st.session_state.total_questions}
             </div>

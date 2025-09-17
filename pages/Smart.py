@@ -981,7 +981,7 @@ if st.session_state.game_completed:
     st.markdown(f"""
     <div class="neon-container">
         <div class="results-container">
-            <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-size: clamp(1rem, 1.4vw, 1.4em); font-weight: 600; margin-bottom: clamp(8px, 1.2vw, 10px);">
+            <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-size: clamp(1rem, 1.4vw, 1.5em); font-weight: 600; margin-bottom: clamp(8px, 1.2vw, 10px);">
                 {weakness_text}
             </div>
             <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(6px, 1vw, 10px);">

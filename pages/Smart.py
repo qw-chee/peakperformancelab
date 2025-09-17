@@ -38,7 +38,7 @@ GOALS_DATABASE = [
         "feedback": "This goal isn't <strong>Achievable</strong> (10 million in one year is unrealistic for most people) and lacks <strong>Relevance</strong> (why this specific amount? What's the purpose?).<br><br><strong>SMART Version:</strong> 'I will save $5,000 by the end of this year to build an emergency fund for my family's financial security.'"
     },
     {
-        "text": "I will arrive earlier for class starting next week.",
+        "text": "I will arrive earlier for NCO112 seminars starting next week.",
         "missing": ["Measurable", "Relevant"],
         "feedback": "This goal isn't <strong>Measurable</strong> (how much earlier?) and lacks <strong>Relevance</strong> (why is arriving earlier important for your academic success?).<br><br><strong>SMART Version:</strong> 'I will arrive 15 minutes earlier for each class starting next week to review notes and improve my academic performance.'"
     },

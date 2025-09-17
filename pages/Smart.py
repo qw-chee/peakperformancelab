@@ -364,13 +364,6 @@ def get_futuristic_styles():
         .hint-text .missing-count {
             font-size: clamp(1.2rem, 1.4vw, 1.3em);
             font-weight: 900;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
         }
 
         .feedback-success {

@@ -75,7 +75,7 @@ def init_game_state():
         'user_selections': [], 'game_completed': False, 'component_errors': {}
     }
     for key, value in defaults.items():
-        if key not in
+         if key not in st.session_state:
             st.session_state[key] = value
     
 init_game_state()

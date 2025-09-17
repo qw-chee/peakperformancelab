@@ -428,7 +428,7 @@ def get_futuristic_styles():
         
         .score-display {
             font-family: 'Orbitron', monospace;
-            font-size: clamp(1.3rem, 1.5vw, 2.5em);
+            font-size: clamp(1.3rem, 2.5vw, 3em);
             font-weight: 900;
             background: linear-gradient(45deg, #00ffff, #ff00ff);
             -webkit-background-clip: text;

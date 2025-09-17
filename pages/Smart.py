@@ -948,11 +948,11 @@ if st.session_state.game_completed:
     
     # Component-specific feedback
     feedback_messages = {
-        "Specific": "Make your goals crystal clear. Instead of 'exercise more', say 'do 30 minutes of cardio'. Vague goals lead to vague results.",
-        "Measurable": "Add numbers to track progress. Replace 'save money' with 'save $500'. If you can't measure it, you can't manage it.",
-        "Achievable": "Set realistic targets. Don't aim to 'read 50 books tomorrow' - aim for '1 book per month'. Unrealistic goals kill motivation.",
-        "Relevant": "Connect goals to your bigger purpose. Explain WHY this goal matters to you or your future. Purpose fuels persistence.",
-        "Timebound": "Set clear deadlines. Change 'learn Spanish' to 'learn Spanish by June 2025'. Deadlines create urgency and focus."
+        "Specific": "Goals should be clear and detailed, describing exactly what you want to accomplish and leaving no room for confusion.",
+        "Measurable": "Goals should be trackable, with numbers, milestones, or indicators that let you see progress and know when success is achieved.",
+        "Achievable": "Goals should be realistic and within reach, considering your skills, resources, and time so they stay motivating instead of overwhelming.",
+        "Relevant": "Goals should be meaningful and aligned with your bigger plans or values, making it clear why they are worth pursuing.",
+        "Timebound": "Goals should be tied to a specific timeframe, giving you a clear target date that creates focus and a sense of urgency."
     }
     
     if weakest_components:

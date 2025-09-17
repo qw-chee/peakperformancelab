@@ -72,12 +72,12 @@ def init_game_state():
     defaults = {
         'current_question': 0, 'score': 0, 'total_questions': len(GOALS_DATABASE),
         'current_goal': None, 'awaiting_response': False, 'show_feedback': False,
-        'user_selections': [], 'game_completed': False
+        'user_selections': [], 'game_completed': False, 'component_errors': {}
     }
     for key, value in defaults.items():
         if key not in st.session_state:
             st.session_state[key] = value
-
+    
 init_game_state()
 
 # ---------------------------- FUTURISTIC STYLES ----------------------------
@@ -871,6 +871,16 @@ if not st.session_state.game_completed:
                 # Check if answer is correct
                 if set(selected_missing) == set(goal["missing"]):
                     st.session_state.score += 1
+
+                if 'component_errors' not in st.session_state:
+                    st.session_state.component_errors = {}
+
+                # Track false negatives only
+                for component in goal["missing"]:
+                    if component not in selected_missing:  # User missed this component
+                        if component not in st.session_state.component_errors:
+                            st.session_state.component_errors[component] = 0
+                        st.session_state.component_errors[component] += 1
                 
                 st.rerun()
         
@@ -927,29 +937,54 @@ if st.session_state.game_completed:
     score_percentage = (st.session_state.score / st.session_state.total_questions) * 100
     result_config = get_result_config(score_percentage)
     
-    st.markdown(f"""
-    <div class="{result_config['style']}">
-        <div class="results-container">
-            <h2 class="feedback-title" style="color: {result_config['color']}; margin-bottom: 5px;">{result_config['title']}</h2>
-            <div style="color: rgba(255,255,255,0.8); font-family: 'Rajdhani', sans-serif; font-size: clamp(1.1rem, 1.3vw, 1.2em);">
-                {result_config['message']}
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    component_totals = {"Specific": 3, "Measurable": 6, "Achievable": 4, "Relevant": 6, "Timebound": 4}
+    error_rates = {}
+    for component, total in component_totals.items():
+        errors = st.session_state.component_errors.get(component, 0)
+        error_rates[component] = errors / total
+    
+    max_error_rate = max(error_rates.values()) if error_rates.values() else 0
+    weakest_components = [comp for comp, rate in error_rates.items() if rate == max_error_rate and rate > 0]
+    
+    if weakest_components:
+        if len(weakest_components) == 1:
+            weakness_text = f"Your weakest area: <strong>{weakest_components[0]}</strong> ({max_error_rate:.0%} missed)"
+            feedback_text = f"Focus on making your goals more <strong>{weakest_components[0].lower()}</strong>."
+        else:
+            weakness_text = f"Your weakest areas: <strong>{' & '.join(weakest_components)}</strong> ({max_error_rate:.0%} missed)"
+            feedback_text = f"Focus on making your goals more <strong>{' and '.join([c.lower() for c in weakest_components])}</strong>."
+    else:
+        weakness_text = "Perfect component identification!"
+        feedback_text = "You correctly identified all missing SMART components."
     
     st.markdown(f"""
     <div class="neon-container">
         <div class="results-container">
-            <div class="score-display">
-                {st.session_state.score}/{st.session_state.total_questions}
-            </div>
             <div style="color: #00ffff; font-family: 'Orbitron', monospace; font-size: clamp(1.2rem, 1.6vw, 1.6em); font-weight: 600; margin-bottom: clamp(8px, 1.2vw, 10px);">
-                {score_percentage:.0f}% ACCURACY ACHIEVED
+                {weakness_text}
             </div>
             <div style="background: rgba(0,255,255,0.1); border: clamp(1px, 0.15vw, 1px) solid rgba(0,255,255,0.3); border-radius: clamp(8px, 1.2vw, 12px); padding: clamp(6px, 1vw, 10px);">
                 <div style="color: rgba(255,255,255,0.9); font-family: 'Rajdhani', sans-serif; font-size: clamp(1.1rem, 1.3vw, 1.3em); line-height: 1.4;">
-                    SMART goals are important because they make goals clear, focused, and achievable. By being Specific, Measurable, Achievable, Relevant, and Time-bound, SMART goals help you stay organized, track progress, stay motivated, and make better decisions. Always practice SMART goals!
+                    feedback_messages = {
+                        "Specific": "Make your goals crystal clear. Instead of 'exercise more', say 'do 30 minutes of cardio'. Vague goals lead to vague results.",
+                        "Measurable": "Add numbers to track progress. Replace 'save money' with 'save $500'. If you can't measure it, you can't manage it.",
+                        "Achievable": "Set realistic targets. Don't aim to 'read 50 books tomorrow' - aim for '1 book per month'. Unrealistic goals kill motivation.",
+                        "Relevant": "Connect goals to your bigger purpose. Explain WHY this goal matters to you or your future. Purpose fuels persistence.",
+                        "Timebound": "Set clear deadlines. Change 'learn Spanish' to 'learn Spanish by June 2025'. Deadlines create urgency and focus."
+                    }
+                    
+                    if weakest_components:
+                        if len(weakest_components) == 1:
+                            weakness_text = f"Your weakest area: <strong>{weakest_components[0]}</strong> ({max_error_rate:.0%} missed)"
+                            feedback_text = feedback_messages[weakest_components[0]]
+                        else:
+                            weakness_text = f"Your weakest areas: <strong>{' & '.join(weakest_components)}</strong> ({max_error_rate:.0%} missed)"
+                            # Combine feedback for multiple weak areas
+                            combined_feedback = " ".join([feedback_messages[comp] for comp in weakest_components])
+                            feedback_text = combined_feedback
+                    else:
+                        weakness_text = "Perfect component identification!"
+                        feedback_text = "Excellent work on SMART goal mastery! You correctly identified all missing components."
                 </div>
             </div>
         </div>

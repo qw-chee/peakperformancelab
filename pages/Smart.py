@@ -971,6 +971,9 @@ if st.session_state.game_completed:
     <div class="{result_config['style']}">
         <div class="results-container">
             <h2 class="feedback-title" style="color: {result_config['color']}; margin-bottom: 5px;">{result_config['title']}</h2>
+            <div class="score-display">
+                {st.session_state.score}/{st.session_state.total_questions}
+            </div>
             <div style="color: rgba(255,255,255,0.8); font-family: 'Rajdhani', sans-serif; font-size: clamp(1.1rem, 1.3vw, 1.2em);">
                 {result_config['message']}
             </div>

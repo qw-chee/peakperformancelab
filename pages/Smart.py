@@ -358,12 +358,16 @@ def get_futuristic_styles():
             color: rgba(0, 255, 127, 0.9);
             font-family: 'Rajdhani', sans-serif;
             font-weight: 500;
-            font-size: clamp(1.2rem, 1.4vw, 1.3em);
+            font-size: clamp(1.1rem, 1.3vw, 1.2em);
         }
 
         .hint-text .missing-count {
-            font-size: clamp(1.3rem, 1.5vw, 1.4em);
+            font-size: clamp(1.2rem, 1.4vw, 1.3em);
             font-weight: 900;
+            background-color: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 2px solid #ffc107;
         }
 
         .feedback-success {

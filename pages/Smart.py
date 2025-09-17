@@ -45,7 +45,7 @@ GOALS_DATABASE = [
     
     # Missing 3 elements
     {
-        "text": "I will start exploring other types of exercise next week.",
+        "text": "I will start exploring other types of exercise this month.",
         "missing": ["Specific", "Measurable", "Relevant"],
         "feedback": "This goal isn't <strong>Specific</strong> (which types of exercise?), isn't <strong>Measurable</strong> (how much exploration?), and lacks <strong>Relevance</strong> (why explore new exercises?).<br><br><strong>SMART Version:</strong> 'I will try 3 new types of exercise (yoga, swimming, and cycling) for 30 minutes each next week to find enjoyable activities that will help me maintain long-term fitness.'"
     },

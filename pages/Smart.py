@@ -363,7 +363,6 @@ def get_futuristic_styles():
 
         .hint-text .missing-count {
             font-size: clamp(1.3rem, 1.5vw, 1.4em);
-            color: #dc3545; /* Bootstrap danger red */
             font-weight: 900;
         }
 

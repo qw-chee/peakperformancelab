@@ -336,7 +336,7 @@ def get_futuristic_styles():
         
         .goal-text {
             font-family: 'Rajdhani', sans-serif;
-            font-size: clamp(1.15rem, 1.35vw, 1.25em);
+            font-size: clamp(1.2rem, 1.4vw, 1.25em);
             color: rgba(255, 255, 255, 0.95);
             font-style: italic;
             font-weight: 700;
@@ -362,7 +362,7 @@ def get_futuristic_styles():
         }
 
         .hint-text .missing-count {
-            font-size: clamp(1.3rem, 1.5vw, 1.3em);
+            font-size: clamp(1.4rem, 1.6vw, 1.3em);
             font-weight: 900;
         }
 

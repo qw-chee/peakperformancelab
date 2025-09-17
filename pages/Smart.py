@@ -75,8 +75,7 @@ def init_game_state():
         'user_selections': [], 'game_completed': False, 'component_errors': {}
     }
     for key, value in defaults.items():
-        if key not in st.session_state:
-            st.session_state[key] = value
+        st.session_state[key] = value
     
 init_game_state()
 
@@ -1000,6 +999,7 @@ if st.session_state.game_completed:
         if st.button("🔄 TRY AGAIN", use_container_width=True):
             st.session_state.score = 0
             st.session_state.game_completed = False
+            st.session_state.component_errors = {}
             reset_to_question(1)
             st.rerun()
     with col2:

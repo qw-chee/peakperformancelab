@@ -362,7 +362,7 @@ def get_futuristic_styles():
         }
 
         .hint-text .missing-count {
-            font-size: clamp(1.4rem, 1.6vw, 1.3em);
+            font-size: clamp(1.6rem, 1.8vw, 1.3em);
             font-weight: 900;
         }
 

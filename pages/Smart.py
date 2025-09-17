@@ -358,7 +358,7 @@ def get_futuristic_styles():
             color: rgba(0, 255, 127, 0.9);
             font-family: 'Rajdhani', sans-serif;
             font-weight: 500;
-            font-size: clamp(1rem, 1.2vw, 1.1em);
+            font-size: clamp(1.2rem, 1.4vw, 1.3em);
         }
         
         .feedback-success {

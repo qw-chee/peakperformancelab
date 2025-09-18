@@ -417,7 +417,7 @@ The user has completed all 7 PETTLEP elements with the following information:
 4. Be specific to the scenario
 5. Not be too fluffy
 
-Write the script as one continuous narrative without section headers. Make it feel like a mental rehearsal that the user can follow. Use simple words and language. Write in around 200 words."""
+Write the script as one continuous narrative without section headers. Make it feel like a mental rehearsal that the user can follow. Use simple words and language. Write in around 170 words."""
 
         response = openai.ChatCompletion.create(
             model="gpt-4o-mini",

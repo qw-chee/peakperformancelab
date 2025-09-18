@@ -742,9 +742,7 @@ def get_movie_styles():
             font-weight: 700 !important;
             font-size: clamp(1.2rem, 1.6vw, 1.2em) !important;
             font-family: 'Sigmar', cursive !important;
-            margin-top: 10px;
             width: fit-content !important;
-            margin: 10px auto !important;
             display: block !important;
         }
 
@@ -1236,15 +1234,14 @@ elif st.session_state.current_step == 8:
                         if audio_html:
                             st.markdown(audio_html, unsafe_allow_html=True)
         
-        st.markdown('<div style="margin: -10px 0 -15px 0;">', unsafe_allow_html=True)
+        # Download button for the script
         st.download_button(
             label="📜 Download Your Complete Imagery Script",
             data=complete_script,
-            file_name=f"PETTLEP_Script_{st.session_state.selected_scenario.replace(' ', '_')}.txt",
+            file_name=f"PETTLEPScript{st.session_state.selectedscenario.replace(' ', '')}.txt",
             mime="text/plain",
             use_container_width=True
         )
-        st.markdown('</div>', unsafe_allow_html=True)
         
     # Usage instructions
     st.markdown("""

@@ -457,19 +457,13 @@ def generate_speech(text, voice_type, scenario):
             "Content-Type": "application/json"
         }
 
-        styled_text = (
-            "Voice Affect: Energetic and animated; dynamic with variations in pitch and tone. "
-            "Tone: Excited and enthusiastic, conveying an upbeat and thrilling atmosphere. Medium pitch."
-            "Pacing: Moderate to fast delivery when describing key moments to convey the intensity and build excitement. Slightly slower during dramatic pauses to let key points sink in."
-            "Emotion: Intensely focused and excited, giving off positive energy."
-            "Personality: Relatable and engaging."
-            "Pauses: Short, purposeful pauses after key moments."
-            f"{text}"
+        style_hint = (
+            "[Energetic, animated tone; upbeat; moderate-fast pace; medium pitch; short pauses after key points]"
         )
         
         data = {
             "model": "tts-1",
-            "input": styled_text,
+            "input": f"{style_hint} {text}",
             "voice": voice,
             "speed": 0.9
         }

@@ -461,7 +461,7 @@ def generate_speech(text, voice_type, scenario):
             "model": "tts-1",
             "input": text,
             "voice": voice,
-            "speed": 1.1
+            "speed": 0.9
         }
         
         response = requests.post(
@@ -1203,7 +1203,8 @@ elif st.session_state.current_step == 8:
             </h3>
             <div class="movie-description">
                 Congratulations! You've created a complete PETTLEP imagery script. This is your personal 
-                mental rehearsal tool - use it regularly to train your mind for peak performance.
+                mental rehearsal tool - use it regularly to train your mind for peak performance. Now, put on your headphones, and use the buttons below to practice the imagery script you've created. 
+                Close your eyes for a more immersive experience.
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -1211,15 +1212,7 @@ elif st.session_state.current_step == 8:
         # Handle case where script generation failed
         if complete_script is None:
             complete_script = f"Unable to generate complete script at this time. Please use your individual responses for mental rehearsal.\n\nScenario: {st.session_state.selected_scenario}\n\nYour responses:\n" + "\n".join([f"{k}: {v}" for k, v in st.session_state.responses.items()])
-            
-        st.markdown("""
-        <div style="text-align: center; margin: 15px 0;">
-            <h4 style="color: #32CD32; font-family: 'Sigmar', cursive; font-size: clamp(1.2rem, 1.8vw, 1.4em); margin-bottom: 10px;">
-                🎧 Listen to Your Script
-            </h4>
-        </div>
-        """, unsafe_allow_html=True)
-        
+                    
         col1, col2 = st.columns(2)
         with col1:
             if st.button("🎙️ Male Voice (Echo)", key="male_voice", use_container_width=True):

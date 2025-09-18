@@ -449,7 +449,7 @@ def generate_speech(text, voice_type, scenario):
             else:
                 voice = "sage"
         
-        response = openai.Audio.create(
+        response = openai.audio.speech.create(
             model="tts-1",
             voice=voice,
             input=text,

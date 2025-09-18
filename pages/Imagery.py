@@ -695,7 +695,7 @@ def get_movie_styles():
         div[data-testid="stButton"] > button[kind="primary"] {
             background: linear-gradient(135deg, #FFD700 0%, #FF6347 50%, #FFD700 100%) !important;
             border: clamp(1.5px, 0.25vw, 2px) solid #FFD700 !important;
-            color: #000000 !important;
+            color: #73400e !important;
             font-weight: 700 !important;
             font-size: clamp(1.1rem, 1.5vw, 1.2em) !important;
             font-family: 'Sigmar', cursive !important;
@@ -717,7 +717,7 @@ def get_movie_styles():
         div[data-testid="stButton"] > button {
             background: linear-gradient(135deg, #FFD700 0%, #FF6347 50%, #FFD700 100%) !important;
             border: clamp(2px, 0.3vw, 3px) solid rgba(255, 215, 0) !important;
-            color: white !important;
+            color: #73400e !important;
             font-weight: 1000 !important;
             font-family: 'Gabarito', sans-serif !important;
             font-size: clamp(0.9rem, 1.3vw, 1em) !important;

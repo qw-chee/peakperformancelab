@@ -1215,7 +1215,7 @@ elif st.session_state.current_step == 8:
                     
         col1, col2 = st.columns(2)
         with col1:
-            if st.button("🎙️ Male Voice (Echo)", key="male_voice", use_container_width=True):
+            if st.button("🎙️ Male Voice", key="male_voice", use_container_width=True):
                 with st.spinner("🎬 Generating male voice..."):
                     audio_content = generate_speech(complete_script, "male", st.session_state.selected_scenario)
                     if audio_content:
@@ -1225,7 +1225,7 @@ elif st.session_state.current_step == 8:
         
         with col2:
             voice_name = "Coral" if st.session_state.selected_scenario == "Soccer Penalty Kick" else "Sage"
-            if st.button(f"🎙️ Female Voice ({voice_name})", key="female_voice", use_container_width=True):
+            if st.button(f"🎙️ Female Voice", key="female_voice", use_container_width=True):
                 with st.spinner("🎬 Generating female voice..."):
                     audio_content = generate_speech(complete_script, "female", st.session_state.selected_scenario)
                     if audio_content:

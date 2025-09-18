@@ -1197,7 +1197,7 @@ elif st.session_state.current_step == 8:
         complete_script = st.session_state.complete_script
             
         st.markdown("""
-        <div class="movie-container" style="margin-bottom: 5px">
+        <div class="movie-container">
             <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
                 🎉 That's A Wrap!
             </h3>
@@ -1213,7 +1213,9 @@ elif st.session_state.current_step == 8:
         # Handle case where script generation failed
         if complete_script is None:
             complete_script = f"Unable to generate complete script at this time. Please use your individual responses for mental rehearsal.\n\nScenario: {st.session_state.selected_scenario}\n\nYour responses:\n" + "\n".join([f"{k}: {v}" for k, v in st.session_state.responses.items()])
-                    
+        
+        st.markdown('<div style="height: 5px;"></div>', unsafe_allow_html=True)            
+        
         col1, col2 = st.columns(2)
         with col1:
             if st.button("🎙️ Male Voice", key="male_voice", use_container_width=True):

@@ -1241,10 +1241,10 @@ elif st.session_state.current_step == 8:
             🕐 Practice regularly: Use this script 3-5 times per week, spending 5-10 minutes each session.
         </div>
         <div class="movie-text">
-            🧘 Find a quiet space: Choose a comfortable, distraction-free environment for your mental rehearsal.
+            🧘 Find a quiet space: Choose a comfortable, distraction-free environment for rehearsal.
         </div>
         <div class="movie-text">
-            🎬 Engage all senses: Make each element as vivid as possible - see, hear, feel, and experience every detail.
+            🎬 Engage all senses: See, hear, feel, and experience every detail.
         </div>
     </div>
     """, unsafe_allow_html=True)

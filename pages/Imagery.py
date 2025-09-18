@@ -1260,9 +1260,6 @@ elif st.session_state.current_step == 8:
         <div class="movie-text">
             🎬 Engage all senses: Make each element as vivid as possible - see, hear, feel, and experience every detail.
         </div>
-        <div class="movie-text">
-            🔄 Update as needed: Modify your script as your skills improve or circumstances change.
-        </div>
     </div>
     """, unsafe_allow_html=True)
 

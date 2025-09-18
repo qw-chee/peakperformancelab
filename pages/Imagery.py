@@ -481,11 +481,11 @@ def generate_speech(text, voice_type, scenario):
         return None
 
 def play_audio(audio_content):
-    """Convert audio content to playable format"""
+    """Convert audio content to playable format with hidden player"""
     if audio_content:
         audio_base64 = base64.b64encode(audio_content).decode()
         audio_html = f"""
-        <audio controls autoplay style="width: 100%; margin: 10px 0;">
+        <audio autoplay style="display: none;">
             <source src="data:audio/mp3;base64,{audio_base64}" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>

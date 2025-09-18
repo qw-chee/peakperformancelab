@@ -941,7 +941,7 @@ def next_step():
 if st.session_state.current_step == 0:
     st.markdown("""
     <div class="movie-container">
-        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.45rem, 2.15vw, 2em); text-align: center; margin-bottom: -5px; letter-spacing: clamp(1px, 0.15vw, 1px);">
+        <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.4rem, 2.1vw, 2em); text-align: center; margin-bottom: -5px; letter-spacing: clamp(1px, 0.15vw, 1px);">
             🎬 Lights, Camera, Mental Action!
         </h3>
         <div class="movie-description">
@@ -957,7 +957,7 @@ if st.session_state.current_step == 0:
 
     st.markdown("""
     <div class="movie-container">
-        <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: clamp(1.45rem, 2.15vw, 2em); text-align: center; margin-bottom: -5px; letter-spacing: clamp(1px, 0.15vw, 1px);">
+        <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: clamp(1.4rem, 2.1vw, 2em); text-align: center; margin-bottom: -5px; letter-spacing: clamp(1px, 0.15vw, 1px);">
             🎪 The PETTLEP Method
         </h3>
         <div class="movie-text">

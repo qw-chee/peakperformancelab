@@ -446,7 +446,7 @@ def generate_speech(text, voice_type, scenario):
             voice = "echo"
         else:  # female
             if scenario == "Soccer Penalty Kick":
-                voice = "sage"
+                voice = "coral"
             else:
                 voice = "sage"
         

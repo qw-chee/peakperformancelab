@@ -742,7 +742,9 @@ def get_movie_styles():
             font-weight: 700 !important;
             font-size: clamp(1.2rem, 1.6vw, 1.2em) !important;
             font-family: 'Sigmar', cursive !important;
+            margin-top: 10px;
             width: fit-content !important;
+            margin: 10px auto !important;
             display: block !important;
         }
 
@@ -1238,7 +1240,7 @@ elif st.session_state.current_step == 8:
         st.download_button(
             label="📜 Download Your Complete Imagery Script",
             data=complete_script,
-            file_name=f"PETTLEPScript{st.session_state.selectedscenario.replace(' ', '')}.txt",
+            file_name=f"PETTLEP_Script_{st.session_state.selected_scenario.replace(' ', '_')}.txt",
             mime="text/plain",
             use_container_width=True
         )

@@ -456,10 +456,21 @@ def generate_speech(text, voice_type, scenario):
             "Authorization": f"Bearer {openai.api_key}",
             "Content-Type": "application/json"
         }
+
+        styled_text = (
+            "Voice Affect: Energetic and animated; dynamic with variations in pitch and tone. "
+            "Tone: Excited and enthusiastic, conveying an upbeat and thrilling atmosphere. "
+            "Medium pitch. Pacing: Moderate to fast delivery when describing key moments to "
+            "convey the intensity and build excitement. Slightly slower during dramatic pauses "
+            "to let key points sink in. Emotion: Intensely focused and excited, giving off "
+            "positive energy. Personality: Relatable and engaging. Pauses: Short, purposeful "
+            "pauses after key moments.\n\n"
+            f"{text}"
+        )
         
         data = {
             "model": "tts-1",
-            "input": text,
+            "input": styled_text,
             "voice": voice,
             "speed": 0.9
         }

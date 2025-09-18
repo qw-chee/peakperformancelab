@@ -743,7 +743,6 @@ def get_movie_styles():
             font-size: clamp(1.2rem, 1.6vw, 1.2em) !important;
             font-family: 'Sigmar', cursive !important;
             width: fit-content !important;
-            margin: 10px auto !important;
             display: block !important;
         }
 

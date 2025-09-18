@@ -459,12 +459,11 @@ def generate_speech(text, voice_type, scenario):
 
         styled_text = (
             "Voice Affect: Energetic and animated; dynamic with variations in pitch and tone. "
-            "Tone: Excited and enthusiastic, conveying an upbeat and thrilling atmosphere. "
-            "Medium pitch. Pacing: Moderate to fast delivery when describing key moments to "
-            "convey the intensity and build excitement. Slightly slower during dramatic pauses "
-            "to let key points sink in. Emotion: Intensely focused and excited, giving off "
-            "positive energy. Personality: Relatable and engaging. Pauses: Short, purposeful "
-            "pauses after key moments.\n\n"
+            "Tone: Excited and enthusiastic, conveying an upbeat and thrilling atmosphere. Medium pitch."
+            "Pacing: Moderate to fast delivery when describing key moments to convey the intensity and build excitement. Slightly slower during dramatic pauses to let key points sink in."
+            "Emotion: Intensely focused and excited, giving off positive energy."
+            "Personality: Relatable and engaging."
+            "Pauses: Short, purposeful pauses after key moments."
             f"{text}"
         )
         

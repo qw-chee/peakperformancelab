@@ -715,7 +715,7 @@ def get_movie_styles():
         }
 
         div[data-testid="stButton"] > button {
-            background: black !important;
+            background: linear-gradient(135deg, #FFD700 0%, #FF6347 50%, #FFD700 100%) !important;
             border: clamp(2px, 0.3vw, 3px) solid rgba(255, 215, 0) !important;
             color: white !important;
             font-weight: 1000 !important;
@@ -728,7 +728,7 @@ def get_movie_styles():
         }
 
         div[data-testid="stButton"] > button:hover {
-            background: black !important;
+            background: linear-gradient(135deg, #FFD700 0%, #FF6347 50%, #FFD700 100%) !important;
             border-color: #FFD700 !important;
             transform: translateY(-2px) !important;
             box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3) !important;
@@ -756,18 +756,6 @@ def get_movie_styles():
         /* Force font on all text elements within buttons */
         div[data-testid="stButton"] * {
             font-family: 'Gabarito' !important;
-        }
-
-        div[data-testid="stButton"] > button[key*="voice"] {
-            background: linear-gradient(135deg, #9400D3 0%, #4B0082 100%) !important;
-            border: clamp(1.5px, 0.25vw, 2px) solid #9400D3 !important;
-            color: white !important;
-        }
-    
-        div[data-testid="stButton"] > button[key*="voice"]:hover {
-            background: linear-gradient(135deg, #4B0082 0%, #9400D3 100%) !important;
-            transform: translateY(-2px) scale(1.02) !important;
-            box-shadow: 0 5px 20px rgba(148, 0, 211, 0.4) !important;
         }
 
         .stSpinner > div {
@@ -1213,7 +1201,7 @@ elif st.session_state.current_step == 8:
         if complete_script is None:
             complete_script = f"Unable to generate complete script at this time. Please use your individual responses for mental rehearsal.\n\nScenario: {st.session_state.selected_scenario}\n\nYour responses:\n" + "\n".join([f"{k}: {v}" for k, v in st.session_state.responses.items()])
         
-        st.markdown('<div style="height: 5px;"></div>', unsafe_allow_html=True)            
+        st.markdown('<div style="height: 3px;"></div>', unsafe_allow_html=True)            
         
         col1, col2 = st.columns(2)
         with col1:
@@ -1262,7 +1250,7 @@ elif st.session_state.current_step == 8:
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown('<div style="height: 5px;"></div>', unsafe_allow_html=True)
+    st.markdown('<div style="height: 3px;"></div>', unsafe_allow_html=True)
         
     col1, col2 = st.columns([1, 1])
     with col1:

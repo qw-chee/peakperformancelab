@@ -1202,8 +1202,7 @@ elif st.session_state.current_step == 8:
                 🎉 That's A Wrap!
             </h3>
             <div class="movie-description">
-                Congratulations! You've created a complete PETTLEP imagery script. This is your personal 
-                mental rehearsal tool - use it regularly to train your mind for peak performance. 
+                Congratulations! You've created a complete PETTLEP imagery script.
                 <br><br> Now, put on your headphones, and use the buttons below to practice the imagery script you've created. 
                 Close your eyes for a more immersive experience.
             </div>

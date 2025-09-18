@@ -1197,13 +1197,14 @@ elif st.session_state.current_step == 8:
         complete_script = st.session_state.complete_script
             
         st.markdown("""
-        <div class="movie-container">
+        <div class="movie-container" style="margin-bottom: 5px">
             <h3 style="color: #FFD700; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2vw, 2em); text-align: center; margin-bottom: 0px; letter-spacing: clamp(1px, 0.15vw, 1px);">
                 🎉 That's A Wrap!
             </h3>
             <div class="movie-description">
                 Congratulations! You've created a complete PETTLEP imagery script. This is your personal 
-                mental rehearsal tool - use it regularly to train your mind for peak performance. Now, put on your headphones, and use the buttons below to practice the imagery script you've created. 
+                mental rehearsal tool - use it regularly to train your mind for peak performance. 
+                <br><br> Now, put on your headphones, and use the buttons below to practice the imagery script you've created. 
                 Close your eyes for a more immersive experience.
             </div>
         </div>

@@ -1236,7 +1236,7 @@ elif st.session_state.current_step == 8:
                         if audio_html:
                             st.markdown(audio_html, unsafe_allow_html=True)
         
-        # Download button for the script
+        st.markdown('<div style="margin: -10px 0 -15px 0;">', unsafe_allow_html=True)
         st.download_button(
             label="📜 Download Your Complete Imagery Script",
             data=complete_script,
@@ -1244,6 +1244,7 @@ elif st.session_state.current_step == 8:
             mime="text/plain",
             use_container_width=True
         )
+        st.markdown('</div>', unsafe_allow_html=True)
         
     # Usage instructions
     st.markdown("""

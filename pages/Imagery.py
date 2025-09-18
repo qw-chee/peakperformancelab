@@ -1191,7 +1191,7 @@ elif st.session_state.current_step == 8:
             <div class="movie-description">
                 Congratulations! You've created a complete PETTLEP imagery script.
                 <br>
-                Now, put on your headphones, and use the buttons below to practice imagery with the script you've created. 
+                Now, put on your headphones, and use the narrations below to practice imagery with the script you've created. 
                 Close your eyes for a more immersive experience. <br>You can also download the script for future practice.
             </div>
         </div>

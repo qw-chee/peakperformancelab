@@ -456,14 +456,10 @@ def generate_speech(text, voice_type, scenario):
             "Authorization": f"Bearer {openai.api_key}",
             "Content-Type": "application/json"
         }
-
-        style_hint = (
-            "[Energetic, animated tone; upbeat; moderate-fast pace; medium pitch; short pauses after key points]"
-        )
-        
+       
         data = {
             "model": "tts-1",
-            "input": f"{style_hint} {text}",
+            "input": text,
             "voice": voice,
             "speed": 0.9
         }

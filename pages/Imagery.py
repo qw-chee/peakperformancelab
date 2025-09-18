@@ -1,5 +1,7 @@
 import streamlit as st
 import openai
+import base64
+import io
 
 st.set_page_config(
     page_title="Imagery Rehearsal Stage", 
@@ -435,6 +437,44 @@ Write the script as one continuous narrative without section headers. Make it fe
         st.error(f"Error generating script: {str(e)}")
         return f"Unable to generate complete script at this time. Please use your individual responses for mental rehearsal.\n\nScenario: {scenario}\n\nYour responses:\n" + "\n".join([f"{k}: {v}" for k, v in user_responses.items()])
 
+def generate_speech(text, voice_type, scenario):
+    """Generate speech using OpenAI TTS with appropriate voice"""
+    try:
+        # Select voice based on type and scenario
+        if voice_type == "male":
+            voice = "echo"
+        else:  # female
+            if scenario == "Soccer Penalty Kick":
+                voice = "coral"
+            else:
+                voice = "sage"
+        
+        response = openai.Audio.create(
+            model="tts-1",
+            voice=voice,
+            input=text,
+            speed=1.1  # Slightly faster for energetic delivery
+        )
+        
+        return response.content
+        
+    except Exception as e:
+        st.error(f"Error generating speech: {str(e)}")
+        return None
+
+def play_audio(audio_content):
+    """Convert audio content to playable format"""
+    if audio_content:
+        audio_base64 = base64.b64encode(audio_content).decode()
+        audio_html = f"""
+        <audio controls autoplay style="width: 100%; margin: 10px 0;">
+            <source src="data:audio/mp3;base64,{audio_base64}" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        """
+        return audio_html
+    return None
+    
 # ---------------------------- STYLES ----------------------------
 def get_movie_styles():
     return """
@@ -700,7 +740,19 @@ def get_movie_styles():
         div[data-testid="stButton"] * {
             font-family: 'Gabarito' !important;
         }
+
+        div[data-testid="stButton"] > button[key*="voice"] {
+            background: linear-gradient(135deg, #9400D3 0%, #4B0082 100%) !important;
+            border: clamp(1.5px, 0.25vw, 2px) solid #9400D3 !important;
+            color: white !important;
+        }
     
+        div[data-testid="stButton"] > button[key*="voice"]:hover {
+            background: linear-gradient(135deg, #4B0082 0%, #9400D3 100%) !important;
+            transform: translateY(-2px) scale(1.02) !important;
+            box-shadow: 0 5px 20px rgba(148, 0, 211, 0.4) !important;
+        }
+
         .stSpinner > div {
             color: white !important;
         }
@@ -1142,6 +1194,34 @@ elif st.session_state.current_step == 8:
         if complete_script is None:
             complete_script = f"Unable to generate complete script at this time. Please use your individual responses for mental rehearsal.\n\nScenario: {st.session_state.selected_scenario}\n\nYour responses:\n" + "\n".join([f"{k}: {v}" for k, v in st.session_state.responses.items()])
             
+        st.markdown("""
+        <div style="text-align: center; margin: 15px 0;">
+            <h4 style="color: #32CD32; font-family: 'Sigmar', cursive; font-size: clamp(1.2rem, 1.8vw, 1.4em); margin-bottom: 10px;">
+                🎧 Listen to Your Script
+            </h4>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("🎙️ Male Voice (Echo)", key="male_voice", use_container_width=True):
+                with st.spinner("🎬 Generating male voice..."):
+                    audio_content = generate_speech(complete_script, "male", st.session_state.selected_scenario)
+                    if audio_content:
+                        audio_html = play_audio(audio_content)
+                        if audio_html:
+                            st.markdown(audio_html, unsafe_allow_html=True)
+        
+        with col2:
+            voice_name = "Coral" if st.session_state.selected_scenario == "Soccer Penalty Kick" else "Sage"
+            if st.button(f"🎙️ Female Voice ({voice_name})", key="female_voice", use_container_width=True):
+                with st.spinner("🎬 Generating female voice..."):
+                    audio_content = generate_speech(complete_script, "female", st.session_state.selected_scenario)
+                    if audio_content:
+                        audio_html = play_audio(audio_content)
+                        if audio_html:
+                            st.markdown(audio_html, unsafe_allow_html=True)
+        
         # Download button for the script
         st.download_button(
             label="📜 Download Your Complete Imagery Script",

@@ -2,6 +2,7 @@ import streamlit as st
 import openai
 import base64
 import io
+import requests
 
 st.set_page_config(
     page_title="Imagery Rehearsal Stage", 
@@ -449,15 +450,31 @@ def generate_speech(text, voice_type, scenario):
             else:
                 voice = "sage"
         
-        client = openai.OpenAI(api_key=openai.api_key)
-        response = client.audio.speech.create(
-            model="tts-1",
-            voice=voice,
-            input=text,
-            speed=1.1  # Slightly faster for energetic delivery
+        import requests
+        
+        headers = {
+            "Authorization": f"Bearer {openai.api_key}",
+            "Content-Type": "application/json"
+        }
+        
+        data = {
+            "model": "tts-1",
+            "input": text,
+            "voice": voice,
+            "speed": 1.1
+        }
+        
+        response = requests.post(
+            "https://api.openai.com/v1/audio/speech",
+            headers=headers,
+            json=data
         )
         
-        return response.content
+        if response.status_code == 200:
+            return response.content
+        else:
+            st.error(f"API Error: {response.status_code} - {response.text}")
+            return None
         
     except Exception as e:
         st.error(f"Error generating speech: {str(e)}")

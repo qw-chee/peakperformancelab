@@ -59,19 +59,15 @@ def get_styles():
     @import url('https://fonts.googleapis.com/css2?family=Quantico&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
-    /* Desktop/Laptop Only Styles */
     @media screen and (min-width: 1024px) {
-        /* Hide Streamlit default elements */
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
         header {visibility: hidden;}
         
-        /* Hide sidebar permanently */
         section[data-testid="stSidebar"] {
             display: none !important;
         }
         
-        /* Hide sidebar toggle button */
         button[kind="header"][data-testid="baseButton-header"] {
             display: none !important;
         }
@@ -86,7 +82,6 @@ def get_styles():
             margin-top: -2rem !important;
         }
 
-        /* Responsive container - scales based on 2033x983 reference */
         .main .block-container {
             padding-left: 1rem !important;
             padding-right: 1rem !important;
@@ -97,13 +92,11 @@ def get_styles():
             transform-origin: top center;
         }
         
-        /* Remove padding from main container */
         .main .block-container {
             padding: 0 !important;
             max-width: none !important;
         }
         
-        /* Full screen background */
         .stApp {
             background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/ICBF.gif');
             background-size: cover;
@@ -232,12 +225,9 @@ def get_styles():
             box-shadow: 0 6px 20px rgba(126,190,254,0.4) !important; 
         }
 
-        /* Force font on all text elements within buttons */
         div[data-testid="stButton"] * {
             font-family: 'Quantico' !important;
         }
-
-        /* Specific breakpoint adjustments for optimal scaling */
         
         /* Standard Desktop (1024-1439px) */
         @media screen and (min-width: 1024px) and (max-width: 1439px) {
@@ -253,7 +243,7 @@ def get_styles():
             }
         }
 
-        /* Reference size (1920-2200px) - Perfect scaling maintained */
+        /* Reference size (1920-2200px)*/
         @media screen and (min-width: 1920px) and (max-width: 2200px) {
             .main .block-container {
                 transform: scale(1.0);
@@ -539,7 +529,6 @@ if st.session_state.game_over:
     else:
         render_defeat_screen()
     
-    # Game over buttons
     col1, col2 = st.columns(2)
     with col1:
         if st.button("🔄 Try Another Scenario", use_container_width=True, key="restart_game"):
@@ -651,15 +640,6 @@ else:
         st.session_state.update({"awaiting_response": True, "current_line": "", "current_feedback": "", "last_comment": ""})
     
     st.button("⚔️ Next Round", on_click=next_round, use_container_width=True, type="primary")
-
-
-
-
-
-
-
-
-
 
 
 

@@ -315,7 +315,7 @@ def get_pettlep_elements(scenario):
     
     return base_elements
 
-# ---------------------------- SESSION STATE INIT ----------------------------
+# ---------------------------- SESSION STATE ----------------------------
 def init_session_state():
     defaults = {
         'current_step': 0,  # 0 = overview, 1-7 = PETTLEP elements, 8 = final script
@@ -337,11 +337,10 @@ def init_session_state():
 
 init_session_state()
 
-# ---------------------------- GPT FUNCTIONS ----------------------------
+# ---------------------------- GPT-4 FEEDBACK FUNCTION ----------------------------
 def get_gpt_feedback(element_name, user_response, scenario):
     """Get GPT feedback on user's imagery description"""
     try:
-        # Get the elaboration questions for this element
         element_data = None
         for elem in get_pettlep_elements(scenario):
             if elem['name'] == element_name:
@@ -380,7 +379,6 @@ def get_gpt_feedback(element_name, user_response, scenario):
         
         content = response.choices[0].message.content.strip()
         
-        # Parse response
         approved = "YES" in content.split("APPROVED:")[1].split("FEEDBACK:")[0].strip()
         feedback_text = content.split("FEEDBACK:")[1].strip()
         
@@ -393,7 +391,6 @@ def get_gpt_feedback(element_name, user_response, scenario):
 def generate_complete_script(scenario, selected_options, user_responses):
     """Generate a complete PETTLEP imagery script using GPT"""
     try:
-        # Build the prompt with all user data
         prompt = f"""You are a sports psychology expert creating a complete PETTLEP imagery script for mental rehearsal.
 
 Scenario: {scenario}
@@ -502,17 +499,14 @@ def get_movie_styles():
 
     /* Desktop/Laptop Only Styles */
     @media screen and (min-width: 1024px) {
-        /* Hide Streamlit default elements */
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
         header {visibility: hidden;}
         
-        /* Hide sidebar permanently */
         section[data-testid="stSidebar"] {
             display: none !important;
         }
         
-        /* Hide sidebar toggle button */
         button[kind="header"][data-testid="baseButton-header"] {
             display: none !important;
         }
@@ -527,7 +521,6 @@ def get_movie_styles():
             margin-top: -2rem !important;
         }
 
-        /* Responsive container - scales based on 2033x983 reference */
         .main .block-container {
             padding-left: 1rem !important;
             padding-right: 1rem !important;
@@ -538,13 +531,11 @@ def get_movie_styles():
             transform-origin: top center;
         }
         
-        /* Remove padding from main container */
         .main .block-container {
             padding: 0 !important;
             max-width: none !important;
         }
         
-        /* Full screen background */
         .stApp {
             background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/imagery.jpg');
             background-size: cover;
@@ -669,7 +660,6 @@ def get_movie_styles():
             text-align: justify;
         }
 
-        /* Text area styling */
         div[data-testid="stTextArea"] textarea {
             background: white !important;
             border: clamp(1.5px, 0.25vw, 2px) solid #FFD700 !important;
@@ -684,14 +674,12 @@ def get_movie_styles():
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.4) !important;
         }
         
-        /* Radio button styling */
         .stRadio * {
             color: rgba(255, 255, 255, 0.9) !important;
             font-family: 'Gabarito', sans-serif !important;
             font-size: clamp(0.9rem, 1.3vw, 1em) !important;
         }
 
-        /* Button styling */
         div[data-testid="stButton"] > button[kind="primary"] {
             background: linear-gradient(135deg, #FFD700 0%, #FF6347 50%, #FFD700 100%) !important;
             border: clamp(1.5px, 0.25vw, 2px) solid #FFD700 !important;
@@ -734,7 +722,6 @@ def get_movie_styles():
             box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3) !important;
         }
 
-        /* Download button specific styling */
         div[data-testid="stDownloadButton"] > button {
             background: linear-gradient(135deg, #32CD32 0%, #228B22 100%) !important;
             border: clamp(1.5px, 0.25vw, 2px) solid #32CD32 !important;
@@ -753,7 +740,6 @@ def get_movie_styles():
             box-shadow: 0 5px 20px rgba(50, 205, 50, 0.4) !important;
         }
 
-        /* Force font on all text elements within buttons */
         div[data-testid="stButton"] * {
             font-family: 'Gabarito' !important;
         }
@@ -766,8 +752,6 @@ def get_movie_styles():
             background-color: white !important;
             color: black !important;
         }
-
-        /* Specific breakpoint adjustments for optimal scaling */
         
         /* Standard Desktop (1024-1439px) */
         @media screen and (min-width: 1024px) and (max-width: 1439px) {
@@ -1003,7 +987,6 @@ if st.session_state.current_step == 0:
         </h3>
         """, unsafe_allow_html=True)
     
-    # Put the actual buttons here
     col1, col2, col3 = st.columns(3)
     
     with col1:
@@ -1023,13 +1006,12 @@ if st.session_state.current_step == 0:
     
     st.stop()
 
-# ---------------------------- PETTLEP ELEMENTS (STEPS 1-7) ----------------------------
+# ---------------------------- MAIN APP LOGIC ----------------------------
 if 1 <= st.session_state.current_step <= 7:
     element_index = st.session_state.current_step - 1
     PETTLEP_ELEMENTS = get_pettlep_elements(st.session_state.selected_scenario)
     element = PETTLEP_ELEMENTS[element_index]
       
-    # Check if we're in elaboration mode for this element
     if not st.session_state.elaboration_mode.get(element['name'], False):
         # MINI CHALLENGE MODE
         st.markdown(f"""
@@ -1064,7 +1046,7 @@ if 1 <= st.session_state.current_step <= 7:
         st.markdown("</div>", unsafe_allow_html=True)
     
     else:
-        # ELABORATION MODE (NEW PAGE AFTER CORRECT ANSWER)        
+        # ELABORATION MODE      
         # Build the questions list as a single string
         questions_html = ""
         for question in element['elaboration_questions']:
@@ -1082,7 +1064,6 @@ if 1 <= st.session_state.current_step <= 7:
         </div>
         """, unsafe_allow_html=True)
         
-        # Text area for elaboration
         current_response = st.session_state.responses.get(element['name'], "")
         user_input = st.text_area(
             label="",
@@ -1092,7 +1073,6 @@ if 1 <= st.session_state.current_step <= 7:
             placeholder=f"Based on your answer, elaborate with specific details."
         )
         
-        # Submit button - trigger feedback immediately
         if st.button("📝 Submit for Feedback", key=f"submit_{element['name']}", type="primary"):
             if user_input.strip():
                 st.session_state.responses[element['name']] = user_input
@@ -1109,7 +1089,6 @@ if 1 <= st.session_state.current_step <= 7:
                     st.session_state.gpt_approved[element['name']] = approved  # Add this line
                     st.rerun()  # Refresh to show feedback
         
-        # Display existing feedback if available
         if element['name'] in st.session_state.gpt_feedback:
             feedback_text = st.session_state.gpt_feedback[element['name']]
             # Determine if it was approved
@@ -1136,16 +1115,14 @@ if 1 <= st.session_state.current_step <= 7:
                     next_step()
                 st.markdown("</div>", unsafe_allow_html=True)
 
-# ---------------------------- FINAL SCRIPT (STEP 8) ----------------------------
+# ---------------------------- FINAL SCRIPT ----------------------------
 elif st.session_state.current_step == 8:
-    # LOADING SCRIPT PAGE
     if not st.session_state.script_generated and not st.session_state.generating_script:
         # Start generating
         st.session_state.generating_script = True
         st.rerun()
     
     elif st.session_state.generating_script and not st.session_state.script_generated:
-        # Show loading overlay
         st.markdown("""
         <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.95); z-index: 1000; display: flex; align-items: center; justify-content: center;">
             <div class="movie-container" style="margin: 0; padding: clamp(30px, 4.8vw, 40px); text-align: center;">
@@ -1167,7 +1144,6 @@ elif st.session_state.current_step == 8:
         </style>
         """, unsafe_allow_html=True)
         
-        # Generate the script
         complete_script = generate_complete_script(
             st.session_state.selected_scenario,
             st.session_state.selected_option,
@@ -1180,7 +1156,6 @@ elif st.session_state.current_step == 8:
         st.rerun()
 
     else:
-        # SHOW RESULTS PAGE
         complete_script = st.session_state.complete_script
             
         st.markdown("""
@@ -1197,7 +1172,6 @@ elif st.session_state.current_step == 8:
         </div>
         """, unsafe_allow_html=True)
             
-        # Handle case where script generation failed
         if complete_script is None:
             complete_script = f"Unable to generate complete script at this time. Please use your individual responses for mental rehearsal.\n\nScenario: {st.session_state.selected_scenario}\n\nYour responses:\n" + "\n".join([f"{k}: {v}" for k, v in st.session_state.responses.items()])
         
@@ -1223,7 +1197,6 @@ elif st.session_state.current_step == 8:
                         if audio_html:
                             st.markdown(audio_html, unsafe_allow_html=True)
         
-        # Download button for the script
         st.download_button(
             label="📜 Download Your Complete Imagery Script",
             data=complete_script,
@@ -1232,7 +1205,6 @@ elif st.session_state.current_step == 8:
             use_container_width=True
         )
         
-    # Usage instructions
     st.markdown("""
     <div class="movie-container" style="margin-top: -5px;">
         <h3 style="color: #FF6347; font-family: 'Sigmar', cursive; font-size: clamp(1.3rem, 2vw, 2em); text-align: center; margin-bottom: 0px;">

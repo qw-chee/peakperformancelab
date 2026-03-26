@@ -7,7 +7,6 @@ st.set_page_config(
     page_icon="🌱"
 )
 
-# Set OpenAI API key
 openai.api_key = st.secrets.get("openai_api_key")
 
 # ---------------------------- DATA ----------------------------

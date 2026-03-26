@@ -43,5 +43,7 @@ MIT
 - Best experienced in a full-screen browser
 - AI feedback depends on OpenAI API usage
 
-
+<br>
+<br>
+<br>
 All rights reserved. Developed by Qian Wen Chee for Singapore University of Social Sciences NCO 112 Peak Performance.

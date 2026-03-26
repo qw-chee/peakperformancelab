@@ -32,7 +32,6 @@ SCENARIOS = {
 def get_pettlep_elements(scenario):
     """Get PETTLEP elements with scenario-specific challenges"""
     
-    # Define scenario-specific challenges
     challenges = {
         "Soccer Penalty Kick": {
             "🏃 Physical": {

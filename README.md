@@ -48,4 +48,5 @@ MIT
 <br>
 <br>
 <br>
-Developed by <b>Qian Wen Chee</b> for Singapore University of Social Sciences NCO112 Peak Performance. Copyright (C) 2026.
+Developed by <b>Qian Wen Chee</b> for Singapore University of Social Sciences NCO112 Peak Performance.
+All rights reserved.

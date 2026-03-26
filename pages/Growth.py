@@ -123,19 +123,15 @@ def get_styles():
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Comfortaa:wght@300;400;500;600;700&display=swap');
 
-    /* Desktop/Laptop Only Styles */
     @media screen and (min-width: 1024px) {
-        /* Hide Streamlit default elements */
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
         header {visibility: hidden;}
         
-        /* Hide sidebar permanently */
         section[data-testid="stSidebar"] {
             display: none !important;
         }
         
-        /* Hide sidebar toggle button */
         button[kind="header"][data-testid="baseButton-header"] {
             display: none !important;
         }
@@ -150,7 +146,6 @@ def get_styles():
             margin-top: -2rem !important;
         }
 
-        /* Responsive container - scales based on 2033x983 reference */
         .main .block-container {
             padding-left: 1rem !important;
             padding-right: 1rem !important;
@@ -161,7 +156,6 @@ def get_styles():
             transform-origin: top center;
         }
         
-        /* Full screen background */
         .stApp {
             background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Growth.gif');
             background-size: cover;
@@ -361,7 +355,6 @@ def get_styles():
             100% { transform: rotate(360deg); }
         }
         
-        /* Main buttons (ALL buttons now use same style) */
         div[data-testid="stButton"] > button {
             background: linear-gradient(135deg, #ec6b40 0%, #ff8a65 50%, #f9e79f 100%) !important;
             border: clamp(2px, 0.3vw, 3px) solid #fc6f97 !important;
@@ -410,7 +403,6 @@ def get_styles():
             left: -9999px !important;
         }
 
-        /* Force font on all text elements within buttons */
         div[data-testid="stButton"] * {
             font-family: 'Fredoka', cursive !important;
             font-weight: 600;
@@ -457,8 +449,6 @@ def get_styles():
             background: linear-gradient(45deg, #f06292, #ffb74d);
         }
     }
-
-    /* Specific breakpoint adjustments for optimal scaling */
     
     /* Standard Desktop (1024-1439px) */
     @media screen and (min-width: 1024px) and (max-width: 1439px) {
@@ -474,7 +464,6 @@ def get_styles():
         }
     }
 
-    /* Reference size (1920-2200px) - Perfect scaling maintained */
     @media screen and (min-width: 1920px) and (max-width: 2200px) {
         .main .block-container {
             transform: scale(1.0);
@@ -799,12 +788,6 @@ elif st.session_state.quiz_completed and st.session_state.show_results:
         if st.button("🏡 Return to Home", use_container_width=True):
             st.session_state.clear()
             st.switch_page("pages/Modules.py")
-
-
-
-
-
-
 
 
 

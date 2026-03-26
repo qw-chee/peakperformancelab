@@ -13,42 +13,34 @@ def init_session_state():
 
 init_session_state()
 
-# CSS for loading overlay and full-screen background - Desktop/Laptop Responsive
 page_styles = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Capriola&display=swap');
 
-/* Desktop/Laptop Only Styles */
 @media screen and (min-width: 1024px) {
-    /* Hide Streamlit default elements */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
 
-    /* Hide sidebar permanently */
     section[data-testid="stSidebar"] {
         display: none !important;
     }
 
-    /* Hide sidebar toggle button */
     button[kind="header"][data-testid="baseButton-header"] {
         display: none !important;
     }
 
-    /* Expand main content to full width */
     .main .block-container {
         padding-left: 1rem !important;
         padding-right: 1rem !important;
         max-width: none !important;
     }
-    /* Remove padding from main container */
     .main .block-container {
         padding: 0 !important;
         max-width: none !important;
     }
 
-    /* Full screen background */
     .stApp {
         background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Hm.gif');
         background-size: cover;
@@ -59,7 +51,6 @@ page_styles = """
         position: relative;
     }
 
-/* Loading overlay - responsive sizing */
         #loading-overlay {
             position: fixed;
             top: 0;
@@ -84,7 +75,6 @@ page_styles = """
             text-align: center;
         }
         
-        /* Responsive loading title */
         .loading-title {
             font-family: 'Capriola', sans-serif;
             font-size: clamp(1.5rem, 4vw, 3rem);
@@ -94,8 +84,7 @@ page_styles = """
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             animation: title-glow 2s ease-in-out infinite;
         }
-        
-        /* Responsive loading bar */
+
         .loading-bar-container {
             width: clamp(250px, 30vw, 400px);
             height: clamp(6px, 1vh, 10px);
@@ -116,7 +105,6 @@ page_styles = """
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
         }
         
-        /* Responsive loading subtitle */
         .loading-subtitle {
             color: rgba(255, 255, 255, 0.9);
             margin-top: clamp(10px, 1.5vh, 20px);
@@ -137,7 +125,6 @@ page_styles = """
             100% { transform: translateX(300%); }
         }
 
-    /* Responsive button styling for different desktop sizes */
     .stApp .main .block-container div[data-testid="stButton"] {
         display: flex !important;
         justify-content: center !important;
@@ -168,20 +155,16 @@ page_styles = """
         box-shadow: 0 clamp(8px, 1.5vh, 16px) clamp(25px, 4vh, 45px) rgba(29, 160, 136, 0.5) !important;
     }
         
-    /* Force font on all text elements within buttons */
     div[data-testid="stButton"] * {
         font-weight: 500 !important;
         font-size: clamp(0.5rem, 1vw, 3.5rem) !important;
         font-family: 'Poetsen One', cursive !important;
     }
         
-
-    /* Responsive spacing for button positioning */
     .button-spacing {
         height: clamp(48vh, 60vh, 67vh) !important;
     }
 
-    /* Force font loading for desktop only */
     .desktop-font {
         font-family: 'Poetsen One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
@@ -222,11 +205,8 @@ page_styles = """
 
 </style>
 """
-
-# Apply styles
 st.markdown(page_styles, unsafe_allow_html=True)
 
-# Force styles with JavaScript (additional fix) - Desktop only
 st.markdown("""
 <script>
 // Only apply if screen width > 1024px
@@ -281,14 +261,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---------------------------- MAIN CONTENT ----------------------------
-# Add responsive spacing to position the button
 st.markdown("<div class='button-spacing'></div>", unsafe_allow_html=True)
 
-# Navigation button
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
     if st.button("S T A R T!", use_container_width=True):
         st.switch_page("pages/Instructions.py")
 
-# Add empty content to prevent Streamlit from showing default content
 st.markdown("")

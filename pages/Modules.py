@@ -42,7 +42,7 @@ MODULES = [
     }
 ]
 
-# ---------------------------- RESPONSIVE FUN PLAYFUL STYLES ----------------------------
+# ---------------------------- STYLES ----------------------------
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
@@ -50,19 +50,15 @@ st.markdown("""
     @import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:wght@300;400;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
     
-    /* Desktop/Laptop Only Styles */
     @media screen and (min-width: 1024px) {
-        /* Hide Streamlit branding */
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
         header {visibility: hidden;}
         
-        /* Remove sidebar */
         section[data-testid="stSidebar"] {
             display: none !important;
         }
         
-        /* Fun colorful background with the provided image */
         .stApp {
             background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/Modules.jpg');
             background-size: cover;
@@ -74,7 +70,6 @@ st.markdown("""
             overflow-x: hidden;
         }
         
-        /* Loading overlay - responsive sizing */
         #loading-overlay {
             position: fixed;
             top: 0;
@@ -99,7 +94,6 @@ st.markdown("""
             text-align: center;
         }
         
-        /* Responsive loading title */
         .loading-title {
             font-family: 'Capriola', sans-serif;
             font-size: clamp(1.5rem, 4vw, 3rem);
@@ -110,7 +104,6 @@ st.markdown("""
             animation: title-glow 2s ease-in-out infinite;
         }
         
-        /* Responsive loading bar */
         .loading-bar-container {
             width: clamp(250px, 30vw, 400px);
             height: clamp(6px, 1vh, 10px);
@@ -131,7 +124,6 @@ st.markdown("""
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
         }
         
-        /* Responsive loading subtitle */
         .loading-subtitle {
             color: rgba(255, 255, 255, 0.9);
             margin-top: clamp(10px, 1.5vh, 20px);
@@ -173,7 +165,6 @@ st.markdown("""
             75% { transform: translateX(1px) rotate(0.3deg); }
         }
         
-        /* Responsive super fun bouncing cards */
         .module-card {
             background: rgba(255, 255, 255, 0.9) !important;
             backdrop-filter: blur(10px);
@@ -210,7 +201,6 @@ st.markdown("""
             }
         }
         
-        /* Individual fun card colors with rainbow borders */
         .growth-card {
             border-color: #27AE60 !important;
             animation-delay: 0s;
@@ -231,7 +221,6 @@ st.markdown("""
             animation-delay: 0.6s;
         }
         
-        /* Rainbow shimmer effect */
         .module-card::before {
             content: '';
             position: absolute;
@@ -254,7 +243,6 @@ st.markdown("""
             50% { background-position: 100% 50%; }
         }
         
-        /* Super bouncy hover effects - responsive */
         .module-card:hover {
             transform: translateY(clamp(-20px, -3vh, -35px)) scale(clamp(1.05, 1.08, 1.12)) rotate(3deg) !important;
             box-shadow: 
@@ -268,7 +256,6 @@ st.markdown("""
             opacity: 0.3;
         }
         
-        /* Responsive bouncing dancing icons */
         .module-icon {
             font-size: clamp(1.5rem, 4.5vw, 3rem);
             margin-bottom: clamp(0.2rem, 2vh, 0.5rem);
@@ -308,7 +295,6 @@ st.markdown("""
             100% { transform: scale(1.3) rotateY(360deg) rotateZ(0deg); }
         }
         
-        /* Responsive fun bouncy text */
         .module-title {
             font-family: 'Baloo 2', cursive;
             font-size: clamp(0.5rem, 1.4vw, 1.4rem);
@@ -333,7 +319,6 @@ st.markdown("""
             text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
         }
         
-        /* Responsive description */
         .module-description {
             font-family: 'Baloo 2', cursive;
             font-size: clamp(0.9rem, 1.1vw, 1.3rem);
@@ -358,7 +343,6 @@ st.markdown("""
             transform: translateY(-2px);
         }
         
-        /* Responsive super fun bouncy buttons */
         .stButton {
             display: flex;
             justify-content: center;
@@ -440,7 +424,6 @@ st.markdown("""
             animation-duration: 0.5s;
         }
         
-        /* Colorful fun buttons - unchanged gradients */
         .growth-btn button {
             background: linear-gradient(135deg, #27AE60, #2ECC71) !important;
             color: white !important;
@@ -469,7 +452,6 @@ st.markdown("""
             box-shadow: 0 8px 25px rgba(155, 89, 182, 0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
         }
 
-        /* Force font on all text elements within buttons */
         div[data-testid="stButton"] * {
             font-weight: 600;
             font-family: 'Baloo 2' !important;
@@ -548,6 +530,7 @@ if (window.innerWidth >= 1024) {
 }
 </script>
 """, unsafe_allow_html=True)
+
 # ---------------------------- LOADING OVERLAY ----------------------------
 st.markdown("""
 <div id="loading-overlay">
@@ -570,7 +553,6 @@ st.markdown("""
 
 col1, col2, col3, col4 = st.columns(4)
 
-# Module 1 - Growth
 with col1:
     module = MODULES[0]  # Growth
     st.markdown(f"""
@@ -586,7 +568,6 @@ with col1:
         st.switch_page(module['page'])
     st.markdown('</div>', unsafe_allow_html=True)
 
-# Module 2 - Fight
 with col2:
     module = MODULES[1]  # Fight
     st.markdown(f"""
@@ -602,7 +583,6 @@ with col2:
         st.switch_page(module['page'])
     st.markdown('</div>', unsafe_allow_html=True)
 
-# Module 3 - Smart
 with col3:
     module = MODULES[2]  # Smart
     st.markdown(f"""
@@ -618,7 +598,6 @@ with col3:
         st.switch_page(module['page'])
     st.markdown('</div>', unsafe_allow_html=True)
 
-# Module 4 - Imagery
 with col4:
     module = MODULES[3]  # Imagery
     st.markdown(f"""

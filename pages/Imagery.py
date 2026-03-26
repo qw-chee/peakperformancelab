@@ -303,7 +303,6 @@ def get_pettlep_elements(scenario):
         }
     ]
     
-    # Add scenario-specific challenge data to each element
     for element in base_elements:
         element_name = element["name"]
         if scenario in challenges and element_name in challenges[scenario]:

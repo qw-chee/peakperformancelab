@@ -67,7 +67,7 @@ GOALS_DATABASE = [
     }
 ]
 
-# ---------------------------- SESSION STATE INIT ----------------------------
+# ---------------------------- SESSION STATE ----------------------------
 def init_game_state():
     defaults = {
         'current_question': 0, 'score': 0, 'total_questions': len(GOALS_DATABASE),
@@ -80,7 +80,7 @@ def init_game_state():
     
 init_game_state()
 
-# ---------------------------- FUTURISTIC STYLES ----------------------------
+# ---------------------------- STYLES ----------------------------
 @st.cache_data
 def get_futuristic_styles():
     return """
@@ -89,17 +89,14 @@ def get_futuristic_styles():
 
     /* Desktop/Laptop Only Styles */
     @media screen and (min-width: 1024px) {
-        /* Hide Streamlit default elements */
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
         header {visibility: hidden;}
 
-        /* Hide sidebar permanently */
         section[data-testid="stSidebar"] {
             display: none !important;
         }
         
-        /* Hide sidebar toggle button */
         button[kind="header"][data-testid="baseButton-header"] {
             display: none !important;
         }
@@ -114,7 +111,6 @@ def get_futuristic_styles():
             margin-top: -2rem !important;
         }
 
-        /* Responsive container - scales based on 2033x983 reference */
         .main .block-container {
             padding-left: 1rem !important;
             padding-right: 1rem !important;
@@ -125,7 +121,6 @@ def get_futuristic_styles():
             transform-origin: top center;
         }
         
-        /* Remove padding from main container */
         .main .block-container {
             padding: 0 !important;
             max-width: none !important;
@@ -134,7 +129,6 @@ def get_futuristic_styles():
             overflow-y: auto !important;
         }
         
-        /* Full screen background */
         .stApp {
             background-image: url('https://raw.githubusercontent.com/qw-chee/peakperformancelab/main/assets/smart.jpg');
             background-size: cover;
@@ -309,7 +303,6 @@ def get_futuristic_styles():
             position: relative;
             backdrop-filter: blur(5px);
         
-            /* Halo effect */
             box-shadow: 0 0 15px rgba(255, 0, 255, 0.6),
                         0 0 30px rgba(255, 0, 255, 0.4),
                         0 0 45px rgba(255, 0, 255, 0.2);
@@ -546,7 +539,6 @@ def get_futuristic_styles():
             color: #c4108b !important;
         }
 
-        /* Force font on all text elements within buttons */
         div[data-testid="stButton"] * {
             font-weight: 600;
             font-family: 'Rajdhani' !important;
@@ -813,7 +805,7 @@ if st.session_state.current_question == 0 and not st.session_state.game_complete
     
     st.stop()
 
-# ---------------------------- MAIN GAME ----------------------------
+# ---------------------------- MAIN APP LOGIC ----------------------------
 if not st.session_state.game_completed:
     if st.session_state.show_feedback:
         progress_percentage = (st.session_state.current_question / st.session_state.total_questions) * 100
@@ -853,7 +845,6 @@ if not st.session_state.game_completed:
             selected_missing = []
             smart_components = ["Specific", "Measurable", "Achievable", "Relevant", "Timebound"]
             
-            # Use equal columns for better fit
             cols = st.columns(5)
             
             for i, component in enumerate(smart_components):
@@ -890,7 +881,6 @@ if not st.session_state.game_completed:
         goal = st.session_state.current_goal
         user_correct = set(st.session_state.user_selections) == set(goal["missing"])
         
-        # Feedback styling
         feedback_class = "feedback-success" if user_correct else "feedback-learning"
         feedback_icon = "✅" if user_correct else "❌"
         feedback_title = "SUCCESS!" if user_correct else "INCORRECT!"
@@ -903,7 +893,6 @@ if not st.session_state.game_completed:
         </div>
         """, unsafe_allow_html=True)
         
-        # Show correct answer
         st.markdown(f"""
         <div class="neon-container">
             <h3 style="color: #ffff00; font-family: 'Orbitron', monospace; margin-bottom: -20px; font-size: clamp(1.05rem, 1.35vw, 1.35em); text-align: center;">

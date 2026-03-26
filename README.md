@@ -4,6 +4,8 @@ Peak Performance Lab is an interactive AI-powered learning application. It provi
 
 Live app: https://peakperformancelab.streamlit.app/
 
+[!image]https://github.com/qw-chee/peakperformancelab/blob/9b7570c8a7b028297e0ab166373eb4e8bc81e242/assets/Hm.gif
+
 ---
 
 ## Features

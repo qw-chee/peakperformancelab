@@ -14,14 +14,13 @@ Live app: https://peakperformancelab.streamlit.app/
 ---
 
 ## Project Structure
-.
-├── home.py
+├── home.py                  # Entry point and landing page
 ├── requirements.txt
-├── assets/
-├── pages/
-│ ├── Growth.py
-│ ├── Fight.py
-│ ├── Smart.py
-│ ├── Imagery.py
-│ ├── Instructions.py
-│ └── Modules.py
+├── assets/                  # Static assets (images, icons)
+└── pages/
+    ├── Growth.py            # Growth mindset module
+    ├── Fight.py             # Inner Critic Boss Fight
+    ├── Smart.py             # SMART goal-setting activity
+    ├── Imagery.py           # PETTLEP mental imagery module
+    ├── Instructions.py      # User-facing instructions
+    └── Modules.py           # Module index / navigation

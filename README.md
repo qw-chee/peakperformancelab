@@ -24,3 +24,20 @@ Live app: https://peakperformancelab.streamlit.app/
 <br>│ ├── Imagery.py
 <br>│ ├── Instructions.py
 <br>│ └── Modules.py
+
+---
+
+## Deployment
+The app is deployed via Streamlit Community Cloud. 
+
+---
+
+## License
+MIT
+
+---
+
+## Notes
+- Designed for use on laptop or desktop
+- Best experienced in a full-screen browser
+- AI feedback depends on OpenAI API usage

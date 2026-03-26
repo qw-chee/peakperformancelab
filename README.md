@@ -42,3 +42,6 @@ MIT
 - Designed for use on laptop or desktop
 - Best experienced in a full-screen browser
 - AI feedback depends on OpenAI API usage
+
+
+All rights reserved. Developed by Qian Wen Chee for Singapore University of Social Sciences NCO 112 Peak Performance.

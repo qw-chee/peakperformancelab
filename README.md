@@ -11,8 +11,6 @@ Live app: https://peakperformancelab.streamlit.app/
 - Interactive, scenario-based learning modules  
 - AI-generated feedback using OpenAI GPT-4o Mini  
 
----
-
 ## Project Structure
 ├── home.py
 <br>├── requirements.txt
@@ -25,17 +23,11 @@ Live app: https://peakperformancelab.streamlit.app/
 <br>│ ├── Instructions.py
 <br>│ └── Modules.py
 
----
-
 ## Deployment
 The app is deployed via Streamlit Community Cloud. 
 
----
-
 ## License
 MIT
-
----
 
 ## Notes
 - Designed for use on laptop or desktop

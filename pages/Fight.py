@@ -349,6 +349,7 @@ def render_hp_bars():
     """, unsafe_allow_html=True)
 
 # ---------------------------- GPT-4 FEEDBACK FUNCTION ----------------------------
+# Score a user reframe and return a parsed verdict/comment pair
 def evaluate_response():
     try:
         prompt = f"""You are evaluating how well a student reframes negative self-talk. Rate their response in relevance to the inner critic using the scoring criteria below and give feedback.
@@ -374,7 +375,8 @@ Comment: [Feedback must match the verdict. Be encouraging only for "Strong and p
             elif line.startswith("Comment:"): comment = line.split(":", 1)[1].strip()
 
         st.session_state.last_comment = comment
-        
+
+        # Map AI verdict to battle outcome
         if verdict == "Strong and positive":
             st.session_state.boss_hp = max(0, st.session_state.boss_hp - 15)
             st.session_state.current_feedback = "✅ Powerful reframe! Boss loses 15 HP."

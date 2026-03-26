@@ -38,7 +38,7 @@ SCENARIO_LINES = {
     ]
 }
 
-# ---------------------------- SESSION STATE INIT ----------------------------
+# ---------------------------- SESSION STATE ----------------------------
 def init_game_state():
     defaults = {
         'player_hp': 100, 'boss_hp': 100, 'scenario': None, 'current_line': "", 'awaiting_response': False,
@@ -348,7 +348,7 @@ def render_hp_bars():
     </div>
     """, unsafe_allow_html=True)
 
-# ---------------------------- EVALUATION ----------------------------
+# ---------------------------- GPT-4 FEEDBACK FUNCTION ----------------------------
 def evaluate_response():
     try:
         prompt = f"""You are evaluating how well a student reframes negative self-talk. Rate their response in relevance to the inner critic using the scoring criteria below and give feedback.
@@ -520,9 +520,10 @@ if (window.innerWidth >= 1024) {
 </script>
 """, unsafe_allow_html=True)
 
+# ---------------------------- MAIN APP LOGIC ----------------------------
 st.markdown( """ <style> @media (min-width: 1300px) { .custom-spacer { height: 10vh; } } </style> <div class="custom-spacer"></div> """, unsafe_allow_html=True )
 
-# Check for game over first - if game is over, show end screen and stop
+# CHECK FOR GAME OVER
 if st.session_state.game_over:
     if st.session_state.victory:
         render_victory_screen()
@@ -540,7 +541,7 @@ if st.session_state.game_over:
             st.switch_page("pages/Modules.py")
     st.stop()
 
-# Scenario selection
+# SCENARIO SELECTION
 if st.session_state.scenario is None:
     st.markdown("""
     <div class='pixel-card' style='text-align: center;'>
@@ -585,14 +586,14 @@ if st.session_state.scenario is None:
 
 render_hp_bars()
 
-# Evaluation processing
+# EVALUATION
 if st.session_state.is_evaluating:
     st.markdown('<div class="overlay">Evaluating your response...</div>', unsafe_allow_html=True)
     evaluate_response()
     st.session_state.update({"is_evaluating": False, "awaiting_response": False})
     st.rerun()
 
-# Game input state
+# GAME INPUT STATE
 elif st.session_state.awaiting_response:
     if not st.session_state.current_line:
         available = list(set(SCENARIO_LINES[st.session_state.scenario]) - set(st.session_state.used_lines))
@@ -617,7 +618,7 @@ elif st.session_state.awaiting_response:
             st.session_state.update({"user_response_submitted": user_input.strip(), "is_evaluating": True})
             st.rerun()
 
-# Feedback state
+# FEEDBACK STATE
 else:
     feedback_colors = {"Powerful": "#029316", "Not bad": "#ffb700", "default": "#da531f"}
     color = next((v for k, v in feedback_colors.items() if k in st.session_state.current_feedback), feedback_colors["default"])

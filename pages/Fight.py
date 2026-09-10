@@ -1,6 +1,5 @@
 import streamlit as st
 import random
-import openai
 from openai import OpenAI
 
 st.set_page_config(
@@ -8,7 +7,9 @@ st.set_page_config(
     layout="centered",
     page_icon="⚔️"
 )
-client = OpenAI(api_key=st.secrets.get("openai_api_key"))
+
+api_key = st.secrets.get("openai_api_key")
+client = OpenAI(api_key=api_key) if api_key else None
 
 # ---------------------------- SCENARIOS ----------------------------
 SCENARIO_LINES = {

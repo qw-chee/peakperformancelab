@@ -7,8 +7,7 @@ st.set_page_config(
     layout="centered",
     page_icon="⚔️"
 )
-
-openai.api_key = st.secrets.get("openai_api_key")
+client = OpenAI(api_key=st.secrets.get("openai_api_key")
 
 # ---------------------------- SCENARIOS ----------------------------
 SCENARIO_LINES = {
@@ -366,7 +365,13 @@ Format your response **strictly** as:
 Verdict: [Strong and positive / Weak or Generic / Irrelevant]
 Comment: [Feedback must match the verdict. Be encouraging only for "Strong and positive" and "Weak or Generic". If "Irrelevant", the comment must highlight the problem directly or express concern, and give useful suggestions for reframing the critic. Write in laymen terms, be direct, not fluffy. Write in 30 words or less.]"""
         
-        response = openai.ChatCompletion.create(model="gpt-4o-mini", messages=[{"role": "user", "content": prompt}], max_tokens=70,temperature=0.7,timeout=30)
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=70,
+            temperature=0.7,
+            timeout=30
+        )
         content = response.choices[0].message.content.strip()
         
         verdict, comment = "Weak or Generic", "Try being more specific."

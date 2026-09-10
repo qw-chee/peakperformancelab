@@ -1,13 +1,14 @@
 import streamlit as st
 import random
 import openai
+from openai import OpenAI
 
 st.set_page_config(
     page_title="Inner Critic Boss Fight", 
     layout="centered",
     page_icon="⚔️"
 )
-client = OpenAI(api_key=st.secrets.get("openai_api_key")
+client = OpenAI(api_key=st.secrets.get("openai_api_key"))
 
 # ---------------------------- SCENARIOS ----------------------------
 SCENARIO_LINES = {

@@ -1,5 +1,5 @@
 import streamlit as st
-import openai
+from openai import OpenAI
 import base64
 import io
 import requests
@@ -10,7 +10,8 @@ st.set_page_config(
     page_icon="🎬"
 )
 
-openai.api_key = st.secrets.get("openai_api_key")
+api_key = st.secrets.get("openai_api_key")
+client = OpenAI(api_key=api_key) if api_key else None
 
 # ---------------------------- SCENARIOS ----------------------------
 SCENARIOS = {
@@ -365,7 +366,7 @@ def get_gpt_feedback(element_name, user_response, scenario):
         APPROVED: [YES/NO]
         FEEDBACK: [Keep all feedback within 25 words. If NO, explain what questions weren't addressed and give suggestions with respect to the element and the questions to address only. If YES, explain what was done well with respect to the element and the questions to address only. Use a warm, conversational tone.]"""
 
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are a sports psychology expert specializing in PETTLEP imagery training. Provide constructive feedback to help users create vivid, detailed mental rehearsals."},
@@ -417,7 +418,7 @@ The user has completed all 7 PETTLEP elements with the following information:
 
 Write the script as one continuous narrative without section headers. Make it feel like a mental rehearsal that the user can follow. Use simple words and language. Write in around 170 words."""
 
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are a sports psychology expert who creates vivid, detailed PETTLEP imagery scripts for mental rehearsal training."},
@@ -448,7 +449,7 @@ def generate_speech(text, voice_type, scenario):
         import requests
         
         headers = {
-            "Authorization": f"Bearer {openai.api_key}",
+            "Authorization": f"Bearer {client.api_key}",
             "Content-Type": "application/json"
         }
        
